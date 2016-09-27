@@ -1,5 +1,7 @@
 var SimpleServerTemplate = function(){
     
+    'use strict';
+    
     const getExtension = function (fileName) { 
         var fileNameLength = fileName.length,
             dotPoint       = fileName.indexOf('.', fileNameLength - 5 ),
@@ -76,6 +78,9 @@ var SimpleServerTemplate = function(){
 };
 
 (function main (){
+    
+    'use strict';
+    
     const simpleServerTemplate = SimpleServerTemplate();
     simpleServerTemplate.startServer('127.0.0.1', 3000);
 })();
