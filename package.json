@@ -1,0 +1,16 @@
+{
+    "name": "***",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node ./ChunkPianoSystem_server.js"
+    },
+    "engine": {
+        "node": "v0.12.7",
+        "npm": "2.11.3"
+    },
+    "dependencies": {
+        "http": "*",
+        "socket.io": "*",
+        "colors": "*"
+    }
+}

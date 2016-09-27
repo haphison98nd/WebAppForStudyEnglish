@@ -1,0 +1,14 @@
+## ChunkPianoSystem
+---
+修士研究「振り返りに着目したピアノ学習支援システムの設計と実装」で作成中のシステムです．
+
+ピアノ学習者はこのシステムを利用することで．譜面上に練習中の気づきを保存/読込したり，自分の練習状況を可視化することができます．
+
+また，他者の気づきに対して「いいね!」をつけたり「引用」したりできます．「いいね!」「引用」回数はデータベースに保存されています．このデータは [ProgrammingCollectiveIntelligence](https://github.com/KentaroUeda/ProgrammingCollectiveIntelligence) リポジトリの [協調フィルタ](https://github.com/KentaroUeda/ProgrammingCollectiveIntelligence/blob/master/myChapter2/MyRecommendEngine.py) ，[JavaScriptSvm リポジトリ](https://github.com/KentaroUeda/JavaScriptSvm) の [SVM](https://github.com/KentaroUeda/JavaScriptSvm/tree/master/HardMarginSvm) で他学習者の推薦に利用します．
+
+**本システムはMIDIピアノ，プロジェクタ，視線計測装置を用います．そのため，本リポジトリで公開されているのは一部の機能のみです．** このシステムを利用した実験は 2016年6月を目処に開始する予定です．
+
+### アプリケーション公開先
+[heroku ChunkPianoSystem](http://chunkpianosystem.herokuapp.com/)
+
+**ユーザ認証が必要です．GUI上で新規アカウントを追加する機能はまだ実装していないので，DBに直接登録しているユーザ以外はアクセスできません．** 申し訳ありません．
