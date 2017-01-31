@@ -1,0 +1,89 @@
+
+# 瞬間英作文App 
+
+## DB 設計
+- 他の本を追加できるように，トップレベルのキーを本の名前にしておいた．
+
+{
+	"SyunkanEisakubun":{
+		"part1":{
+			"level":"中学1年レベル",
+			"grammar":"this/that",
+			"contents":{
+				1:{
+					"Japanese":"これは良い本です．",
+					"English":"This book is a good book."	
+				},
+				2:{
+					"Japanese":"This dictionary is good.",
+					"English":"Is that an interesting book?"	
+				},
+				3:{
+					"Japanese":"Is that an interesting book? – Yes, it is.",
+					"English":"Is that an interesting book?"	
+				},
+				4:{
+					"Japanese":"これは良い本です．",
+					"English":"This book is a good book."	
+				},
+				5:{
+					"Japanese":"これは良い本です．",
+					"English":"This book is a good book."	
+				},	
+				6:{
+					"Japanese":"これは良い本です．",
+					"English":"This book is a good book."	
+				},	
+				7:{
+					"Japanese":"これは良い本です．",
+					"English":"This book is a good book."	
+				},	
+				8:{
+					"Japanese":"これは良い本です．",
+					"English":"This book is a good book."	
+				},	
+				9:{
+					"Japanese":"これは良い本です．",
+					"English":"This book is a good book."	
+				},	
+				10:{
+					"Japanese":"これは良い本です．",
+					"English":"This book is a good book."	
+				},	
+
+			}	
+		}
+	}
+}
+
+@この辞書は良い。
+●@あれはおもしろい本ですか?ーはい、そうです。
+9@あの本はおもしろいですか?
+ーいえ、おもしろくありません。
+@これは正しくない。
+@あれは本物の花ではない。
+@このスープはあまり美味しくない。
+これは塩ですか、それとも砂糖ですか?ー砂糖です。
+@ あの女性はフランス人ですか、それともイタリア人ですか?
+- フランス人です。
+あの男性は日本人ですか、それとも中国人ですか? - 日本人です。
+
+(3) Is that an interesting book? – Yes, it is.
+(4) Is that book interesting?
+- No, it isn't.
+(5) This is not right.
+(6) That is not a real flower.
+(7) This soup is not very tasty.
+Is this salt or sugar? — It is sugar.
+(9) Is that woman French or Italian?
+- She is French.
+Is that man Japanese or Chinese? - He is Japanese.
+O でも、がっかりしないでください。現状は現状として冷静に受け入れ、今から
+言語として英語を使うための実践的トレーニングを始めればよいのですから。始
+めさえすれば、頭で理解していることは、急速に使えるようになるものです。
+33
+ෆ
+ 
+ 
+ 
+ We present Brain Automated Chorales (BACh), an adaptive brain-computer system that dynamically increases the levels of difficulty in a musical learning task based on pianists’ cog- nitive workload measured by functional near-infrared spec- troscopy. 
