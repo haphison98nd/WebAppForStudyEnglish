@@ -1,18 +1,17 @@
-// socket.io はクライアントと push 通信を実現するライブラリです．
-// socket.io は npm でインストールできます．(コマンドラインで npm install socketio と入力し実行)．
-// 参考: http://socket.io
-// 参考: http://qiita.com/ij_spitz/items/2c66d501f29bff3830f7
 
-var SocketChat_server = function(){
+var Wafse_server = function(){
     
     'use strict';
+
+    const app = require('express')(),
+          httpServer = require('http').createServer(app)
+    ;
     
-    var initHttpServer, initSocket,
-        app        = require('express')(),
-        // require('http') は Node.js の標準 http モジュールを呼び出しています．
-        // ここで http モジュールと express を関連付けています．
-        httpServer = require('http').createServer(app)
-    ;   
+    let initHttpServer, initSocket;   
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
 
     initHttpServer = function(){
         
@@ -24,7 +23,7 @@ var SocketChat_server = function(){
         
         app.get('/', function(req, res){
             res.writeHead(200, {'Content-Type':'text/html'});
-            data = fs.readFileSync(rootDir + '/acim7.html', 'utf-8');
+            data = fs.readFileSync(rootDir + '/login.html', 'utf-8');
             res.end(data);
         });
 
@@ -34,8 +33,13 @@ var SocketChat_server = function(){
             res.end(data);
         });
 
-        // js フォルダには libraries フォルダも存在するので，プレースホルダを利用し
-        // ルーティングしています．
+        app.get('/images/:imageFileName', function(req, res){
+            console.log('test');
+            res.writeHead(200, {'Content-Type':'image/jpeg'});
+            data = fs.readFileSync(rootDir + '/images/' +  req.params.imageFileName);
+            res.end(data, 'binary');
+        });
+
         app.get('/js/:jsFileName/:libraryJsFileName?', function(req, res){
                         
             if(req.params.jsFileName === 'libraries'){
@@ -49,9 +53,12 @@ var SocketChat_server = function(){
             }
             
         });
-        
+
         httpServer.listen(PORT);
     };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
 
     initSocket = function(){
 
@@ -110,14 +117,20 @@ var SocketChat_server = function(){
         });
 
     };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
     
     (function constructor(){
         initHttpServer();
-        initSocket();
+        // initSocket();
     })();
 };
 
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+
 (function main(){
-    'use strict'
-    var scs = SocketChat_server();
+    'use strict';
+    const wafse_server = Wafse_server();
 })();

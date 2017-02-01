@@ -6,7 +6,8 @@ const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(){
 
     let jsonDb    = null, 
         titleList = {},
-        self, constructor, createTitleList, getTitleList, getDb, saveTitleListAsJson;
+        self, constructor, createTitleList, getTitleList, getDb, saveTitleListAsJson
+    ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////

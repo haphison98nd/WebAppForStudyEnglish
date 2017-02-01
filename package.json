@@ -2,7 +2,7 @@
     "name": "***",
     "version": "0.0.1",
     "scripts": {
-        "start": "node ./ChunkPianoSystem_server.js"
+        "start": "node ./Wafse_server.js"
     },
     "engine": {
         "node": "v0.12.7",
