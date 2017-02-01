@@ -4,4 +4,4 @@
 ./SimpleEnglishSentencesJsonDb_ENG.json
 *~
 .DS_Store
-./TextDB/*
+.TextDB/
