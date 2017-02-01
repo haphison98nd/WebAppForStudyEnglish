@@ -45,7 +45,7 @@ class SimpleEnglishSentencesJsonDbMaker:
         self.__db["page-" + str(pageIdx)] = {}
         self.__db["page-" + str(pageIdx)]["title"] = title
         self.__db["page-" + str(pageIdx)]["text"] = sentences
-    
+
     ######################################################
     ######################################################
 

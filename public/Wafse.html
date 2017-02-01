@@ -16,29 +16,29 @@
         <script type="text/javascript" src="js/Wafse_client.PageController.LoginAndCoreateAccount.MainContainer.js"></script>
         <script type="text/javascript" src="js/Wafse_client.PageView.LoginAndCoreateAccount.js"></script>
         <script type="text/javascript" src="js/Wafse_client.main.js"></script>
-        <template class="htmlTemplate" id="loginAndCoreateAccount">
+        <template class="defaultHtml" id="loginAndCoreateAccount">
             <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top" id="mainNav">
                 <div class="navbar-brand"><b>瞬間英作文app</b></div>
             </nav>
-            <div id="mainContainer">
+            <div class="loginAndCoreateAccount" id="mainContainer">
                 <h1 id="mainMassage">ログイン</h1>
                 <br>
                 <div class="form-group">
                     <label for="exampleInputEmail1">ユーザー名</label>
                     <input type="email" class="form-control loginAndCoreateAccount" aria-describedby="emailHelp" placeholder="ここにユーザ名を入力..." id="userNameInput">
-                    <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
-                    <!--div class="alert alert-success" role="alert">
-                        <strong>Well done!</strong> You successfully read this important alert message.
-                    </div-->
+                    <div class="alert alert-danger loginAndCoreateAccount" role="alert" id="alertForUserNameInput"></div>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">パスワード</label>
                     <input type="password" class="form-control loginAndCoreateAccount" placeholder="ここにパスワードを入力..." id="passWordInput">
+                    <div class="alert alert-danger loginAndCoreateAccount" role="alert" id="alertForPassWordInput"></div>
                 </div>
                 <button class="btn btn-primary text-right loginAndCoreateAccount loginAndCoreateAccountBtn" id="enterBtn">Enter</button>
-                <button class="btn btn btn-warning text-right loginAndCoreateAccount loginAndCoreateAccountBtn" id="createAccountBtn">CreateAccount</button>
+                <button class="btn btn btn-success text-right loginAndCoreateAccount" id="createAccountBtn">CreateAccount</button>
+                <button class="btn btn btn-primary text-right loginAndCoreateAccount" id="submitBtn">Submit</button>
             </div>
         </template>
+        <!-- template class="htmlTemplate" id="alert"><div class="alert alert-danger" role="alert"></div></template-->
     </head>
     <body id="appBody"></body>
 </html>

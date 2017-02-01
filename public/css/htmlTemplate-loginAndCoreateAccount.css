@@ -2,9 +2,21 @@
     background-color: #2a2a2a;
 }
 
-.loginAndCoreateAccountBtn{
-    float: right!important;
+.btn.loginAndCoreateAccount{
+    float: right;
     margin-right: 10px;
+}
+
+.btn.loginAndCoreateAccount#submitBtn{
+    display:none;
+}
+
+.alert.loginAndCoreateAccount#alertForUserNameInput{
+    display:none;
+}
+
+.alert.loginAndCoreateAccount#alertForPassWordInput{
+    display:none;
 }
 
 #mainContainer{
