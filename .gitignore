@@ -1,7 +1,5 @@
 *.pyc
 *.log
-./SimpleEnglishSentencesJsonDb_JPN.json
-./SimpleEnglishSentencesJsonDb_ENG.json
 *~
 .DS_Store
-.TextDB/
+./TextDB/*.json
