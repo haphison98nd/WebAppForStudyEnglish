@@ -1,6 +1,6 @@
 // fs を継承し拡張した ExtendedFs モジュール．
 module.exports = (function(){
-    'use strict'
+    'use strict';
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     var constructor, getFileNameListAsync, readFileSync, readFilesAsync,
