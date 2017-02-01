@@ -1,5 +1,6 @@
 *.pyc
 *.log
-/myPythonModules/SimpleEnglishSentencesJsonDb.json
+./SimpleEnglishSentencesJsonDb_JPN.json
+./SimpleEnglishSentencesJsonDb_ENG.json
 *~
 .DS_Store
