@@ -6,12 +6,13 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(){
           passWordInput = $('.loginAndCoreateAccount#passWordInput')
     ;
     
-    let self, constructor, initDomAction;
+    let self, constructor, initDomAction, data;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     initDomAction = function(){
+        userNameInput.val(data.userNameInput);
         userNameInput.on('change keyup', function(){
             console.log($(this).val());
         });
@@ -25,13 +26,14 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor(){
+    constructor = function(d){
+        data = d;
         initDomAction();
-    })();
+    };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {};
+    self = {constructor:constructor};
     return self;
 };

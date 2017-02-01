@@ -3,3 +3,6 @@
 *~
 .DS_Store
 ./TextDB/*.json
+
+./UserDataBase.json
+./SimpleServerTemplate.js

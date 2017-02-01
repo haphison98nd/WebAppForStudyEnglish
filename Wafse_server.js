@@ -23,7 +23,7 @@ var Wafse_server = function(){
         
         app.get('/', function(req, res){
             res.writeHead(200, {'Content-Type':'text/html'});
-            data = fs.readFileSync(rootDir + '/login.html', 'utf-8');
+            data = fs.readFileSync(rootDir + '/Wafse.html', 'utf-8');
             res.end(data);
         });
 

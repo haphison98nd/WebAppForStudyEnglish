@@ -11,7 +11,7 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(){
     
     render = function(){
         Wafse_client.HtmlTemplateRenderer().render(htmlTemplate, function(){
-            Wafse_client.PageController.LoginAndCoreateAccount.MainContainer();
+            Wafse_client.PageController.LoginAndCoreateAccount.MainContainer().constructor({userNameInput:'test'});
         });
         return self;
     };
