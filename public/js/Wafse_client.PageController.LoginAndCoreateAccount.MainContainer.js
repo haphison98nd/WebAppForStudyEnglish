@@ -1,4 +1,4 @@
-Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(){
+Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data){
     
     'use strict';
     
@@ -13,7 +13,7 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(){
           alertForPassWordInput = $('.alert.loginAndCoreateAccount#alertForPassWordInput')
     ;
     
-    let self, constructor, initDomAction, data;
+    let self, initDomAction;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -28,17 +28,14 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(){
 
         });
         enterBtn.click(function(){
-            console.log(String(userNameInput.val()));
-            console.log(String(passWordInput.val()));
             setTimeout(function(){
-                Wafse_client.PageView.LoginAndCoreateAccount().render();
+                Wafse_client.PageView.LoginAndCoreateAccount({userNameInput:'MainContainer -> enterBtn'}).render();
             }, 2000);
         });
         createAccountBtn.click(function(){
             mainMassage.text('アカウントを作成');
             enterBtn.css({'display':'none'});
             createAccountBtn.css({'display':'none'});
-            console.log(submitBtn);
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
                 setTimeout(function(){
@@ -51,7 +48,7 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(){
                         .html('<b>Worning:</b>TestAlertMessageForAlertForUserNameInput')
                     ;
                     setTimeout(function(){
-                        Wafse_client.PageView.LoginAndCoreateAccount().render();
+                        Wafse_client.PageView.LoginAndCoreateAccount({userNameInput:'MainContainer -> submitBtn'}).render();
                     }, 2000);
                 }, 2000);
             });
@@ -62,14 +59,13 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    constructor = function(d){
-        data = d;
-        initDomAction();
-    };
+    (function constructor (){
+
+    })();
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {constructor:constructor};
+    self = {initDomAction:initDomAction};
     return self;
 };
