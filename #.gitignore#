@@ -1,7 +1,0 @@
-*.pyc
-*.log
-./SimpleEnglishSentencesJsonDb_JPN.json
-./SimpleEnglishSentencesJsonDb_ENG.jso
-*~
-.DS_Store
-./TextDB/*.json
