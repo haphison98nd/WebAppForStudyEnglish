@@ -11,6 +11,8 @@
     "dependencies": {
         "http": "*",
         "socket.io": "*",
-        "colors": "*"
+        "colors": "*",
+        "body-parser": "*",
+        "express": "*"
     }
 }

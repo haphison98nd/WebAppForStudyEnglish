@@ -12,8 +12,7 @@
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 module.exports = (function(){ // node module として利用する際はこちらを有効化
-// var UserDataBaseProcessor = function(){ // moduleTest の際はこちらを有効化
-    'use strict'
+    'use strict';
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     var constructor, initDataBase, loadDataBase, saveDataBaseAsJson, isUserExist, 
@@ -31,9 +30,7 @@ module.exports = (function(){ // node module として利用する際はこち�
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     saveDataBaseAsJson = function(callback){
-        var strinfiedUserDataBase = JSON.stringify(userDataBase);
-
-        extendedFs.writeFile('./UserDataBase.json', strinfiedUserDataBase, function(err){     // server 実行時のファイルパス
+        extendedFs.writeFile('./UserDataBase.json', JSON.stringify(userDataBase, null, 4), function(err){     // server 実行時のファイルパス
         // extendedFs.writeFile('../UserDataBase.json', strinfiedUserDataBase, function(err){ // moduleTest 時のファイルパス
            if(err){
                console.log(err);
@@ -92,7 +89,7 @@ module.exports = (function(){ // node module として利用する際はこち�
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     // 削除したいユーザ名を string の userName で引数として与え削除．　
-    // 削除対象のキーが存在しない場合は false を return. 
+    // 削除対象のキーが存在しない場合は false を return.
     removeUserData = function(userName){
         if(isUserExist(userName) == true){
             
@@ -150,7 +147,6 @@ module.exports = (function(){ // node module として利用する際はこち�
     //////////////////////////////////////////////
     // initDataBase は moduleTest での実行が主なため，private とした．
     return {addUserData:addUserData, removeUserData:removeUserData, authorize:authorize};
-// }; // moduleTest の際はこちらを有効化
 })(); // node module として利用する際はこちらを有効化．
 //////////////////////////////////////////////
 //////////////////////////////////////////////

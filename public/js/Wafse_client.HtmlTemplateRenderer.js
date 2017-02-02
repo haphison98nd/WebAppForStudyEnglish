@@ -4,7 +4,7 @@ Wafse_client.HtmlTemplateRenderer = function(){
 
     const appBody= $('#appBody');
     
-    let self, render, clearPage;
+    let self, render, addRender, remove, clearPage;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -14,6 +14,22 @@ Wafse_client.HtmlTemplateRenderer = function(){
         appBody.append(htmlTemplate).ready(function(){ 
             if (callback) callback(); 
         });        
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    addRender = function(target, htmlTemplate, callback){
+        target.append(htmlTemplate).ready(function(){ 
+            if (callback) callback(); 
+        });        
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    remove = function(target){
+        target.remove();
     };
     
     //////////////////////////////////////////////
@@ -26,6 +42,6 @@ Wafse_client.HtmlTemplateRenderer = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self = {render:render, clearPage:clearPage};
+    self = {render:render, addRender:addRender, remove:remove, clearPage:clearPage};
     return self;
 };

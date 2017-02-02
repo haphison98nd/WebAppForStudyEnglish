@@ -2,17 +2,27 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(data){
     
     'use strict';
     
-    const htmlTemplate = $('.defaultHtml#loginAndCoreateAccount').html(),
+    const defaultHtml_mainNav = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainNav').html(),
+          defaultHtml_mainContainer = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').html(),
           mainContainer = Wafse_client.PageController.LoginAndCoreateAccount.MainContainer
     ;
     
-    let self, render;
+    let self, renderAll, renderMainNav, renderMainContainer;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
+
+    renderMainNav = function(){
+        // NOTE: Create Wafse_client.PageController.LoginAndCoreateAccount.MainNav if add dom action to mainNav.
+        //       Refer Wafse_client.PageController.LoginAndCoreateAccount.MainContainer.
+        Wafse_client.HtmlTemplateRenderer().addRender($('#appBody'), defaultHtml_mainNav);
+    };
     
-    render = function(){
-        Wafse_client.HtmlTemplateRenderer().render(htmlTemplate, function(){
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    renderMainContainer = function(){
+        Wafse_client.HtmlTemplateRenderer().addRender($('#appBody'), defaultHtml_mainContainer, function(){
             mainContainer(data).initDomAction();
         });
         return self;
@@ -21,6 +31,14 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(data){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    renderAll = function(){
+        renderMainNav();
+        renderMainContainer();
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
     (function constructor (){
         console.log(data);
     })();
@@ -28,6 +46,6 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(data){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {render:render};
+    self = {renderAll:renderAll, renderMainNav:renderMainNav, renderMainContainer:renderMainContainer};
     return self;
 };

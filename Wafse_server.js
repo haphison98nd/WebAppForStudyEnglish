@@ -4,6 +4,7 @@ var Wafse_server = function(){
     'use strict';
 
     const app = require('express')(),
+          bodyParser = require('body-parser'),
           httpServer = require('http').createServer(app)
     ;
     
@@ -12,46 +13,73 @@ var Wafse_server = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-
     initHttpServer = function(){
         
-        var fs         = require('fs'),
-            PORT       = process.env.PORT || 3000,
-            rootDir    = 'public',
-            data       = null
+        const extendedFs = require('./myNodeModules/ExtendedFs.js'),
+              userDb     = require('./myNodeModules/UserDataBaseProcessor.js'),
+              PORT       = process.env.PORT || 3000,
+              rootDir    = 'public'
         ;
+        
+        let dataForHttpRes = null;
+        
+        app.use(bodyParser.urlencoded({extended: true}));
         
         app.get('/', function(req, res){
             res.writeHead(200, {'Content-Type':'text/html'});
-            data = fs.readFileSync(rootDir + '/Wafse.html', 'utf-8');
-            res.end(data);
+            dataForHttpRes = extendedFs.readFileSync(rootDir + '/Wafse.html', 'utf-8');
+            res.end(dataForHttpRes);
         });
 
         app.get('/css/:cssFileName', function(req, res){
             res.writeHead(200, {'Content-Type':'text/css'});
-            data = fs.readFileSync(rootDir + '/css/' +  req.params.cssFileName, 'utf-8');
-            res.end(data);
+            dataForHttpRes = extendedFs.readFileSync(rootDir + '/css/' +  req.params.cssFileName, 'utf-8');
+            res.end(dataForHttpRes);
         });
 
         app.get('/images/:imageFileName', function(req, res){
-            console.log('test');
             res.writeHead(200, {'Content-Type':'image/jpeg'});
-            data = fs.readFileSync(rootDir + '/images/' +  req.params.imageFileName);
-            res.end(data, 'binary');
+            dataForHttpRes = extendedFs.readFileSync(rootDir + '/images/' +  req.params.imageFileName);
+            res.end(dataForHttpRes, 'binary');
         });
 
         app.get('/js/:jsFileName/:libraryJsFileName?', function(req, res){
                         
             if(req.params.jsFileName === 'libraries'){
                 res.writeHead(200, {'Content-Type':'text/javascript'});
-                data = fs.readFileSync(rootDir + '/js/libraries/' + req.params.libraryJsFileName, 'utf-8');
-                res.end(data);                
+                dataForHttpRes = extendedFs.readFileSync(rootDir + '/js/libraries/' + req.params.libraryJsFileName, 'utf-8');
+                res.end(dataForHttpRes);                
             }else{            
                 res.writeHead(200, {'Content-Type':'text/javascript'});
-                data = fs.readFileSync(rootDir + '/js/' + req.params.jsFileName, 'utf-8');
-                res.end(data);
+                dataForHttpRes = extendedFs.readFileSync(rootDir + '/js/' + req.params.jsFileName, 'utf-8');
+                res.end(dataForHttpRes);
             }
             
+        });
+        
+        // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
+        app.post('/authorize', function(req, res){
+            let dataForAuthorization = req.body;
+            const authorizationResult = userDb.authorize(dataForAuthorization);
+
+            if (authorizationResult === 'authorized'){ 
+                res.send({status : 'success', message: 'ようこそ，' + String(dataForAuthorization.userName) + ' さん!'});
+            } else if(authorizationResult === 'userNotExist'){ 
+                res.send({status : 'userNameError', message: '登録されていないユーザ名です'});
+            } else if (authorizationResult === 'incorrectUserPassword'){ 
+                res.send({status : 'passwordError', message: '不正なパスワードです'});
+            }
+        });
+        
+        app.post('/createAccount', function(req, res){
+            let dataForCreateAccount = req.body;
+            const createAccountResult = userDb.addUserData(dataForCreateAccount);
+
+            if (createAccountResult){ 
+                res.send({status : 'success', message: 'ようこそ，' + String(dataForCreateAccount.userName) + ' さん!'});
+            } else { 
+                res.send({status : 'error', message: '既に登録されているユーザです'});
+            }
         });
 
         httpServer.listen(PORT);

@@ -2,60 +2,146 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
     
     'use strict';
     
-    const mainMassage = $('#mainMassage'),
+    const mainMassage_login = $('#mainMassage_login'),
+          mainMassage_createAccount = $('#mainMassage_createAccount'),
           mainContainer = $('.loginAndCoreateAccount#mainContainer'),
           userNameInput = $('.loginAndCoreateAccount#userNameInput'),
           passWordInput = $('.loginAndCoreateAccount#passWordInput'),
           enterBtn = $('.loginAndCoreateAccount#enterBtn'),
           createAccountBtn = $('.loginAndCoreateAccount#createAccountBtn'),
-          submitBtn = $('.btn.loginAndCoreateAccount#submitBtn'),
+          submitBtn = $('.loginAndCoreateAccount#submitBtn'),
+          returnBtn = $('.loginAndCoreateAccount#returnBtn'),
           alertForUserNameInput = $('.alert.loginAndCoreateAccount#alertForUserNameInput'),
           alertForPassWordInput = $('.alert.loginAndCoreateAccount#alertForPassWordInput')
     ;
     
-    let self, initDomAction;
-    
+    let self, initDomAction, initDomAction_textInput, initDomAction_button, setAlertMessage,
+        checkUserNameInputAndPassWordInput
+    ;
+
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    initDomAction = function(){
+    checkUserNameInputAndPassWordInput = function(){
+        if(String(userNameInput.val()) === '' && String(passWordInput.val()) === '') {
+            setAlertMessage('ユーザ名が入力してください', 'パスワードが入力してください');
+            return false;
+        } else if (String(userNameInput.val()) === '') {
+            setAlertMessage('ユーザ名が入力してください', '');
+            return false;
+        } else if (String(passWordInput.val()) === '') {
+            setAlertMessage('', 'パスワードが入力してください');
+            return false;
+        }
+        
+        return true;
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    initDomAction_textInput = function(){
         userNameInput.val(data.userNameInput);
         userNameInput.on('change keyup', function(){
             // console.log(String($(this).val()));
         });
         passWordInput.on('change keyup', function(){
             // console.log(String($(this).val()));
+        });        
+    };
 
-        });
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    initDomAction_button = function(){
         enterBtn.click(function(){
-            setTimeout(function(){
-                data.userNameInput = 'MainContainer -> enterBtn';
-                Wafse_client.PageView.LoginAndCoreateAccount(data).render();
-            }, 2000);
+            if(checkUserNameInputAndPassWordInput()){
+                $.ajax({
+                    type: 'POST',
+                    url : 'http://localhost:3000/authorize',
+                    // url : 'https://ps-enquate.herokuapp.com/saveEnqueteData',
+                    data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
+                    success: function(authorizationResult){
+                        if (authorizationResult.status === 'success'){ 
+                            Wafse_client.HtmlTemplateRenderer().clearPage();
+                            Wafse_client.PageView.LoginAndCoreateAccount().renderMainNav();
+                            console.log(authorizationResult.message);
+                        } else if(authorizationResult.status  === 'userNameError'){ 
+                            setAlertMessage(authorizationResult.message, '');
+                        } else if (authorizationResult.status  === 'passwordError'){ 
+                            setAlertMessage('', authorizationResult.message);
+                        }
+                    }
+                });
+            }
         });
+        
         createAccountBtn.click(function(){
-            mainMassage.text('アカウントを作成');
+            setAlertMessage('', '');
+            mainMassage_login.css({'display':'none'});
+            mainMassage_createAccount.css({'display':'block'});
             enterBtn.css({'display':'none'});
             createAccountBtn.css({'display':'none'});
+            returnBtn.css({'display':'inline'});
+            returnBtn.click(function(){
+                Wafse_client.HtmlTemplateRenderer().remove($('.loginAndCoreateAccount#mainContainer'));
+                Wafse_client.PageView.LoginAndCoreateAccount(data).renderMainContainer();
+            });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
-                setTimeout(function(){
-                    alertForPassWordInput
-                        .css({'display':'block'})
-                        .html('<b>Worning:</b>TestAlertMessageForAlertForPassWordInput')
-                    ;
-                    alertForUserNameInput
-                        .css({'display':'block'})
-                        .html('<b>Worning:</b>TestAlertMessageForAlertForUserNameInput')
-                    ;
-                    setTimeout(function(){
-                        data.userNameInput = 'MainContainer -> submitBtn';
-                        Wafse_client.PageView.LoginAndCoreateAccount(data).render();
-                    }, 2000);
-                }, 2000);
+                if(checkUserNameInputAndPassWordInput()){
+                    $.ajax({
+                        type: 'POST',
+                        url : 'http://localhost:3000/createAccount',
+                        // url : 'https://ps-enquate.herokuapp.com/saveEnqueteData',
+                        data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
+                        success: function(createAccountResult){
+                            if (createAccountResult.status === 'success'){ 
+                                Wafse_client.HtmlTemplateRenderer().clearPage();
+                                Wafse_client.PageView.LoginAndCoreateAccount().renderMainNav();
+                                console.log(createAccountResult.message);
+                            } else if(createAccountResult.status  === 'error'){ 
+                                setAlertMessage(createAccountResult.message, '');
+                            }
+                        }
+                    });
+                }
+                // data.userNameInput = 'MainContainer -> submitBtn';
+                // Wafse_client.PageView.LoginAndCoreateAccount(data).render();
             });
             mainContainer.append(submitBtn);
-        });
+        });        
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    setAlertMessage = function(alertMessageForUserNameInput, alertMessageForPassWordInput){   
+        if(alertMessageForUserNameInput || alertMessageForUserNameInput !== ''){
+            alertForUserNameInput
+                .css({'display':'block'})
+                .html('<b>' + String(alertMessageForUserNameInput) + '</b>')
+            ;            
+        }else{
+            alertForUserNameInput.css({'display':'none'});  
+        }
+        
+        if(alertMessageForPassWordInput || alertMessageForPassWordInput !== ''){
+            alertForPassWordInput
+                .css({'display':'block'})
+                .html('<b>' + String(alertMessageForPassWordInput) + '</b>')
+            ;            
+        }else{
+            alertForPassWordInput.css({'display':'none'});              
+        }        
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    initDomAction = function(){
+        initDomAction_textInput();
+        initDomAction_button();
     };
     
     //////////////////////////////////////////////
