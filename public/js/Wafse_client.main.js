@@ -1,7 +1,9 @@
 Wafse_client.main = function(){
     'use strict';
     console.log(Wafse_client);
-    Wafse_client.PageView.LoginAndCoreateAccount({userNameInput:'Wafse_client.main '}).render();
+    // todo: create data Manager;
+    let data = {userNameInput:'Wafse_client.main '};    
+    Wafse_client.PageView.LoginAndCoreateAccount(data).render();
 };
 
 //////////////////////////////////////////////

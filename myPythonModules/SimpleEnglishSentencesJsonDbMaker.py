@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 
 class SimpleEnglishSentencesJsonDbMaker:
 
-    def __getTextHtmlSoup (self, url):
+    def __createTextHtmlSoup (self, url):
         # if get html from web
         response = urllib.urlopen(url)
         html = response.read()
@@ -60,7 +60,7 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
     ######################################################
 
-    def getDb (self):
+    def getDbAsDict (self):
         return self.__db
 
     ######################################################
@@ -68,7 +68,7 @@ class SimpleEnglishSentencesJsonDbMaker:
 
     def startScraping (self):
         for pageIdx in range(self.__pageIdxStart, self.__pageIdxEnd):
-            soup = self.__getTextHtmlSoup(self.__targetUrl + str(pageIdx))
+            soup = self.__createTextHtmlSoup(self.__targetUrl + str(pageIdx))
             title = self.__getTextTitle(soup)
             sentences = self.__getTextSentences(soup)
             self.__addText(pageIdx, title, sentences)

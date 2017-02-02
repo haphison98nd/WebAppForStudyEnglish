@@ -22,7 +22,7 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(data){
     //////////////////////////////////////////////
     
     (function constructor (){
-
+        console.log(data);
     })();
     
     //////////////////////////////////////////////

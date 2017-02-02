@@ -29,7 +29,8 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
         });
         enterBtn.click(function(){
             setTimeout(function(){
-                Wafse_client.PageView.LoginAndCoreateAccount({userNameInput:'MainContainer -> enterBtn'}).render();
+                data.userNameInput = 'MainContainer -> enterBtn';
+                Wafse_client.PageView.LoginAndCoreateAccount(data).render();
             }, 2000);
         });
         createAccountBtn.click(function(){
@@ -48,7 +49,8 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
                         .html('<b>Worning:</b>TestAlertMessageForAlertForUserNameInput')
                     ;
                     setTimeout(function(){
-                        Wafse_client.PageView.LoginAndCoreateAccount({userNameInput:'MainContainer -> submitBtn'}).render();
+                        data.userNameInput = 'MainContainer -> submitBtn';
+                        Wafse_client.PageView.LoginAndCoreateAccount(data).render();
                     }, 2000);
                 }, 2000);
             });
