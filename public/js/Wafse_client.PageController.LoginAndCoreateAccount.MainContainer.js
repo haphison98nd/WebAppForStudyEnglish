@@ -24,7 +24,7 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
 
     checkUserNameInputAndPassWordInput = function(){
         if(String(userNameInput.val()) === '' && String(passWordInput.val()) === '') {
-            setAlertMessage('ユーザ名が入力してください', 'パスワードが入力してください');
+            setAlertMessage('ユーザ名を入力してください', 'パスワードを入力してください');
             return false;
         } else if (String(userNameInput.val()) === '') {
             setAlertMessage('ユーザ名を入力してください', '');
