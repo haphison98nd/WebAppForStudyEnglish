@@ -58,8 +58,8 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
             if(checkUserNameInputAndPassWordInput()){
                 $.ajax({
                     type: 'POST',
-                    url : 'http://localhost:3000/authorize',
-                    // url : 'https://ps-enquate.herokuapp.com/saveEnqueteData',
+                    // url : 'http://localhost:3000/authorize',
+                    url : 'https://shunkan-eisakubun-web-app.herokuapp.com/saveEnqueteData',
                     data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                     success: function(authorizationResult){
                         if (authorizationResult.status === 'success'){ 
@@ -92,8 +92,8 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
                 if(checkUserNameInputAndPassWordInput()){
                     $.ajax({
                         type: 'POST',
-                        url : 'http://localhost:3000/createAccount',
-                        // url : 'https://ps-enquate.herokuapp.com/saveEnqueteData',
+                        // url : 'http://localhost:3000/createAccount',
+                        url : 'https://shunkan-eisakubun-web-app.herokuapp.com/saveEnqueteData',
                         data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                         success: function(createAccountResult){
                             if (createAccountResult.status === 'success'){ 
