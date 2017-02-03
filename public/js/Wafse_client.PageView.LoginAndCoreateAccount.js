@@ -1,4 +1,4 @@
-Wafse_client.PageView.LoginAndCoreateAccount = function(data){
+Wafse_client.PageView.LoginAndCoreateAccount = function(appDataManager){
     
     'use strict';
     
@@ -23,7 +23,7 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(data){
 
     renderMainContainer = function(){
         Wafse_client.HtmlTemplateRenderer().addRender($('#appBody'), defaultHtml_mainContainer, function(){
-            mainContainer(data).initDomAction();
+            mainContainer(appDataManager).initDomAction();
         });
         return self;
     };
@@ -40,7 +40,7 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(data){
     //////////////////////////////////////////////
 
     (function constructor (){
-        console.log(data);
+        
     })();
     
     //////////////////////////////////////////////

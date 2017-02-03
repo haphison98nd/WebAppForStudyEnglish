@@ -1,4 +1,4 @@
-Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data){
+Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(appDataManager){
     
     'use strict';
     
@@ -16,14 +16,14 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
           alertForPassWordInput = $('.alert.loginAndCoreateAccount#alertForPassWordInput')
     ;
     
-    let self, initDomAction, initDomAction_textInput, initDomAction_button, setAlertMessage,
-        checkUserNameInputAndPassWordInput
+    let self, initDomAction, setLoginDataTotextInput, initDomAction_button, setAlertMessage,
+        validUserNameInputAndPassWordInput
     ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    checkUserNameInputAndPassWordInput = function(){
+    validUserNameInputAndPassWordInput = function(){
         if(String(userNameInput.val()) === '' && String(passWordInput.val()) === '') {
             setAlertMessage('ユーザ名を入力してください', 'パスワードを入力してください');
             return false;
@@ -41,14 +41,17 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    initDomAction_textInput = function(){
-        userNameInput.val(data.userNameInput);
+    setLoginDataTotextInput = function(){
+        userNameInput.val(String(appDataManager.getItem('LoginAndCoreateAccount.userName')));
+        passWordInput.val(String(appDataManager.getItem('LoginAndCoreateAccount.userPassword')));
+        /*
         userNameInput.on('change keyup', function(){
             // console.log(String($(this).val()));
         });
         passWordInput.on('change keyup', function(){
             // console.log(String($(this).val()));
         });        
+        */
     };
 
     //////////////////////////////////////////////
@@ -56,7 +59,7 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
     
     initDomAction_button = function(){
         enterBtn.click(function(){
-            if(checkUserNameInputAndPassWordInput()){
+            if(validUserNameInputAndPassWordInput()){
                 progressSpinner.css({'display':'inline'});
                 $.ajax({
                     type: 'POST',
@@ -66,6 +69,9 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
                     success: function(authorizationResult){
                         progressSpinner.css({'display':'none'});
                         if (authorizationResult.status === 'success'){ 
+                            appDataManager.userName = String(userNameInput.val());
+                            
+                            appDataManager.userPassword = String(passWordInput.val());
                             Wafse_client.HtmlTemplateRenderer().clearPage();
                             Wafse_client.PageView.LoginAndCoreateAccount().renderMainNav();
                             console.log(authorizationResult.message);
@@ -88,11 +94,11 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
             returnBtn.css({'display':'inline'});
             returnBtn.click(function(){
                 Wafse_client.HtmlTemplateRenderer().remove($('.loginAndCoreateAccount#mainContainer'));
-                Wafse_client.PageView.LoginAndCoreateAccount(data).renderMainContainer();
+                Wafse_client.PageView.LoginAndCoreateAccount(appDataManager).renderMainContainer();
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
-                if(checkUserNameInputAndPassWordInput()){
+                if(validUserNameInputAndPassWordInput()){
                     progressSpinner.css({'display':'inline'});
                     $.ajax({
                         type: 'POST',
@@ -102,6 +108,8 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
                         success: function(createAccountResult){
                             progressSpinner.css({'display':'none'});
                             if (createAccountResult.status === 'success'){ 
+                                appDataManager.userName = String(userNameInput.val());
+                                appDataManager.userPassword = String(passWordInput.val());
                                 Wafse_client.HtmlTemplateRenderer().clearPage();
                                 Wafse_client.PageView.LoginAndCoreateAccount().renderMainNav();
                                 console.log(createAccountResult.message);
@@ -111,8 +119,6 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
                         }
                     });
                 }
-                // data.userNameInput = 'MainContainer -> submitBtn';
-                // Wafse_client.PageView.LoginAndCoreateAccount(data).render();
             });
             mainContainer.append(submitBtn);
         });        
@@ -145,7 +151,7 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
     //////////////////////////////////////////////
     
     initDomAction = function(){
-        initDomAction_textInput();
+        setLoginDataTotextInput();
         initDomAction_button();
     };
     

@@ -1,9 +1,19 @@
 Wafse_client.main = function(){
     'use strict';
+    const appDataManager = Wafse_client.AppDataManager();        
     console.log(Wafse_client);
-    // todo: create data Manager;
-    let data = {userNameInput:''};    
-    Wafse_client.PageView.LoginAndCoreateAccount(data).renderAll();
+    
+    // TODO: make Wafse_client.HtmlTemplateRenderer instance.
+    
+    // debug of appDataManager.
+    // appDataManager.load(false).setItem('LoginAndCoreateAccount.userName', 'ueda').print().save();
+    
+    Wafse_client.PageView.LoginAndCoreateAccount().renderAll();
+    
+    $(window).on('beforeunload', function(e) {
+        appDataManager.save();
+        return '';
+    });
 };
 
 //////////////////////////////////////////////
