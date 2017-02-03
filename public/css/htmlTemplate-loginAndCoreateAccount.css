@@ -18,6 +18,14 @@ body {
     background-color: #2a2a2a;
 }
 
+.navbar.loginAndCoreateAccount{
+    height: 45px;
+}
+
+.navbar-brand.loginAndCoreateAccount{
+    position: absolute;
+}
+
 .btn.loginAndCoreateAccount{
     margin-right: 10px;
     float: left;
@@ -40,13 +48,11 @@ body {
     border-radius: 5px;
 }
 
-
 .loginAndCoreateAccount#mainContainer{
     width: 500px;
 }
 
 .loginAndCoreateAccount#progressBar{
-    width: 500px;
-    margin-left:29%;
+    margin: 0 auto;
     display: none;
 }
