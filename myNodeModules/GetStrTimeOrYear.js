@@ -1,24 +1,21 @@
 // 現在時刻を取得するモジュール．
-// 日付(例: 2016-1-1)または時刻(例: 09:03:08:0032) を返却．
-module.exports = function(mode){ // 'date' または 'time'
-    'use strict'
+// 日付(例: 2016/1/1)または時刻(例: 09:03:08:0032) を返却．
+module.exports = (function(){ // 'date' または 'time'
+    'use strict';
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
-    var date = new Date(),
-        colors = require('colors')
-    ;
+    var getDate, getTime;
 
-    if(mode == undefined){
-        console.log('GetStrTimeOrYear.js: getStringTime needs argument.'.red);
-    }else if(mode == 'time'){
-
-        var hour         = date.getHours(),
+    getTime = function(){
+        
+        var date = new Date(),
+            hour         = date.getHours(),
             minutes      = date.getMinutes(),
             seconds      = date.getSeconds(),
             milliseconds = date.getMilliseconds()
         ;
 
-        // todo: Math.floor で 0 を付与する仕様に変更
+        // todo: Math.floor で 0 を付与する仕様に変更.
         if(hour < 10) hour = '0' + hour;
         if(minutes < 10) minutes = '0' + minutes; 
         if(seconds < 10) seconds = '0' + seconds;
@@ -30,12 +27,26 @@ module.exports = function(mode){ // 'date' または 'time'
             milliseconds = '0' + milliseconds;
         }
 
-        return String() + hour + '-' + minutes + '-' + seconds + '-' + milliseconds;
-    }else if(mode == 'date'){
-        var month = date.getMonth()+1,
+        return String() + hour + ':' + minutes + ':' + seconds + ':' + milliseconds;
+        
+    };
+    ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
+    getDate = function(){
+
+        var date = new Date(),
+            month = date.getMonth()+1,
             day   = date.getDate(),
             year  = date.getFullYear()
         ;
-        return String() + year + '-' + month + '-' + day;
-    }
-};
+        
+        if(month < 10) month = '0' + month;
+        if(day < 10) day = '0' + day; 
+        
+        return String() + year + '/' + month + '/' + day;
+        
+    };
+    ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
+    return {getDate:getDate, getTime:getTime};
+})();
