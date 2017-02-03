@@ -44,3 +44,9 @@ body {
 .loginAndCoreateAccount#mainContainer{
     width: 500px;
 }
+
+.loginAndCoreateAccount#progressBar{
+    width: 500px;
+    margin-left:29%;
+    display: none;
+}
