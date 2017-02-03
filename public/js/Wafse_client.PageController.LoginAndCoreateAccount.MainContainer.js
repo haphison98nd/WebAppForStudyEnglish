@@ -5,7 +5,7 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
     const mainMassage_login = $('#mainMassage_login'),
           mainMassage_createAccount = $('#mainMassage_createAccount'),
           mainContainer = $('.loginAndCoreateAccount#mainContainer'),
-          progressBar = $('.loginAndCoreateAccount#progressBar'),
+          progressSpinner = $('.loginAndCoreateAccount#progressSpinner'),
           userNameInput = $('.loginAndCoreateAccount#userNameInput'),
           passWordInput = $('.loginAndCoreateAccount#passWordInput'),
           enterBtn = $('.loginAndCoreateAccount#enterBtn'),
@@ -56,15 +56,15 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
     
     initDomAction_button = function(){
         enterBtn.click(function(){
-            progressBar.css({'display':'inline'});
             if(checkUserNameInputAndPassWordInput()){
+                progressSpinner.css({'display':'inline'});
                 $.ajax({
                     type: 'POST',
-                    url : 'http://localhost:3000/authorize',
-                    // url : 'https://shunkan-eisakubun-web-app.herokuapp.com/authorize',
+                    // url : 'http://localhost:3000/authorize',
+                    url : 'https://shunkan-eisakubun-web-app.herokuapp.com/authorize',
                     data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                     success: function(authorizationResult){
-                        progressBar.css({'display':'none'});
+                        progressSpinner.css({'display':'none'});
                         if (authorizationResult.status === 'success'){ 
                             Wafse_client.HtmlTemplateRenderer().clearPage();
                             Wafse_client.PageView.LoginAndCoreateAccount().renderMainNav();
@@ -92,15 +92,15 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(data
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
-                progressBar.css({'display':'inline'});
                 if(checkUserNameInputAndPassWordInput()){
+                    progressSpinner.css({'display':'inline'});
                     $.ajax({
                         type: 'POST',
-                        url : 'http://localhost:3000/createAccount',
-                        // url: 'https://shunkan-eisakubun-web-app.herokuapp.com/createAccount',
+                        // url : 'http://localhost:3000/createAccount',
+                        url: 'https://shunkan-eisakubun-web-app.herokuapp.com/createAccount',
                         data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                         success: function(createAccountResult){
-                            progressBar.css({'display':'none'});
+                            progressSpinner.css({'display':'none'});
                             if (createAccountResult.status === 'success'){ 
                                 Wafse_client.HtmlTemplateRenderer().clearPage();
                                 Wafse_client.PageView.LoginAndCoreateAccount().renderMainNav();
