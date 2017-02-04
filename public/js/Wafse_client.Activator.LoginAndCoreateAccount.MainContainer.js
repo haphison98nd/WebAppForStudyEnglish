@@ -1,11 +1,10 @@
-Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody, _loginAndCoreateAccount, _appDataManager){
+Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody, _mainNav, _loginAndCoreateAccountRenderer, _appDataManager){
     
     'use strict';
     
-    const mainMassage_login = $('#mainMassage_login'),
+    const mainContainer = $('.loginAndCoreateAccount#mainContainer'),
+          mainMassage_login = $('#mainMassage_login'),
           mainMassage_createAccount = $('#mainMassage_createAccount'),
-          mainContainer = $('.loginAndCoreateAccount#mainContainer'),
-          progressSpinner = $('.loginAndCoreateAccount#progressSpinner'),
           userNameInput = $('.loginAndCoreateAccount#userNameInput'),
           passWordInput = $('.loginAndCoreateAccount#passWordInput'),
           enterBtn = $('.loginAndCoreateAccount#enterBtn'),
@@ -18,7 +17,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
     
     let self, activateAll, setLoginDataTotextInput, activateButtons, setAlertMessage,
         validUserNameInputAndPassWordInput, remove,
-        appBody, loginAndCoreateAccount, appDataManager
+        appBody, mainNav, loginAndCoreateAccountRenderer, appDataManager
     ;
 
     //////////////////////////////////////////////
@@ -61,19 +60,18 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
     activateButtons = function(){
         enterBtn.click(function(){
             if(validUserNameInputAndPassWordInput()){
-                progressSpinner.css({'display':'inline'});
+                mainNav.showProgressSpinner();
                 $.ajax({
                     type: 'POST',
-                    // url : 'http://localhost:3000/authorize',
-                    url : 'https://shunkan-eisakubun-web-app.herokuapp.com/authorize',
+                    url : '/authorize',
                     data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                     success: function(authorizationResult){
-                        progressSpinner.css({'display':'none'});
+                        mainNav.hiddenProgressSpinner();
                         if (authorizationResult.status === 'success'){ 
                             appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                             appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
                             appBody.clearPage();
-                            loginAndCoreateAccount.renderMainNav();
+                            loginAndCoreateAccountRenderer.renderMainNav();
                             console.log(authorizationResult.message);
                         } else if(authorizationResult.status  === 'userNameError'){ 
                             setAlertMessage(authorizationResult.message, '');
@@ -94,24 +92,23 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
             returnBtn.css({'display':'inline'});
             returnBtn.click(function(){
                 remove();
-                loginAndCoreateAccount.renderMainContainer();
+                loginAndCoreateAccountRenderer.renderMainContainer();
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
                 if(validUserNameInputAndPassWordInput()){
-                    progressSpinner.css({'display':'inline'});
+                    mainNav.showProgressSpinner();
                     $.ajax({
                         type: 'POST',
-                        // url : 'http://localhost:3000/createAccount',
-                        url: 'https://shunkan-eisakubun-web-app.herokuapp.com/createAccount',
+                        url : '/createAccount',
                         data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                         success: function(createAccountResult){
-                            progressSpinner.css({'display':'none'});
+                            mainNav.hiddenProgressSpinner();
                             if (createAccountResult.status === 'success'){ 
                                 appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                                 appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
                                 appBody.clearPage();
-                                loginAndCoreateAccount.renderMainNav();
+                                loginAndCoreateAccountRenderer.renderMainNav();
                                 console.log(createAccountResult.message);
                             } else if(createAccountResult.status  === 'error'){ 
                                 setAlertMessage(createAccountResult.message, '');
@@ -167,7 +164,8 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
 
     (function constructor (){
         appBody = _appBody;
-        loginAndCoreateAccount = _loginAndCoreateAccount;
+        mainNav = _mainNav;
+        loginAndCoreateAccountRenderer = _loginAndCoreateAccountRenderer;
         appDataManager = _appDataManager;
     })();
     

@@ -57,6 +57,12 @@ var Wafse_server = function(){
             
         });
         
+        app.get('/htmlTemplates/:htmlTemplateName', function(req, res){
+            dataForHttpRes = extendedFs.readFileSync(rootDir + '/htmlTemplates/' + req.params.htmlTemplateName, 'utf-8');
+            res.writeHead(200, {'Content-Type':'text/html'});
+            res.end(dataForHttpRes);
+        });
+
         // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
         app.post('/authorize', function(req, res){
             let dataForAuthorization = req.body;
@@ -81,7 +87,7 @@ var Wafse_server = function(){
                 res.send({status : 'error', message: '既に登録されているユーザです'});
             }
         });
-
+        
         httpServer.listen(PORT);
     };
 

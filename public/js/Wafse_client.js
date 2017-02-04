@@ -10,6 +10,7 @@ const Wafse_client = {
             AppBody:null
         },
         LoginAndCoreateAccount:{
+            MainNav:null,
             MainContainer:null
         }
     },
