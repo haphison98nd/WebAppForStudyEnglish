@@ -20,5 +20,6 @@ const Wafse_client = {
             userPassword:'fun'            
         }
     },
+    Router:null,
     main:null
 };

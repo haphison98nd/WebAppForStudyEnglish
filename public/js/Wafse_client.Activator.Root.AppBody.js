@@ -18,7 +18,7 @@ Wafse_client.Activator.Root.AppBody = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    afterRender = function(target, html, callback){
+    afterRender = function(html, callback){
         appBody.after(html).ready(function(){ 
             if (callback) callback(); 
         });        

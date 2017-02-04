@@ -1,4 +1,4 @@
-Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody, _mainNav, _loginAndCoreateAccountRenderer, _appDataManager){
+Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody, _mainNav, _loginAndCoreateAccountRenderer, _appDataManager, _router){
     
     'use strict';
     
@@ -17,7 +17,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
     
     let self, activateAll, setLoginDataTotextInput, activateButtons, setAlertMessage,
         validUserNameInputAndPassWordInput, remove,
-        appBody, mainNav, loginAndCoreateAccountRenderer, appDataManager
+        appBody, mainNav, loginAndCoreateAccountRenderer, appDataManager, router
     ;
 
     //////////////////////////////////////////////
@@ -70,8 +70,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
                         if (authorizationResult.status === 'success'){ 
                             appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                             appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
-                            appBody.clearPage();
-                            loginAndCoreateAccountRenderer.renderMainNav();
+                            router.changePage('/');
                             console.log(authorizationResult.message);
                         } else if(authorizationResult.status  === 'userNameError'){ 
                             setAlertMessage(authorizationResult.message, '');
@@ -91,8 +90,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
             createAccountBtn.css({'display':'none'});
             returnBtn.css({'display':'inline'});
             returnBtn.click(function(){
-                remove();
-                loginAndCoreateAccountRenderer.renderMainContainer();
+                router.changePage('/login-and-coreate-account');
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
@@ -107,8 +105,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
                             if (createAccountResult.status === 'success'){ 
                                 appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                                 appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
-                                appBody.clearPage();
-                                loginAndCoreateAccountRenderer.renderMainNav();
+                                router.changePage('/');
                                 console.log(createAccountResult.message);
                             } else if(createAccountResult.status  === 'error'){ 
                                 setAlertMessage(createAccountResult.message, '');
@@ -167,6 +164,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
         mainNav = _mainNav;
         loginAndCoreateAccountRenderer = _loginAndCoreateAccountRenderer;
         appDataManager = _appDataManager;
+        router = _router;
     })();
     
     //////////////////////////////////////////////

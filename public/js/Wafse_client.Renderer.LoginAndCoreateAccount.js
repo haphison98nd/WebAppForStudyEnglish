@@ -1,11 +1,11 @@
-Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManager){
+Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManager, _router){
     
     'use strict';
     
     const defaultHtml_mainNav = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainNav').html();
     const defaultHtml_mainContainer = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').html();
     
-    let self, renderAll, renderMainNav, renderMainContainer, appBody, appDataManager,
+    let self, renderAll, renderMainNav, renderMainContainer, appBody, appDataManager, router,
         mainNav = Wafse_client.Activator.LoginAndCoreateAccount.MainNav,
         mainContainer = Wafse_client.Activator.LoginAndCoreateAccount.MainContainer,
         mainNavInstance, mainContainerInstance
@@ -31,7 +31,7 @@ Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManage
         
         // if get htmlTemplate from index.html
         appBody.appendRender(defaultHtml_mainContainer, function(){
-            mainContainerInstance = mainContainer(appBody, mainNavInstance, self, appDataManager).activateAll();
+            mainContainerInstance = mainContainer(appBody, mainNavInstance, self, appDataManager, router).activateAll();
             if (callback) callback();        
         });
 
@@ -56,6 +56,7 @@ Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManage
     //////////////////////////////////////////////
     
     renderAll = function(){
+        appBody.clearPage();
         renderMainNav();
         renderMainContainer();
         return self;
@@ -67,6 +68,7 @@ Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManage
     (function constructor (){
         appBody = _appBody;
         appDataManager = _appDataManager;
+        router = _router;
     })();
     
     //////////////////////////////////////////////
