@@ -1,13 +1,13 @@
-Wafse_client.PageView.LoginAndCoreateAccount = function(appDataManager){
+Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManager){
     
     'use strict';
     
     const defaultHtml_mainNav = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainNav').html(),
           defaultHtml_mainContainer = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').html(),
-          mainContainer = Wafse_client.PageController.LoginAndCoreateAccount.MainContainer
+          mainContainerActivator = Wafse_client.Activator.LoginAndCoreateAccount.MainContainer
     ;
     
-    let self, renderAll, renderMainNav, renderMainContainer;
+    let self, renderAll, renderMainNav, renderMainContainer, appBody, appDataManager;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -15,15 +15,16 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(appDataManager){
     renderMainNav = function(){
         // NOTE: Create Wafse_client.PageController.LoginAndCoreateAccount.MainNav if add dom action to mainNav.
         //       Refer Wafse_client.PageController.LoginAndCoreateAccount.MainContainer.
-        Wafse_client.HtmlTemplateRenderer().addRender($('#appBody'), defaultHtml_mainNav);
+        appBody.appendRender(defaultHtml_mainNav);
+        return self;
     };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     renderMainContainer = function(){
-        Wafse_client.HtmlTemplateRenderer().addRender($('#appBody'), defaultHtml_mainContainer, function(){
-            mainContainer(appDataManager).initDomAction();
+        appBody.appendRender(defaultHtml_mainContainer, function(){
+            mainContainerActivator(appBody, self, appDataManager).activateAll();
         });
         return self;
     };
@@ -34,13 +35,15 @@ Wafse_client.PageView.LoginAndCoreateAccount = function(appDataManager){
     renderAll = function(){
         renderMainNav();
         renderMainContainer();
+        return self;
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     (function constructor (){
-        
+        appBody = _appBody;
+        appDataManager = _appDataManager;
     })();
     
     //////////////////////////////////////////////

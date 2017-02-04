@@ -1,4 +1,4 @@
-Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(appDataManager){
+Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody, _loginAndCoreateAccount, _appDataManager){
     
     'use strict';
     
@@ -16,8 +16,9 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(appD
           alertForPassWordInput = $('.alert.loginAndCoreateAccount#alertForPassWordInput')
     ;
     
-    let self, initDomAction, setLoginDataTotextInput, initDomAction_button, setAlertMessage,
-        validUserNameInputAndPassWordInput
+    let self, activateAll, setLoginDataTotextInput, activateButtons, setAlertMessage,
+        validUserNameInputAndPassWordInput, remove,
+        appBody, loginAndCoreateAccount, appDataManager
     ;
 
     //////////////////////////////////////////////
@@ -57,23 +58,22 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(appD
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    initDomAction_button = function(){
+    activateButtons = function(){
         enterBtn.click(function(){
             if(validUserNameInputAndPassWordInput()){
                 progressSpinner.css({'display':'inline'});
                 $.ajax({
                     type: 'POST',
-                    url : 'http://localhost:3000/authorize',
-                    // url : 'https://shunkan-eisakubun-web-app.herokuapp.com/authorize',
+                    // url : 'http://localhost:3000/authorize',
+                    url : 'https://shunkan-eisakubun-web-app.herokuapp.com/authorize',
                     data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                     success: function(authorizationResult){
                         progressSpinner.css({'display':'none'});
                         if (authorizationResult.status === 'success'){ 
-                            appDataManager.userName = String(userNameInput.val());
-                            
-                            appDataManager.userPassword = String(passWordInput.val());
-                            Wafse_client.HtmlTemplateRenderer().clearPage();
-                            Wafse_client.PageView.LoginAndCoreateAccount().renderMainNav();
+                            appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
+                            appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
+                            appBody.clearPage();
+                            loginAndCoreateAccount.renderMainNav();
                             console.log(authorizationResult.message);
                         } else if(authorizationResult.status  === 'userNameError'){ 
                             setAlertMessage(authorizationResult.message, '');
@@ -93,8 +93,8 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(appD
             createAccountBtn.css({'display':'none'});
             returnBtn.css({'display':'inline'});
             returnBtn.click(function(){
-                Wafse_client.HtmlTemplateRenderer().remove($('.loginAndCoreateAccount#mainContainer'));
-                Wafse_client.PageView.LoginAndCoreateAccount(appDataManager).renderMainContainer();
+                remove();
+                loginAndCoreateAccount.renderMainContainer();
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
@@ -102,16 +102,16 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(appD
                     progressSpinner.css({'display':'inline'});
                     $.ajax({
                         type: 'POST',
-                        url : 'http://localhost:3000/createAccount',
-                        // url: 'https://shunkan-eisakubun-web-app.herokuapp.com/createAccount',
+                        // url : 'http://localhost:3000/createAccount',
+                        url: 'https://shunkan-eisakubun-web-app.herokuapp.com/createAccount',
                         data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                         success: function(createAccountResult){
                             progressSpinner.css({'display':'none'});
                             if (createAccountResult.status === 'success'){ 
-                                appDataManager.userName = String(userNameInput.val());
-                                appDataManager.userPassword = String(passWordInput.val());
-                                Wafse_client.HtmlTemplateRenderer().clearPage();
-                                Wafse_client.PageView.LoginAndCoreateAccount().renderMainNav();
+                                appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
+                                appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
+                                appBody.clearPage();
+                                loginAndCoreateAccount.renderMainNav();
                                 console.log(createAccountResult.message);
                             } else if(createAccountResult.status  === 'error'){ 
                                 setAlertMessage(createAccountResult.message, '');
@@ -150,21 +150,30 @@ Wafse_client.PageController.LoginAndCoreateAccount.MainContainer = function(appD
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    initDomAction = function(){
+    activateAll = function(){
         setLoginDataTotextInput();
-        initDomAction_button();
+        activateButtons();
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    remove = function () {
+        mainContainer.remove();
     };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     (function constructor (){
-
+        appBody = _appBody;
+        loginAndCoreateAccount = _loginAndCoreateAccount;
+        appDataManager = _appDataManager;
     })();
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {initDomAction:initDomAction};
+    self = {activateAll:activateAll, remove:remove};
     return self;
 };

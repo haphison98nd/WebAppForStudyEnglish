@@ -1,30 +1,26 @@
-Wafse_client.AppDataManager = function () {
+Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object4LocalStrage, _protectedKeys) {
     
     'use strict'; 
     
-    let self, load, save, setItem, getItem, keyParser, print, searchObjectKey, isKeyProtected,
-        appData = {
-            LoginAndCoreateAccount:{
-                userName:'fun',
-                userPassword:'fun'            
-            }
-        },
-        protectedKey = ['LoginAndCoreateAccount']
+    let self, load, save, setItem, getItem, keyParser, addKey, deleteKey, print, searchObjectKey, isKeyProtected,
+        object4LocalStrage, object4LocalStrageName, protectedKeys
     ;
     
+    // TODO: imprement addKey, deleteKey method.
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     load = function(isRefresh){
-        if(isRefresh || localStorage.getItem('appData') === null || localStorage.getItem('appData') === undefined){
+        if(isRefresh || localStorage.getItem(object4LocalStrageName) === null || localStorage.getItem(object4LocalStrageName) === undefined){
             if(isRefresh){
-                console.info('Refreshed appData is loaded.');
+                console.info('Refreshed ' + object4LocalStrageName +' is loaded.');
             } else {
-                console.warn('appData is not exist in localStrage.');
-                console.warn('template appData loaded.');
+                console.warn(object4LocalStrageName + 'is not exist in localStrage.');
+                console.warn(object4LocalStrageName + 'template is loaded.');
             }
         } else {
-            appData = JSON.parse(localStorage.getItem('appData'));
+            console.info(object4LocalStrageName + ' is loaded.');
+            object4LocalStrage = JSON.parse(localStorage.getItem(object4LocalStrageName));
         }
         return self;
     };
@@ -33,8 +29,8 @@ Wafse_client.AppDataManager = function () {
     //////////////////////////////////////////////
 
     save = function(){
-        localStorage.setItem('appData', JSON.stringify(appData, null, 4));
-        console.info('appData saved.');
+        localStorage.setItem(object4LocalStrageName, JSON.stringify(object4LocalStrage, null, 4));
+        console.info(object4LocalStrageName + ' saved.');
         return self;
     };
 
@@ -48,21 +44,19 @@ Wafse_client.AppDataManager = function () {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    isKeyProtected = function(keys){
-        return protectedKey.indexOf(keys[keys.length-1]) === -1 ? false : true;
+    isKeyProtected = function(__protectedKeys, stringKeys){
+        return __protectedKeys.indexOf(stringKeys) === -1 ? false : true;
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    searchObjectKey = function(_appData, keys){
+    searchObjectKey = function(__object4LocalStrage, keys){
         let searchObjectKeyLoop,
             searchObjectKeyLoopCount = 0,
             innerObjKey = null,
             innerObjValue = null
         ;
-        
-        console.log(_appData);
 
         (function searchObjectKeyLoop (obj, _keys, loopIdx) {
             const _isKeyExist = obj.hasOwnProperty(_keys[loopIdx]);            
@@ -75,7 +69,7 @@ Wafse_client.AppDataManager = function () {
             } else {
                 return 0;
             }
-        })(_appData, keys, searchObjectKeyLoopCount);
+        })(__object4LocalStrage, keys, searchObjectKeyLoopCount);
         
         
         return { isKeyExist:searchObjectKeyLoopCount === keys.length ? true : false,
@@ -88,25 +82,24 @@ Wafse_client.AppDataManager = function () {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    // this method protect appData from extendation of appData.
-    // if we set data to no exit key in appData, 
+    // this method protect object4LocalStrage from extendation of object4LocalStrage.
+    // if we set data to no exit key in object4LocalStrage, 
     // this method thorow Error.
-    // if we set value to appData' new key, we should add key to app data template.
+    // if we set value to object4LocalStrage's new key, we should add key to app data template.
     // see line 6.
     // Also we can't set data to protected key. 
-    // @param key {stringKeys}. Key of appData object. e.g... 'LoginAndCoreateAccount.userName'
-    // @param value {any}. Data for setting appData.
+    // @param key {stringKeys}. Key of object4LocalStrage object. e.g... 'LoginAndCoreateAccount.userName'
+    // @param value {any}. Data for setting object4LocalStrage.
     setItem = function(stringKeys, value){
         const keys = keyParser(stringKeys);
-        let result = searchObjectKey(appData, keys);
-                
-        if(isKeyProtected(keys)){
-            throw new Error ('Key ' + stringKeys + " is protected. See appData template (Wafse_client.AppDataManage: 12).");
+        let result = searchObjectKey(object4LocalStrage, keys);
+        if(isKeyProtected(protectedKeys, stringKeys)){
+            throw new Error ('Key ' + stringKeys + " is protected. Check third argment of JsonLocalStrageManager.");
         } else if (result.isKeyExist){
             result.targetKey[keys[keys.length - 1]] = value;
             return self;
         } else {
-            throw new Error ('Key ' + stringKeys + " does not exist in appData. See appData template (Wafse_client.AppDataManage: 6).");
+            throw new Error ('Key ' + stringKeys + ' does not exist in ' + object4LocalStrageName +'. Check first argment of JsonLocalStrageManager.');
         }
     };
     
@@ -115,24 +108,43 @@ Wafse_client.AppDataManager = function () {
 
     getItem = function(stringKeys){
         const keys = keyParser(stringKeys);
-        let result = searchObjectKey(appData, keys);
+        let result = searchObjectKey(object4LocalStrage, keys);
 
         if(result.isKeyExist){
             return result.targetValue;
         } else {
-            console.warn('Key ' + stringKeys + " does not exist in appData. See appData template (Wafse_client.AppDataManage: 6).");
+            console.warn('Key ' + stringKeys + ' does not exist in ' + object4LocalStrageName +'.');
             return undefined;
         }        
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
+
+    addKey = function () {
+
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    deleteKey = function () {
+        
+    };
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
     
     print = function(){
-        console.log(appData);
+        console.log(object4LocalStrage);
         return self;
     };
     
+    
+    (function constructor () {
+        object4LocalStrageName = String(_object4LocalStrageName);
+        object4LocalStrage = _object4LocalStrage;
+        protectedKeys = _protectedKeys;
+    })();
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 

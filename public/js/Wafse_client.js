@@ -1,15 +1,23 @@
 'use strict';
 
 const Wafse_client = {
-    main:null,
-    AppDataManager:null,
-    HtmlTemplateRenderer:null,
-    PageView:{
+    JsonLocalStrageManager:null,
+    Renderer:{
         LoginAndCoreateAccount:null
     },
-    PageController:{
+    Activator:{
+        Root:{
+            AppBody:null
+        },
         LoginAndCoreateAccount:{
             MainContainer:null
         }
-    }
+    },
+    appDataTemplate:{
+        LoginAndCoreateAccount:{
+            userName:'fun',
+            userPassword:'fun'            
+        }
+    },
+    main:null
 };

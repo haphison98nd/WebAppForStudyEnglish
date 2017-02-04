@@ -5,5 +5,8 @@
     "ueda": "ueda",
     "Ueda": "Ueda",
     "kentaro": "kentaro",
-    "qwerty": "qwerty"
+    "qwerty": "qwerty",
+    "{ls:ueda}": "fun",
+    "lsueda": "fun",
+    "{ueda}": "fun"
 }
