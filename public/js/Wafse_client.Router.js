@@ -9,7 +9,6 @@ Wafse_client.Router = function (_appBody, _appDataManager) {
 
     root = function () {
         appBody.clearPage();
-        Wafse_client.Renderer.LoginAndCoreateAccount(appBody, appDataManager, self).renderMainNav();
     };
     
     //////////////////////////////////////////////

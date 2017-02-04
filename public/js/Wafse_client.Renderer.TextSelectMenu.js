@@ -1,20 +1,21 @@
-Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManager, _router){
+Wafse_client.Renderer.TextSelectMenu = function(_appBody, _appDataManager, _router){
     
     'use strict';
     
-    const defaultHtml_mainNav = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainNav').html();
     const defaultHtml_mainContainer = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').html();
     
-    let self, renderAll, appBody, renderMainContainer, appDataManager, router,
-        mainContainer = Wafse_client.Activator.LoginAndCoreateAccount.MainContainer,
-        mainContainerInstance
+    let self, renderAll, renderMainContainer, appBody, appDataManager, router,
+        mainContainer = Wafse_client.Activator.LoginAndCoreateAccount.MainContainer, mainContainerInstance
     ;
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
 
     renderMainContainer = function(callback){
         
         // if get htmlTemplate from index.html
         appBody.appendRender(defaultHtml_mainContainer, function(){
-            mainContainerInstance = mainContainer(appBody, self, appDataManager, router).activateAll();
+            mainContainerInstance = mainContainer(appBody, mainNavInstance, self, appDataManager, router).activateAll();
             if (callback) callback();        
         });
 
@@ -25,7 +26,7 @@ Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManage
             cache: false,
             success: function(defaultHtml_mainContainer){
                 appBody.appendRender(defaultHtml_mainContainer, function(){
-                    mainContainerInstance = mainContainer(appBody, self, appDataManager).activateAll();
+                    mainContainerInstance = mainContainer(appBody, mainNavInstance, self, appDataManager).activateAll();
                     if (callback) callback();        
                 });
             }

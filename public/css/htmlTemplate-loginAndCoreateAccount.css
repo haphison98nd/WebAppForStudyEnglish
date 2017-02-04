@@ -1,14 +1,24 @@
+.demo-layout-transparent {
+  background: url('../images/background-photo.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+
+/*
 body {
-    /* how to display background img: http://coliss.com/articles/build-websites/operation/css/css-responsive-full-background-image-by-sixrevisions.html*/
     background-image: url(../images/background-photo.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-  padding-top: 5rem;
+    padding-top: 5rem;
 
 }
-
+*/
 .starter-template {
   padding: 3rem 1.5rem;
   text-align: center;
@@ -52,7 +62,7 @@ body {
     width: 500px;
 }
 
-.loginAndCoreateAccount#progressSpinner{
-    margin: 0 auto;
+#progressSpinner{
+    margin-left: 20px;
     display: none;
 }

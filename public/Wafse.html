@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/mainNav.css" />
         <link rel="stylesheet" type="text/css" href="css/htmlTemplate-loginAndCoreateAccount.css" />
+        <link rel="stylesheet" type="text/css" href="css/htmlTemplate-textSelectMenu.css" />
         <script   src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/libraries/tether.min.js"></script>
         <script type="text/javascript" src="js/libraries/bootstrap.min.js"></script>
@@ -17,16 +18,10 @@
         <script type="text/javascript" src="js/Wafse_client.JsonLocalStrageManager.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Activator.Root.AppBody.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Renderer.LoginAndCoreateAccount.js"></script>
-        <script type="text/javascript" src="js/Wafse_client.Activator.LoginAndCoreateAccount.MainNav.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Activator.LoginAndCoreateAccount.MainContainer.js"></script>
+        <script type="text/javascript" src="js/Wafse_client.Renderer.TextSelectMenu.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Router.js"></script>
         <script type="text/javascript" src="js/Wafse_client.main.js"></script>
-        <template class="defaultHtml loginAndCoreateAccount" id="defaultHtml_mainNav">
-            <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top loginAndCoreateAccount" id="mainNav">
-                <div class="navbar-brand loginAndCoreateAccount"><b>---------web&nbsp;app</b></div>
-                <div class="mdl-spinner mdl-js-spinner is-active loginAndCoreateAccount" id="progressSpinner"></div>
-            </nav>
-        </template>
         <template class="defaultHtml loginAndCoreateAccount" id="defaultHtml_mainContainer">
             <div class="loginAndCoreateAccount" id="mainContainer">
                 <h1 class="loginAndCoreateAccount" id="mainMassage_login">ようこそ</h1>
@@ -50,5 +45,39 @@
         </template>
         <!-- template class="htmlTemplate" id="alert"><div class="alert alert-danger" role="alert"></div></template-->
     </head>
-    <body id="appBody"></body>
+    <body>
+        <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header mdl-layout__header--transparent">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title"><b>---------web&nbsp;app</b></span>
+                    <div class="mdl-spinner mdl-js-spinner is-active " id="progressSpinner"></div>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation -->
+                    <nav class="mdl-navigation">
+                        <!--
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        -->
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <!--
+                <span class="mdl-layout-title">Title</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+                -->
+            </div>
+            <main class="mdl-layout__content" id="appBody">
+            </main>
+        </div>
+    </body>
 </html>
