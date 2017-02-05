@@ -1,9 +1,7 @@
 Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataManager) {
 
     'use strict';
-        
-    const defaultHtml_mainContainer = $($('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').html());
-
+    
     let self, appBody, appNavigation, appDrawer, appDataManager, changePage, root, loginAndCoreateAccount;
 
     //////////////////////////////////////////////

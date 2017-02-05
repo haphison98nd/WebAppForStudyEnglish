@@ -16,7 +16,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
           alertForPassWordInput = defaultHtml_mainContainer.find('.alert.loginAndCoreateAccount#alertForPassWordInput')
     ;
     
-    let self, activateAll, setLoginDataTotextInput, activateButtons, setAlertMessage,
+    let self, activateAll, setLoginDataTotextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
         validUserNameInputAndPassWordInput, remove,
         appBody, appNavigation, appDrawer, appDataManager, router
     ;
@@ -26,13 +26,13 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
 
     validUserNameInputAndPassWordInput = function(){
         if(String(userNameInput.val()) === '' && String(passWordInput.val()) === '') {
-            setAlertMessage('ユーザ名を入力してください', 'パスワードを入力してください');
+            showAlertMessage('ユーザ名を入力してください', 'パスワードを入力してください');
             return false;
         } else if (String(userNameInput.val()) === '') {
-            setAlertMessage('ユーザ名を入力してください', '');
+            showAlertMessage('ユーザ名を入力してください', '');
             return false;
         } else if (String(passWordInput.val()) === '') {
-            setAlertMessage('', 'パスワードを入力してください');
+            showAlertMessage('', 'パスワードを入力してください');
             return false;
         }
         
@@ -74,9 +74,9 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
                             router['/']();
                             console.log(authorizationResult.message);
                         } else if(authorizationResult.status  === 'userNameError'){ 
-                            setAlertMessage(authorizationResult.message, '');
+                            showAlertMessage(authorizationResult.message, '');
                         } else if (authorizationResult.status  === 'passwordError'){ 
-                            setAlertMessage('', authorizationResult.message);
+                            showAlertMessage('', authorizationResult.message);
                         }
                     }
                 });
@@ -84,7 +84,6 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
         });
         
         createAccountBtn.click(function(){
-            setAlertMessage('', '');
             mainMassage_login.css({'display':'none'});
             mainMassage_createAccount.css({'display':'block'});
             enterBtn.css({'display':'none'});
@@ -109,7 +108,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
                                 router['/']();
                                 console.log(createAccountResult.message);
                             } else if(createAccountResult.status  === 'error'){ 
-                                setAlertMessage(createAccountResult.message, '');
+                                showAlertMessage(createAccountResult.message, '');
                             }
                         }
                     });
@@ -122,24 +121,29 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    setAlertMessage = function(alertMessageForUserNameInput, alertMessageForPassWordInput){   
-        if(alertMessageForUserNameInput || alertMessageForUserNameInput !== ''){
+    showAlertMessage = function(alertMessageForUserNameInput, alertMessageForPassWordInput){   
+        hiddenAlertMessage();
+        if(alertMessageForUserNameInput){
             alertForUserNameInput
                 .css({'display':'block'})
                 .html('<b>' + String(alertMessageForUserNameInput) + '</b>')
             ;            
-        }else{
-            alertForUserNameInput.css({'display':'none'});  
         }
         
-        if(alertMessageForPassWordInput || alertMessageForPassWordInput !== ''){
+        if(alertMessageForPassWordInput){
             alertForPassWordInput
                 .css({'display':'block'})
                 .html('<b>' + String(alertMessageForPassWordInput) + '</b>')
             ;            
-        }else{
-            alertForPassWordInput.css({'display':'none'});              
-        }        
+        }
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+        
+    hiddenAlertMessage = function(){
+        alertForUserNameInput.css({'display':'none'});
+        alertForPassWordInput.css({'display':'none'});
     };
 
     //////////////////////////////////////////////
