@@ -1,14 +1,18 @@
-Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
+Wafse_client.Activator.AppDrawer = function(_appDataManager){
     
     'use strict';
     
     const appDrawer = $('#appDrawer'),
-          mdlLayoutDrawerButton = 500,
+          htmlTemplate_mdlNavigationLink = $('.htmlTemplate#mdlNavigationLink').html(),
+          appDrawerTitle = $('#appDrawerTitle'),
+          mdlLayoutDrawerButton = 800,
           waitTimeForMdlLayoutDrawer = 1000
     ;
     
-    let self, appDrawerButton, appDataManager, openDrawer, closeDrawer, showDrawerButton, hiddeDrawerButton, clearDrawerList;
-    
+    let self, appDrawerButton, appDataManager, openDrawer, closeDrawer, 
+        showDrawerButton, hiddeDrawerButton, addDrawerList, removeDrawerList, clearDrawerList
+    ;
+    // console.log(htmlTemplate_mdlNavigationLink.clone());
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -57,7 +61,22 @@ Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    addDrawerList = function () {
+        
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
     clearDrawerList = function () {
+        
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    clearDrawerList = function () {
+        appDrawer.empty();
     };
 
     //////////////////////////////////////////////
@@ -73,7 +92,8 @@ Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
 
     self = { 
         showDrawerButton:showDrawerButton, openDrawer:openDrawer, closeDrawer:closeDrawer, 
-        hiddeDrawerButton:hiddeDrawerButton, clearDrawerList:clearDrawerList 
+        hiddeDrawerButton:hiddeDrawerButton, clearDrawerList:clearDrawerList,
+        addDrawerList:addDrawerList, removeDrawerList:addDrawerList
     };
     return self;
 };

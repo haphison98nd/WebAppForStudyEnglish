@@ -1,4 +1,4 @@
-Wafse_client.Activator.Root.AppBody = function(_appDataManager){
+Wafse_client.Activator.AppBody = function(_appDataManager){
     
     'use strict';
 
@@ -9,8 +9,8 @@ Wafse_client.Activator.Root.AppBody = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    appendRender = function(html, callback){
-        appBody.append(html).ready(function(){ 
+    appendRender = function(jQueryObj, callback){
+        appBody.append(jQueryObj).ready(function(){ 
             if (callback) callback(); 
         });        
     };
@@ -18,8 +18,8 @@ Wafse_client.Activator.Root.AppBody = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    afterRender = function(html, callback){
-        appBody.after(html).ready(function(){ 
+    afterRender = function(jQueryObj, callback){
+        appBody.after(jQueryObj).ready(function(){ 
             if (callback) callback(); 
         });        
     };
@@ -27,7 +27,7 @@ Wafse_client.Activator.Root.AppBody = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    clearPage = function(html){
+    clearPage = function(){
         appBody.empty();
     };
 

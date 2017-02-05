@@ -2,6 +2,8 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
         
+    const defaultHtml_mainContainer = $($('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').html());
+
     let self, appBody, appNavigation, appDrawer, appDataManager, changePage, root, loginAndCoreateAccount;
 
     //////////////////////////////////////////////
@@ -14,31 +16,15 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    loginAndCoreateAccount = function () {
+    loginAndCoreateAccount = function (callback) {
+        let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appBody, appNavigation, appDrawer, appDataManager, self);
+        // appDrawer.hiddeDrawerButton();
         appBody.clearPage();
-        appDrawer.hiddeDrawerButton();
-        Wafse_client.Renderer.LoginAndCoreateAccount(appBody, appNavigation, appDrawer, appDataManager, self).renderAll();
-    };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    changePage = function (url) {
-
-        const stringUrl = String(url);
-        
-        switch (stringUrl) {
-            case '/' :
-                root();
-                break;
-            case '/login-and-coreate-account' :
-                loginAndCoreateAccount();
-                break;
-            default :
-                throw new Error (stringUrl + " doesn't define in Wafse_client.Router");
-                break;
-        }
-        return self;
+        appBody.appendRender(mainContainer.jQeryObj, function(){
+            if (callback) callback();        
+        });
+        // debug
+        // setTimeout(function(){ mainContainer.remove(); }, 5000);
     };
     
     //////////////////////////////////////////////
@@ -58,6 +44,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {changePage:changePage};
+    self = {'/':root, '/login-and-coreate-account':loginAndCoreateAccount};
     return self;
 };

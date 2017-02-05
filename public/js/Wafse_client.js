@@ -2,16 +2,12 @@
 
 const Wafse_client = {
     JsonLocalStrageManager:null,
-    Renderer:{
-        LoginAndCoreateAccount:null,
-        TextSelectMenu:null
-    },
     Activator:{
-        Root:{
-            AppBody:null,
-            AppNavigation:null,
-            AppDrawer:null
-        },
+        AppBody:null,
+        AppNavigation:null,
+        AppDrawer:null
+    },
+    ComponentCreator:{
         LoginAndCoreateAccount:{
             MainContainer:null
         }

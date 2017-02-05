@@ -1,4 +1,4 @@
-Wafse_client.Activator.Root.AppNavigation = function(_appDataManager){
+Wafse_client.Activator.AppNavigation = function(_appDataManager){
     
     'use strict';
 

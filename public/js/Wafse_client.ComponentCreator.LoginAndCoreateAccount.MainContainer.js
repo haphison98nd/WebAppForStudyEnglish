@@ -1,23 +1,24 @@
-Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody, _appNavigation, _appDrawer, _loginAndCoreateAccountRenderer, _appDataManager, _router){
+Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_appBody, _appNavigation, _appDrawer, _appDataManager, _router){
     
     'use strict';
     
-    const mainContainer = $('.loginAndCoreateAccount#mainContainer'),
-          mainMassage_login = $('#mainMassage_login'),
-          mainMassage_createAccount = $('#mainMassage_createAccount'),
-          userNameInput = $('.loginAndCoreateAccount#userNameInput'),
-          passWordInput = $('.loginAndCoreateAccount#passWordInput'),
-          enterBtn = $('.loginAndCoreateAccount#enterBtn'),
-          createAccountBtn = $('.loginAndCoreateAccount#createAccountBtn'),
-          submitBtn = $('.loginAndCoreateAccount#submitBtn'),
-          returnBtn = $('.loginAndCoreateAccount#returnBtn'),
-          alertForUserNameInput = $('.alert.loginAndCoreateAccount#alertForUserNameInput'),
-          alertForPassWordInput = $('.alert.loginAndCoreateAccount#alertForPassWordInput')
+    const defaultHtml_mainContainer = $($('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').clone().html()),
+          mainContainer = defaultHtml_mainContainer,
+          mainMassage_login = defaultHtml_mainContainer.find('#mainMassage_login'),
+          mainMassage_createAccount = defaultHtml_mainContainer.find('#mainMassage_createAccount'),
+          userNameInput = defaultHtml_mainContainer.find('.loginAndCoreateAccount#userNameInput'),
+          passWordInput = defaultHtml_mainContainer.find('.loginAndCoreateAccount#passWordInput'),
+          enterBtn = defaultHtml_mainContainer.find('.loginAndCoreateAccount#enterBtn'),
+          createAccountBtn = defaultHtml_mainContainer.find('.loginAndCoreateAccount#createAccountBtn'),
+          submitBtn = defaultHtml_mainContainer.find('.loginAndCoreateAccount#submitBtn'),
+          returnBtn = defaultHtml_mainContainer.find('.loginAndCoreateAccount#returnBtn'),
+          alertForUserNameInput = defaultHtml_mainContainer.find('.alert.loginAndCoreateAccount#alertForUserNameInput'),
+          alertForPassWordInput = defaultHtml_mainContainer.find('.alert.loginAndCoreateAccount#alertForPassWordInput')
     ;
     
     let self, activateAll, setLoginDataTotextInput, activateButtons, setAlertMessage,
         validUserNameInputAndPassWordInput, remove,
-        appBody, appNavigation, appDrawer, loginAndCoreateAccountRenderer, appDataManager, router
+        appBody, appNavigation, appDrawer, appDataManager, router
     ;
 
     //////////////////////////////////////////////
@@ -70,7 +71,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
                         if (authorizationResult.status === 'success'){ 
                             appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                             appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
-                            router.changePage('/');
+                            router['/']();
                             console.log(authorizationResult.message);
                         } else if(authorizationResult.status  === 'userNameError'){ 
                             setAlertMessage(authorizationResult.message, '');
@@ -90,7 +91,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
             createAccountBtn.css({'display':'none'});
             returnBtn.css({'display':'inline'});
             returnBtn.click(function(){
-                router.changePage('/login-and-coreate-account');
+                router['/login-and-coreate-account']();
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
@@ -105,7 +106,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
                             if (createAccountResult.status === 'success'){ 
                                 appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                                 appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
-                                router.changePage('/');
+                                router['/']();
                                 console.log(createAccountResult.message);
                             } else if(createAccountResult.status  === 'error'){ 
                                 setAlertMessage(createAccountResult.message, '');
@@ -163,14 +164,14 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
         appBody = _appBody;
         appNavigation = _appNavigation;
         appDrawer = _appDrawer;
-        loginAndCoreateAccountRenderer = _loginAndCoreateAccountRenderer;
         appDataManager = _appDataManager;
         router = _router;
+        activateAll();
     })();
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {activateAll:activateAll, remove:remove};
+    self = {jQeryObj:defaultHtml_mainContainer , remove:remove};
     return self;
 };

@@ -16,12 +16,12 @@
         <!-- script src="/socket.io/socket.io.js"></script -->
         <script type="text/javascript" src="js/Wafse_client.js"></script>
         <script type="text/javascript" src="js/Wafse_client.JsonLocalStrageManager.js"></script>
-        <script type="text/javascript" src="js/Wafse_client.Activator.Root.AppBody.js"></script>
-        <script type="text/javascript" src="js/Wafse_client.Activator.Root.AppNavigation.js"></script>
-        <script type="text/javascript" src="js/Wafse_client.Activator.Root.AppDrawer.js"></script>
-        <script type="text/javascript" src="js/Wafse_client.Renderer.LoginAndCoreateAccount.js"></script>
-        <script type="text/javascript" src="js/Wafse_client.Activator.LoginAndCoreateAccount.MainContainer.js"></script>
-        <script type="text/javascript" src="js/Wafse_client.Renderer.TextSelectMenu.js"></script>
+        <script type="text/javascript" src="js/Wafse_client.Activator.AppBody.js"></script>
+        <script type="text/javascript" src="js/Wafse_client.Activator.AppNavigation.js"></script>
+        <script type="text/javascript" src="js/Wafse_client.Activator.AppDrawer.js"></script>
+        <!--script type="text/javascript" src="js/Wafse_client.Renderer.LoginAndCoreateAccount.js"></script-->
+        <script type="text/javascript" src="js/Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer.js"></script>
+        <!--script type="text/javascript" src="js/Wafse_client.Renderer.TextSelectMenu.js"></script-->
         <script type="text/javascript" src="js/Wafse_client.Router.js"></script>
         <script type="text/javascript" src="js/Wafse_client.main.js"></script>
         <template class="defaultHtml loginAndCoreateAccount" id="defaultHtml_mainContainer">
@@ -44,6 +44,9 @@
                 <button class="btn btn-success loginAndCoreateAccount" id="returnBtn">戻る</button>
                 <button class="btn btn-primary loginAndCoreateAccount" id="submitBtn">作成</button>
             </div>
+        </template>
+        <template class="htmlTemplate" id="mdlNavigationLink">
+            <div class="mdl-navigation__link"></div>
         </template>
         <!-- template class="htmlTemplate" id="alert"><div class="alert alert-danger" role="alert"></div></template-->
     </head>
@@ -69,15 +72,14 @@
             </header>
             
             <div class="mdl-layout__drawer" id="appDrawer">
-                <!--
-                <span class="mdl-layout-title">Title</span>
+                
+                <span class="mdl-layout-title" id="appDrawerTitle"></span>
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
+                    <!--div class="mdl-navigation__link" >Link</div>
+                    <div class="mdl-navigation__link" >Link</div>
+                    <div class="mdl-navigation__link" >Link</div-->
                 </nav>
-                -->
+                
             </div>
             
             <main class="mdl-layout__content" id="appBody">
