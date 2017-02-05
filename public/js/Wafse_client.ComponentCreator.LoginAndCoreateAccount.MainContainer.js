@@ -1,4 +1,4 @@
-Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_appBody, _appNavigation, _appDrawer, _appDataManager, _router){
+Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_appNavigation, _appDataManager, _router){
     
     'use strict';
     
@@ -18,7 +18,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
     
     let self, activateAll, setLoginDataTotextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
         validUserNameInputAndPassWordInput, remove,
-        appBody, appNavigation, appDrawer, appDataManager, router
+        appNavigation, appDataManager, router
     ;
 
     //////////////////////////////////////////////
@@ -165,9 +165,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
     //////////////////////////////////////////////
 
     (function constructor (){
-        appBody = _appBody;
         appNavigation = _appNavigation;
-        appDrawer = _appDrawer;
         appDataManager = _appDataManager;
         router = _router;
         activateAll();

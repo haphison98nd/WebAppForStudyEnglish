@@ -15,7 +15,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     loginAndCoreateAccount = function (callback) {
-        let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appBody, appNavigation, appDrawer, appDataManager, self);
+        let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appNavigation, appDataManager, self);
         // appDrawer.hiddeDrawerButton();
         appBody.clearPage();
         appBody.appendRender(mainContainer.jQeryObj, function(){
