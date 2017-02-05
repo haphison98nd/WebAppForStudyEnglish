@@ -2,7 +2,10 @@ Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
     
     'use strict';
     
-    const appDrawer = $('#appDrawer');
+    const appDrawer = $('#appDrawer'),
+          mdlLayoutDrawerButton = 500,
+          waitTimeForMdlLayoutDrawer = 1000
+    ;
     
     let self, appDrawerButton, appDataManager, openDrawer, closeDrawer, showDrawerButton, hiddeDrawerButton, clearDrawerList;
     
@@ -16,7 +19,7 @@ Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
                 .addClass('is-visible')
                 .attr('aria-hidden', 'false')
             ;   
-        }, 50);
+        }, waitTimeForMdlLayoutDrawer);
     };
     
     //////////////////////////////////////////////
@@ -29,7 +32,7 @@ Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
                 .attr('aria-hidden', 'true')
             ;
             $('.mdl-layout__obfuscator').removeClass('is-visible');
-        }, 50);
+        }, waitTimeForMdlLayoutDrawer);
     };
 
     //////////////////////////////////////////////
@@ -38,7 +41,7 @@ Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
     showDrawerButton = function (){
         setTimeout(function(){
             appDrawerButton.css({'display':'inline'});
-        }, 50);
+        }, waitTimeForMdlLayoutDrawer);
     };
 
     //////////////////////////////////////////////
@@ -48,7 +51,7 @@ Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
         setTimeout(function(){
             console.log(appDrawerButton);
             appDrawerButton.css({'display':'none'});
-        }, 50);
+        }, waitTimeForMdlLayoutDrawer);
     };
 
     //////////////////////////////////////////////
@@ -61,7 +64,7 @@ Wafse_client.Activator.Root.AppDrawer = function(_appDataManager){
     //////////////////////////////////////////////
 
     (function constructor () {
-        setTimeout( function(){ appDrawerButton = $('.mdl-layout__drawer-button')}, 10);
+        setTimeout( function(){ appDrawerButton = $('.mdl-layout__drawer-button')}, mdlLayoutDrawerButton);
         appDataManager = _appDataManager;
     })();
 
