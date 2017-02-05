@@ -19,12 +19,11 @@
         <script type="text/javascript" src="js/Wafse_client.Activator.AppBody.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Activator.AppNavigation.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Activator.AppDrawer.js"></script>
-        <!--script type="text/javascript" src="js/Wafse_client.Renderer.LoginAndCoreateAccount.js"></script-->
         <script type="text/javascript" src="js/Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer.js"></script>
-        <!--script type="text/javascript" src="js/Wafse_client.Renderer.TextSelectMenu.js"></script-->
+        <script type="text/javascript" src="js/Wafse_client.ComponentCreator.MdlNavigationLink.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Router.js"></script>
         <script type="text/javascript" src="js/Wafse_client.main.js"></script>
-        <template class="defaultHtml loginAndCoreateAccount" id="defaultHtml_mainContainer">
+        <template class="htmlTemplate loginAndCoreateAccount" id="htmlTemplate_mainContainer">
             <div class="loginAndCoreateAccount" id="mainContainer">
                 <h1 class="loginAndCoreateAccount" id="mainMassage_login">ようこそ</h1>
                 <h1 class="loginAndCoreateAccount" id="mainMassage_createAccount">新規アカウントを作成</h1>
@@ -45,7 +44,7 @@
                 <button class="btn btn-primary loginAndCoreateAccount" id="submitBtn">作成</button>
             </div>
         </template>
-        <template class="htmlTemplate" id="mdlNavigationLink">
+        <template class="htmlTemplate" id="htmlTemplate_mdlNavigationLink">
             <div class="mdl-navigation__link"></div>
         </template>
         <!-- template class="htmlTemplate" id="alert"><div class="alert alert-danger" role="alert"></div></template-->
@@ -71,10 +70,10 @@
                 </div>
             </header>
             
-            <div class="mdl-layout__drawer" id="appDrawer">
+            <div class="mdl-layout__drawer">
                 
                 <span class="mdl-layout-title" id="appDrawerTitle"></span>
-                <nav class="mdl-navigation">
+                <nav class="mdl-navigation" id="appDrawer">
                     <!--div class="mdl-navigation__link" >Link</div>
                     <div class="mdl-navigation__link" >Link</div>
                     <div class="mdl-navigation__link" >Link</div-->

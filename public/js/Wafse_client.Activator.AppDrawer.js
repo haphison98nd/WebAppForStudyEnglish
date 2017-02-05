@@ -5,12 +5,12 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     const appDrawer = $('#appDrawer'),
           htmlTemplate_mdlNavigationLink = $('.htmlTemplate#mdlNavigationLink').html(),
           appDrawerTitle = $('#appDrawerTitle'),
-          mdlLayoutDrawerButton = 800,
-          waitTimeForMdlLayoutDrawer = 1000
+          waitTimeForMdlLayoutDrawerButton = 400,
+          waitTimeForMdlLayoutDrawer = 500
     ;
     
     let self, appDrawerButton, appDataManager, openDrawer, closeDrawer, 
-        showDrawerButton, hiddeDrawerButton, addDrawerList, removeDrawerList, clearDrawerList
+        showDrawerButton, hiddenDrawerButton, addDrawerList, removeDrawerList, clearDrawerList
     ;
     // console.log(htmlTemplate_mdlNavigationLink.clone());
     //////////////////////////////////////////////
@@ -51,9 +51,8 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    hiddeDrawerButton = function (){
+    hiddenDrawerButton = function (){
         setTimeout(function(){
-            console.log(appDrawerButton);
             appDrawerButton.css({'display':'none'});
         }, waitTimeForMdlLayoutDrawer);
     };
@@ -61,17 +60,12 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    addDrawerList = function () {
-        
+    addDrawerList = function(jQueryObj, callback){
+        appDrawer.append(jQueryObj).ready(function(){ 
+            if (callback) callback(); 
+        });        
     };
-
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    clearDrawerList = function () {
-        
-    };
-
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -83,7 +77,7 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     //////////////////////////////////////////////
 
     (function constructor () {
-        setTimeout( function(){ appDrawerButton = $('.mdl-layout__drawer-button')}, mdlLayoutDrawerButton);
+        setTimeout( function(){ appDrawerButton = $('.mdl-layout__drawer-button')}, waitTimeForMdlLayoutDrawerButton);
         appDataManager = _appDataManager;
     })();
 
@@ -92,7 +86,7 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
 
     self = { 
         showDrawerButton:showDrawerButton, openDrawer:openDrawer, closeDrawer:closeDrawer, 
-        hiddeDrawerButton:hiddeDrawerButton, clearDrawerList:clearDrawerList,
+        hiddenDrawerButton:hiddenDrawerButton, clearDrawerList:clearDrawerList,
         addDrawerList:addDrawerList, removeDrawerList:addDrawerList
     };
     return self;

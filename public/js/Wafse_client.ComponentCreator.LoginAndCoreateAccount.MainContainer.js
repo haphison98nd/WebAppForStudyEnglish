@@ -2,21 +2,21 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
     
     'use strict';
     
-    const defaultHtml_mainContainer = $($('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').clone().html()),
-          mainContainer = defaultHtml_mainContainer,
-          mainMassage_login = defaultHtml_mainContainer.find('#mainMassage_login'),
-          mainMassage_createAccount = defaultHtml_mainContainer.find('#mainMassage_createAccount'),
-          userNameInput = defaultHtml_mainContainer.find('.loginAndCoreateAccount#userNameInput'),
-          passWordInput = defaultHtml_mainContainer.find('.loginAndCoreateAccount#passWordInput'),
-          enterBtn = defaultHtml_mainContainer.find('.loginAndCoreateAccount#enterBtn'),
-          createAccountBtn = defaultHtml_mainContainer.find('.loginAndCoreateAccount#createAccountBtn'),
-          submitBtn = defaultHtml_mainContainer.find('.loginAndCoreateAccount#submitBtn'),
-          returnBtn = defaultHtml_mainContainer.find('.loginAndCoreateAccount#returnBtn'),
-          alertForUserNameInput = defaultHtml_mainContainer.find('.alert.loginAndCoreateAccount#alertForUserNameInput'),
-          alertForPassWordInput = defaultHtml_mainContainer.find('.alert.loginAndCoreateAccount#alertForPassWordInput')
+    const htmlTemplate_mainContainer = $($('.htmlTemplate.loginAndCoreateAccount#htmlTemplate_mainContainer').clone().html()),
+          mainContainer = htmlTemplate_mainContainer,
+          mainMassage_login = htmlTemplate_mainContainer.find('#mainMassage_login'),
+          mainMassage_createAccount = htmlTemplate_mainContainer.find('#mainMassage_createAccount'),
+          userNameInput = htmlTemplate_mainContainer.find('.loginAndCoreateAccount#userNameInput'),
+          passWordInput = htmlTemplate_mainContainer.find('.loginAndCoreateAccount#passWordInput'),
+          enterBtn = htmlTemplate_mainContainer.find('.loginAndCoreateAccount#enterBtn'),
+          createAccountBtn = htmlTemplate_mainContainer.find('.loginAndCoreateAccount#createAccountBtn'),
+          submitBtn = htmlTemplate_mainContainer.find('.loginAndCoreateAccount#submitBtn'),
+          returnBtn = htmlTemplate_mainContainer.find('.loginAndCoreateAccount#returnBtn'),
+          alertForUserNameInput = htmlTemplate_mainContainer.find('.alert.loginAndCoreateAccount#alertForUserNameInput'),
+          alertForPassWordInput = htmlTemplate_mainContainer.find('.alert.loginAndCoreateAccount#alertForPassWordInput')
     ;
     
-    let self, activateAll, setLoginDataTotextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
+    let self, activateAll, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
         validUserNameInputAndPassWordInput, remove,
         appNavigation, appDataManager, router
     ;
@@ -42,17 +42,9 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    setLoginDataTotextInput = function(){
+    activateTextInput = function(){
         userNameInput.val(String(appDataManager.getItem('LoginAndCoreateAccount.userName')));
         passWordInput.val(String(appDataManager.getItem('LoginAndCoreateAccount.userPassword')));
-        /*
-        userNameInput.on('change keyup', function(){
-            // console.log(String($(this).val()));
-        });
-        passWordInput.on('change keyup', function(){
-            // console.log(String($(this).val()));
-        });        
-        */
     };
 
     //////////////////////////////////////////////
@@ -150,7 +142,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
     //////////////////////////////////////////////
     
     activateAll = function(){
-        setLoginDataTotextInput();
+        activateTextInput();
         activateButtons();
     };
     
@@ -174,6 +166,6 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:defaultHtml_mainContainer , remove:remove};
+    self = {jQeryObj:htmlTemplate_mainContainer, remove:remove};
     return self;
 };
