@@ -4,7 +4,9 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
 
     const appBody = $('#appBody');
     
-    let self, appDataManager, appendRender, afterRender, clearPage;
+    let self, appendRender, afterRender, clearPage,
+        appDataManager
+    ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////

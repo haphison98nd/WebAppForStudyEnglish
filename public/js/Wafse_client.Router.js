@@ -2,22 +2,30 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, appBody, appNavigation, appDrawer, appDataManager, changePage, root, loginAndCoreateAccount;
+    let self, root, loginAndCoreateAccount,
+        appBody, appNavigation, appDrawer, appDataManager
+    ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     root = function () {
         appBody.clearPage();
+        appDrawer.clearPage();
         appDrawer.showDrawerButton();
         for (let idx = 1; idx <= 10; idx++){
             let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, 'Button ' + idx, function(){
                 console.log(appDataManager.getItem('LoginAndCoreateAccount.userName') + ' ' + idx);
-                appDrawer.clearDrawerList();
+                appDrawer.clearPage();
                 appDrawer.closeDrawer();
             });
-            appDrawer.addDrawerList(mdlNavigationLink.jQeryObj);
+            appDrawer.appendRender(mdlNavigationLink.jQeryObj);
+            
+            // debug
+            // let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appNavigation, appDataManager, self);
+            // appDrawer.appendRender(mainContainer.jQeryObj);
         }
+        appDrawer.openDrawer();
     };
     
     //////////////////////////////////////////////
@@ -27,20 +35,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appNavigation, appDataManager, self);
         // appDrawer.hiddeDrawerButton();
         appBody.clearPage();
+        appDrawer.clearPage();
         appDrawer.hiddenDrawerButton();
         appBody.appendRender(mainContainer.jQeryObj);
-        // debug
-        /*
-        setTimeout(function(){ 
-            mainContainer.remove();
-            setTimeout(function(){ 
-                mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appNavigation, appDataManager, self);
-                appBody.appendRender(mainContainer.jQeryObj, function(){
-                    if (callback) callback();        
-                });   
-            }, 2000);
-        }, 2000);
-        */
     };
     
     //////////////////////////////////////////////

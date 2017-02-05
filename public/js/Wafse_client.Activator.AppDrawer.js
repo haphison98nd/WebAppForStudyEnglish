@@ -9,8 +9,9 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
           waitTimeForMdlLayoutDrawer = 500
     ;
     
-    let self, appDrawerButton, appDataManager, openDrawer, closeDrawer, 
-        showDrawerButton, hiddenDrawerButton, addDrawerList, removeDrawerList, clearDrawerList
+    let self, appDrawerButton, openDrawer, closeDrawer, 
+        showDrawerButton, hiddenDrawerButton, appendRender, clearPage,
+        appDataManager
     ;
     // console.log(htmlTemplate_mdlNavigationLink.clone());
     //////////////////////////////////////////////
@@ -60,7 +61,7 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    addDrawerList = function(jQueryObj, callback){
+    appendRender = function(jQueryObj, callback){
         appDrawer.append(jQueryObj).ready(function(){ 
             if (callback) callback(); 
         });        
@@ -69,7 +70,7 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    clearDrawerList = function () {
+    clearPage = function () {
         appDrawer.empty();
     };
 
@@ -86,8 +87,7 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
 
     self = { 
         showDrawerButton:showDrawerButton, openDrawer:openDrawer, closeDrawer:closeDrawer, 
-        hiddenDrawerButton:hiddenDrawerButton, clearDrawerList:clearDrawerList,
-        addDrawerList:addDrawerList, removeDrawerList:addDrawerList
+        hiddenDrawerButton:hiddenDrawerButton, appendRender:appendRender, clearPage:clearPage
     };
     return self;
 };

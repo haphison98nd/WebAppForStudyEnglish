@@ -6,7 +6,9 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
           progressSpinner = $('#progressSpinner')
     ;
     
-    let self, appDataManager, appendRender, afterRender, clearPage, showProgressSpinner, hiddenProgressSpinner;
+    let self, appendRender, afterRender, clearPage, showProgressSpinner, hiddenProgressSpinner,
+        appDataManager
+    ;
 
     showProgressSpinner = function () {
         progressSpinner.css({'display':'inline'});
