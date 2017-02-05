@@ -1,4 +1,4 @@
-Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody, _loginAndCoreateAccountRenderer, _appDataManager, _router){
+Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody, _appNavigation, _appDrawer, _loginAndCoreateAccountRenderer, _appDataManager, _router){
     
     'use strict';
     
@@ -17,7 +17,7 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
     
     let self, activateAll, setLoginDataTotextInput, activateButtons, setAlertMessage,
         validUserNameInputAndPassWordInput, remove,
-        appBody, loginAndCoreateAccountRenderer, appDataManager, router
+        appBody, appNavigation, appDrawer, loginAndCoreateAccountRenderer, appDataManager, router
     ;
 
     //////////////////////////////////////////////
@@ -60,13 +60,13 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
     activateButtons = function(){
         enterBtn.click(function(){
             if(validUserNameInputAndPassWordInput()){
-                appBody.showProgressSpinner();
+                appNavigation.showProgressSpinner();
                 $.ajax({
                     type: 'POST',
                     url : '/authorize',
                     data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                     success: function(authorizationResult){
-                        appBody.hiddenProgressSpinner();
+                        appNavigation.hiddenProgressSpinner();
                         if (authorizationResult.status === 'success'){ 
                             appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                             appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
@@ -95,13 +95,13 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
                 if(validUserNameInputAndPassWordInput()){
-                    appBody.showProgressSpinner();
+                    appNavigation.showProgressSpinner();
                     $.ajax({
                         type: 'POST',
                         url : '/createAccount',
                         data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
                         success: function(createAccountResult){
-                            appBody.hiddenProgressSpinner();
+                            appNavigation.hiddenProgressSpinner();
                             if (createAccountResult.status === 'success'){ 
                                 appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                                 appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
@@ -161,6 +161,8 @@ Wafse_client.Activator.LoginAndCoreateAccount.MainContainer = function(_appBody,
 
     (function constructor (){
         appBody = _appBody;
+        appNavigation = _appNavigation;
+        appDrawer = _appDrawer;
         loginAndCoreateAccountRenderer = _loginAndCoreateAccountRenderer;
         appDataManager = _appDataManager;
         router = _router;

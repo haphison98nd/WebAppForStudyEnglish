@@ -4,7 +4,9 @@ Wafse_client.main = function(){
     
     const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['LoginAndCoreateAccount']).load(),
           appBody = Wafse_client.Activator.Root.AppBody(appDataManager),
-          router = Wafse_client.Router(appBody, appDataManager)
+          appNavigation = Wafse_client.Activator.Root.AppNavigation(appDataManager),
+          appDrawer = Wafse_client.Activator.Root.AppDrawer(appDataManager),
+          router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager)
     ;
     
     console.log(Wafse_client);
@@ -15,8 +17,16 @@ Wafse_client.main = function(){
 
     router.changePage('/login-and-coreate-account');
     
-    // Wafse_client.Renderer.LoginAndCoreateAccount(appBody, appDataManager, router).renderAll();
-    // Wafse_client.Renderer.TextSelectMenu(appBody, appDataManager, router).renderAll();
+    // Wafse_client.Renderer.LoginAndCoreateAccount(appBody, appNavigation, appDrawer, appDataManager, router).renderAll();
+    // Wafse_client.Renderer.TextSelectMenu(appBody, appNavigation, appDrawer, appDataManager, router).renderAll();
+
+    /*
+    const synthes = new SpeechSynthesisUtterance();
+    synthes.text = 'Is this a pen?';
+    synthes.lang = 'en-US';
+    speechSynthesis.voice = 'Google US English'
+    speechSynthesis.speak(synthes);
+    */
 };
 
 //////////////////////////////////////////////

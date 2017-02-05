@@ -8,7 +8,9 @@ const Wafse_client = {
     },
     Activator:{
         Root:{
-            AppBody:null
+            AppBody:null,
+            AppNavigation:null,
+            AppDrawer:null
         },
         LoginAndCoreateAccount:{
             MainContainer:null

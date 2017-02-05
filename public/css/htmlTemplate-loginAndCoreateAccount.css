@@ -1,3 +1,4 @@
+/* mdl theme .css */
 .demo-layout-transparent {
   background: url('../images/background-photo.jpg') center / cover;
 }
@@ -8,33 +9,26 @@
   color: white;
 }
 
-/*
-body {
-    background-image: url(../images/background-photo.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    padding-top: 5rem;
+/* mdl card */
 
+.mdl-card__supporting-text{
+    color: #fff;
 }
-*/
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: center;
+.demo-card-square.mdl-card {
+    width: 320px;
+    height: 320px;
+    background:#272727;
+    color: #fff;
+    float: left;
+    margin-right: 30px;
+    margin-top: 10px;
 }
-
-#mainNav{
-    background-color: #2a2a2a;
-}
-
-.navbar.loginAndCoreateAccount{
-    height: 45px;
+.demo-card-square > .mdl-card__title {
+    color: #fff;
+    background: url('../images/syunkan-eisakubun.png') bottom right 15% no-repeat #46B6AC;
 }
 
-.navbar-brand.loginAndCoreateAccount{
-    position: absolute;
-}
+/* loginAndCoreateAccount */
 
 .btn.loginAndCoreateAccount{
     margin-right: 10px;
@@ -49,7 +43,7 @@ body {
     display:none;
 }
 
-#mainContainer{
+.loginAndCoreateAccount#mainContainer{
     width: 1000px;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.6);
@@ -65,4 +59,15 @@ body {
 #progressSpinner{
     margin-left: 20px;
     display: none;
+}
+
+/* TextSelectMenu */
+.textSelectMenu#mainContainer{
+    width: 1110px;
+    margin: 0 auto;
+    background-color: rgba(255, 209, 209, 0.6);
+    padding: 30px;
+    padding-bottom: 60px;
+    border-radius: 5px;
+    overflow: auto;
 }

@@ -1,8 +1,8 @@
-Wafse_client.Router = function (_appBody, _appDataManager) {
+Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataManager) {
 
     'use strict';
         
-    let self, appBody, appDataManager, changePage, root, loginAndCoreateAccount;
+    let self, appBody, appNavigation, appDrawer, appDataManager, changePage, root, loginAndCoreateAccount;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -14,8 +14,10 @@ Wafse_client.Router = function (_appBody, _appDataManager) {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    loginAndCoreateAccount = function (router) {
-        Wafse_client.Renderer.LoginAndCoreateAccount(appBody, appDataManager, self).renderAll();
+    loginAndCoreateAccount = function () {
+        appBody.clearPage();
+        appDrawer.hiddeDrawerButton();
+        Wafse_client.Renderer.LoginAndCoreateAccount(appBody, appNavigation, appDrawer, appDataManager, self).renderAll();
     };
     
     //////////////////////////////////////////////
@@ -45,7 +47,8 @@ Wafse_client.Router = function (_appBody, _appDataManager) {
     (function constructor () {
         appDataManager = _appDataManager;
         appBody = _appBody;
-
+        appNavigation = _appNavigation;
+        appDrawer = _appDrawer;
         $(window).on('beforeunload', function(e) {
             appDataManager.save();
             return '';

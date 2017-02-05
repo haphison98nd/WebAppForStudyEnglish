@@ -2,9 +2,9 @@ Wafse_client.Activator.Root.AppBody = function(_appDataManager){
     
     'use strict';
 
-    const appBody = $('#appBody'), progressSpinner = $('#progressSpinner');
+    const appBody = $('#appBody');
     
-    let self, appDataManager, appendRender, afterRender, clearPage, showProgressSpinner, hiddenProgressSpinner;
+    let self, appDataManager, appendRender, afterRender, clearPage;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -30,20 +30,6 @@ Wafse_client.Activator.Root.AppBody = function(_appDataManager){
     clearPage = function(html){
         appBody.empty();
     };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    showProgressSpinner = function () {
-        progressSpinner.css({'display':'inline'});
-    };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    hiddenProgressSpinner = function () {
-        progressSpinner.css({'display':'none'});
-    };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -55,9 +41,6 @@ Wafse_client.Activator.Root.AppBody = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self = {
-            appendRender:appendRender, afterRender:afterRender, clearPage:clearPage, 
-            showProgressSpinner:showProgressSpinner, hiddenProgressSpinner:hiddenProgressSpinner
-    };
+    self = { appendRender:appendRender, afterRender:afterRender, clearPage:clearPage };
     return self;
 };

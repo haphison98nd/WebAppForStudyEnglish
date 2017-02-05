@@ -1,31 +1,30 @@
-Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManager, _router){
+Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appNavigation, _appDrawer, _appDataManager, _router){
     
     'use strict';
     
     const defaultHtml_mainNav = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainNav').html();
     const defaultHtml_mainContainer = $('.defaultHtml.loginAndCoreateAccount#defaultHtml_mainContainer').html();
     
-    let self, renderAll, appBody, renderMainContainer, appDataManager, router,
+    let self, renderAll, appBody, appDrawer, appNavigation, renderMainContainer, appDataManager, router,
         mainContainer = Wafse_client.Activator.LoginAndCoreateAccount.MainContainer,
         mainContainerInstance
     ;
 
     renderMainContainer = function(callback){
-        
         // if get htmlTemplate from index.html
         appBody.appendRender(defaultHtml_mainContainer, function(){
-            mainContainerInstance = mainContainer(appBody, self, appDataManager, router).activateAll();
+            mainContainerInstance = mainContainer(appBody, appNavigation, appDrawer, self, appDataManager, router).activateAll();
             if (callback) callback();        
         });
 
-        // if get htmlTemplate from server
+        // if get htmlTemplate from server.
         /*
         $.ajax({
             url: "/htmlTemplates/LoginAndCoreateAccount.html",
             cache: false,
             success: function(defaultHtml_mainContainer){
                 appBody.appendRender(defaultHtml_mainContainer, function(){
-                    mainContainerInstance = mainContainer(appBody, self, appDataManager).activateAll();
+                    mainContainerInstance = mainContainer(appBody, appNavigation, self, appDataManager).activateAll();
                     if (callback) callback();        
                 });
             }
@@ -50,6 +49,8 @@ Wafse_client.Renderer.LoginAndCoreateAccount = function(_appBody, _appDataManage
     (function constructor (){
         appBody = _appBody;
         appDataManager = _appDataManager;
+        appNavigation = _appNavigation;
+        appDrawer = _appDrawer;
         router = _router;
     })();
     
