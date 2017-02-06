@@ -3,17 +3,16 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     'use strict';
     
     const appDrawer = $('#appDrawer'),
-          htmlTemplate_mdlNavigationLink = $('.htmlTemplate#mdlNavigationLink').html(),
           appDrawerTitle = $('#appDrawerTitle'),
           waitTimeForMdlLayoutDrawerButton = 400,
           waitTimeForMdlLayoutDrawer = 500
     ;
     
-    let self, appDrawerButton, openDrawer, closeDrawer, 
+    let self, appDrawerButton, openDrawer, closeDrawer,
         showDrawerButton, hiddenDrawerButton, appendRender, clearPage,
         appDataManager
     ;
-    // console.log(htmlTemplate_mdlNavigationLink.clone());
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 

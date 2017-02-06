@@ -30,7 +30,7 @@ var Wafse_server = function(){
             dataForHttpRes = extendedFs.readFileSync(rootDir + '/Wafse.html', 'utf-8');
             res.end(dataForHttpRes);
         });
-
+        
         app.get('/css/:cssFileName', function(req, res){
             res.writeHead(200, {'Content-Type':'text/css'});
             dataForHttpRes = extendedFs.readFileSync(rootDir + '/css/' +  req.params.cssFileName, 'utf-8');

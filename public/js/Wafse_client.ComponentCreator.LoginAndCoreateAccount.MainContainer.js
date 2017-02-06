@@ -63,7 +63,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
                         if (authorizationResult.status === 'success'){ 
                             appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                             appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
-                            router['/']();
+                            router['#root']();
                             console.log(authorizationResult.message);
                         } else if(authorizationResult.status  === 'userNameError'){ 
                             showAlertMessage(authorizationResult.message, '');
@@ -82,7 +82,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
             createAccountBtn.css({'display':'none'});
             returnBtn.css({'display':'inline'});
             returnBtn.click(function(){
-                router['/login-and-coreate-account']();
+                router['#login-and-create-account']();
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
@@ -97,7 +97,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer = function(_a
                             if (createAccountResult.status === 'success'){ 
                                 appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
                                 appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
-                                router['/']();
+                                router['#root']();
                                 console.log(createAccountResult.message);
                             } else if(createAccountResult.status  === 'error'){ 
                                 showAlertMessage(createAccountResult.message, '');

@@ -2,7 +2,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, root, loginAndCoreateAccount,
+    let self, root, loginAndCoreateAccount, start,
         appBody, appNavigation, appDrawer, appDataManager
     ;
 
@@ -10,6 +10,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     root = function () {
+        history.pushState('#root', 'root', '#root');
         appBody.clearPage();
         appDrawer.clearPage();
         appDrawer.showDrawerButton();
@@ -33,11 +34,28 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     loginAndCoreateAccount = function () {
         let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appNavigation, appDataManager, self);
-        // appDrawer.hiddeDrawerButton();
+        history.pushState('#login-and-create-account', 'login-and-create-account', '#login-and-create-account');
         appBody.clearPage();
         appDrawer.clearPage();
         appDrawer.hiddenDrawerButton();
+        appDrawer.closeDrawer();
         appBody.appendRender(mainContainer.jQeryObj);
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    start = function () {
+        console.log('location.hash: ' + location.hash);
+        if(location.hash === '' || location.hash === null || location.hash === undefined){ 
+            self['#login-and-create-account']();
+        } else {
+            try {
+                self[location.hash]();
+            } catch (e){
+                self['#login-and-create-account']();
+            }
+        }
     };
     
     //////////////////////////////////////////////
@@ -48,15 +66,25 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         appBody = _appBody;
         appNavigation = _appNavigation;
         appDrawer = _appDrawer;
+        
         $(window).on('beforeunload', function(e) {
             appDataManager.save();
             return '';
+        });
+        
+        $(window).on('popstate', function(event){
+            console.log('event.originalEvent.state: ' + event.originalEvent.state);
+            try {
+                self[event.originalEvent.state]();
+            } catch (e) {
+                console.log(e);
+            }
         });
     })();
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {'/':root, '/login-and-coreate-account':loginAndCoreateAccount};
+    self = {start:start, '#root':root, '#login-and-create-account':loginAndCoreateAccount, '/':loginAndCoreateAccount};
     return self;
 };
