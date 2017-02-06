@@ -9,6 +9,10 @@
   color: white;
 }
 
+.mdl-layout__drawer-button{
+    display:none;
+}
+
 /* mdl card */
 
 .mdl-card__supporting-text{
