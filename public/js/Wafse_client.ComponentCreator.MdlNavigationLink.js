@@ -16,8 +16,7 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
     activateAll = function(){
         mdlNavigationLink.text(text);
         mdlNavigationLink.click(function(){
-            if(callback) callback();
-            router['#login-and-create-account']();
+            if(callback) callback(self);
             // remove();
         });
     };

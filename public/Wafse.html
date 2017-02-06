@@ -19,6 +19,7 @@
         <script type="text/javascript" src="js/Wafse_client.Activator.AppBody.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Activator.AppNavigation.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Activator.AppDrawer.js"></script>
+        <script type="text/javascript" src="js/Wafse_client.ComponentCreator.MainContainer.Middle.js"></script>
         <script type="text/javascript" src="js/Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer.js"></script>
         <script type="text/javascript" src="js/Wafse_client.ComponentCreator.MdlNavigationLink.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Router.js"></script>
@@ -47,6 +48,25 @@
         <template class="htmlTemplate" id="htmlTemplate_mdlNavigationLink">
             <div class="mdl-navigation__link"></div>
         </template>
+        <template class="htmlTemplate" id="htmlTemplate_mainContainerMiddle">
+            <div class="htmlTemplate" id="mainContainer_middle">
+                <h1 class="htmlTemplate" id="mainMassage"></h1>
+            </div>
+        </template>
+        <template class="htmlTemplate" id="htmlTemplate_mdlSquareCard">
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Test</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    TestTestTestTestTestTestTestTestTestTestTestTestTest.
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <div class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect textSelectMenu whiteBtn">Test</div>
+                </div>
+            </div>
+        </template>
+
         <!-- template class="htmlTemplate" id="alert"><div class="alert alert-danger" role="alert"></div></template-->
     </head>
     <body>
@@ -83,7 +103,7 @@
             
             <main class="mdl-layout__content" id="appBody">
                 
-                <!--div class="textSelectMenu" id="mainContainer">
+                <div class="htmlTemplate" id="mainContainer_middle">
                     <h1 class="textSelectMenu" id="mainMassage">学べるテキスト</h1>
                     <div class="demo-card-square mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--expand">
@@ -93,10 +113,10 @@
                             中学レベルの文型で正確にスピーディーに英文を作る能力を身につけられます
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">勉強する</a>
+                            <div class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect textSelectMenu whiteBtn">勉強する</div>
                         </div>
                     </div>
-                </div-->
+                </div>
                 
             </main>
         </div>

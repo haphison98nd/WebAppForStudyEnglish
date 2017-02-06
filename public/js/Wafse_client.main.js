@@ -5,12 +5,12 @@ Wafse_client.main = function(){
     const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['LoginAndCoreateAccount']).load(false),
           appBody = Wafse_client.Activator.AppBody(appDataManager),
           appNavigation = Wafse_client.Activator.AppNavigation(appDataManager),
-          appDrawer = Wafse_client.Activator.AppDrawer(appDataManager),
+          appDrawer = Wafse_client.Activator.AppDrawer(appNavigation, appDataManager),
           router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager)
     ;
 
     router.start();
-    console.log(Wafse_client);
+    // console.log(Wafse_client);
     
     // debug.
     // const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['LoginAndCoreateAccount']).load();

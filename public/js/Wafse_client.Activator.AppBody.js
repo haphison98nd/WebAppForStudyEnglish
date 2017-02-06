@@ -13,7 +13,7 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
     
     appendRender = function(jQueryObj, callback){
         appBody.append(jQueryObj).ready(function(){ 
-            if (callback) callback(); 
+            if (callback) callback(self); 
         });        
     };
 
@@ -22,7 +22,7 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
 
     afterRender = function(jQueryObj, callback){
         appBody.after(jQueryObj).ready(function(){ 
-            if (callback) callback(); 
+            if (callback) callback(self); 
         });        
     };
     

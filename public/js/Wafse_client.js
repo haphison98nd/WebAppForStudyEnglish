@@ -11,6 +11,11 @@ const Wafse_client = {
         LoginAndCoreateAccount:{
             MainContainer:null
         },
+        LoginAndCoreateAccountForm:null,
+        MainContainer:{
+            Small:null,
+            Middle:null
+        },
         MdlNavigationLink:null
     },
     appDataTemplate:{

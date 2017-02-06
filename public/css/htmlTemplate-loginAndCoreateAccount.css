@@ -61,17 +61,23 @@
 }
 
 #progressSpinner{
-    margin-left: 20px;
+    margin-left: 30px;
     display: none;
 }
 
 /* TextSelectMenu */
-.textSelectMenu#mainContainer{
-    width: 1110px;
+.htmlTemplate#mainContainer_middle{
+    width: 85%;
     margin: 0 auto;
     background-color: rgba(255, 209, 209, 0.6);
     padding: 30px;
     padding-bottom: 60px;
     border-radius: 5px;
     overflow: auto;
+}
+
+.textSelectMenu.whiteBtn {
+    background-color: rgba(45, 71, 140, 1.0);
+    color: white;
+    width: inherit;
 }

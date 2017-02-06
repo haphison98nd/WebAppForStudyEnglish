@@ -2,15 +2,15 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, root, loginAndCoreateAccount, start,
+    let self, dummy, textSelectMenu, loginAndCoreateAccount, start,
         appBody, appNavigation, appDrawer, appDataManager
     ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    root = function () {
-        history.pushState('#root', 'root', '#root');
+    dummy = function () {
+        history.pushState('#dummy', 'dummy', '#dummy');
         appBody.clearPage();
         appDrawer.clearPage();
         appDrawer.showDrawerButton();
@@ -19,6 +19,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 console.log(appDataManager.getItem('LoginAndCoreateAccount.userName') + ' ' + idx);
                 appDrawer.clearPage();
                 appDrawer.closeDrawer();
+                textSelectMenu();
             });
             appDrawer.appendRender(mdlNavigationLink.jQeryObj);
             
@@ -26,7 +27,31 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             // let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appNavigation, appDataManager, self);
             // appDrawer.appendRender(mainContainer.jQeryObj);
         }
-        appDrawer.openDrawer();
+        appDrawer.openDrawer();        
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    textSelectMenu = function () {
+        let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer.Middle(appDrawer, appNavigation, appDataManager, self, '学べるテキスト', function (s) {
+            // debug
+            
+            s.appendRender($($('.htmlTemplate#htmlTemplate_mdlSquareCard').clone().html()));
+            s.setMainMassage('OK');
+            appNavigation.showProgressSpinner();
+            setTimeout(function(){
+                loginAndCoreateAccount();
+                appNavigation.hiddenProgressSpinner();
+            }, 3000);
+        });
+        
+        history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
+        appBody.clearPage();
+        appDrawer.clearPage();
+        appDrawer.hiddenDrawerButton();
+        appDrawer.closeDrawer();
+        appBody.appendRender(mainContainerMiddle.jQeryObj);
     };
     
     //////////////////////////////////////////////
@@ -85,6 +110,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {start:start, '#root':root, '#login-and-create-account':loginAndCoreateAccount, '/':loginAndCoreateAccount};
+    self = {start:start, '#textSelectMenu':textSelectMenu, '#login-and-create-account':loginAndCoreateAccount, '#dummy':dummy};
     return self;
 };
