@@ -14,8 +14,8 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         appBody.clearPage();
         appDrawer.clearPage();
         appDrawer.showDrawerButton();
-        for (let idx = 1; idx <= 10; idx++){
-            let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, 'Button ' + idx, function(){
+        for (let idx = 1; idx <= 100; idx++){
+            let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, 'Button ' + idx, function(s){
                 console.log(appDataManager.getItem('LoginAndCoreateAccount.userName') + ' ' + idx);
                 appDrawer.clearPage();
                 appDrawer.closeDrawer();
@@ -35,15 +35,28 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     textSelectMenu = function () {
         let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer.Middle(appDrawer, appNavigation, appDataManager, self, '学べるテキスト', function (s) {
-            // debug
-            
-            s.appendRender($($('.htmlTemplate#htmlTemplate_mdlSquareCard').clone().html()));
+
+            let title = 'どんどん話すための瞬間英作文トレーニング ',
+                inst = '中学レベルの文型で正確にスピーディーに英文を作る能力を身につけられます ';
+                        
+            for (let idx = 1; idx <= 100; idx++){
+                let mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, title + idx, inst + idx, function(ss){
+                    // ss.remove();
+                    loginAndCoreateAccount();
+                });
+                s.appendRender(mdlSquareCard.jQeryObj);
+            }
+
             s.setMainMassage('OK');
+            
+            // debug
+            /*
             appNavigation.showProgressSpinner();
             setTimeout(function(){
                 loginAndCoreateAccount();
                 appNavigation.hiddenProgressSpinner();
             }, 3000);
+            */
         });
         
         history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');

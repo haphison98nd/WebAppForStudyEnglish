@@ -11,7 +11,6 @@ Wafse_client.ComponentCreator.MainContainer.Middle = function(_appDrawer, _appNa
         appDrawer, appNavigation, appDataManager, router, mainMassageText, callback
     ;
     
-
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
@@ -32,7 +31,7 @@ Wafse_client.ComponentCreator.MainContainer.Middle = function(_appDrawer, _appNa
     //////////////////////////////////////////////
 
     activateAll = function(){
-        mainMassage.text(String(mainMassageText));
+        setMainMassage(mainMassageText);
         mainMassage.click(function(){
             if(callback) callback(self);
             // router['#login-and-create-account']();

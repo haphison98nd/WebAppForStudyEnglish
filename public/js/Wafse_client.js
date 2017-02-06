@@ -16,7 +16,8 @@ const Wafse_client = {
             Small:null,
             Middle:null
         },
-        MdlNavigationLink:null
+        MdlNavigationLink:null,
+        MdlSquareCard:null
     },
     appDataTemplate:{
         LoginAndCoreateAccount:{

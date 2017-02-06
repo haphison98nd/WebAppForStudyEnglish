@@ -6,15 +6,22 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
           mdlNavigationLink = htmlTemplate_mdlNavigationLink
     ;
     
-    let self, activateAll, remove,
+    let self, setMdlNavigationLinkText, activateAll, remove,
         appDrawer, appDataManager, router, text, callback
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    setMdlNavigationLinkText = function (str) {
+        mdlNavigationLink.text(str);
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
     activateAll = function(){
-        mdlNavigationLink.text(text);
+        setMdlNavigationLinkText(text);
         mdlNavigationLink.click(function(){
             if(callback) callback(self);
             // remove();
