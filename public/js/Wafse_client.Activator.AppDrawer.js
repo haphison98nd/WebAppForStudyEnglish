@@ -3,13 +3,13 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     'use strict';
     
     const appDrawer = $('#appDrawer'),
-          appDrawerTitle = $('#appDrawerTitle'),
-          waitTimeForMdlLayoutDrawerButton = 400,
-          waitTimeForMdlLayoutDrawer = 500
+          appDrawerTitle = $('#appDrawerTitle')
     ;
     
     let self, appDrawerButton, openDrawer, closeDrawer,
         showDrawerButton, hiddenDrawerButton, appendRender, clearPage,
+        waitTimeForMdlLayoutDrawerButton = 3000,
+        waitTimeForMdlLayoutDrawer = waitTimeForMdlLayoutDrawerButton,
         appDataManager
     ;
     
@@ -77,7 +77,10 @@ Wafse_client.Activator.AppDrawer = function(_appDataManager){
     //////////////////////////////////////////////
 
     (function constructor () {
-        setTimeout( function(){ appDrawerButton = $('.mdl-layout__drawer-button')}, waitTimeForMdlLayoutDrawerButton);
+        setTimeout( function(){ 
+            appDrawerButton = $('.mdl-layout__drawer-button')
+            waitTimeForMdlLayoutDrawer = 50;
+        }, waitTimeForMdlLayoutDrawerButton);
         appDataManager = _appDataManager;
     })();
 
