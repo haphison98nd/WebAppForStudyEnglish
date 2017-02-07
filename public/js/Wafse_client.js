@@ -8,14 +8,8 @@ const Wafse_client = {
         AppDrawer:null
     },
     ComponentCreator:{
-        LoginAndCoreateAccount:{
-            MainContainer:null
-        },
         LoginAndCoreateAccountForm:null,
-        MainContainer:{
-            Small:null,
-            Middle:null
-        },
+        MainContainer:null,
         MdlNavigationLink:null,
         MdlSquareCard:null
     },

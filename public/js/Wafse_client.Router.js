@@ -22,10 +22,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 textSelectMenu();
             });
             appDrawer.appendRender(mdlNavigationLink.jQeryObj);
-            
-            // debug
-            // let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appNavigation, appDataManager, self);
-            // appDrawer.appendRender(mainContainer.jQeryObj);
         }
         appDrawer.openDrawer();        
     };
@@ -34,31 +30,16 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     textSelectMenu = function () {
-        let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer.Middle(appDrawer, appNavigation, appDataManager, self, '学べるテキスト', function (s) {
-
-            let title = 'どんどん話すための瞬間英作文トレーニング ',
-                inst = '中学レベルの文型で正確にスピーディーに英文を作る能力を身につけられます ';
-                        
-            for (let idx = 1; idx <= 100; idx++){
-                let mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, title + idx, inst + idx, function(ss){
-                    // ss.remove();
-                    loginAndCoreateAccount();
-                });
-                s.appendRender(mdlSquareCard.jQeryObj);
-            }
-
-            s.setMainMassage('OK');
-            
-            // debug
-            /*
-            appNavigation.showProgressSpinner();
-            setTimeout(function(){
+        let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self,'mainContainerMiddle', '学べるテキスト'),
+            title = 'どんどん話すための瞬間英作文トレーニング ',
+            inst = '中学レベルの文型で正確にスピーディーに英文を作る能力を身につけられます '
+        ;
+        for (let idx = 1; idx <= 100; idx++){
+            let mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, title + idx, inst + idx, function(ss){
                 loginAndCoreateAccount();
-                appNavigation.hiddenProgressSpinner();
-            }, 3000);
-            */
-        });
-        
+            });
+            mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
+        }        
         history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
         appBody.clearPage();
         appDrawer.clearPage();
@@ -71,13 +52,16 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     loginAndCoreateAccount = function () {
-        let mainContainer = Wafse_client.ComponentCreator.LoginAndCoreateAccount.MainContainer(appNavigation, appDataManager, self);
+        let mainContainerSmall = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerSmall', 'ようこそ'),
+            loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self, mainContainerSmall)
+        ;        
+        mainContainerSmall.appendRender(loginAndCoreateAccountForm.jQeryObj);
         history.pushState('#login-and-create-account', 'login-and-create-account', '#login-and-create-account');
         appBody.clearPage();
         appDrawer.clearPage();
         appDrawer.hiddenDrawerButton();
         appDrawer.closeDrawer();
-        appBody.appendRender(mainContainer.jQeryObj);
+        appBody.appendRender(mainContainerSmall.jQeryObj);
     };
     
     //////////////////////////////////////////////
@@ -104,12 +88,10 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         appBody = _appBody;
         appNavigation = _appNavigation;
         appDrawer = _appDrawer;
-        
         $(window).on('beforeunload', function(e) {
             appDataManager.save();
             return '';
         });
-        
         $(window).on('popstate', function(event){
             console.log('event.originalEvent.state: ' + event.originalEvent.state);
             try {

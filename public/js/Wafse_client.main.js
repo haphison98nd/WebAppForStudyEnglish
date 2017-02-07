@@ -9,10 +9,10 @@ Wafse_client.main = function(){
           router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager)
     ;
 
+    console.log(Wafse_client);
     router.start();
-    // console.log(Wafse_client);
     
-    // debug.
+    // debug
     // const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['LoginAndCoreateAccount']).load();
     // appDataManager.print().setItem('LoginAndCoreateAccount.userName', '{ueda}').print().save();
     

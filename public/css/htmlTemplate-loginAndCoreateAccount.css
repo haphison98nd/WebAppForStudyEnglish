@@ -32,6 +32,25 @@
     background: url('../images/syunkan-eisakubun.png') bottom right 15% no-repeat #46B6AC;
 }
 
+/* mainContainer */
+.htmlTemplate#mainContainer{
+    margin: 0 auto;
+    padding: 30px;
+    padding-bottom: 60px;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.htmlTemplate.mainContainerMiddle#mainContainer{
+    width: 85%;
+    background-color: rgba(255, 209, 209, 0.6);
+}
+
+.htmlTemplate.mainContainerSmall#mainContainer{
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
 /* loginAndCoreateAccount */
 
 .btn.loginAndCoreateAccount{
@@ -47,34 +66,12 @@
     display:none;
 }
 
-.loginAndCoreateAccount#mainContainer{
-    width: 1000px;
-    margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 30px;
-    padding-bottom: 60px;
-    border-radius: 5px;
-}
-
-.loginAndCoreateAccount#mainContainer{
-    width: 500px;
-}
-
 #progressSpinner{
     margin-left: 30px;
     display: none;
 }
 
 /* TextSelectMenu */
-.htmlTemplate#mainContainer_middle{
-    width: 85%;
-    margin: 0 auto;
-    background-color: rgba(255, 209, 209, 0.6);
-    padding: 30px;
-    padding-bottom: 60px;
-    border-radius: 5px;
-    overflow: auto;
-}
 
 .textSelectMenu.whiteBtn {
     background-color: rgba(45, 71, 140, 1.0);

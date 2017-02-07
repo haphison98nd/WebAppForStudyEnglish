@@ -26,6 +26,8 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
             if(callback) callback(self);
             // remove();
         });
+        // Memoriy Leak Test
+        // setTimeout(function(){ mdlNavigationLink.click(); }, 2000);
     };
     
     //////////////////////////////////////////////

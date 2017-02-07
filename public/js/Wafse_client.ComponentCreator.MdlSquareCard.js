@@ -16,9 +16,9 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    appendRender = function(jQueryObj, callback){
+    appendRender = function(jQueryObj, _callback){
         mainContainerMiddle.append(jQueryObj).ready(function(){ 
-            if (callback) callback(self); 
+            if (_callback) _callback(self); 
         });
     };
 
@@ -45,6 +45,8 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
         mdlButton.click(function(){
             if(callback) callback(self);
         });
+        // Memoriy Leak Test
+        // setTimeout(function(){ mdlButton.click(); }, 2000);
     };
     
     //////////////////////////////////////////////
