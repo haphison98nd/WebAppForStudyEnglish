@@ -11,9 +11,9 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    appendRender = function(jQueryObj, _callback){
+    appendRender = function(jQueryObj, __callback){
         appBody.append(jQueryObj).ready(function(){ 
-            if (_callback) _callback(self); 
+            if (__callback) __callback(self); 
         });        
     };
 

@@ -13,7 +13,6 @@ Wafse_client.main = function(){
     router.start();
     
     // debug
-    // const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['LoginAndCoreateAccount']).load();
     // appDataManager.print().setItem('LoginAndCoreateAccount.userName', '{ueda}').print().save();
     
     /*

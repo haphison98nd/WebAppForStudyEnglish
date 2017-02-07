@@ -16,9 +16,9 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    appendRender = function(jQueryObj, _callback){
+    appendRender = function(jQueryObj, __callback){
         mainContainerMiddle.append(jQueryObj).ready(function(){ 
-            if (_callback) _callback(self); 
+            if (__callback) __callback(self); 
         });
     };
 

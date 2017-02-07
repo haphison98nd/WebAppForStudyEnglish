@@ -14,9 +14,9 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    appendRender = function(jQueryObj, _callback){
+    appendRender = function(jQueryObj, __callback){
         mainContainer.append(jQueryObj).ready(function(){ 
-            if (_callback) _callback(self); 
+            if (__callback) __callback(self); 
         });
     };
 
@@ -30,25 +30,25 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    activateMainMessage = function (_callback) {
+    activateMainMessage = function () {
         mainMassage.click(function(){
-            if(_callback) _callback(self);
+            if(callback) callback(self);
         });        
     };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    setMainContainerSize = function (__mainContainerSize) {
-        mainContainer.addClass(String(__mainContainerSize));
+    setMainContainerSize = function () {
+        mainContainer.addClass(String(mainContainerSize));
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     activateAll = function(){
-        setMainContainerSize(mainContainerSize);
-        activateMainMessage(callback);
+        setMainContainerSize();
+        activateMainMessage();
         setMainMassage(mainMassageText);
         // Memoriy Leak Test
         // setTimeout(function(){ mainMassage.click(); }, 1000);

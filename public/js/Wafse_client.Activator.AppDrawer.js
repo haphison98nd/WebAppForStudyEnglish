@@ -68,9 +68,9 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    appendRender = function(jQueryObj, _callback){
+    appendRender = function(jQueryObj, __callback){
         appDrawer.append(jQueryObj).ready(function(){ 
-            if (_callback) _callback(self); 
+            if (__callback) __callback(self); 
         });        
     };
     
