@@ -18,7 +18,7 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
             'Part2 中学2年レベル':{},
             'Part3 中学3年レベル':{}
         },
-        self, getPageNumber, getPageTitle, getPageJpnAngEngText, 
+        self, getPageNumber, getPageTitle, getPageTextOfJpnAngEng, 
         createSimpleEnglishSentencesJsonDb, saveSimpleEnglishSentencesJsonDbAsJson, getSimpleEnglishSentencesJsonDbAsObj,
         filePathOfSimpleEnglishSentencesJsonDb_JPN, filePathOfSimpleEnglishSentencesJsonDb_ENG
     ;
@@ -48,7 +48,7 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
     //////////////////////////////////////////////
     
     // private
-    getPageJpnAngEngText = function (pageName) {
+    getPageTextOfJpnAngEng = function (pageName) {
         return {
                  'JPN':jsonDb_JPN[pageName]['text'],
                  'ENG':jsonDb_ENG[pageName]['text']
@@ -64,11 +64,11 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
         for (let pageName in jsonDb_JPN) {
             let pageNumber = getPageNumber(pageName);
             if (pageNumber >= partListOfShunkanEisakubun['Part1 中学1年レベル'].start && pageNumber <= partListOfShunkanEisakubun['Part1 中学1年レベル'].end) {
-                simpleEnglishSentencesJsonDb['Part1 中学1年レベル'][getPageTitle(pageNumber)] = getPageJpnAngEngText(pageName);
+                simpleEnglishSentencesJsonDb['Part1 中学1年レベル'][getPageTitle(pageNumber)] = getPageTextOfJpnAngEng(pageName);
             } else if (pageNumber >= partListOfShunkanEisakubun['Part2 中学2年レベル'].start && pageNumber <= partListOfShunkanEisakubun['Part2 中学2年レベル'].end) {
-                simpleEnglishSentencesJsonDb['Part2 中学2年レベル'][getPageTitle(pageNumber)] = getPageJpnAngEngText(pageName);
+                simpleEnglishSentencesJsonDb['Part2 中学2年レベル'][getPageTitle(pageNumber)] = getPageTextOfJpnAngEng(pageName);
             } else {
-                simpleEnglishSentencesJsonDb['Part3 中学3年レベル'][getPageTitle(pageNumber)] = getPageJpnAngEngText(pageName);
+                simpleEnglishSentencesJsonDb['Part3 中学3年レベル'][getPageTitle(pageNumber)] = getPageTextOfJpnAngEng(pageName);
             }
         }
         return self;
