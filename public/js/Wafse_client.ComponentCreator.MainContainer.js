@@ -7,7 +7,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
           mainMassage = htmlTemplate_mainContainer.find('#mainMassage')
     ;
     
-    let self, appendRender, setMainContainerSize, activateMainMessage, activateAll, setMainMassage, remove,
+    let self, appendRender, activateMainContainerSize, activateMainMessage, activateAll, setMainMassage, remove,
         appDrawer, appNavigation, appDataManager, router, mainContainerSize, mainMassageText, callback
     ;
     
@@ -39,7 +39,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    setMainContainerSize = function () {
+    activateMainContainerSize = function () {
         mainContainer.addClass(String(mainContainerSize));
     };
 
@@ -47,7 +47,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
 
     activateAll = function(){
-        setMainContainerSize();
+        activateMainContainerSize();
         activateMainMessage();
         setMainMassage(mainMassageText);
         // Memoriy Leak Test

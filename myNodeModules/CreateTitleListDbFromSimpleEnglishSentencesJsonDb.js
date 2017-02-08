@@ -1,4 +1,4 @@
-const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(){
+const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(_filePath){
     
     'use strict';
     
@@ -6,14 +6,15 @@ const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(){
 
     let jsonDb    = null, 
         titleList = {},
-        self, constructor, createTitleList, getTitleList, getDb, saveTitleListAsJson
+        self, createTitleList, getTitleListAsObj, getDb, saveTitleListAsJson,
+        filePath
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     createTitleList = function(){
-        for (let pageIdx = 1; pageIdx < 80; pageIdx++){
+        for (let pageIdx = 1; pageIdx <= Object.keys(jsonDb).length; pageIdx++){
             // console.log(jsonDb['page-' + pageIdx]);
             titleList[jsonDb['page-' + pageIdx]['title']] = 'page-' + pageIdx;
         }
@@ -30,8 +31,7 @@ const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    getTitleList = function(){
-        createTitleList();
+    getTitleListAsObj = function(){
         return titleList;
     };
     
@@ -48,21 +48,21 @@ const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(){
                if(callback) callback();
            }
         });
-    };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    
-    constructor = function (filePath){
-        jsonDb = extendedFs.readFileSync(filePath, 'utf-8');
-        jsonDb = JSON.parse(jsonDb);
         return self;
     };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    (function constructor (){
+        filePath = _filePath;
+        jsonDb = JSON.parse(extendedFs.readFileSync(filePath, 'utf-8'));
+    })();
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self  = {constructor:constructor, createTitleList:createTitleList, getTitleList:getTitleList, getDb:getDb, saveTitleListAsJson:saveTitleListAsJson};    
+    self = { createTitleList:createTitleList, getTitleListAsObj:getTitleListAsObj, getDb:getDb, saveTitleListAsJson:saveTitleListAsJson };
     return self;
 };
 
@@ -71,9 +71,9 @@ const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(){
 
 (function main(){
     'use strict';
-    let app_JPN = CreateTitleListDbFromSimpleEnglishSentencesJsonDb(),
-        app_ENG = CreateTitleListDbFromSimpleEnglishSentencesJsonDb()
+    let app_JPN = CreateTitleListDbFromSimpleEnglishSentencesJsonDb('../TextDB/SimpleEnglishSentencesJsonDb_JPN.json'),
+        app_ENG = CreateTitleListDbFromSimpleEnglishSentencesJsonDb('../TextDB/SimpleEnglishSentencesJsonDb_ENG.json')
     ;
-    app_JPN.constructor('../TextDB/SimpleEnglishSentencesJsonDb_JPN.json').createTitleList().saveTitleListAsJson('../TextDB/TitleList_SimpleEnglishSentencesJsonDb_JPN');
-    app_ENG.constructor('../TextDB/SimpleEnglishSentencesJsonDb_ENG.json').createTitleList().saveTitleListAsJson('../TextDB/TitleList_SimpleEnglishSentencesJsonDb_ENG');
+    app_JPN.createTitleList().saveTitleListAsJson('../TextDB/TitleList_SimpleEnglishSentencesJsonDb_JPN');
+    app_ENG.createTitleList().saveTitleListAsJson('../TextDB/TitleList_SimpleEnglishSentencesJsonDb_ENG');
 })();
