@@ -12,7 +12,6 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
 
     let jsonDb_JPN    = null, 
         jsonDb_ENG    = null,
-        textPageLength,
         simpleEnglishSentencesJsonDb = {  
             'Part1 中学1年レベル':{},
             'Part2 中学2年レベル':{},
@@ -107,7 +106,6 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
         filePathOfSimpleEnglishSentencesJsonDb_ENG = _filePathOfSimpleEnglishSentencesJsonDb_ENG;        
         jsonDb_JPN = JSON.parse(extendedFs.readFileSync(filePathOfSimpleEnglishSentencesJsonDb_JPN, 'utf-8'));
         jsonDb_ENG = JSON.parse(extendedFs.readFileSync(filePathOfSimpleEnglishSentencesJsonDb_ENG, 'utf-8'));
-        textPageLength = Object.keys(jsonDb_JPN).length;
                 
         // debug code of getPageTitle
         // console.log(getPageTitle(11));
