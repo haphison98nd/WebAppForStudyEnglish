@@ -25,6 +25,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
                 .addClass('is-visible')
                 .attr('aria-hidden', 'false')
             ;   
+            $('.mdl-layout__obfuscator').removeClass('is-visible');
         }, waitTimeForMdlLayoutDrawer);
         return self;
     };

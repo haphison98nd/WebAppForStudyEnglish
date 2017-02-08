@@ -1,18 +1,18 @@
-Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigation, _appDataManager, _router, _option, _callback){
+Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigation, _appDataManager, _router, _option){
     
     'use strict';
     
     const htmlTemplate_mdlSquareCard = $($('.htmlTemplate#htmlTemplate_mdlSquareCard').clone().html()),
           mdlSquareCard = htmlTemplate_mdlSquareCard,
           mdlCardTitle = htmlTemplate_mdlSquareCard.find('.mdl-card__title-text'),
-          mdlCardImgeArea = htmlTemplate_mdlSquareCard.find('.mdl-card__title'),
+          mdlCardImgeArea = htmlTemplate_mdlSquareCard.find('.mdl-card__title.mdl-card--expand'),
           mdlCardSupporting = htmlTemplate_mdlSquareCard.find('.mdl-card__supporting-text'),
           mdlButton = htmlTemplate_mdlSquareCard.find('.mdl-button')
     ;
     
     let self, appendRender, activateAll, 
-        setMdlCardBackGroundImage, setMdlCardTitleText, setMdlCardSupportingText, remove,
-        appDrawer, appNavigation, appDataManager, router, option, callback
+        setMdlCardBackGroundImage, setMdlCardTitleText, setMdlCardSupportingText, setButtonMode, remove,
+        appDrawer, appNavigation, appDataManager, router, option
     ;
     
     //////////////////////////////////////////////
@@ -48,7 +48,16 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
         mdlCardImgeArea.css({'background':"url('" + String(backGroundImageUrl) + "') no-repeat"});
         return self;
     };
-    
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    setButtonMode = function (isButtonClickable) {
+        if (isButtonClickable === false) mdlButton.remove();
+        // if (isButtonClickable === false) mdlButton.prop('disabled', false);
+        return self;
+    };
+
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -56,8 +65,9 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
         setMdlCardTitleText(option.titleText);
         setMdlCardSupportingText(option.supportingText);
         setMdlCardBackGroundImage(option.backGroundImageUrl);
+        setButtonMode(option.isButtonClickable);
         mdlButton.click(function(){
-            if(callback) callback(self);
+            if(option.buttonClickAction) option.buttonClickAction(self);
         });
         // Memoriy Leak Test
         // setTimeout(function(){ mdlButton.click(); }, 2000);
@@ -80,7 +90,6 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
         appDataManager = _appDataManager;
         router = _router;
         option = _option;
-        callback = _callback;
         activateAll();
     })();
 

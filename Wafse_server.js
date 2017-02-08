@@ -18,11 +18,12 @@ var Wafse_server = function(){
         const extendedFs = require('./myNodeModules/ExtendedFs.js'),
               userDb     = require('./myNodeModules/UserDataBaseProcessor.js'),
               PORT       = process.env.PORT || 3000,
-              rootDir    = 'public'
+              rootDir    = 'public',
+              textList = extendedFs.readFileSync('./TextDB/TextList.json', 'utf-8')
         ;
         
         let dataForHttpRes = null;
-        
+                
         app.use(bodyParser.urlencoded({extended: true}));
         
         app.get('/', function(req, res){
@@ -57,16 +58,25 @@ var Wafse_server = function(){
             
         });
         
+        app.get('/textList', function(req, res){
+            res.writeHead(200, {'Content-Type':'application/json'});
+            res.end(textList);
+        });
+        
+        /*
         app.get('/htmlTemplates/:htmlTemplateName', function(req, res){
             dataForHttpRes = extendedFs.readFileSync(rootDir + '/htmlTemplates/' + req.params.htmlTemplateName, 'utf-8');
             res.writeHead(200, {'Content-Type':'text/html'});
             res.end(dataForHttpRes);
         });
-
+        */
+        
         // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
         app.post('/authorize', function(req, res){
             let dataForAuthorization = req.body;
             const authorizationResult = userDb.authorize(dataForAuthorization);
+
+            res.contentType('application/json');
 
             if (authorizationResult === 'authorized'){ 
                 res.send({status : 'success', message: 'ようこそ，' + String(dataForAuthorization.userName) + ' さん!'});
@@ -80,6 +90,8 @@ var Wafse_server = function(){
         app.post('/createAccount', function(req, res){
             let dataForCreateAccount = req.body;
             const createAccountResult = userDb.addUserData(dataForCreateAccount);
+
+            res.contentType('application/json');
 
             if (createAccountResult){ 
                 res.send({status : 'success', message: 'ようこそ，' + String(dataForCreateAccount.userName) + ' さん!'});

@@ -17,40 +17,49 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         for (let idx = 1; idx <= 100; idx++){
             let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, 'Button ' + idx, function(s){
                 console.log(appDataManager.getItem('LoginAndCoreateAccount.userName') + ' ' + idx);
-                appDrawer.clearPage();
-                appDrawer.closeDrawer();
-                textSelectMenu();
+                appDrawer.clearPage().closeDrawer();
+                loginAndCoreateAccount();
             });
             appDrawer.appendRender(mdlNavigationLink.jQeryObj);
         }
-        appDrawer.openDrawer();        
+        appDrawer.openDrawer();
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     textSelectMenu = function () {
-        let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self,'mainContainerMiddle', '学べるテキスト'),
-            title = 'どんどん話すための瞬間英作文トレーニング ',
-            inst = '中学レベルの文型で正確にスピーディーに英文を作る能力を身につけられます '
-        ;
-        for (let idx = 1; idx <= 100; idx++){
-            let mdlSquareCardOption = {
-                    titleText:title + idx,
-                    supportingText:inst + idx,
-                    backGroundImageUrl:'/images/syunkan-eisakubun.png'
-                },
-                mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, mdlSquareCardOption, function(ss){
-                loginAndCoreateAccount();
-            });
-            mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
-        }        
-        history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
-        appBody.clearPage();
-        appDrawer.clearPage();
-        appDrawer.hiddenDrawerButton();
-        appDrawer.closeDrawer();
-        appBody.appendRender(mainContainerMiddle.jQeryObj);
+        
+        let ajaxSuccessAction;
+        
+        ajaxSuccessAction = function (textListJson) {
+            let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '学べるテキスト');
+            
+            for (let titleText in textListJson){
+                const isButtonClickable = titleText === 'To Be Announced' ? false : true;
+                let mdlSquareCardOption = {
+                        titleText:titleText,
+                        supportingText:textListJson[titleText]['snippet'],
+                        backGroundImageUrl:textListJson[titleText]['backGroundImageUrl'],
+                        buttonClickAction:function(ss){ dummy(); },
+                        isButtonClickable:isButtonClickable
+                    },
+                    mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, mdlSquareCardOption);
+                mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
+            }
+            
+            history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
+            appDrawer.clearPage().hiddenDrawerButton().closeDrawer();
+            appBody.clearPage().appendRender(mainContainerMiddle.jQeryObj); 
+        };
+        
+        $.ajax({
+          url: '/textList',
+          cache: false,
+          success: function(textListJson){
+             ajaxSuccessAction(textListJson);
+          }
+        });
     };
     
     //////////////////////////////////////////////
@@ -62,11 +71,8 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         ;        
         mainContainerSmall.appendRender(loginAndCoreateAccountForm.jQeryObj);
         history.pushState('#login-and-create-account', 'login-and-create-account', '#login-and-create-account');
-        appBody.clearPage();
-        appDrawer.clearPage();
-        appDrawer.hiddenDrawerButton();
-        appDrawer.closeDrawer();
-        appBody.appendRender(mainContainerSmall.jQeryObj);
+        appDrawer.clearPage().hiddenDrawerButton().closeDrawer();
+        appBody.clearPage().appendRender(mainContainerSmall.jQeryObj);
     };
     
     //////////////////////////////////////////////
