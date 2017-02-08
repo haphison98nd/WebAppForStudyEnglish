@@ -42,9 +42,10 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
 
     def __addText(self, pageIdx, title, sentences):
-        self.__db["page-" + str(pageIdx)] = {}
-        self.__db["page-" + str(pageIdx)]["title"] = title
-        self.__db["page-" + str(pageIdx)]["text"] = sentences
+        self.__db["page-" + str(pageIdx)] = {
+            "title":title,
+            "text":sentences
+        }
 
     ######################################################
     ######################################################
@@ -53,7 +54,7 @@ class SimpleEnglishSentencesJsonDbMaker:
         # How to export Japanese file by using json.dump: http://d.hatena.ne.jp/tatz_tsuchiya/20120227/1330325015
         # How to encode text?: http://blog.livedoor.jp/yawamen/archives/51566670.html
         f = codecs.open(self.__pathForSave + self.__dbName + ".json", 'w', "utf-8")
-        stringifiedDb = json.dump(self.__db, f, indent=4, sort_keys=True, ensure_ascii=False)
+        json.dump(self.__db, f, indent=4, sort_keys=True, ensure_ascii=False)
         f.close()
         return self
 
@@ -67,7 +68,7 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
 
     def startScraping (self):
-        for pageIdx in range(self.__pageIdxStart, self.__pageIdxEnd):
+        for pageIdx in range(self.__pageIdxStart, self.__pageIdxEnd + 1):
             soup = self.__createTextHtmlSoup(self.__targetUrl + str(pageIdx))
             title = self.__getTextTitle(soup)
             sentences = self.__getTextSentences(soup)
