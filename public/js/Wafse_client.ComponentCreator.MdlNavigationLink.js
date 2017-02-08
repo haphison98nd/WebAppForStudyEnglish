@@ -15,6 +15,7 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
 
     setMdlNavigationLinkText = function (str) {
         mdlNavigationLink.text(str);
+        return self;
     };
 
     //////////////////////////////////////////////
@@ -36,6 +37,7 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
 
     remove = function () {
         mdlNavigationLink.remove();
+        return self;
     };
     
     //////////////////////////////////////////////

@@ -18,6 +18,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
         mainContainer.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
         });
+        return self;
     };
 
     //////////////////////////////////////////////
@@ -25,6 +26,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     
     setMainMassage = function (text) {
         mainMassage.text(String(text));
+        return self;
     };
     
     //////////////////////////////////////////////
@@ -59,6 +61,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
 
     remove = function () {
         mainContainer.remove();
+        return self;
     };
     
     //////////////////////////////////////////////

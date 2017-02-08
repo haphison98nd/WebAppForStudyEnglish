@@ -14,7 +14,8 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
     appendRender = function(jQueryObj, __callback){
         appBody.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
-        });        
+        });    
+        return self;
     };
 
     //////////////////////////////////////////////
@@ -23,7 +24,8 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
     afterRender = function(jQueryObj, callback){
         appBody.after(jQueryObj).ready(function(){ 
             if (callback) callback(self); 
-        });        
+        });  
+        return self;
     };
     
     //////////////////////////////////////////////
@@ -31,6 +33,7 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
     
     clearPage = function(){
         appBody.empty();
+        return self;
     };
 
     //////////////////////////////////////////////

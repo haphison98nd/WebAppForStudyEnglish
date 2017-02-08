@@ -1,16 +1,18 @@
-Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigation, _appDataManager, _router,  _mdlCardTitleText, _mdlCardSupportingText, _callback){
+Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigation, _appDataManager, _router, _option, _callback){
     
     'use strict';
     
     const htmlTemplate_mdlSquareCard = $($('.htmlTemplate#htmlTemplate_mdlSquareCard').clone().html()),
           mdlSquareCard = htmlTemplate_mdlSquareCard,
           mdlCardTitle = htmlTemplate_mdlSquareCard.find('.mdl-card__title-text'),
+          mdlCardImgeArea = htmlTemplate_mdlSquareCard.find('.mdl-card__title'),
           mdlCardSupporting = htmlTemplate_mdlSquareCard.find('.mdl-card__supporting-text'),
           mdlButton = htmlTemplate_mdlSquareCard.find('.mdl-button')
     ;
     
-    let self, appendRender, activateAll, setMdlCardTitleText, setMdlCardSupportingText, remove,
-        appDrawer, appNavigation, appDataManager, router, mdlCardTitleText, mdlCardSupportingText, callback
+    let self, appendRender, activateAll, 
+        setMdlCardBackGroundImage, setMdlCardTitleText, setMdlCardSupportingText, remove,
+        appDrawer, appNavigation, appDataManager, router, option, callback
     ;
     
     //////////////////////////////////////////////
@@ -20,6 +22,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
         mainContainerMiddle.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
         });
+        return self;
     };
 
     //////////////////////////////////////////////
@@ -27,6 +30,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
     
     setMdlCardTitleText = function (text) {
         mdlCardTitle.text(String(text));
+        return self;
     };
     
     //////////////////////////////////////////////
@@ -34,14 +38,24 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
     
     setMdlCardSupportingText = function (text) {
         mdlCardSupporting.text(String(text));
+        return self;
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    setMdlCardBackGroundImage = function (backGroundImageUrl) {
+        mdlCardImgeArea.css({'background':"url('" + String(backGroundImageUrl) + "') no-repeat"});
+        return self;
     };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     activateAll = function(){
-        setMdlCardTitleText(mdlCardTitleText);
-        setMdlCardSupportingText(mdlCardSupportingText);
+        setMdlCardTitleText(option.titleText);
+        setMdlCardSupportingText(option.supportingText);
+        setMdlCardBackGroundImage(option.backGroundImageUrl);
         mdlButton.click(function(){
             if(callback) callback(self);
         });
@@ -54,6 +68,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
 
     remove = function () {
         mdlSquareCard.remove();
+        return self;
     };
     
     //////////////////////////////////////////////
@@ -64,8 +79,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
         appNavigation = _appNavigation;
         appDataManager = _appDataManager;
         router = _router;
-        mdlCardTitleText = _mdlCardTitleText;
-        mdlCardSupportingText = _mdlCardSupportingText;
+        option = _option;
         callback = _callback;
         activateAll();
     })();
@@ -73,6 +87,10 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:htmlTemplate_mdlSquareCard, appendRender:appendRender, remove:remove};
+    self = {    
+             jQeryObj:htmlTemplate_mdlSquareCard, appendRender:appendRender, remove:remove,
+             setMdlCardTitleText:setMdlCardTitleText, setMdlCardSupportingText:setMdlCardSupportingText, 
+             setMdlCardBackGroundImage:setMdlCardBackGroundImage
+    };
     return self;
 };

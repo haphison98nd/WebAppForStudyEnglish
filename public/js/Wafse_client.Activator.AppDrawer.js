@@ -26,6 +26,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
                 .attr('aria-hidden', 'false')
             ;   
         }, waitTimeForMdlLayoutDrawer);
+        return self;
     };
     
     //////////////////////////////////////////////
@@ -41,6 +42,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
             ;
             $('.mdl-layout__obfuscator').removeClass('is-visible');
         }, waitTimeForMdlLayoutDrawer);
+        return self;
     };
 
     //////////////////////////////////////////////
@@ -52,6 +54,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
             appNavigation.hiddenProgressSpinner();
             appDrawerButton.css({'display':'inline'});
         }, waitTimeForMdlLayoutDrawer);
+        return self;
     };
 
     //////////////////////////////////////////////
@@ -63,6 +66,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
             appNavigation.hiddenProgressSpinner();
             appDrawerButton.css({'display':'none'});
         }, waitTimeForMdlLayoutDrawer);
+        return self;
     };
 
     //////////////////////////////////////////////
@@ -72,6 +76,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
         appDrawer.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
         });        
+        return self;
     };
     
     //////////////////////////////////////////////
@@ -79,6 +84,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
 
     clearPage = function () {
         appDrawer.empty();
+        return self;
     };
 
     //////////////////////////////////////////////

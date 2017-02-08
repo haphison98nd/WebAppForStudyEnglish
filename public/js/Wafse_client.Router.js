@@ -35,7 +35,12 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             inst = '中学レベルの文型で正確にスピーディーに英文を作る能力を身につけられます '
         ;
         for (let idx = 1; idx <= 100; idx++){
-            let mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, title + idx, inst + idx, function(ss){
+            let mdlSquareCardOption = {
+                    titleText:title + idx,
+                    supportingText:inst + idx,
+                    backGroundImageUrl:'/images/syunkan-eisakubun.png'
+                },
+                mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, mdlSquareCardOption, function(ss){
                 loginAndCoreateAccount();
             });
             mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);

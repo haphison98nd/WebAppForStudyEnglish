@@ -152,6 +152,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
 
     remove = function () {
         mainContainerSmall.remove();
+        return self;
     };
     
     //////////////////////////////////////////////

@@ -12,6 +12,7 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
 
     showProgressSpinner = function () {
         progressSpinner.css({'display':'inline'});
+        return self;
     };
     
     //////////////////////////////////////////////
@@ -19,6 +20,7 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
 
     hiddenProgressSpinner = function () {
         progressSpinner.css({'display':'none'});
+        return self;
     };
 
     //////////////////////////////////////////////
