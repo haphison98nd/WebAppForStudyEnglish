@@ -1,0 +1,2062 @@
+{
+    "Part1 中学1年レベル": {
+        "this / that": {
+            "JPN": [
+                "これは新しい本です。",
+                "この辞書は新しい。",
+                "あれは大切な本ですか? - はい、そうです。",
+                "あの本は大切ですか? - いいえ、大切ではありません。",
+                "これは長くない。",
+                "あれは美しい花ではない。",
+                "この牛乳はあまり美味しくない。",
+                "これはお茶ですか、それともコーヒーですか? - コーヒーです。",
+                "あの女性はアメリカ人ですか、それともイギリス人ですか? - アメリカ人です。",
+                "あの男性は日本人ですか、それとも韓国人ですか? - 日本人です。"
+            ],
+            "ENG": [
+                "This is a new book.",
+                "This dictionary is new.",
+                "Is that an important book? - Yes, it is.",
+                "Is that book important? - No, it isn't.",
+                "This is not long.",
+                "That is not a beautiful flower.",
+                "This milk is not very tasty.",
+                "Is this tea or coffee? - It is coffee.",
+                "Is that woman American or British? - She is American.",
+                "Is that man Japanese or Korean? - He is Japanese."
+            ]
+        },
+        "人称代名詞の独立所有格": {
+            "JPN": [
+                "このおもちゃは僕のものです。",
+                "あの新しいカメラはあなたのですか?",
+                "彼女のカバンは新しい。彼のもまた新しい。",
+                "この鉛筆はあなたのですか、それとも彼女のですか?",
+                "彼らの学校は小さい。私たちのは大きい。",
+                "あの教室はあなたたちのですか?",
+                "この大きな家は彼女たちのものです。",
+                "あの小さな犬はあなたのお姉さんのペットですか?",
+                "このノートは彼のですか、彼女のですか?",
+                "あれらの自転車は彼らのものですか?"
+            ],
+            "ENG": [
+                "This toy is mine.",
+                "Is that new camera yours?",
+                "Her bag is new. His is new, too.",
+                "Is this pencil yours or hers?",
+                "Their school is small. Ours is big.",
+                "Is that classroom yours?",
+                "This big house is theirs.",
+                "Is that small dog your sister's pet?",
+                "Is this notebook his or hers?",
+                "Are those bicycles theirs?"
+            ]
+        },
+        "命令文 / Let's ～": {
+            "JPN": [
+                "この教科書を読みなさい。",
+                "板にあなたの名前を書いてください。",
+                "怒るなよ。",
+                "本を開いてはいけません。",
+                "飛び跳ねないでください。",
+                "放課後バスケをしようよ。",
+                "彼らと川に行こう。",
+                "彼女たちと食事しよう。",
+                "この箱を運びましょう。",
+                "明日京都に行こうよ。"
+            ],
+            "ENG": [
+                "Read this textbook.",
+                "Write your name on the borad, please.",
+                "Don't be angry.",
+                "Don't open your book.",
+                "Please don't jump.",
+                "Let's play basketball after school.",
+                "Let's go to the river with them.",
+                "Let's eat with them.",
+                "Let's carry this box.",
+                "Let's go to Kyoto tomorrow."
+            ]
+        },
+        "whose": {
+            "JPN": [
+                "これは誰のペンですか。",
+                "あのかばんは誰のですか?",
+                "この少年たちは誰の生徒ですか?",
+                "あれは誰の机ですか?",
+                "これらの切手は誰のですか?",
+                "あれは誰のノートですか? - 彼のです。",
+                "あのかわいい猫は誰のですが? - わたしたちのです。",
+                "これは誰の部屋ですか? - あなたのです。",
+                "あれらは誰の本ですか? - 彼らのです。",
+                "これは誰のコンビュータですか? - 彼女たちのです。"
+            ],
+            "ENG": [
+                "Whose pen is this?",
+                "Whose is that bag?",
+                "Whose students are these boys?",
+                "Whose desk is that?",
+                "Whose are these stamps?",
+                "Whose notebook is that? - It's his.",
+                "Whose is that cute cat? - It's ours.",
+                "Whose room is this? - It's yours.",
+                "Whose books are those? - They are theirs.",
+                "Whose computer is this? - It's theirs."
+            ]
+        },
+        "where": {
+            "JPN": [
+                "あなたの自転車はどこにありますか?",
+                "あなたはどこで遊びますか?",
+                "彼女の犬はどこにいますか?",
+                "彼はどこに住んでいますか?",
+                "彼らはどこにいますか?",
+                "彼らはどこでサッカーをしますか? - 公園でします。",
+                "あなたの兄はどこにいますか? - アメリカにいます。",
+                "君たちは毎日どこに行きますか? - 図書館に行きます。",
+                "雑誌(複数)はどこ? - かばんの中だよ。",
+                "マリーはどこの出身ですか? - フランスです。"
+            ],
+            "ENG": [
+                "Where is your bicycle?",
+                "Where do you play?",
+                "Where is her dog?",
+                "Where does he live?",
+                "Where are they?",
+                "Where do they play soccer? - They play it in the park.",
+                "Where is your brother? - He is in America.",
+                "Where do you go every day? - We go to library.",
+                "Where are the magazines? - They are in the bag.",
+                "Where is Marie from? - She is from France."
+            ]
+        },
+        "when": {
+            "JPN": [
+                "あなたのお兄さんの誕生日はいつですか?",
+                "彼女はいつ歌を歌いますか?",
+                "あなたのお父さんはいつ仕事に行きますか?",
+                "ハロウィンはいつですか?",
+                "あなたの子供はいつ宿題をしますか?",
+                "パーティーはいつ? - 来週の土曜だよ。",
+                "彼女たちはいつサッカーをしますか? - 毎週日曜日にします。",
+                "彼と彼のお父さんはいつキャッチボールをしますか? - 毎日します。",
+                "あなたのお父さんはいつ夕食を作りますか? - 土曜日によく作ります。",
+                "あなたはいつ彼に会いますか? - 平日会います。"
+            ],
+            "ENG": [
+                "When is your brother's birthday?",
+                "When does she sing a song?",
+                "When does your father go to work?",
+                "When is Halloween?",
+                "When does your child do his homework?",
+                "When is the party? - It is next Saturday.",
+                "When do they play soccer? - They play it every Sunday.",
+                "When do he and his father play catch? - They play it every day.",
+                "When does your father cook dinner? - He often cooks it on Saturdays.",
+                "When do you see him? - I see him on weekdays."
+            ]
+        },
+        "which": {
+            "JPN": [
+                "どちらがあなたの家ですか?",
+                "どちらが彼の自転車ですか、こちらですかそれともあちらですか?",
+                "どちらが彼女の本(複数)ですか?",
+                "どれがあなたのお母さんの車ですか?",
+                "どの鉛筆があなたのですか?",
+                "どの女の人があなたの先生ですか? - あの背の高い女の人です。",
+                "どちらが彼女の生徒ですか、こちらの子供たちですかそれともあちらの子供たちですか? - この子たちです。",
+                "どの猫が彼女のですか? - あの大きい猫です。",
+                "どちらがあなたのお気に入りの椅子ですか、こちらですかそれともあちらですか? - あちらの椅子です。",
+                "どちらが彼の好きなスポーツですか、野球ですかそれともサッカーですか? - 野球です。"
+            ],
+            "ENG": [
+                "Which is your house?",
+                "Which is his bicycle, this one or that one?",
+                "Which are her books?",
+                "Which is your mother's car?",
+                "Which pencil is yours?",
+                "Which woman is your teacher? - That tall woman is.",
+                "Which are her students, these children or those children? - These children are.",
+                "Which cat is hers? - That big cat is.",
+                "Which is your favorite chair, this one or that one? - That one is.",
+                "Which is his favorite sport, baseball or soccer? - Baseball is."
+            ]
+        },
+        "it": {
+            "JPN": [
+                "今日は寒い。",
+                "ロンドンは晴れていますか?",
+                "今、パリでは朝の9時です。",
+                "今日、東京は暑いですか?",
+                "ニュージーランドでは今夏です。",
+                "その部屋の中は暖かい。",
+                "入っておいで。ここは涼しいよ。",
+                "昼食の時間だ。",
+                "その国ではいつも涼しい。",
+                "彼の部屋の中はあまり涼しくない。"
+            ],
+            "ENG": [
+                "It is cold today.",
+                "Is it fine in London?",
+                "It is nine o'clock in the morning in Paris now.",
+                "Is it hot in Tokyo today?",
+                "It is summer in New Zealand now.",
+                "It is warm in the room.",
+                "Come in. It is cool here.",
+                "It's lunch time.",
+                "It's always cool in the country.",
+                "It isn't very cool in his room."
+            ]
+        },
+        "What time ～ ?": {
+            "JPN": [
+                "大阪は今何時ですか?",
+                "彼は何時に寝ますか?",
+                "今、パリは何時なの?",
+                "次の授業は何時に始まるのですか?",
+                "あなたの両親は毎晩何時に帰宅しますか?",
+                "あなたの家では何時に朝食を食べますか? - 7時に食べます。",
+                "今、あなたの国では何時ですか? - 夜の10時です。",
+                "あなたの妹と弟は何時に学校に行きますか? - 7時半に行きます。",
+                "彼のお姉さんは何時に起きますか? - 6時に起きます。",
+                "この授業は何時に終わりますか? - 10時45分に終わります。"
+            ],
+            "ENG": [
+                "What time is it in Osaka?",
+                "What time does he go to bed?",
+                "What time is it in Paris now?",
+                "What time does next class begin?",
+                "What time do your parents come home every evening?",
+                "What time do you have breakfast at your home? - We have it at seven o'clock.",
+                "What time is it in your country now? - It is ten o'clock at night.",
+                "What time do your sister and brother go to school? - They go to school at half past seven.",
+                "What time does his sister get up? - She gets up at six o'clock.",
+                "What time does this class end? - It ends at ten forty-five."
+            ]
+        },
+        "how": {
+            "JPN": [
+                "ご機嫌いかがですか? - ありがとう、元気です。",
+                "あなたの娘さんはどうやって学校に行きますか?",
+                "あなたのおじいさんの具合はいかがですか?",
+                "グリーンさんはどうやって会社に行きますか?",
+                "あれはどのように使うのですか?",
+                "ロンドンでは天気はいかがですか? - よく晴れています。",
+                "彼らはどのようにニューヨークに来るのですか? - 飛行機で来ます。",
+                "あなたの祖父母の具合はいかがですか? - 元気です、ありがとう。",
+                "メアリーはどんな風に歩きますか? - ゆっくり歩きます。",
+                "トムはどのように日本語を話しますか? - とても上手に話します。"
+            ],
+            "ENG": [
+                "How are you? - Fine, thank you.",
+                "How does your daughter go to school?",
+                "How is your grandfather?",
+                "How does Mr. Green go to the office?",
+                "How do I use that?",
+                "How is the weather in London? - It is very fine.",
+                "How do they come to New York? - They come by airplane.",
+                "How are your grandparents? - They are fine, thank you.",
+                "How does Mary walk? - She walks slowly.",
+                "How does Tom speak Japanese? - He speaks it very well."
+            ]
+        },
+        "How old (tall) ～ ?": {
+            "JPN": [
+                "あなたは何歳ですか? - 16歳です。",
+                "あなたのお母さんはいくつですか? - 41歳です。",
+                "あの子たちは何歳ですか? - 5歳です。",
+                "あなたの背はどれくらいですか? - 165センチ(1メートル65センチ)です。",
+                "ジョンの背はどれくらいですか? - 5フィート9インチです。",
+                "彼の背はどのくらいですか? - 2メートル以上あります。",
+                "このお城はどのくらいの古さですか? - 800年位です。",
+                "この辞書はいくらですか? - 4000円です。",
+                "この絵画はいくらですか? - 2万円です。",
+                "あの家はいくらですか? - 3000万円です。"
+            ],
+            "ENG": [
+                "How old are you? - I am sixteen years old.",
+                "How old is your mother? - She is forty-one years old.",
+                "How old are those children? - They are five years old.",
+                "How tall are you? - I am one hundred and sixty-five centimeters (one meter sixty-five centimeters).",
+                "How tall is John? - He is five feet nine inches.",
+                "How tall is he? - He is over two meters.",
+                "How old is this castle? - It is about eight hundred years old.",
+                "How much is this dictionary? - It is four thousand yen.",
+                "How much is this picture? - It is twenty thousand yen.",
+                "How much is that house? - It is thirty million yen."
+            ]
+        },
+        "these / those": {
+            "JPN": [
+                "これらは学生向けの本です。",
+                "あれらは本当の葉っぱですか? - いいえ、違います。",
+                "この少年たちは高学生です。",
+                "あの少女たちは中校生ですか? - はい、そうです。",
+                "これらの皿はとても高い。",
+                "あれらの車は新しくない。",
+                "これらは花ですか、それとも草ですか? - 草です。",
+                "あれらの家は新しいですか、それとも古いですか? - 新しいです。",
+                "この男性たちはフランス人ですか、それともドイツ人ですか? - ドイツ人です。",
+                "あの女性たちは日本人ですか、それとも中国人ですか? - 中国人です。"
+            ],
+            "ENG": [
+                "These are books for student.",
+                "Are those real leaves? - No, they aren't.",
+                "These boys are high school students.",
+                "Are those girls junior high school students? - Yes, they are.",
+                "These dishes are very expensive.",
+                "Those cars are not new.",
+                "Are these flowers or grass? - They are grass.",
+                "Are those houses new or old? - They are new.",
+                "Are these men French or German? - They are German.",
+                "Are those women Japanese or Chinese? - They are Chinese."
+            ]
+        },
+        "疑問詞主語の who": {
+            "JPN": [
+                "誰がこの公園を掃除するのですか?",
+                "誰があの部屋に住んでいますか?",
+                "誰がフランス語を上手に話しますか?",
+                "誰がこのピアノを弾くのですか?",
+                "誰がこの公園で毎日サッカーをしますか?",
+                "誰が英語を教えますか? - ブラウンさんです。",
+                "あなたの家では普通は誰が夕食を料理しますか? - 私の姉がします。",
+                "誰がこの自転車に乗りますか? - 私の兄です。",
+                "誰があの辞書を欲しがっていますか? - 多くの生徒が欲しがっています。",
+                "誰がこの机を使いますか? - 私の妹たちです。"
+            ],
+            "ENG": [
+                "Who cleans this park?",
+                "Who lives in that room?",
+                "Who speaks French well?",
+                "Who plays this piano?",
+                "Who plays soccer in this park every day?",
+                "Who teaches English? - Mr. Brown does.",
+                "Who usually cooks dinner in your family? - My sister does.",
+                "Who rides this bicycle? - My brother does.",
+                "Who wants that dictionary? - Many students do.",
+                "Who uses this desk? - My sisters do."
+            ]
+        },
+        "can": {
+            "JPN": [
+                "彼女の言うことが聞こえますか?",
+                "ジムはとても上手に日本語を話すことができます。",
+                "私はギターとバイオリンが弾けます。",
+                "私は車の運転ができません。",
+                "あなたはプールで泳げますか?",
+                "この外国人たちはお箸を使うことができますか?",
+                "彼は何カ国語を話せますか?",
+                "あなたは100メートルを12秒で走れますか?",
+                "彼女は何ができますか?",
+                "どこでゾウを見ることができますか? - アフリ力とアジアで見ることができます。"
+            ],
+            "ENG": [
+                "Can you hear her?",
+                "Jim can speak Japanese very well.",
+                "I can play the guitar and the violin.",
+                "I can't drive.",
+                "Can you swim in the pool?",
+                "Can these foreigners use chopsticks?",
+                "How many languages can he speak?",
+                "Can you run one hundred meters in twelve seconds?",
+                "What can she do?",
+                "Where can we see elephants? - We can see them in Africa and Asia."
+            ]
+        },
+        "現在進行形": {
+            "JPN": [
+                "私は今昼食を食べているところです。",
+                "あなたはフランス語を話しているのですか?",
+                "僕の妹は部屋で宿題をしています。",
+                "彼は今何をしていますか?",
+                "子供たちはグラウンドで何をしていますか?",
+                "エミリーはどこでギターを弾いているの? - 音楽室で弾いているんだよ。",
+                "彼女は何語を話しているのですか? - 英語を話しています。",
+                "君は何を食べているの? - パスタを食べてるよ。",
+                "マークとロバートは何をしているの? - キャッチボールをしてるよ。",
+                "彼はいつも本を読んでいる。"
+            ],
+            "ENG": [
+                "I am having lunch now.",
+                "Are you speaking French?",
+                "My sister is doing her homework in her room.",
+                "What is he doing now?",
+                "What are the children doing in the ground?",
+                "Where is Emily playing the guitar? - She is playing it in the music room.",
+                "What language is she speaking? - She is speaking English.",
+                "What are you eating? - I am eating pasta.",
+                "What are Mark and Robert doing? - They are playing catch.",
+                "He is always reading book."
+            ]
+        },
+        "There is (are) ～": {
+            "JPN": [
+                "その部屋には窓が四つあります。",
+                "庭には花が(何輪か)ありますか?",
+                "彼女のクラスには生徒が何人いますか?",
+                "彼の部屋には本が二冊しかない。",
+                "世界にはいくつの国がありますか?",
+                "この庭には木が一本もない。",
+                "一年は何日ですか?",
+                "この町には工場がたくさんありますか? - はい、あります。",
+                "その公園には高い木が何本かある。",
+                "このクラスには女の子が一人もいない。"
+            ],
+            "ENG": [
+                "There are four windows in the room.",
+                "Are there any flowers in the garden?",
+                "How many students are there in her class?",
+                "There are only two books in his room.",
+                "How many countries are there in the world?",
+                "There are not any trees in this garden.",
+                "How many days are there in a year?",
+                "Are there many factories in this town? - Yes, there are.",
+                "There are some tall trees in the park.",
+                "There aren't any girls in this class."
+            ]
+        },
+        "What is (are) ～ ?": {
+            "JPN": [
+                "これは何ですか? - 人形です。",
+                "あれは何ですか? - りんごです。",
+                "これは何ですか? - 皿です。",
+                "あれは何ですか? - 鳥です。",
+                "これらは何ですか? - フランスの切手です。",
+                "あの鳥たちはなんですか? - 鳩です。",
+                "あれらは何ですか? - 古い雑誌です。",
+                "あの男の人たちは何ですか? - 医者です。",
+                "あの女性たちはなんですか? - 看護師です。",
+                "あの人たちは何ですか? - 農家です。"
+            ],
+            "ENG": [
+                "What is this? - It is a doll.",
+                "What is that? - It is an apple.",
+                "What is this? - It's a dish.",
+                "What is that? - It's a bird.",
+                "What are these? - They are French stamps.",
+                "What are those birds? - They are pigeons.",
+                "What are those? - They are old magazines.",
+                "What are those men? - They are doctors.",
+                "What are those women? - They are nurses.",
+                "What are those people? - They are farmers."
+            ]
+        },
+        "人称代名詞の主格": {
+            "JPN": [
+                "私は弁護士です。",
+                "あなたは医者ですか?",
+                "彼は警官です。",
+                "彼女は教師ですか? - いいえ、違います。",
+                "私たちは学生です。",
+                "あなた方は看護師ですか?",
+                "彼らはサッカー選手です。",
+                "彼女たちは中校生ですか? - いいえ、違います。",
+                "あなた方はうれしいですか? - はい、うれしいです。",
+                "彼はおもしろい。"
+            ],
+            "ENG": [
+                "I am a lawyer.",
+                "Are you a doctor?",
+                "He is a policeman.",
+                "Is she a teacher? - No, she isn't.",
+                "We are students.",
+                "Are you nurses?",
+                "They are soccer players.",
+                "Are they junior high school students? - No, they aren't.",
+                "Are you glad? - Yes, we are.",
+                "He is fun."
+            ]
+        },
+        "人称代名詞の所有格": {
+            "JPN": [
+                "彼女は私の同級生です。",
+                "あの猫は彼のペットですか?",
+                "この子たちは私の生徒です。",
+                "あの少女たちは彼女の娘です。",
+                "これは私たちの家です。",
+                "あれはあなたがたの車ですか?",
+                "あれは彼らの教室ですか?",
+                "私の娘は大学生です。",
+                "あなたの奥さんは教師ですか?",
+                "彼女の目は黒いですか? - いいえ、違います。"
+            ],
+            "ENG": [
+                "She is my classmate.",
+                "Is that cat his pet?",
+                "These children are my students.",
+                "Those girls are her daughters.",
+                "This is our house.",
+                "Is that your car?",
+                "Is that their classroom?",
+                "My daughter is a college student.",
+                "Is your wife a teacher?",
+                "Are her eyes black? - No, they aren't."
+            ]
+        },
+        "Who is (are) ～ ?": {
+            "JPN": [
+                "この女の子は誰ですか? - 彼の妹です。",
+                "あの男の子は誰ですか? - トムです。",
+                "あの男の人たちは誰ですか? - 私の兄達です。",
+                "あの女の人たちは誰ですか? - 彼女の母と姉です。",
+                "あの背の低い男の人は誰ですか? - ブラウンさんです。",
+                "あの若い女の人は誰ですか? - スミスさんです。",
+                "あんたは誰? - ロバート・ブラックです。",
+                "私は誰? - あなたは彼女の娘だよ。",
+                "彼らは誰なの? - 僕の同級生だよ。",
+                "彼女たちは誰ですか? - 私の友達です。"
+            ],
+            "ENG": [
+                "Who is this girl? - She is his sister.",
+                "Who is that boy? - He is Tom.",
+                "Who are those men? - They are my brothers.",
+                "Who are those women? - They are her mother and sister.",
+                "Who is that small man? - He is Mr. Brown.",
+                "Who is that young woman? - She is Ms. Smith.",
+                "Who are you? - I am Robert Black.",
+                "Who am I? - You are her daughter.",
+                "Who are they? - They are my classmates.",
+                "Who are they? - They are my friends."
+            ]
+        },
+        "一般動詞": {
+            "JPN": [
+                "私は家を2軒持っています。",
+                "あなたは車を持っていますか? - いいえ、持っていません。",
+                "彼はたくさんの雑誌を持っている。",
+                "私はテニスが好きです。",
+                "あなたは魚が好きですか? - はい、好きです。",
+                "トムは野球が好きです。彼の弟も野球が好きです。",
+                "あなたは日本語を話しますか?",
+                "彼らは英語を上手に話します。",
+                "あなたのお父さんは学校で何を教えますか? - 物理を教えます。",
+                "彼は毎日サッカーをします。"
+            ],
+            "ENG": [
+                "I have two houses.",
+                "Do you have a car? - No, I don't.",
+                "He has many magazines.",
+                "I like tennis.",
+                "Do you like fish? - Yes, I do.",
+                "Tom likes baseball. His brother likes it, too.",
+                "Do you speak Japanese?",
+                "They speak English well.",
+                "What does your father teach at school? - He teaches physics.",
+                "He plays soccer every day."
+            ]
+        },
+        "how many (much) ～ ?": {
+            "JPN": [
+                "あなたはかぱんの中に辞書を何冊持っていますか?",
+                "あなたの叔母さんは車を何台持っていますか?",
+                "彼女にはいとこが何人いますか?",
+                "あなたは毎日コーヒーをどれだけ飲みますか?",
+                "彼はお金がいくら必要なのですか?",
+                "彼はいくつの言葉を話しますか? - 2カ国語を話します。",
+                "このクラスには何人の生徒がいますか? - 30人です。",
+                "ケイトには何人の兄弟姉妹がいますか? - 弟が一人に姉が二人います。",
+                "彼は毎日お茶をどのくらい飲みますか? - 4、5杯飲みます。",
+                "あなたのお姉さんは友達が何人くらいいますか? - わかりません。姉には友達が大勢います。"
+            ],
+            "ENG": [
+                "How many dictionaries do you have in your bag?",
+                "How many cars does your aunt have?",
+                "How many cousins does she have?",
+                "How much coffee do you drink every day?",
+                "How much money does he need?",
+                "How many languages does he speak? - He speaks two languages.",
+                "How many students does this class have? - It has thirty students.",
+                "How many brothers and sisters does Kate have? - She has a brother and two sisters.",
+                "How much tea does he drink every day? - He drinks four or five cups (of tea).",
+                "How many friends does your sister have? - I don't know. She has many friends."
+            ]
+        },
+        "人称代名詞の目的格": {
+            "JPN": [
+                "私は彼女のことを知っています。",
+                "あなたは彼が好きですか?",
+                "彼女はよく彼らに会います。",
+                "彼女たちはあなたのことをよく知っています。",
+                "彼はあなた達をあまり好きではありません。",
+                "彼女は私たちのことが好きですか?",
+                "あなたのお母さんは私のことを知っていますか?",
+                "彼の母はあなたたちが大好きです。",
+                "あなたの息子さんはよく彼と遊びますか?",
+                "彼女は毎日彼らのためにピアノを弾きます。"
+            ],
+            "ENG": [
+                "I know her.",
+                "Do you like him?",
+                "She often sees them.",
+                "They know you well.",
+                "He doesn't like you very much.",
+                "Does she like us?",
+                "Does your mother know me?",
+                "His mother likes you a lot.",
+                "Does your son sometimes play with him?",
+                "She plays the piano for them every day."
+            ]
+        }
+    },
+    "Part2 中学2年レベル": {
+        "過去形": {
+            "JPN": [
+                "昨日私はのどが渇いていました。",
+                "その時彼女はとても幸運でした。",
+                "突然ピーターが部屋を出てきました。",
+                "彼はいつ宿題をしたのですか?",
+                "私たちは去年ロンドンを訪れました。",
+                "彼らは朝食に何を食べましたか?",
+                "彼女らはどのように美術館に行きましたか? - バスで行きました。",
+                "電車には子供たちがたくさんいました。",
+                "一時間前君はどこにいたの? - 教室にいたよ。",
+                "彼女は僕たちにとても親切だった。"
+            ],
+            "ENG": [
+                "I was thirsty yesterday.",
+                "She was very lucky then.",
+                "Peter came out of the room suddenly.",
+                "When did he do his homework?",
+                "We visited London last year.",
+                "What did they have for breakfast?",
+                "How did they go to the museum? - She went there by bus.",
+                "There were many children in the train.",
+                "Where were you an hour ago? - I was in the classroom.",
+                "She was very kind to us."
+            ]
+        },
+        "過去進行形": {
+            "JPN": [
+                "彼女はその時バイオリンを弾いていました。",
+                "あなたはドイツ語を勉強していたのですか?",
+                "二時間前ジョンは何をしていましたか?",
+                "誰があの部屋で眠っていたのですか?",
+                "今朝あなたはケイトと話をしていましたか?",
+                "その時彼らは教授の言うことを聴いていなかった。",
+                "今日の午後君は何を読んでいたの? - 本を読んでいたよ。",
+                "その外国人は何語を話していましたか? - フランス語を話していました。",
+                "君の弟はなぜ泣いていたのですか?",
+                "その時僕はメモを取っていませんでした。"
+            ],
+            "ENG": [
+                "She was playing the violin then.",
+                "Were you studying German?",
+                "What was John doing two hours ago?",
+                "Who was sleeping in that room?",
+                "Were you talking with Kate this morning?",
+                "They were not listening to the professor then.",
+                "What were you reading this afternoon? - I was reading a book.",
+                "What language was the foreigner speaking? - He (She) was speaking French.",
+                "Why was your brother crying?",
+                "I was not taking notes then."
+            ]
+        },
+        "when節": {
+            "JPN": [
+                "家族に再会した時、彼女はとても幸せだった。",
+                "春が来るとたくさんの人が花見に行く。",
+                "昨夜帰宅した時、父はとても陽気だった。",
+                "お母さんが部屋に入ってきた時、僕は雑誌を読んでいた。",
+                "勉強する時彼女はいつもこの机を使うのですか?",
+                "君がトムに電話した時、彼は家にいましたか?",
+                "子供の時、僕の弟はあまり賢くなかった。",
+                "僕のおじは若い時英語と日本語を勉強した。",
+                "先生が教室にいる時、生徒たちは真剣だ。",
+                "君が学校から帰った時君のお母さんは何をしていましたか?"
+            ],
+            "ENG": [
+                "She was very happy when she saw her family again.",
+                "When spring comes, many people go to see the cherry blossoms.",
+                "My father was very cheerful when he got (back) home last night.",
+                "I was reading magazine when my mother came into (entered) the room.",
+                "Does she always use this desk when she studies?",
+                "Was Tom at home when you called him?",
+                "My brother was not very intelligent when he was a child.",
+                "My uncle studied English and Japanese when he was young.",
+                "When the teacher is in the classroom, the students are serious.",
+                "What was your mother doing when you came back home from school?"
+            ]
+        },
+        "一般動詞の SVC": {
+            "JPN": [
+                "彼女はとても嬉しそうだ。",
+                "彼はそのスーツを着てすてきに見えた。",
+                "その知らせを聞いた時、彼はとても驚いた。",
+                "木の葉は黄色くなった。",
+                "お母さんの髪が白髪になってきている。",
+                "その料理はとてもおいしい。",
+                "この花はいい匂いがする。",
+                "その猫はとても大きくなった。",
+                "その少年は成長して、何になりましたか?",
+                "君のお父さんは若く見えるね。"
+            ],
+            "ENG": [
+                "She looks very happy.",
+                "He looked very cool in the suit.",
+                "When he heard the news, he was very surprised.",
+                "The leaves turned yellow.",
+                "My mother's hair is turning gray.",
+                "The dish tastes very good.",
+                "This flower smells good.",
+                "The cat became very big.",
+                "What did the boy become when he grew up?",
+                "Your father looks young."
+            ]
+        },
+        "SVO + to (for)": {
+            "JPN": [
+                "お父さんは古い硬貨を僕にくれた。",
+                "彼女は一枚の紙を私たちに見せた。",
+                "それを猫にあげなさい。",
+                "エミリーがあなたにフランス語を教えるのですか?",
+                "彼はあなたに鉛筆を貸してくれましたか?",
+                "お姉さんが僕にクッキーを作ってくれた。",
+                "ブラウンさんは彼にその話をしましたか?",
+                "トムは彼らに自分の新しい自転車を見せた。",
+                "あなたは彼女にお金をいくらあげたのですか?",
+                "彼女は妹にかわいい人形を買ってあげた。"
+            ],
+            "ENG": [
+                "My father gave an old coin to me.",
+                "She showed a paper to us.",
+                "Give it to the cat.",
+                "Does Emily teach French to you?",
+                "Did he lend a pencil to you?",
+                "My sister made some cookies for me.",
+                "Did Mr. Brown tell the story to him?",
+                "Tom showed his new bicycle to them.",
+                "How much money did you give to her?",
+                "She bought a pretty doll for her sister."
+            ]
+        },
+        "SVOO": {
+            "JPN": [
+                "兄が僕に辞書を一冊くれた。",
+                "私は彼らに一枚の紙を見せた。",
+                "犬にえさを少し(いくらかのえさを)あげなさい。",
+                "あなたのお父さんがあなたに英語を教えてくれるのですか?",
+                "彼女は彼に本を貸してあげましたか?",
+                "お母さんが僕にドーナツを作ってくれた。",
+                "おばあさんが僕たちにおもしろい話をしてくれた。",
+                "ピーターは彼女に彼の新車を見せた。",
+                "彼女たちは彼女にお金をいくらかあげた。",
+                "おじいさんが彼女に素敵な人形を買ってあげた。"
+            ],
+            "ENG": [
+                "My brother gave me a dictionary.",
+                "I showed them a paper.",
+                "Give the dog some food.",
+                "Does your father teach you English?",
+                "Did she lend him a book?",
+                "My mother made me some doughnuts.",
+                "My grandmother told us an interesting story.",
+                "Peter showed her his new car.",
+                "They gave her some money.",
+                "Her grandfather bought her a nice doll."
+            ]
+        },
+        "will (単純未来)": {
+            "JPN": [
+                "私は10月に14歳になります。",
+                "明日のコンサートはとても楽しいでしょう。",
+                "その修理はそんなに難しくないでしょう。",
+                "夕食がもうじきできるわよ。",
+                "彼はいい先生になるでしょう。",
+                "彼は今夜帰って来るでしょうか?",
+                "今週末は晴れるでしょうか?",
+                "彼女の手紙は数日後に届くでしょう。",
+                "彼女たちはいつ日本に来るのでしょうか? - 来週来ます。",
+                "彼らは幸福になるでしょう。"
+            ],
+            "ENG": [
+                "I will be fourteen years old in October.",
+                "Tomorrow's concert will be a lot of fun.",
+                "The repair will not be so difficult (hard).",
+                "Dinner will be ready soon.",
+                "He will be (become) a good teacher.",
+                "Will he be back tonight?",
+                "Will it be fine this weekend?",
+                "Her letter will arrive in a few day.",
+                "When will they come to Japan? - They will come next week.",
+                "They will be happy."
+            ]
+        },
+        "will (意思未来)": {
+            "JPN": [
+                "私これからピアノを弾きます。",
+                "僕はいつかニューヨークに行くぞ。",
+                "私は彼にもう会いません。",
+                "僕が彼女の宿題を手伝うよ。",
+                "私はそんな雑誌は読みません。",
+                "僕は英語とドイツ語を身につけるぞ。",
+                "彼女のことは絶対に忘れません。",
+                "一カ月したら戻ってくるからね。",
+                "僕は明日外出しないよ。",
+                "今夜宿題を終わらせるぞ。"
+            ],
+            "ENG": [
+                "I will play the piano.",
+                "I will go to New York some day.",
+                "I will not see him again.",
+                "I will help her with her homework.",
+                "I will not read such a magazine.",
+                "I will learn English and German.",
+                "I will never forget her.",
+                "I will be back in a month.",
+                "I will not go out tomorrow.",
+                "I will finish my homework tonight."
+            ]
+        },
+        "will (依頼) / shall (申し出・誘い)": {
+            "JPN": [
+                "窓を開けてくれませんか? - いいとも。",
+                "手伝ってくれるかい? - いいですよ。",
+                "僕にノートを貸してくれない? - ごめんね、でも貸せないんだ。",
+                "みんなのためにバイオリンを弾いてくれませんか? - いいですよ。",
+                "紅茶を入れてくれるかい? - いいよ。",
+                "コーヒーをもうすこし飲みますか? - はい、お願いします。",
+                "あなたにタオルを持って来ましょうか? - はい、お願いします。",
+                "あなたに昼食を作ってあげましょうか? - いいえ、結構です。",
+                "彼らとサッカーをしようか? - うん、しよう。",
+                "公園で遊ばない? - いや、やめとこう。"
+            ],
+            "ENG": [
+                "Will you please close the window? - Sure.",
+                "Will you please help me? - All right.",
+                "Will you please lend me your notebook? - I'm sorry but I can't.",
+                "Will you please play the violin for everyone? - Certainly.",
+                "Will you please make some tea? - Sure.",
+                "Will you have some more coffee? - Yes, please.",
+                "Shall I bring you a towel? - Yes, please.",
+                "Shall I cook lunch for you? - No, thank you.",
+                "Shall we play soccer with them? - Yes, let's.",
+                "Shall we play in the park? - No, let's not."
+            ]
+        },
+        "be going to": {
+            "JPN": [
+                "私は今日の正午彼に駅前で会う予定です。",
+                "彼の飛行機は何時にロンドンに着くのですか?",
+                "誰が彼女を空港前で(車で)拾うのですか?",
+                "あなたは大学で何をするつもりですか。",
+                "あなたはどこに泊まるつもりですか? - 丘の上のホテルに泊まるつもりです。",
+                "あなたはいつアメリカを出発する予定ですか? - 来週発つ予定です。",
+                "彼女はいくつの国を訪れる予定ですか? - 6カ国の予定です。",
+                "彼は夕方にその仕事を終える予定だった。",
+                "彼らは何を食べるつもりでしたか? - イタリア料理を食べるつもりでした。",
+                "夏休みは国内をあちこち旅行して回る予定なんだ。"
+            ],
+            "ENG": [
+                "I am going to meet him in front of the station this noon.",
+                "What time is his flight going to arrive in London?",
+                "Who is going to pick her up in front of the airport?",
+                "What are you going to do college?",
+                "Where are you going to stay? - I'm going to stay at a hotel on the hill.",
+                "When are you going to leave America? - I'm going to leave next week.",
+                "How many countries is she going to visit? - She is going to visit six countries.",
+                "He was going to finish the work in the evening.",
+                "What were they going to eat? - They were going to eat Italian food.",
+                "I'm going to travel around the country during the summer vacation."
+            ]
+        },
+        "must / may": {
+            "JPN": [
+                "あなたは宿題を今晩しなければいけません。",
+                "僕は日中家にいなければなりませんか?",
+                "幼い子供は一人で料理をしてはいけません。",
+                "一日中コンピュータゲームをしていてはいけません。",
+                "トムはお年寄りたちに親切にしなければなりません。",
+                "このチーズを食べてもいいですか? - はい、いいですよ。",
+                "テレビを見てもいいですか? - いいえ、いけません。",
+                "君たちはプールで泳いでもいいですよ。",
+                "このアルバムを見てもいいですか? - はい、いいですよ。",
+                "弟とあなたの家に行ってもいいですか? - いいえ、いけません。"
+            ],
+            "ENG": [
+                "You must do your homework tonight.",
+                "Must I stay home in the daytime?",
+                "A young child must not cook alone.",
+                "You mustn't play a computer game all day.",
+                "Tom must be kind to old people.",
+                "May I eat this cheese? - Yes, you may.",
+                "May I watch TV? - No, you may not.",
+                "You may swim in the pool.",
+                "May I look at this album? - Yes, you may.",
+                "May I go to (visit) your house with my brother? - No, you may not."
+            ]
+        },
+        "have to": {
+            "JPN": [
+                "あの学校では学生たちは制服を着なくてはならない。",
+                "僕たちはこれらの参考書を読まなくてはいけませんか? - はい、そうです。",
+                "私はロシア語を話さなくてはなりませんか? - いいえ、話さなくてもいいです。",
+                "彼は車を2台洗わなくてはならない。",
+                "彼はその部屋で静かにしていなければなりませんか? - はい、そうです。",
+                "エミリーは皿を洗わなくてもよかった。",
+                "ジェーンは一人でそこに行く必要はなかった。",
+                "なぜ彼女はそんなに一生懸命勉強しなければならないのですか?",
+                "ジェイクと彼の弟は自分たちの部屋を掃除しなければならない。",
+                "彼女は何をしなければならなかったのですか? - ピアノを練習しなければなりませんでした。"
+            ],
+            "ENG": [
+                "Students have to wear uniforms in that school.",
+                "Do we have to read these reference books? - Yes, you do.",
+                "Do I have to speak Russian? - No, you don't.",
+                "He has to wash two cars.",
+                "Does he have to stay calm in the room? - Yes, he does.",
+                "Emily didn't have to wash the dishes.",
+                "Jane didn't have to go there alone.",
+                "Why does she have to study so hard?",
+                "Jake and his brother have to clean their rooms.",
+                "What did she have to do? - She had to practice the piano."
+            ]
+        },
+        "be able to": {
+            "JPN": [
+                "大学であなたは多くのことを学べるでしょう。",
+                "僕は来週ここで彼らに会うことができるでしょう。",
+                "彼女は英語を上手に話せるようになるでしょう。",
+                "僕たちは一昨日その湖で泳ぐことができました。",
+                "先週あなたは何冊の漫画本を読むことができましたか?",
+                "誰がそのクイズを解くことができましたか?",
+                "彼らはそこで蝶を一匹も捕まえることができませんでした。",
+                "僕は今度の日曜日にそこへ行けるでしょう。",
+                "その当時彼女はとても上手にバイオリンを弾くことができた。",
+                "彼はグリーンさんと英語で話すことができましたか? - はい、できました。"
+            ],
+            "ENG": [
+                "You will be able to learn many things at college.",
+                "I will be able to see them at this point next week.",
+                "She will be able to speak English well.",
+                "We were able to swim in the lake the day before yesterday.",
+                "How many comic books were you able to read last week?",
+                "Who was able to solve the quiz?",
+                "They weren't able to catch any butterflies there.",
+                "I will be able to go there next Sunday.",
+                "She was able to play the violin very well then (in those days).",
+                "Was he able to speak with Mr. Green in English? - Yes, he was."
+            ]
+        },
+        "感嘆文": {
+            "JPN": [
+                "彼女はなんと親切なのでしょう。",
+                "彼はなんと偉大な音楽家なのでしょう。",
+                "ラッキーはなんとかわいい犬なのでしょう。",
+                "この本はなんとおもしろいのでしょう。",
+                "彼はなんと背が高いのでしょう。",
+                "彼はなんと一生懸命働くのでしょう。",
+                "彼女はなんと注意深く探索するのでしょう。",
+                "昨日はなんと寒かったのでしょう。",
+                "あなたの猫はなんと大きくなったのでしょう。",
+                "それはなんとおもしろい試合だったのでしょう。"
+            ],
+            "ENG": [
+                "How kind she is!",
+                "What a great musician he is!",
+                "What a pretty dog Lucky is!",
+                "How interesting this book is!",
+                "How tall he is!",
+                "How hard he works!",
+                "How carefully she searches!",
+                "How cold it was yesterday!",
+                "How big your cat became!",
+                "What an interesting game it was!"
+            ]
+        },
+        "不定詞-名詞的用法": {
+            "JPN": [
+                "僕はいつかイタリアに行きたい。",
+                "僕の姉は去年ロシア語を勉強し始めた。",
+                "私は来年オーストラリアに行くことを決めました。",
+                "あなたは何を見たいですか?",
+                "彼は夕食を食べ始めた。",
+                "彼女の趣味は絵を描くことです。",
+                "彼の夢はイタリア中を旅行することでした。",
+                "フランス語を話すのは簡単ではありません。",
+                "オペラを見に行くことは私の趣味です。",
+                "彼女といるのはとても楽しいです。"
+            ],
+            "ENG": [
+                "I want to go to Italy some day.",
+                "My sister began to study Russian last year.",
+                "I decided to go to Australia next year.",
+                "What do you want to watch?",
+                "He began to eat dinner.",
+                "Her hobby is to draw pictures.",
+                "His dream was to travel around Italy.",
+                "To speak French is not easy.",
+                "To go to opera is my hobby.",
+                "To be with her is a lot of fun."
+            ]
+        },
+        "不定詞-副詞的用法(目的)": {
+            "JPN": [
+                "僕は本を何冊か買いに本屋に行った。",
+                "彼は美術を勉強するためにいつかイタリアに行くだろう。",
+                "僕の兄は毎週土曜日サーフィンを楽しみに海に行く。",
+                "君はジョンに会うためにここに来たのですか?",
+                "ジェームスとメアリーは昨夜夕食をしにすてきなレストランに行った。",
+                "僕の弟は新しいプラモデルを買うためにお金を貯めている。",
+                "僕は走るために明日の朝早く起きるつもりです。",
+                "来年ドイツに行くために僕のいとこは一生懸命ドイツ語を勉強している。",
+                "僕らは試験に受かるために毎日何時間も勉強しなければならない。",
+                "彼女は明日おばあさんを訪問するために京都に一人で行くだろう。"
+            ],
+            "ENG": [
+                "I went to the bookstore to buy some books.",
+                "He will go to Italy to study art some day.",
+                "My brother goes to the sea to enjoy surfing every Saturday.",
+                "Did you come here to see John?",
+                "James and Mary went to a nice restaurant to have dinner last night.",
+                "My brother is saving money to buy a new plastic model.",
+                "I am going to get up early tomorrow morning to run.",
+                "My cousin is studying German hard to go to Germany next year.",
+                "We have to study for many hours every day to pass the exam.",
+                "She will go to Kyoto alone to visit her grandmother tomorrow."
+            ]
+        },
+        "不定詞-副詞的用法(感情の原因)": {
+            "JPN": [
+                "彼女に会えてうれしいです。",
+                "あなたにまた会えてうれしかった。",
+                "彼はあなたに再び会えて喜ぶでしょう。",
+                "邪魔をしてすみません。",
+                "その大きな動物を見て彼らは驚きました。",
+                "彼の話を聴いて私達はとても喜んだ。",
+                "私達はその悪い知らせを聴いて驚いた。",
+                "あなたの教師はあなたの手紙を受け取って喜ぶでしょう。",
+                "あなたは昔の生徒に会えてうれしかったですか?",
+                "彼らはその美しい湖を見ることができてとても幸せだった。"
+            ],
+            "ENG": [
+                "I am happy to meet her.",
+                "I was happy to see you again.",
+                "He will be glad to see you again.",
+                "I am sorry to interrupt you.",
+                "They were surprised to see the big animal.",
+                "We were very delighted to hear his story.",
+                "We were sorry to hear the bad news.",
+                "Your teacher will be pleased to receive your letter.",
+                "Were you glad to see your old student?",
+                "They were very happy to look at the beautiful lake."
+            ]
+        },
+        "不定詞-形容詞的用法": {
+            "JPN": [
+                "私には今日しなければならない(するべき)仕事があります。",
+                "彼は彼女に言いたいこと(言うための何か)があった。",
+                "あなたは読む漫画本を(何冊か)持っていますか?",
+                "彼は明日私に会う時間はないでしょう。",
+                "トムは何か食べるものが欲しかったのですか?",
+                "僕は昨日何もすることがなかった。",
+                "僕はあの店で妹にあげる物を何か買うつもりだ。",
+                "彼は今日することがたくさんある。",
+                "私には住むべき家がある。",
+                "筆記用具(書くための何か)をください"
+            ],
+            "ENG": [
+                "I have work to do today.",
+                "He had something to say to her.",
+                "Do you have any comic books to read?",
+                "He won't have any time to see me tomorrow.",
+                "Did Tom want something to eat?",
+                "I didn't have anything to do yesterday.",
+                "I am going to buy something to give to my sister at that store.",
+                "He has a lot of things to do today.",
+                "I have a house to live in.",
+                "Give me something to write with."
+            ]
+        },
+        "動名詞": {
+            "JPN": [
+                "彼女は花を育てることが好きです。",
+                "あなたは酒を飲むのをやめますか。",
+                "あなたはいつ硬貨を集め始めたのですか?",
+                "絵を描くことは僕にとってとても楽しい。",
+                "車を運転することは難しい。",
+                "彼女はフランス語を話すのが得意です。",
+                "彼の趣味は珍しい昆虫を集めることです。",
+                "あなたの仕事は外国人に日本語を教えることですか?",
+                "なぜ英語を学ぶことが必要なのですか?",
+                "あなたはどんな楽器を聞くのが好きですか?"
+            ],
+            "ENG": [
+                "She likes growing flowers.",
+                "Will you stop (give up) drinking?",
+                "When did you begin (start) collecting coins?",
+                "Drawing pictures is a lot of fun for me.",
+                "Driving a car is difficult.",
+                "She is good at speaking French.",
+                "His hobby is collecting rare insects.",
+                "Is your job teaching Japanese to foreigners?",
+                "Why is learning English necessary?",
+                "What musical instrument do you like listening?"
+            ]
+        },
+        "原級比較": {
+            "JPN": [
+                "この寺はあの寺と同じくらい古い。",
+                "あの少年たちはこの少女たちと同じくらいの年齢ですか?",
+                "私の猫は犬と同じくらい大きかった。",
+                "あの試合はこの試合と同じくらいおもしろい。",
+                "これらのりんごはあれらのりんごと同じくらい甘いですか?",
+                "彼女は姉と同じくらい美しくなりました。",
+                "この車は彼の車ほど速く走らない。",
+                "君は兄と同じくらい熱心に勉強しなければならない。",
+                "私は君ほど上手には英語を話せない。",
+                "彼は今朝お母さんと同じくらい早く起きた。"
+            ],
+            "ENG": [
+                "This temple is as old as that temple (one).",
+                "Are those boys as old as these girls?",
+                "My cat was as big as a dog.",
+                "That game is as interesting as this game.",
+                "Are these apples as sweet as those apples (ones)?",
+                "She became as beautiful as her sister.",
+                "This car doesn't run as fast as his car (his).",
+                "You have to (must) study as hard as your brother does.",
+                "I can't speak English as well as you do.",
+                "He got up as early as her mother this morning."
+            ]
+        },
+        "比較級-er形": {
+            "JPN": [
+                "このみかんはあのみかんより大きい。",
+                "トムはマイクより背が高い。",
+                "あなたの車は彼女のより古いですか?",
+                "私たちは彼らより上手く歌った。",
+                "明日は今日よりずっと寒くなるでしょう。",
+                "母は叔母より若く見えます。",
+                "彼のかばんは僕のより小さそうに見えた。",
+                "誰がナンシーよりきれいですか? - ジェーンです。",
+                "あの道はこの道より広い。",
+                "富士山は阿蘇山よりずっと高い。"
+            ],
+            "ENG": [
+                "This orange is bigger than that one.",
+                "Tom is taller than Mike.",
+                "Is your car older than hers?",
+                "We sang better than they.",
+                "It will be much colder tomorrow than today.",
+                "My mother looks younger than my aunt.",
+                "His bag looked smaller than mine.",
+                "Who is prettier than Nancy? - Jane is.",
+                "That street much wider than this one.",
+                "Mt. Fuji is much higher than Mt. Asosan."
+            ]
+        },
+        "最上級-est形": {
+            "JPN": [
+                "ジョンは家族で一番背が高い。",
+                "この猫が4匹の中で一番小さい。",
+                "エベレスト山は世界で一番高い山です。",
+                "あなたの家族の中で誰が一番背が低いですか?",
+                "彼女はクラスでもっとも頭のいい生徒です。",
+                "世界で一番長い川は何ですか?",
+                "あの少女は私の学校で一番きれいだ。",
+                "あの車は3台のうちで一番新しい。",
+                "この方法が全てのうちで一番いい。",
+                "それら全てのうちで一番良い本はどれですか?"
+            ],
+            "ENG": [
+                "John is the tallest in his family.",
+                "This cat is the smallest of the four.",
+                "Mt. Everest is the highest mountain in the world.",
+                "Who is the shortest in your family?",
+                "She is the smartest student in the class.",
+                "What is the longest river in the World?",
+                "That girl is the prettiest in my school.",
+                "That car is the newest of the three.",
+                "This way is the best of all.",
+                "Which is the best book of them all?"
+            ]
+        },
+        "比較級-more": {
+            "JPN": [
+                "英語はドイツ語より役に立ちますか?",
+                "あれらの花はこれらの花より美しい。",
+                "卜ムは僕よりずっと頭が良い。",
+                "その本はあの本よりずっと難しかった。",
+                "日本ではサッカーはテニスより人気がありますか?",
+                "彼より彼の兄の方が有名だった。",
+                "健康より大切な物は無い。",
+                "彼の話は私の話よりずっとおもしろいよ。",
+                "彼の自転車は僕のより高い(高価)。",
+                "この本はあの本より役立つ。"
+            ],
+            "ENG": [
+                "Is English more useful than German?",
+                "Those flowers are more beautiful than these.",
+                "Tom is much more intelligent than I.",
+                "The book was much more difficult than that one.",
+                "Is soccer more popular than tennis in Japan?",
+                "His brother was more famous than him (he).",
+                "Nothing is more important than health.",
+                "His story is much more interesting than mine.",
+                "His bicycle is more expensive than mine.",
+                "This book is more useful than that one."
+            ]
+        },
+        "最上級-most": {
+            "JPN": [
+                "健康がもっとも大切です。",
+                "これらの花のうちでこれが一番美しい。",
+                "彼は日本でもっとも有名な俳優の一人です。",
+                "君の学校で一番きれいな女の子は誰ですか?",
+                "サッカーは世界で最も人気のあるスポーツの一つですか?",
+                "彼女のクラスでは誰が一番頭がいいですか?",
+                "この12台の車の中でこの黒い車が一番高い。",
+                "一番重要なポイントは何ですか?",
+                "一番大きなりんごが一番おいしかった。",
+                "オセロは最もおもしろいゲームの一つです。"
+            ],
+            "ENG": [
+                "Health is the most important thing.",
+                "This is the most beautiful of these flowers.",
+                "He is one of the most famous actors in Japan.",
+                "Who is the most beautiful girl in your school?",
+                "Is soccer one of the most popular sports in the world?",
+                "Who is the most intelligent in her class?",
+                "This black car is the most expensive of these twelve cars.",
+                "What is the most important point?",
+                "The biggest apple was the most delicious.",
+                "Reversi is one of the most interesting games."
+            ]
+        },
+        "比較級-副詞": {
+            "JPN": [
+                "妹は私より速く泳げます。",
+                "彼女は他の少女たちよりゆっくり話す。",
+                "彼は僕より上手にフランス語を話すことができます。",
+                "ジェームスは友人たちより早く駅に着いた。",
+                "あなたは彼女より一生懸命勉強しますか?",
+                "弟はお父さんより遅く家に帰ってきました。",
+                "今朝僕はお父さんより早く起きました。",
+                "彼は僕より注意深くそのノートを読みました。",
+                "彼女はあなたより流暢に英語を話しますか?",
+                "姉は僕よりずっと長く勉強します。"
+            ],
+            "ENG": [
+                "My sister can swim faster than me.",
+                "She speaks more slowly than other girls.",
+                "He can speak French better than me.",
+                "James got to (arrived at) the station earlier than his friends.",
+                "Do you study harder than she does?",
+                "My brother came (back) home faster than father did.",
+                "I got up earlier than my father this morning.",
+                "He read the notebook more carefully than I did.",
+                "Does she speak English more fluently than you do?",
+                "My sister studies much longer than I do."
+            ]
+        },
+        "最上級-副詞": {
+            "JPN": [
+                "家族の中では私が一番早起きです",
+                "僕のクラスでは彼が一番上手に日本語が話せます。",
+                "メアリーは4人のうちで一番ゆっくり歩きました。",
+                "彼は彼らみんなの中で一番流暢に英語を話しました。",
+                "あなたのクラスでは誰が一番一生懸命勉強しますか? - ジムです。",
+                "昨日兄は家族で一番遅く帰宅しました。",
+                "彼らみんなのうちでマイクが一番速く泳げるようになるでしょう。",
+                "あなたの家族では誰が一番長く眠りますか? - 弟です。",
+                "あの子供たちの中でピーターが一番注意深く先生の言うことを聴きました。",
+                "すべての動物の中で何が一番速く走りますか?"
+            ],
+            "ENG": [
+                "I get up (the) earliest in my family.",
+                "He can speak Japanese (the) best in my class.",
+                "Mary walked (the) most slowly of the four.",
+                "He spoke English (the) most fluently of them all.",
+                "Who studies (the) hardest in your class? - Jim does.",
+                "My brother got (back) home (the) latest in my family yesterday.",
+                "Mike will be able to swim (the) fastest of them all.",
+                "Who sleeps (the) longest in your family? - My brother does.",
+                "Peter listened to the teacher (the) most carefully of those children.",
+                "What runs (the) fastest of all animals?"
+            ]
+        },
+        "比較級、最上級を使った疑問詞の文": {
+            "JPN": [
+                "あなたとあなたのお兄さんでは、どちらが背カ清いですか?",
+                "彼の机と彼女のでは、どちらが大きいですか?",
+                "トムとジョンでは、昨夜どちらが遅く寝ましたか?",
+                "ヘレンとナンシーでは、明日どちらが早く学校に来るでしょうか?",
+                "あなた方の学校と彼らの学校では、どちらが新しいですか?",
+                "りんごとみかんでは、あなたはどちらの方が好きですか?",
+                "数学と化学では、あなたはどちらの方が好きですか? - 化学の方が好きです。",
+                "あなたのクラスでは誰が一番背が高いですか? - ロバートです。",
+                "あなたはどの科目が一番好きですか? - 数学です。",
+                "あなたの家族で、今朝誰が一番早く起きましたか? - 私です。"
+            ],
+            "ENG": [
+                "Who is taller, you or your brother?",
+                "Which is bigger, his desk or hers (her desk)?",
+                "Who went to bed later last night, Tom or john?",
+                "Who will come to school earlier tomorrow, Helen or Nancy?",
+                "Which is newer, your school or theirs?",
+                "Which do you like better, apples or oranges?",
+                "Which do you like better, mathematics or chemistry? - I like chemistry better.",
+                "Who is the tallest in your class? - Robert is.",
+                "Which subject do you like (the) best? - I like mathematics (the) best.",
+                "Who got up (the) earliest in your family this morning? - I did."
+            ]
+        },
+        "現在完了-継続": {
+            "JPN": [
+                "彼はこの町に3年住んでいます。",
+                "先週からずっと寒い。",
+                "あなたはどのくらいの間彼女を知っているのですか?",
+                "私は両親に長い間手紙を書いていません。",
+                "僕は日曜日からずっと彼に会っていない。",
+                "彼女はそのかばんを2年使っている。",
+                "お父さんは先々週からずっと忙しい。",
+                "ホワイト夫妻は1985年から日本に住んでいます。",
+                "ウィリアムは3時間自分の部屋にいる。",
+                "私たちはこの列車に4時間乗っています。"
+            ],
+            "ENG": [
+                "He has lived in this town for three years.",
+                "It has been cold since last week.",
+                "How long have you known her?",
+                "I have not written to his parents for a long time.",
+                "I haven't seen him since Sunday.",
+                "She has used the bag for two years.",
+                "My father has been busy since the week before last.",
+                "Mr. and Mrs. White have lived in Japan since 1985.",
+                "William has been in his room for three hours.",
+                "We have been on this train for four hours."
+            ]
+        },
+        "現在完了-完了": {
+            "JPN": [
+                "僕はちょうど宿題を終えたところです。",
+                "あなたはもう昼食を食べましたか?",
+                "リチャードが窓を割ってしまいました。",
+                "彼は財布をなくしてしまいました。",
+                "君達はもうそこに着きましたか?",
+                "私たちはまだ彼女からの手紙を受け取っていません。",
+                "その少年はイタリアに行ってしまいました。",
+                "ジョージとマイクはもう車を洗ってしまいました。",
+                "誰がこの箱を持ってきたのですか? - 僕です。",
+                "私たちはまだ夕食を食べていません。"
+            ],
+            "ENG": [
+                "I have just done my homwork.",
+                "Have you had (eaten) lunch yet?",
+                "Richard has broken the window.",
+                "He has lost his wallet (purse).",
+                "Have you arrived got a there yet?",
+                "We haven't received (got) a letter from her yet.",
+                "The boy has gone to Italy.",
+                "George and Mike have already washed the car.",
+                "Who has brought this box? - I have.",
+                "We haven't had (eaten) dinner yet."
+            ]
+        },
+        "現在完了-経験": {
+            "JPN": [
+                "僕は彼に二度会ったことがあります。",
+                "僕は以前にその話を聞いたことがあります。",
+                "あなたは今までにイギリスに行ったことがありますか?",
+                "私の祖母は一度も外国に行ったことがありません。",
+                "私たちは何度もこの漫画を読んだことがあります。",
+                "君は今までに卓球をしたことあるかい? - いや、ないよ。",
+                "彼女は英語で外国人と話したことが一度もない。",
+                "あなたは外車を見たことがありますか?",
+                "トムは5回、ヨーロッパに行ったことがある。",
+                "マイクは以前に日本語を習ったことがありません。"
+            ],
+            "ENG": [
+                "I have met him twice.",
+                "I have heard that story before.",
+                "Have you ever been to Britain?",
+                "My grandmother has never been abroad (to a foreign country).",
+                "We have read this comic book many times.",
+                "Have you ever tried table tennis? - No, I haven't.",
+                "She has never talked to a foreigner in English.",
+                "Have you ever seen a foreign car?",
+                "Tom has been to Europe five times.",
+                "Mike has never learned Japanese before."
+            ]
+        },
+        "現在完了進行形": {
+            "JPN": [
+                "私は1時間テレビを見ています。",
+                "彼女は2時間以上ピアノを弾いています。",
+                "君はどのくらいの間この本を読んでいるんだい?",
+                "彼らは長い間英語を学んでいるのですか?",
+                "今朝からずっと晴れだ。",
+                "数学者たちは何年もその難問を解こうとしている。",
+                "彼女は恋人を何時間も待っている。",
+                "彼は何カ月もアパートを探している。",
+                "エミリーはここで10年働いています。",
+                "あの少年は1時間以上眠っている。"
+            ],
+            "ENG": [
+                "I have been watching TV for an hour.",
+                "She has been playing the piano for more than two hours.",
+                "How long have you been reading this book?",
+                "Have they been learning English for a long time?",
+                "It has been shining since this morning.",
+                "Mathematicians have been trying to solve the difficult problem for years.",
+                "She has been waiting for his boyfriend for hours.",
+                "He has been looking for an apartment for months.",
+                "Emily has been working here for ten years.",
+                "That boy has been sleeping for over an hour."
+            ]
+        },
+        "that節": {
+            "JPN": [
+                "私は、彼女がイギリスに住んでいると思います。",
+                "あなたは、彼が今朝ここに来たことを知っていますか?",
+                "私は、彼がいつか帰って来ると信じています。",
+                "私は、あなたがまた成功することを望みます。",
+                "彼女は、妹がテレビを見ているのだと思った。",
+                "僕たちは、その話がおもしろいとは思わなかった。",
+                "明日雪が降ればいいなあ。",
+                "彼女は、その女の人が彼らの先生なのだと信じていた。",
+                "あなたはなぜ彼がアメリカに行くことを望むのですか?",
+                "彼らは、私が忙しいことを知らなかった。"
+            ],
+            "ENG": [
+                "I think that she lives in Britain.",
+                "Do you know that he came here this morning?",
+                "I believe that he will come back some day.",
+                "I hope that you will succeed again.",
+                "She thought that her sister was watching TV.",
+                "We did not think (that) the story was interesting.",
+                "I hope (that) it will snow tomorrow.",
+                "She believed (that) the woman was their teacher.",
+                "Why do you hope (that) he will go to America?",
+                "They did not know (that) I was busy."
+            ]
+        },
+        "受身-1": {
+            "JPN": [
+                "ヘレンはみんなに好かれています。",
+                "この机は毎日使われますか?",
+                "この家は彼によって作られたのではありません。",
+                "日本語は多くの国では話されません。",
+                "この日記は多くの人に読まれるでしょう。",
+                "その少年は両親に愛されていました。",
+                "この人形は紙でできているのですか? - いいえ、違います。木でできています。",
+                "ワインはブドウから作られる。",
+                "美しい歌が彼女らによって歌われました。",
+                "この漫画は誰によって書かれたのですか?"
+            ],
+            "ENG": [
+                "Helen is liked by everybody (everyone).",
+                "Is this desk used every day?",
+                "This house was not made by him.",
+                "Japanese is not spoken in many countries.",
+                "This diary will be read by many people.",
+                "The boy was loved by his parents.",
+                "Is this doll made of paper? - No, it isn't. It is made of wood.",
+                "Wine is made from grapes.",
+                "A beautiful song was sung by them.",
+                "Whom (Who) was this comic book written by."
+            ]
+        },
+        "受身-2": {
+            "JPN": [
+                "私は子供たちに好かれていません。",
+                "その動物は日本で見られますか?",
+                "これは何でできているのですか? - 紙でできています。",
+                "あなたはあなたのお母さんに叱られたことがありますか?(現在完了)",
+                "この映画はみんなに知られています。",
+                "オーストラリアでは何語が話されていますか？",
+                "そのケーキはジムに食べられてしまいました。",
+                "あれらの自転車は、毎日は使われていません。",
+                "あなたはどこで生まれたのですか? - アメリカで生まれました。",
+                "紙は木から作られます。"
+            ],
+            "ENG": [
+                "I am not liked children.",
+                "Is the animal seen in Japan?",
+                "What is this made of? -It is made of paper.",
+                "Have you ever been scolded by that your mother?",
+                "This movie is known to everyone (everybody).",
+                "What language is spoken in Australia?",
+                "The cake has been eaten by Jim.",
+                "Those bicycles are not used every day.",
+                "Where were you born? - I was born in America.",
+                "Paper is made from wood."
+            ]
+        }
+    },
+    "Part3 中学3年レベル": {
+        "従属節を導く接続詞-1": {
+            "JPN": [
+                "もし明日晴れたら、僕たちは動物園に行きます。",
+                "もし彼女が明日来なかったら、僕がその仕事をするよ。",
+                "ドイツ語を覚えたいなら、君はもっと規則的に勉強しなければならない。",
+                "風邪を引いていたので、彼女は欠席した。",
+                "雨が降っていたので、私は一日中家にいた。",
+                "とても疲れていたので、彼は泳ぎに行かないことにした(決めた)。",
+                "あなたはゲームをする前に宿題をしなければなりません。",
+                "あなたの妹は寝る前にいつも歯を磨きますか?",
+                "朝食を食べたら皿を洗ってください。",
+                "車を洗った後に雨が降り始めた。"
+            ],
+            "ENG": [
+                "If it is fine tomorrow, we will go to the zoo.",
+                "If she doesn't come tomorrow, I will do the work.",
+                "If you want to learn German, you have to study more regularly.",
+                "As she had a cold, she was absent.",
+                "I stayed (at) home all day because it was raining (rainy) .",
+                "As he was very tired, he decided not to go swimming.",
+                "You have to do your homework before you play a game.",
+                "Does your sister always brush her teeth before she goes to bed?",
+                "Please wash the dishes after you have breakfast.",
+                "It began to rain after I washed my car."
+            ]
+        },
+        "従属節を導く接続詞-2": {
+            "JPN": [
+                "僕が宿題をしている間、弟はテレビを見ていた。",
+                "公園を散歩していると(散歩している間)、彼は旧友に会った。",
+                "僕が本を読んでいる間、君はどこにいたんだい?",
+                "彼はフランスにいる間に多くのことを学んだ。",
+                "彼女が帰ってくるまでここで待っていよう。",
+                "私達はその試験に受かるまで懸命に勉強しなければならない。",
+                "僕はお母さんが帰ってくるまで家にいなければならないんです。",
+                "その石はとても重かったけれど、彼はそれをどかそうとした。",
+                "とても疲れていたけれど彼女はギターの練習をした。",
+                "とても遅かったけれど、私は出かけることにした(決めた)。"
+            ],
+            "ENG": [
+                "While I was doing my homework, my brother was watching TV.",
+                "He met an old friend while he was taking a walk in the park.",
+                "Where were you while I was reading the book?",
+                "He learned a lot of things while he was in France.",
+                "Let's wait here until she comes back.",
+                "We have to study hard until they pass the examination.",
+                "I have to stay at home until my mother come back.",
+                "Although the stone was very heavy, he tried to remove it.",
+                "Though she was very tired, she practiced the violin.",
+                "Although it was very late, I decided to go out."
+            ]
+        },
+        "間接疑問文": {
+            "JPN": [
+                "僕は彼女が何歳なのか知らない。",
+                "君はあの男の人が誰か知ってる?",
+                "彼が今どこにいるのか教えてくれますか?",
+                "その大きな箱の中には何が入っているんだろう?(wonder使用)",
+                "彼らはその少女がどこで生まれたのか知りたがっている。",
+                "何が必要か言ってくれよ。",
+                "彼は彼女がなぜ泣き始めたのかわかった。",
+                "彼はどんな食べ物が好きなのかしら?(wonder使用)",
+                "ナンシーがどのくらい日本にいるか知っていますか?",
+                "彼らはその言葉が何を意味するのか知ろうとしなかった。"
+            ],
+            "ENG": [
+                "I don't know how old she is.",
+                "Do you know who that man is?",
+                "Will you please tell me where he is now?",
+                "I wonder what is in the big box.",
+                "They want to know where the girl was born.",
+                "Please tell me what you need.",
+                "He knew why she began to cry.",
+                "I wonder what food he likes.",
+                "Do you know how long Nancy has been in Japan?",
+                "They did not try to understand what the word meant."
+            ]
+        },
+        "疑問詞 + to 不定詞": {
+            "JPN": [
+                "僕達は何と言ったらいいのかわからなかった。",
+                "彼女は英語の勉強の仕方を知りたがっている。",
+                "あなたは今何をするべきかわかっていますか?",
+                "僕はどこに行ったら良いのかわからない。",
+                "いつ集合したらいいか教えてください。",
+                "あなたはどちらのかばんを買うか決めなければならない。",
+                "彼はその機械の使い方を知っている。",
+                "あなたのお姉さんはあなたに料理の仕方を教えてくれますか?",
+                "どちらのおもちゃもおもしろそうなので、僕はどちらを買うべきかわからない。",
+                "あなたの妹のために何を買ったらいいのか教えてくれるかい?"
+            ],
+            "ENG": [
+                "We didn't know what to say.",
+                "She wants to know how to study English.",
+                "Do you know what to do now?",
+                "I don't know where to go.",
+                "Please tell me when to gather.",
+                "You must (have to) decide which bag to buy.",
+                "He is knowing how to use the machine.",
+                "Does your sister teach you how to cook?",
+                "As both toys look interesting, I don't know which to buy.",
+                "Will you please tell me what to buy for your sister?"
+            ]
+        },
+        "形式主語の it": {
+            "JPN": [
+                "英語を学ぶことはとても大切です。",
+                "外車を運転するのは簡単ですか?",
+                "その山を登るのは大変です。",
+                "その本を理解するのは難しい。",
+                "なぜ多くのことを学ぶことが必要なのですか?",
+                "私には朝早く起きるのが難しいです。",
+                "彼女には毎日花を栽培ことが大切です。",
+                "あなたには硬貨を集めるのがおもしろいのですね。",
+                "彼らには、日本語を話すことがとても簡単です。",
+                "人の名前を覚えるのは、彼には難しいのです。"
+            ],
+            "ENG": [
+                "It is very important to learn English.",
+                "Is it easy to drive a foreign car?",
+                "It is hard to climb the mountain.",
+                "It is difficult to understand the book.",
+                "Why is it necessary to learn many things?",
+                "It is difficult for me to get up early in the morning.",
+                "It is important for her to grow flowers every day.",
+                "It is interesting for you to collect coins, isn't it?",
+                "It is very easy for them to speak Japanese.",
+                "It is difficult for him to remember people's names."
+            ]
+        },
+        "SVO + to 不定詞": {
+            "JPN": [
+                "僕は君に歌を歌ってもらいたい。",
+                "両親は僕に毎日勉強しろと言います。",
+                "彼はあなたに数学を教えてくれるよう頼みましたか?",
+                "先生は生徒たちに一生懸命勉強するように言った。",
+                "彼女は彼にすぐ来てくれと頼んだ。",
+                "私はあなたに彼女に会って欲しいのです。",
+                "彼女はあなたに彼女の息子さんに英語を教えてもらいたがっています。",
+                "彼女は彼にその窓を開けないようにと言いました。",
+                "私は彼らにそこに行かないようにと頼んだ。",
+                "俺はお前に遅れるなと言ったよな。"
+            ],
+            "ENG": [
+                "I want you to sing a song.",
+                "My parents tell me to study every day.",
+                "Did he ask you to teach him mathematics?",
+                "The teacher told the students to study hard.",
+                "She asked him to come at once.",
+                "I want you to see her.",
+                "She wants you to teach English to her son.",
+                "She told him not to open the window.",
+                "I asked them not to go there.",
+                "I told you not to be late, didn't I?"
+            ]
+        },
+        "SVOC": {
+            "JPN": [
+                "私たちはその猫をタマと呼びます。",
+                "彼らは息子をジョンと名づけました。",
+                "あなたたちは彼女をリーダーにしたのですか?",
+                "彼はあなたを何と呼びますか?",
+                "あなたの成功は彼女を喜ばせるでしょう。",
+                "なぜトムは怒ったのですか(何がトムを怒らせたのですか)?",
+                "彼女は自分の部屋をきれいにしておく。",
+                "なせ.あなたは壁を青く塗ったのですか?",
+                "あなた方はこれをドイツ語で何と呼びますか?",
+                "その知らせは彼らを幸せにした。"
+            ],
+            "ENG": [
+                "We call the cat Tama.",
+                "They named their son John.",
+                "Did you make her your leader?",
+                "What does he call you?",
+                "Your success will make her happy.",
+                "What made Tom angry?",
+                "She keeps her room clean.",
+                "Why did you paint the walls blue?",
+                "What do you call this in German?",
+                "The news made them happy."
+            ]
+        },
+        "現在分詞修飾": {
+            "JPN": [
+                "眠っている(その)猫はかわいい。",
+                "ゆりかごの中で眠っている(その)赤ちゃんはとてもかわいかった。",
+                "あなたはその飛んでいる鳥が見えますか?",
+                "校庭を走っている少年たちは彼女の生徒たちでした。",
+                "フランス語を話しているその少女は誰ですか?",
+                "彼には外国で暮らしている祖母がいるのですか?",
+                "あなたは眠っているウサギを見たことがありますか?",
+                "私は海を泳いでいる北極熊を一度も見たことがありません。",
+                "あなたはあの角に立っている女の子を知っていますか?",
+                "ギターを弾いている女性は彼のお姉さんでした。"
+            ],
+            "ENG": [
+                "The sleeping cat is cute.",
+                "The baby sleeping in the cradle was very cute.",
+                "Can you see the flying bird?",
+                "The boys running in the school playground were her students.",
+                "Who is the girl speaking French?",
+                "Does he have an grandmother living abroad (in a foreign country)?",
+                "Have you ever seen a sleeping rabbit?",
+                "I have never seen a polar bear swimming in the sea.",
+                "Do you know the girl standing at that corner?",
+                "The woman playing the guitar was his sister."
+            ]
+        },
+        "過去分詞修飾": {
+            "JPN": [
+                "あの壊れた時計を見なさい。",
+                "エドに壊された時計は明日直されるでしょう。",
+                "私は中古車を買うつもりです。",
+                "これは有名な画家に使われた部屋です。",
+                "あなたは英語で書かれた本を読んだことがありますか?",
+                "私の兄はドイツ製の車を買いたがっています。",
+                "これは多くの人に愛されている建物なのですか?",
+                "英語は世界中で話される言語です。",
+                "僕に焼きりんごをいくつかください。",
+                "彼はお母さんが焼いた(お母さんに焼かれた)アップルパイを美味しく食べた(楽しんだ)。"
+            ],
+            "ENG": [
+                "Look at that broken clock.",
+                "The clock broken by Ed will be fixed tomorrow.",
+                "I am going to buy a used car.",
+                "This is a room used by a famous artist.",
+                "Have you ever read a book written in Russian?",
+                "My brother wants to buy a car made in Germany.",
+                "Is this a building loved by many people?",
+                "English is a language spoken in the world.",
+                "Give me some cooked apple.",
+                "He enjoyed the apple pie baked by his mother."
+            ]
+        },
+        "関係代名詞・主格(人)": {
+            "JPN": [
+                "彼には硬貨を集めるのが好きな友達がいます。",
+                "ベンチに座っている人たちが見えますか?",
+                "あの学校には、外国で生まれた生徒がたくさんいます。",
+                "動物が好きなその少年は獣医になりたがっている。",
+                "君は昨日僕たちに話しかけた女の人を覚えているかい?",
+                "毎晩夜更かしするその少女は、よく学校に遅刻する。",
+                "彼女は、化学を勉強している大学生ですか?",
+                "この絵を描いた画家は誰ですか?",
+                "ピアノを弾いている女性はあなたのお母さんですか?",
+                "一生懸命勉強しているその学生はじきにドイツ語が話せるようになるでしょう。"
+            ],
+            "ENG": [
+                "He has a friend who (that) likes collecting coins.",
+                "Can you see the people who (that) are sitting on the bench?",
+                "In that school, there are many students who (that) were born abroad.",
+                "The boy who (that) likes animals wants to be a veterinarian (vet) .",
+                "Do you remember the woman who (that) spoke to us yesterday?",
+                "The girl who (that) stays up late every night is often late for school.",
+                "Is she a college student who (that) studies chemistry?",
+                "Who is the artist who (that) drew this picture?",
+                "Is the woman who (that) is playing the piano your mother?",
+                "The student who (that) is studying hard will soon be able to speak German."
+            ]
+        },
+        "関係代名詞・主格(人以外)": {
+            "JPN": [
+                "彼はしっぽの短い犬を飼っている。",
+                "これは4時に出発する電車ですか?",
+                "あれはジョンに作られた机です。",
+                "その大工さんに作られた家具はとても丈夫です。",
+                "うちの庭にやってくる猫はいつもお腹をすかせている。",
+                "その店のそばに建っている建物は何ですか?",
+                "魚のように見える雲が見えるかい?",
+                "その作家に描かれた(その)絵は多くの人に見られるでしょう。",
+                "昨日開店したレストランに行こう。",
+                "子供たちは雪でおおわれた丘で遊んだ。"
+            ],
+            "ENG": [
+                "He has a dog which (that) has a small tail.",
+                "Is this a train which (that) leaves at tour o'clock?",
+                "That is a desk which (that) was made by John.",
+                "The furniture which (that) was made by the carpenter is very strong.",
+                "The cat which (that) comes to our garden is always hungIy.",
+                "What is the building which (that) stands near the shop?",
+                "Can you see the cloud which (that) looks like a fish?",
+                "The picture which (that) was drawn by the artist will be watch by many people.",
+                "Let's go to the restaurant which (that) opened yesterday.",
+                "The children played on the hill which (that) was covered with snow."
+            ]
+        },
+        "関係代名詞・所有格 whose と of which": {
+            "JPN": [
+                "彼女にはお父さんがパイロットである友達がいます。",
+                "頂上が雪でおおわれている山が見える",
+                "髪が長いあの少女がキャサリンです。",
+                "趣味がサーフィンをすることであるその男性は、よく海に車で行く。",
+                "お母さんが韓国人のその少年は韓国語を話せますか?",
+                "車が故障してしまったその男性は、バスで仕事に行った。",
+                "屋根が赤色のあの家を見てください。",
+                "私たちは窓の大きな部屋で勉強したいの。",
+                "僕は本屋で題名が興味深い本を見つけた。",
+                "あの庭の大きな家は僕のおじさんのです。"
+            ],
+            "ENG": [
+                "She has a friend whose father is a pilot.",
+                "I can see the mountain the top of which is covered with snow.",
+                "That girl whose hair is long is Catherine.",
+                "The man whose hobby is surfing often goes to the sea by car.",
+                "Can the boy whose mother is Korean speak Korean?",
+                "The man whose car broke down went to work by bus.",
+                "Please look at that house the roof of which is red.",
+                "We want to study in a room the window of which is big.",
+                "At the bookstore, I found a book the title of which was interesting.",
+                "That house the garden of which is big is my uncle's."
+            ]
+        },
+        "関係代名詞・目的格(人)": {
+            "JPN": [
+                "あれが彼女が尊敬している作家です。",
+                "マイクはエミリーが一番好きな男の子ですか?",
+                "彼はジェーンが愛した男性ではありませんでした。",
+                "僕らが今朝会った男性は有名なピアニス卜です。",
+                "彼女が教える生徒たちは頭が良いですか?",
+                "私が手助けした老人はバス停に行きたがっていました。",
+                "あれが、彼女が会いたがっている男の子ですか?",
+                "あなたが招待した人たちはもう出発しましたか?",
+                "彼女は誰もが知っている作家です。",
+                "私の知っているあるフランス人はとても上手に日本語を話します。"
+            ],
+            "ENG": [
+                "That is the writer (whom / that) she respects.",
+                "Is Mike the boy (whom / that) Emily likes (the) best?",
+                "He wasn't the man (whom / that) Jane loved.",
+                "The man (whom / that) we met this morning is a famous pianist.",
+                "Are the students (whom / that) she teaches smart (clever)?",
+                "The old man (whom / that) I helped wanted to go to the bus stop.",
+                "Is that the boy (whom / that) she wants to meet?",
+                "Have the people (whom / that) you invited left yet?",
+                "She is a writer (whom / that) everybody knows.",
+                "An Frenchman (whom / that) I know speaks Japanese very well."
+            ]
+        },
+        "関係代名詞・目的格(人以外)": {
+            "JPN": [
+                "これは彼が描いた絵です。",
+                "あなたは彼が毎日歌う歌を知っていますか?",
+                "これらは彼がとった写真ではありません。",
+                "私が昨夜見た映画はとてもつまらなかった。",
+                "昨日彼女が焼いたパイ(複数)は美味しかった。",
+                "あの外国人が話している言葉はドイツ語ですか?",
+                "彼女が書いたその物語は多くの人に読まれるでしょう。",
+                "トムが先月買った中古車は新しく見えますか?",
+                "彼が読みたがっている本は希少ですか?",
+                "彼女が3年間勉強している言語は何ですか?"
+            ],
+            "ENG": [
+                "This is a picture (which / that) he drew.",
+                "Do you know the song (which / that) he sings every day?",
+                "These are not the pictures (which / that) he took.",
+                "The movie (which / that) I saw last night was very unexciting.",
+                "The pies (which / that) she baked yesterday were delicious.",
+                "Is the language (which / that) that foreigner is speaking Russian?",
+                "The story (which / that) she wrote will be read by many people.",
+                "Does the used car (which / that) Tom bought last month look new?",
+                "Is the book (which / that) he wants to read rare?",
+                "What is the language (which / that) she has been studying for three years?"
+            ]
+        },
+        "先行詞を含む関係代名詞 what": {
+            "JPN": [
+                "私は彼女の言ったことが理解できなかった。",
+                "それが、彼が望むことなのですか?",
+                "彼女について知っていることを教えてもらえる?",
+                "彼女はこういうふうに言ったのです(これが彼女の言ったことです)。",
+                "彼女がそこで見たのは興味深いものだった。",
+                "彼らがしたことは間違っていた。",
+                "私が予期しないことが起こった。",
+                "君がしなければならないのは早寝することだ。",
+                "君のご両親が君にして欲しいことはもっと頻繁に連絡を取ることだよ。",
+                "あの少年は言行一致しない(言うこととやることが遣う)。"
+            ],
+            "ENG": [
+                "I could not understand what she said.",
+                "Is that what he wants?",
+                "Will you please tell me what you know about her?",
+                "This is what she said.",
+                "What she saw there was surprising.",
+                "What they did was wrong.",
+                "What I didn't expect happened.",
+                "What you have to do is (to) go to bed early.",
+                "What your parents want you to do is (to) contact them more often.",
+                "What that boy says is different from what he does."
+            ]
+        },
+        "too ～ to …": {
+            "JPN": [
+                "彼女はあまりに疲れていて歩くことができない。",
+                "私は忙しすぎて泳ぎに行くことができません。",
+                "彼は一人で旅行するには幼すぎる。",
+                "その学生は眠すぎてノートをとることができなかった。",
+                "彼は年をとりすぎていて働けない。",
+                "このお茶は濃すぎて僕は飲めない。",
+                "教授は速く話しすぎて、生徒たちは理解できなかった。",
+                "その本は難しすぎて彼らは理解できないでしょう。",
+                "そのパスワードは長すぎて彼女は覚えられなかった。",
+                "この料理は甘すぎて私は食べられません。"
+            ],
+            "ENG": [
+                "She is too tired to walk.",
+                "I am too busy to go swiming.",
+                "He is too young to travel alone.",
+                "The student was too sleepy to take notes.",
+                "He is too old to work.",
+                "This tea is too strong for me to drink.",
+                "The professor spoke too fast for the students to understand.",
+                "The book will be too difficult for them to understand.",
+                "The password was too long for her to remember.",
+                "This dish is too sweet for me to eat."
+            ]
+        },
+        "enough ～ to …": {
+            "JPN": [
+                "君は保護者から独立していい年だ。",
+                "彼は親切にも僕を手伝ってくれた。",
+                "リチャードとアンはまだ結婚できる年齢ではない。",
+                "彼女は働かないで暮らしていけるほど豊かだ。",
+                "その部屋は本を読むのに十分明るい。",
+                "川の水は十分に温かくて彼らは泳ぐことができた。",
+                "この家は12人の人が暮らせる大きさだ。",
+                "彼女はバレーボールの選手になるのに十分な背丈になるでしょう。",
+                "その棚は(十分に)軽いので女性でも運べる。",
+                "この問題は(十分に)やさしいので子供でも解ける。"
+            ],
+            "ENG": [
+                "You are old enough to be independent of your protector.",
+                "He was kind enough to help me.",
+                "Richard and Ann are not old enough to get married.",
+                "She is rich enough to live without working.",
+                "It is light enought to in the room to read a book.",
+                "The water of the river was warm enough for them to swim.",
+                "This house is big enough for twelve people to live in.",
+                "She will be tall enough to be a volleyball player.",
+                "The shelf is light enough for a woman to carry.",
+                "This question is easy enough for children to solve."
+            ]
+        },
+        "so ～ that …": {
+            "JPN": [
+                "彼女はとても親切なので、みんな彼女のことが好きだ。",
+                "その歌手はとてもハンサムなので女性に非常に人気がある。",
+                "一昨日はとても寒かったので僕らは外出しなかった。",
+                "その映画はとてもおもしろくて僕は4回も見た。",
+                "この映画は長すぎて、最後まで見ることができる人はほとんどいない。",
+                "その問題はすごく難しかったので私は解くことを諦めた。",
+                "彼はとても興奮していたので眠ることができなかった。",
+                "その演説はとても退屈だったので、僕たちは皆眠ってしまった。",
+                "彼女はとても忙しくてお母さんを手伝えうことができなかった。",
+                "あの車はすごく高いので君には買えない。"
+            ],
+            "ENG": [
+                "She is so kind that everyone likes her.",
+                "The singer is so good-looking that he is very popular among women.",
+                "It was so cold the day before yesterday that we did not go out.",
+                "The movie was so interesting that I saw it tour times.",
+                "This movie is so long that few people can see it till the end.",
+                "The question was so difficult that I gave up solving it.",
+                "He was so excited that he could not sleep.",
+                "The speech was so boring that we all fell asleep.",
+                "She was so busy that she could not help her mother.",
+                "That car is so expensive that you can't buy it."
+            ]
+        },
+        "原型不定詞・知覚": {
+            "JPN": [
+                "あなたは彼女があの店に入るのをよく見かけますか?",
+                "私は、彼らが部屋を掃除するのを一度も見たことがない。",
+                "大学生たちは教授が説明するのを注意深く聴いた。",
+                "その老人は僕がドアを聞けるのを(じっと)見た。",
+                "私は名前を呼ばれるのを聞きました。",
+                "あなたはついさっき家が揺れるのを感じましたか?",
+                "私たちは彼女が見事にギターを弾くのを聴いた。",
+                "僕はあの飛行機が着陸するのを見たい。",
+                "彼女は妹が部屋を出る(去る)のに気づいた。",
+                "彼女が歌うのを聴いてごらん。"
+            ],
+            "ENG": [
+                "Do you often see her go into the store?",
+                "I have never seen them clean the room.",
+                "The college students listened carefully to the professor explain.",
+                "The old man watched me open the door.",
+                "I heard my name called.",
+                "Did you feel the house shake just now?",
+                "We listened to her play the guitar beautifully.",
+                "I want to see the plane land.",
+                "She noticed her sister leave the room.",
+                "Listen to her sing."
+            ]
+        },
+        "原型不定詞・使役": {
+            "JPN": [
+                "彼の父は彼に毎日英語を勉強させた。",
+                "君は彼女に君の部屋を掃除させたのかい?",
+                "君におもしろい映画を見せてあげよう。",
+                "彼女はなぜ彼らに自分のパソコンを使わせてあげたのですか?",
+                "彼は秘書にメモをとってもらった。",
+                "彼女はウェイターに紅茶を一杯持ってきてもらった(持ってこさせた)。",
+                "誰がマークにそんなことをさせたんだ?",
+                "彼はお母さんにジュースを入れてもらった(入れさせた)。",
+                "あなたは娘さんを一人で外国に行かせてあげるつもりですか?",
+                "彼女はその少女をそこで待たせた。"
+            ],
+            "ENG": [
+                "His father made him study English every day.",
+                "Did you make her clean your room?",
+                "I will let you look at an interesting movie.",
+                "Why did she let them use her personal computer?",
+                "He had his secretary make notes.",
+                "She had the waiter bring a cup of tea.",
+                "Who made Mark do such a thing?",
+                "He had his mother make some juice.",
+                "Are you going to let your daughter go abroad alone?",
+                "She made the girl wait there."
+            ]
+        },
+        "関係副詞・where": {
+            "JPN": [
+                "あれは私が生まれた村です。",
+                "僕たちが釣りをした湖はとても美しかった。",
+                "彼らがよくサッカーをする公園は、この近くです。",
+                "これが、彼らが寝る部屋なのですか?",
+                "彼女は雪がたくさん降る国で育った。",
+                "僕らが先週行った博物館はとても大きかった。",
+                "彼がその本を買った書店はどこにあるのですか?",
+                "あれは彼が英語を教えている学校ですか?",
+                "ここが、私がその小説を書いた場所です。",
+                "僕たちは何か飲みものを買える店に行きたい。"
+            ],
+            "ENG": [
+                "That is the village where I was born.",
+                "The lake where we fished was very beautiful.",
+                "The park where they often play soccer is near here.",
+                "Is this the room where they sleep?",
+                "She grew up in a country where it snowed a lot.",
+                "The museum where we went last week was very big.",
+                "Where is the bookstore where he bought the book?",
+                "Is that the school where he teaches English?",
+                "This is the place where I wrote the novel.",
+                "We want to go to a store where we can buy something to drink."
+            ]
+        },
+        "関係副詞・when": {
+            "JPN": [
+                "1月は雪がたくさん降る月です。",
+                "木曜日は彼女がピアノを練習する日です。",
+                "彼がフランスに行った年は1990年でした。",
+                "僕は彼女に初めてあった日を覚えている。",
+                "彼女が毎年旅行する季節は何ですか?",
+                "彼は初めて車を運転した日を決して忘れないでしょう。",
+                "4月は日本で桜が咲く月です。",
+                "彼らがここにやってくる時間を教えてくれますか?",
+                "彼のお父さんがゴルフを楽しむ日は日曜日です。",
+                "バスが到着する時間を知っていますか?"
+            ],
+            "ENG": [
+                "January is the month when it snows a lot.",
+                "Thursday is the day when she practices the piano.",
+                "The year when he went to France was 1990.",
+                "I remember the day when I first met her.",
+                "What is the season when she travels every year?",
+                "He will never forget the day when he drove a car for the first time.",
+                "April is the month when cherry blossoms out in Japan.",
+                "Will you please tell me the time when They will come here?",
+                "The day when his father enjoys playing golf is Sunday.",
+                "Do you know the time when the bus will arrive?"
+            ]
+        }
+    }
+}
