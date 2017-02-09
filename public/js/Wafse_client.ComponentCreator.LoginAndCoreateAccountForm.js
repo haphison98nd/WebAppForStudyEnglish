@@ -42,8 +42,12 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     //////////////////////////////////////////////
     
     activateTextInput = function(){
-        userNameInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userName')));
-        passWordInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')));
+        if (appDataManager.getItem('View.LoginAndCoreateAccount.userName')){
+            userNameInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userName')));
+        }
+        if (appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')){
+            passWordInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')));
+        }
     };
 
     //////////////////////////////////////////////
