@@ -29,7 +29,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 appDrawer.appendRender(mdlNavigationLink.jQeryObj);
             }
             
-            appDrawer.openDrawer().openDrawer();
+            appDrawer.openDrawer();
         };
           
         if (titleText){

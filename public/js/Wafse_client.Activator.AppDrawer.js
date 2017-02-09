@@ -10,7 +10,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
         showDrawerButton, hiddenDrawerButton, appendRender, clearPage,
         waitTimeForMdlLayoutDrawerButton = 3000,
         waitTimeForMdlLayoutDrawer = waitTimeForMdlLayoutDrawerButton,
-        isDrawerOpening = false,
+        isDrawerOpen = false,
         appNavigation, appDataManager
     ;
     
@@ -19,19 +19,17 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
 
     openDrawer = function (){
         appNavigation.showProgressSpinner();
-        isDrawerOpening = true;
-        
         setTimeout(function(){
             appNavigation.hiddenProgressSpinner();
-            if (!isDrawerOpening){
+            if (!isDrawerOpen){
                 appDrawerButton.click();
+                isDrawerOpen = true;
             }
             $('mdl-layout__drawer')
                 .addClass('is-visible')
                 .attr('aria-hidden', 'false')
             ; 
             $('.mdl-layout__obfuscator').removeClass('is-visible');
-            isDrawerOpening = false;
         }, waitTimeForMdlLayoutDrawer);
         return self;
     };
@@ -43,6 +41,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
         appNavigation.showProgressSpinner();
         setTimeout(function(){
             appNavigation.hiddenProgressSpinner();
+            isDrawerOpen = false;
             $('.mdl-layout__drawer')
                 .removeClass('is-visible')
                 .attr('aria-hidden', 'true')
