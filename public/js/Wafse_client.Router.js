@@ -180,10 +180,11 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         appBody = _appBody;
         appNavigation = _appNavigation;
         appDrawer = _appDrawer;
-        $(window).on('beforeunload', function(e) {
+
+        window.onbeforeunload = function () {
             appDataManager.save();
-            return '';
-        });
+        };
+        
         $(window).on('popstate', function(event){
             console.log('event.originalEvent.state: ' + event.originalEvent.state);
             try {

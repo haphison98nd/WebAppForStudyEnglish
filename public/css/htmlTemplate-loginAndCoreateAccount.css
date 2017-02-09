@@ -1,6 +1,6 @@
 /* mdl theme .css */
 .demo-layout-transparent {
-  background: url('../images/background-photo.jpg') center / cover;
+  background: url('../images/background-photo.png') center / cover;
 }
 .demo-layout-transparent .mdl-layout__header,
 .demo-layout-transparent .mdl-layout__drawer-button {
@@ -18,7 +18,11 @@
 }
 
 .mdl-button.lightBlueText{
-    color: #61b5ff;
+    color: #e36c6c;
+}
+
+tbody tr{
+    cursor: pointer;
 }
 
 /* mdl card */
