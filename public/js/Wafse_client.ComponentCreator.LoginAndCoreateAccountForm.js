@@ -42,8 +42,8 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     //////////////////////////////////////////////
     
     activateTextInput = function(){
-        userNameInput.val(String(appDataManager.getItem('LoginAndCoreateAccount.userName')));
-        passWordInput.val(String(appDataManager.getItem('LoginAndCoreateAccount.userPassword')));
+        userNameInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userName')));
+        passWordInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')));
     };
 
     //////////////////////////////////////////////
@@ -60,8 +60,8 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                     success: function(authorizationResult){
                         appNavigation.hiddenProgressSpinner();
                         if (authorizationResult.status === 'success'){ 
-                            appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
-                            appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
+                            appDataManager.setItem('View.LoginAndCoreateAccount.userName', String(userNameInput.val()));
+                            appDataManager.setItem('View.LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
                             router['#textSelectMenu']();
                             console.log(authorizationResult.message);
                         } else if(authorizationResult.status  === 'userNameError'){ 
@@ -94,8 +94,8 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                         success: function(createAccountResult){
                             appNavigation.hiddenProgressSpinner();
                             if (createAccountResult.status === 'success'){ 
-                                appDataManager.setItem('LoginAndCoreateAccount.userName', String(userNameInput.val()));
-                                appDataManager.setItem('LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
+                                appDataManager.setItem('View.LoginAndCoreateAccount.userName', String(userNameInput.val()));
+                                appDataManager.setItem('View.LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
                                 router['#textSelectMenu']();
                                 console.log(createAccountResult.message);
                             } else if(createAccountResult.status  === 'error'){ 

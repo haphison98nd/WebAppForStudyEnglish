@@ -57,16 +57,21 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
             innerObjKey = null,
             innerObjValue = null
         ;
-
+        
         (function searchObjectKeyLoop (obj, _keys, loopIdx) {
-            const _isKeyExist = obj.hasOwnProperty(_keys[loopIdx]);            
+            
+            try {
+                const _isKeyExist = obj.hasOwnProperty(_keys[loopIdx]);            
 
-            if(_isKeyExist){
-                innerObjKey = obj;
-                innerObjValue = obj[_keys[loopIdx]];
-                searchObjectKeyLoopCount++
-                searchObjectKeyLoop(innerObjValue, _keys, searchObjectKeyLoopCount);
-            } else {
+                if(_isKeyExist){
+                    innerObjKey = obj;
+                    innerObjValue = obj[_keys[loopIdx]];
+                    searchObjectKeyLoopCount++
+                    searchObjectKeyLoop(innerObjValue, _keys, searchObjectKeyLoopCount);
+                } else {
+                    return 0;
+                }
+            } catch (e) {
                 return 0;
             }
         })(object4LocalStrage, keys, searchObjectKeyLoopCount);

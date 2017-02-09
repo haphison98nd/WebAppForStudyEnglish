@@ -1,5 +1,5 @@
 
-var Wafse_server = function(){
+const Wafse_server = function(){
     
     'use strict';
 
@@ -19,7 +19,8 @@ var Wafse_server = function(){
               userDb     = require('./myNodeModules/UserDataBaseProcessor.js'),
               PORT       = process.env.PORT || 3000,
               rootDir    = 'public',
-              textList = extendedFs.readFileSync('./TextDB/TextList.json', 'utf-8')
+              textList = extendedFs.readFileSync('./TextDB/TextList.json', 'utf-8'),
+              syunkanEisakubunDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/SyunkanEisakubun/Db.json')
         ;
         
         let dataForHttpRes = null;
@@ -57,7 +58,7 @@ var Wafse_server = function(){
             }
             
         });
-        
+
         app.get('/textList', function(req, res){
             res.writeHead(200, {'Content-Type':'application/json'});
             res.end(textList);
@@ -97,6 +98,26 @@ var Wafse_server = function(){
                 res.send({status : 'success', message: 'ようこそ，' + String(dataForCreateAccount.userName) + ' さん!'});
             } else { 
                 res.send({status : 'error', message: '既に登録されているユーザです'});
+            }
+        });
+        
+        app.post('/textPartNameList', function(req, res){
+            let dataForTextPartNameList = req.body;
+            
+            if (dataForTextPartNameList.titleText === 'どんどん話すための瞬間英作文トレーニング'){
+                res.writeHead(200, {'Content-Type':'application/json'});
+                res.end(JSON.stringify({data:syunkanEisakubunDb.getTextPartNameList()}));
+                res.send(syunkanEisakubunDb.getTextPartNameList());
+            }
+        });
+        
+        app.get('/textPartNameList/:textName/:textPartName', function(req, res){
+            // console.log(syunkanEisakubunDb.getTextPartNameList());
+            // console.log(syunkanEisakubunDb.getTextPageNameList('Part1 中学1年レベル'));
+            // console.log(syunkanEisakubunDb.getPageContents('原型不定詞・使役'));
+            if (req.params.textName === 'SyunkanEisakubun'){
+                res.writeHead(200, {'Content-Type':'application/json'});
+                res.end(JSON.stringify({data:syunkanEisakubunDb.getTextPageNameList(req.params.textPartName)}));
             }
         });
         

@@ -14,9 +14,12 @@ const Wafse_client = {
         MdlSquareCard:null
     },
     appDataTemplate:{
-        LoginAndCoreateAccount:{
-            userName:'fun',
-            userPassword:'fun'            
+        View:{
+            LoginAndCoreateAccount:{
+                userName:'fun',
+                userPassword:'fun'            
+            },
+            TextPartNameList:null
         }
     },
     Router:null,

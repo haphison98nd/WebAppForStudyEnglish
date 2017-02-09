@@ -2,27 +2,53 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, dummy, textSelectMenu, loginAndCoreateAccount, start,
+    let self, textPartNameList, textSelectMenu, loginAndCoreateAccount, start,
         appBody, appNavigation, appDrawer, appDataManager
     ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    dummy = function () {
-        history.pushState('#dummy', 'dummy', '#dummy');
-        appBody.clearPage();
-        appDrawer.clearPage();
-        appDrawer.showDrawerButton();
-        for (let idx = 1; idx <= 100; idx++){
-            let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, 'Button ' + idx, function(s){
-                console.log(appDataManager.getItem('LoginAndCoreateAccount.userName') + ' ' + idx);
-                appDrawer.clearPage().closeDrawer();
-                loginAndCoreateAccount();
+    textPartNameList = function (titleText) {
+        
+        let ajaxSuccessAction;
+
+        history.pushState('#textPartNameList', 'textPartNameList', '#textPartNameList');
+    
+        ajaxSuccessAction = function (textPartNameList) {
+            
+            appBody.clearPage();
+            appDrawer.clearPage();
+            
+            appDataManager.setItem('View.TextPartNameList', textPartNameList);
+            
+            for (let textPartName of textPartNameList){
+                let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, String(textPartName), function(s){
+                    loginAndCoreateAccount();
+                });
+                appDrawer.appendRender(mdlNavigationLink.jQeryObj);
+            }
+            
+            appDrawer.openDrawer().openDrawer();
+        };
+          
+        if (titleText){
+            $.ajax({
+                type: 'POST',
+                url : '/textPartNameList',
+                data: {'titleText':titleText},
+                success: function(res){
+                    let textPartNameList = res.data;
+                    ajaxSuccessAction(textPartNameList);                
+                }
             });
-            appDrawer.appendRender(mdlNavigationLink.jQeryObj);
+
+        } else {
+            let textPartNameList = appDataManager.getItem('View.TextPartNameList');
+            appDataManager.print();
+            ajaxSuccessAction(textPartNameList);
         }
-        appDrawer.openDrawer();
+        
     };
 
     //////////////////////////////////////////////
@@ -30,34 +56,34 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     textSelectMenu = function () {
         
-        let ajaxSuccessAction;
+        let ajaxSuccessAction, mdlCardButtonClickAction;
         
         ajaxSuccessAction = function (textListJson) {
             let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '学べるテキスト');
-            
+
             for (let titleText in textListJson){
                 const isButtonClickable = titleText === 'To Be Announced' ? false : true;
                 let mdlSquareCardOption = {
                         titleText:titleText,
                         supportingText:textListJson[titleText]['snippet'],
                         backGroundImageUrl:textListJson[titleText]['backGroundImageUrl'],
-                        buttonClickAction:function(ss){ dummy(); },
+                        buttonClickAction:function(ss){ textPartNameList(titleText); },
                         isButtonClickable:isButtonClickable
                     },
                     mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, mdlSquareCardOption);
                 mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
             }
-            
+
             history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
             appDrawer.clearPage().hiddenDrawerButton().closeDrawer();
             appBody.clearPage().appendRender(mainContainerMiddle.jQeryObj); 
         };
-        
+
         $.ajax({
           url: '/textList',
           cache: false,
-          success: function(textListJson){
-             ajaxSuccessAction(textListJson);
+          success: function(textList){
+              ajaxSuccessAction(textList);
           }
         });
     };
@@ -79,14 +105,14 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     start = function () {
-        console.log('location.hash: ' + location.hash);
+        // console.log('location.hash: ' + location.hash);
         if(location.hash === '' || location.hash === null || location.hash === undefined){ 
             self['#login-and-create-account']();
         } else {
             try {
                 self[location.hash]();
-            } catch (e){
-                self['#login-and-create-account']();
+            } catch (e) {
+                console.log(e);
             }
         }
     };
@@ -116,6 +142,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {start:start, '#textSelectMenu':textSelectMenu, '#login-and-create-account':loginAndCoreateAccount, '#dummy':dummy};
+    self = {start:start, '#textSelectMenu':textSelectMenu, '#login-and-create-account':loginAndCoreateAccount, '#textPartNameList':textPartNameList};
     return self;
 };
