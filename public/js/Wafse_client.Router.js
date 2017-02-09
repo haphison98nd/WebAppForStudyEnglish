@@ -45,8 +45,11 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
         } else {
             let textPartNameList = appDataManager.getItem('View.TextPartNameList');
-            appDataManager.print();
-            ajaxSuccessAction(textPartNameList);
+            if (textPartNameList === null) {
+                self['#textSelectMenu']();
+            } else {
+                ajaxSuccessAction(textPartNameList);
+            }
         }
         
     };

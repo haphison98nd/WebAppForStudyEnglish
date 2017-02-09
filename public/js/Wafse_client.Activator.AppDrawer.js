@@ -99,7 +99,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
     (function constructor () {
         setTimeout( function(){ 
             appDrawerButton = $('.mdl-layout__drawer-button')
-            waitTimeForMdlLayoutDrawer = 10;
+            waitTimeForMdlLayoutDrawer = 0;
         }, waitTimeForMdlLayoutDrawerButton);
         appNavigation = _appNavigation;
         appDataManager = _appDataManager;
