@@ -1,4 +1,8 @@
+body {
+    background-color: black;
+}
 /* mdl theme .css */
+
 .demo-layout-transparent {
   background: url('../images/background-photo.png') center / cover;
 }

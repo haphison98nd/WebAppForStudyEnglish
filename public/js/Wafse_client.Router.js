@@ -112,10 +112,11 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         let ajaxSuccessAction, mdlCardButtonClickAction;
 
         history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
-
+                
         ajaxSuccessAction = function (textListJson) {
             let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '学べるテキスト');
 
+            
             for (let titleText in textListJson){
                 const isButtonClickable = titleText === 'To Be Announced' ? false : true;
                 let mdlSquareCardOption = {
@@ -129,7 +130,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
             }
 
-            appDrawer.clearPage().hiddenDrawerButton().closeDrawer();
             appBody.clearPage().appendRender(mainContainerMiddle.jQeryObj); 
         };
 
@@ -152,7 +152,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
         history.pushState('#login-and-create-account', 'login-and-create-account', '#login-and-create-account');
         mainContainerSmall.appendRender(loginAndCoreateAccountForm.jQeryObj);
-        appDrawer.clearPage().hiddenDrawerButton().closeDrawer();
         appBody.clearPage().appendRender(mainContainerSmall.jQeryObj);
     };
     
