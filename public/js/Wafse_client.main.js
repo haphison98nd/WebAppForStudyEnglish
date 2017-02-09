@@ -11,7 +11,7 @@ Wafse_client.main = function(){
 
     console.log(Wafse_client);
     router.start();
-    
+
     // debug
     // appDataManager.print().setItem('View.LoginAndCoreateAccount.userName', '{ueda}').print().save();
     

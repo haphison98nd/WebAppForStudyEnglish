@@ -16,19 +16,23 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         ;
         
         history.pushState('#textPageNameList', 'textPageNameList', '#textPageNameList');
+        appNavigation.showProgressSpinner();
 
         ajaxSuccessAction = function (textPageNameList) {
             
-            appBody.clearPage();
-            appDrawer.clearPage();
-                        
+            let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '節を選択', null),
+                bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();
+            
+            bootStrapTable.appendThead(['節の名前', 'ステータス', 'クリア回数', '最短クリア時間']);
+            
             for (let textPageName of textPageNameList){
-                let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, String(textPageName), function(s){
+                bootStrapTable.appendTbody([textPageName, '近日実装', '近日実装', '近日実装'], function(){
                     loginAndCoreateAccount();
                 });
-                appDrawer.appendRender(mdlNavigationLink.jQeryObj);
             }
-            appDrawer.openDrawer();
+            
+            mainContainer.appendRender(bootStrapTable.jQeryObj);
+            appBody.clearPage().appendRender(mainContainer.jQeryObj);
         };
         
         if (postQuery){
@@ -45,7 +49,8 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             url : '/textPageNameList',
             data: postQuery,
             success: function (textPageNameList) {
-                ajaxSuccessAction(textPageNameList);                
+                ajaxSuccessAction(textPageNameList);
+                appNavigation.hiddenProgressSpinner();
             }
         });  
     };
@@ -58,21 +63,25 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         let ajaxSuccessAction, 
             postQuery = _postQuery
         ;
-
+        
         history.pushState('#textPartNameList', 'textPartNameList', '#textPartNameList');
-    
+        appNavigation.showProgressSpinner();
+        
         ajaxSuccessAction = function (textPartNameList) {
             
-            appBody.clearPage();
-            appDrawer.clearPage();
-                        
+            let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '章を選択', null),
+                bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();
+            
+            bootStrapTable.appendThead(['章の名前', 'ステータス', '周回回数']);
+            
             for (let textPartName of textPartNameList){
-                let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, String(textPartName), function(s){
+                bootStrapTable.appendTbody([textPartName, '近日実装', '近日実装'], function(){
                     textPageNameList({'titleText':postQuery.titleText, 'textPartName':textPartName});
                 });
-                appDrawer.appendRender(mdlNavigationLink.jQeryObj);
             }
-            appDrawer.openDrawer();
+            
+            mainContainer.appendRender(bootStrapTable.jQeryObj);
+            appBody.clearPage().appendRender(mainContainer.jQeryObj);
         };
           
         if (postQuery){
@@ -89,7 +98,8 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             url : '/textPartNameList',
             data: postQuery,
             success: function (textPartNameList) {
-                ajaxSuccessAction(textPartNameList);                
+                ajaxSuccessAction(textPartNameList);
+                appNavigation.hiddenProgressSpinner();
             }
         });        
     };
@@ -100,7 +110,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     textSelectMenu = function () {
         
         let ajaxSuccessAction, mdlCardButtonClickAction;
-        
+
+        history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
+
         ajaxSuccessAction = function (textListJson) {
             let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '学べるテキスト');
 
@@ -117,7 +129,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
             }
 
-            history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
             appDrawer.clearPage().hiddenDrawerButton().closeDrawer();
             appBody.clearPage().appendRender(mainContainerMiddle.jQeryObj); 
         };
@@ -138,8 +149,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         let mainContainerSmall = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerSmall', 'ようこそ'),
             loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self, mainContainerSmall)
         ;        
-        mainContainerSmall.appendRender(loginAndCoreateAccountForm.jQeryObj);
+
         history.pushState('#login-and-create-account', 'login-and-create-account', '#login-and-create-account');
+        mainContainerSmall.appendRender(loginAndCoreateAccountForm.jQeryObj);
         appDrawer.clearPage().hiddenDrawerButton().closeDrawer();
         appBody.clearPage().appendRender(mainContainerSmall.jQeryObj);
     };

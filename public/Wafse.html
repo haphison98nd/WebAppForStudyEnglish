@@ -23,11 +23,12 @@
         <script type="text/javascript" src="js/Wafse_client.ComponentCreator.LoginAndCoreateAccountForm.js"></script>
         <script type="text/javascript" src="js/Wafse_client.ComponentCreator.MdlNavigationLink.js"></script>
         <script type="text/javascript" src="js/Wafse_client.ComponentCreator.MdlSquareCard.js"></script>
+        <script type="text/javascript" src="js/Wafse_client.ComponentCreator.BootStrapTable.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Router.js"></script>
         <script type="text/javascript" src="js/Wafse_client.main.js"></script>
         <template class="htmlTemplate" id="htmlTemplate_mainContainer">
             <div class="htmlTemplate" id="mainContainer">
-                <h1 class="htmlTemplate" id="mainMassage"></h1>
+                <h1 class="htmlTemplate" id="mainMassage">mainMassage</h1>
             </div>
         </template>
         <template class="htmlTemplate" id="htmlTemplate_loginAndCoreateAccountForm">
@@ -65,6 +66,14 @@
         <template class="htmlTemplate" id="htmlTemplate_mdlNavigationLink">
             <div class="mdl-navigation__link"></div>
         </template>
+        <template class="htmlTemplate" id="htmlTemplate_bootStrapTable">
+            <table class="table table-hover">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </template>
         <!-- template class="htmlTemplate" id="alert"><div class="alert alert-danger" role="alert"></div></template-->
     </head>
     <body>
@@ -100,7 +109,30 @@
             </div>
             
             <main class="mdl-layout__content" id="appBody">
-
+                <!--div class="htmlTemplate mainContainerMiddle" id="mainContainer">
+                    <h1 class="htmlTemplate" id="mainMassage">章を選択</h1>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>章の名前</th>
+                                <th>ステータス</th>
+                                <th>周回回数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Part1</td>
+                                <td>未学習</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Part2</td>
+                                <td>学習中</td>
+                                <td>0回クリア</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div-->
             </main>
         </div>
     </body>
