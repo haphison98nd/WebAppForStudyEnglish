@@ -18,8 +18,11 @@ const Wafse_client = {
             LoginAndCoreateAccount:{
                 userName:'fun',
                 userPassword:'fun'            
-            },
-            TextPartNameList:null
+            }
+        },
+        PostQuery:{
+            TextPartNameList:null,
+            TextPageNameList:null
         }
     },
     Router:null,

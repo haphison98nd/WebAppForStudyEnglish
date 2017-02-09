@@ -2,16 +2,62 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, textPartNameList, textSelectMenu, loginAndCoreateAccount, start,
+    let self, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
         appBody, appNavigation, appDrawer, appDataManager
     ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textPartNameList = function (titleText) {
+    textPageNameList = function (_postQuery) {
         
-        let ajaxSuccessAction;
+        let ajaxSuccessAction, 
+            postQuery = _postQuery
+        ;
+        
+        history.pushState('#textPageNameList', 'textPageNameList', '#textPageNameList');
+
+        ajaxSuccessAction = function (textPageNameList) {
+            
+            appBody.clearPage();
+            appDrawer.clearPage();
+                        
+            for (let textPageName of textPageNameList){
+                let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, String(textPageName), function(s){
+                    loginAndCoreateAccount();
+                });
+                appDrawer.appendRender(mdlNavigationLink.jQeryObj);
+            }
+            appDrawer.openDrawer();
+        };
+        
+        if (postQuery){
+            appDataManager.setItem('PostQuery.TextPageNameList', postQuery);
+        } else {
+            postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
+            if (postQuery === null) {
+                self['#textSelectMenu']();
+            }
+        }
+        
+        $.ajax({
+            type: 'POST',
+            url : '/textPageNameList',
+            data: postQuery,
+            success: function (textPageNameList) {
+                ajaxSuccessAction(textPageNameList);                
+            }
+        });  
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    textPartNameList = function (_postQuery) {
+        
+        let ajaxSuccessAction, 
+            postQuery = _postQuery
+        ;
 
         history.pushState('#textPartNameList', 'textPartNameList', '#textPartNameList');
     
@@ -19,39 +65,33 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             
             appBody.clearPage();
             appDrawer.clearPage();
-            
-            appDataManager.setItem('View.TextPartNameList', textPartNameList);
-            
+                        
             for (let textPartName of textPartNameList){
                 let mdlNavigationLink = Wafse_client.ComponentCreator.MdlNavigationLink(appDrawer, appDataManager, self, String(textPartName), function(s){
-                    loginAndCoreateAccount();
+                    textPageNameList({'titleText':postQuery.titleText, 'textPartName':textPartName});
                 });
                 appDrawer.appendRender(mdlNavigationLink.jQeryObj);
             }
-            
             appDrawer.openDrawer();
         };
           
-        if (titleText){
-            $.ajax({
-                type: 'POST',
-                url : '/textPartNameList',
-                data: {'titleText':titleText},
-                success: function(res){
-                    let textPartNameList = res.data;
-                    ajaxSuccessAction(textPartNameList);                
-                }
-            });
-
+        if (postQuery){
+            appDataManager.setItem('PostQuery.TextPartNameList', postQuery);
         } else {
-            let textPartNameList = appDataManager.getItem('View.TextPartNameList');
-            if (textPartNameList === null) {
+            postQuery = appDataManager.getItem('PostQuery.TextPartNameList');
+            if (postQuery === null) {
                 self['#textSelectMenu']();
-            } else {
-                ajaxSuccessAction(textPartNameList);
             }
         }
         
+        $.ajax({
+            type: 'POST',
+            url : '/textPartNameList',
+            data: postQuery,
+            success: function (textPartNameList) {
+                ajaxSuccessAction(textPartNameList);                
+            }
+        });        
     };
 
     //////////////////////////////////////////////
@@ -70,7 +110,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                         titleText:titleText,
                         supportingText:textListJson[titleText]['snippet'],
                         backGroundImageUrl:textListJson[titleText]['backGroundImageUrl'],
-                        buttonClickAction:function(ss){ textPartNameList(titleText); },
+                        buttonClickAction:function(ss){ textPartNameList({'titleText':titleText}); },
                         isButtonClickable:isButtonClickable
                     },
                     mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, mdlSquareCardOption);
@@ -145,6 +185,10 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {start:start, '#textSelectMenu':textSelectMenu, '#login-and-create-account':loginAndCoreateAccount, '#textPartNameList':textPartNameList};
+    self = {
+             start:start, '#textSelectMenu':textSelectMenu, 
+             '#login-and-create-account':loginAndCoreateAccount, '#textPartNameList':textPartNameList,
+             '#textPageNameList':textPageNameList
+    };
     return self;
 };

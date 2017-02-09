@@ -104,20 +104,17 @@ const Wafse_server = function(){
         app.post('/textPartNameList', function(req, res){
             let dataForTextPartNameList = req.body;
             
-            if (dataForTextPartNameList.titleText === 'どんどん話すための瞬間英作文トレーニング'){
-                res.writeHead(200, {'Content-Type':'application/json'});
-                res.end(JSON.stringify({data:syunkanEisakubunDb.getTextPartNameList()}));
+            if (String(dataForTextPartNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
                 res.send(syunkanEisakubunDb.getTextPartNameList());
             }
         });
         
-        app.get('/textPartNameList/:textName/:textPartName', function(req, res){
-            // console.log(syunkanEisakubunDb.getTextPartNameList());
-            // console.log(syunkanEisakubunDb.getTextPageNameList('Part1 中学1年レベル'));
+        app.post('/textPageNameList', function(req, res){
+            let dataForTextPageNameList = req.body;
+            
             // console.log(syunkanEisakubunDb.getPageContents('原型不定詞・使役'));
-            if (req.params.textName === 'SyunkanEisakubun'){
-                res.writeHead(200, {'Content-Type':'application/json'});
-                res.end(JSON.stringify({data:syunkanEisakubunDb.getTextPageNameList(req.params.textPartName)}));
+            if (String(dataForTextPageNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
+                res.send(syunkanEisakubunDb.getTextPageNameList(String(dataForTextPageNameList.textPartName)));
             }
         });
         
