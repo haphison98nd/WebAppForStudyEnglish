@@ -24,12 +24,16 @@ Wafse_client.Util.Timer = function () {
     //////////////////////////////////////////////
 
     // public
-    start = function (timeLimitSec, progressCallback, remainCallback, finishCallback) {        
-        let count = 0;        
+    start = function (timeLimitSec, callback, finishCallback) {        
+        let count = 0;
         loop = setInterval(function(){
             let secCount = milSecToSec(count);
-            if (progressCallback) progressCallback (secCount);
-            if (remainCallback) remainCallback (milSecToSec(secToMilSec(timeLimitSec) - count));            
+            if (callback) {
+                let progressTime = secCount,
+                    remainTime = milSecToSec(secToMilSec(timeLimitSec) - count)
+                ;
+                callback(progressTime, remainTime);
+            }
             if(secCount === timeLimitSec){
                 clearInterval(loop);
                 if(finishCallback) finishCallback();

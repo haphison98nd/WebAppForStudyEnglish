@@ -118,6 +118,14 @@ const Wafse_server = function(){
             }
         });
         
+        app.post('/pageContents', function(req, res){
+            let dataForPageContentst = req.body;
+            // console.log(syunkanEisakubunDb.getPageContents('原型不定詞・使役'));
+            if (String(dataForPageContentst.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
+                res.send(syunkanEisakubunDb.getPageContents(String(dataForPageContentst.textPageName)));
+            }
+        });
+        
         httpServer.listen(PORT);
     };
 

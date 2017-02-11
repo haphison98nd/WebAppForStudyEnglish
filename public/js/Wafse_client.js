@@ -12,9 +12,11 @@ const Wafse_client = {
         MainContainer:null,
         MdlNavigationLink:null,
         MdlSquareCard:null,
-        BootStrapTable:null
+        BootStrapTable:null,
+        QuestionForm:null
     },
     Router:null,
+    WebSpeechRecognizer:null,
     Util:{
         Timer:null
     },
@@ -23,11 +25,23 @@ const Wafse_client = {
             LoginAndCoreateAccount:{
                 userName:'fun',
                 userPassword:'fun'            
+            },
+            ProblemForm:{
+                now:{
+                    pageContents:null,
+                    index:null
+                }
             }
         },
         PostQuery:{
             TextPartNameList:null,
-            TextPageNameList:null
+            TextPageNameList:null,
+            Question:null
+        },
+        Config:{
+            questionForm:{
+                timeLimit:20
+            }
         }
     },
     main:null

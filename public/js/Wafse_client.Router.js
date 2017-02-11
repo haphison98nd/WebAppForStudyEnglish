@@ -2,10 +2,46 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
+    let self, question, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
         appBody, appNavigation, appDrawer, appDataManager
     ;
 
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    question = function (_postQuery) {
+        let ajaxSuccessAction, 
+            postQuery = _postQuery
+        ;
+        
+        history.pushState('#question', 'question', '#question');
+        appNavigation.showProgressSpinner();
+
+        ajaxSuccessAction = function (pageContents) {
+            appDataManager.setItem('View.ProblemForm.now.pageContents', pageContents);
+            console.log(appDataManager.getItem('View.ProblemForm.now.pageContents'));
+        };
+        
+        if (postQuery){
+            appDataManager.setItem('PostQuery.Question', postQuery);
+        } else {
+            postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
+            if (postQuery === null) {
+                self['#textSelectMenu']();
+            }
+        }
+        
+        $.ajax({
+            type: 'POST',
+            url : '/pageContents',
+            data: postQuery,
+            success: function (pageContents) {
+                ajaxSuccessAction(pageContents);
+                appNavigation.hiddenProgressSpinner();
+            }
+        });
+    };
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -27,7 +63,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             
             for (let textPageName of textPageNameList){
                 bootStrapTable.appendTbody([textPageName, '近日実装', '近日実装', '近日実装'], function(){
-                    loginAndCoreateAccount();
+                    question({'titleText':postQuery.titleText, 'textPageName':textPageName});
                 });
             }
             
@@ -200,7 +236,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     self = {
              start:start, '#textSelectMenu':textSelectMenu, 
              '#login-and-create-account':loginAndCoreateAccount, '#textPartNameList':textPartNameList,
-             '#textPageNameList':textPageNameList
+             '#textPageNameList':textPageNameList, '#question':question
     };
     return self;
 };
