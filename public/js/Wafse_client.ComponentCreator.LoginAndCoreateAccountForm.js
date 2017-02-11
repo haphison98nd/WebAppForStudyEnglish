@@ -2,17 +2,17 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     
     'use strict';
     
-    const htmlTemplate_loginAndCoreateAccountForm = $($('.htmlTemplate#htmlTemplate_loginAndCoreateAccountForm').clone().html()),
+    const htmlTemplate_loginAndCoreateAccountForm = $($('.htmlTemplate#loginAndCoreateAccountForm').clone().html()),
           mainMassage_login = htmlTemplate_loginAndCoreateAccountForm.find('#mainMassage_login'),
           mainMassage_createAccount = htmlTemplate_loginAndCoreateAccountForm.find('#mainMassage_createAccount'),
-          userNameInput = htmlTemplate_loginAndCoreateAccountForm.find('.loginAndCoreateAccount#userNameInput'),
-          passWordInput = htmlTemplate_loginAndCoreateAccountForm.find('.loginAndCoreateAccount#passWordInput'),
-          enterBtn = htmlTemplate_loginAndCoreateAccountForm.find('.loginAndCoreateAccount#enterBtn'),
-          createAccountBtn = htmlTemplate_loginAndCoreateAccountForm.find('.loginAndCoreateAccount#createAccountBtn'),
-          submitBtn = htmlTemplate_loginAndCoreateAccountForm.find('.loginAndCoreateAccount#submitBtn'),
-          returnBtn = htmlTemplate_loginAndCoreateAccountForm.find('.loginAndCoreateAccount#returnBtn'),
-          alertForUserNameInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert.loginAndCoreateAccount#alertForUserNameInput'),
-          alertForPassWordInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert.loginAndCoreateAccount#alertForPassWordInput')
+          userNameInput = htmlTemplate_loginAndCoreateAccountForm.find('#userNameInput'),
+          passWordInput = htmlTemplate_loginAndCoreateAccountForm.find('#passWordInput'),
+          enterBtn = htmlTemplate_loginAndCoreateAccountForm.find('#enterBtn'),
+          createAccountBtn = htmlTemplate_loginAndCoreateAccountForm.find('#createAccountBtn'),
+          submitBtn = htmlTemplate_loginAndCoreateAccountForm.find('#submitBtn'),
+          returnBtn = htmlTemplate_loginAndCoreateAccountForm.find('#returnBtn'),
+          alertForUserNameInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForUserNameInput'),
+          alertForPassWordInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForPassWordInput')
     ;
     
     let self, activateAll, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,

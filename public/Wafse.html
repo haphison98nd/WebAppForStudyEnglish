@@ -7,9 +7,8 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/mainNav.css" />
-        <link rel="stylesheet" type="text/css" href="css/htmlTemplate-loginAndCoreateAccount.css" />
-        <link rel="stylesheet" type="text/css" href="css/htmlTemplate-textSelectMenu.css" />
-        <script   src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="css/Wafse.css" />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/libraries/tether.min.js"></script>
         <script type="text/javascript" src="js/libraries/bootstrap.min.js"></script>
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -25,33 +24,90 @@
         <script type="text/javascript" src="js/Wafse_client.ComponentCreator.MdlSquareCard.js"></script>
         <script type="text/javascript" src="js/Wafse_client.ComponentCreator.BootStrapTable.js"></script>
         <script type="text/javascript" src="js/Wafse_client.Router.js"></script>
+        <script type="text/javascript" src="js/Wafse_client.Util.Timer.js"></script>
         <script type="text/javascript" src="js/Wafse_client.main.js"></script>
-        <template class="htmlTemplate" id="htmlTemplate_mainContainer">
-            <div class="htmlTemplate" id="mainContainer">
-                <h1 class="htmlTemplate" id="mainMassage">mainMassage</h1>
+        <template class="htmlTemplate" id="mainContainer">
+            <div id="mainContainer">
+                <style scoped>
+                    #mainContainer{
+                        margin: 0 auto;
+                        margin-bottom: 10px;
+                        padding: 30px;
+                        padding-bottom: 60px;
+                        border-radius: 5px;
+                        background-color: rgba(30, 0, 60, 0.7);
+                        color: white;
+                        overflow: auto;
+                    }
+
+                    .mainContainerMiddle#mainContainer{
+                        width: 1100px;
+                    }
+
+                    .mainContainerSmall#mainContainer{
+                        width: 500px;
+                    }
+                </style>
+                <h1 id="mainMassage">mainMassage</h1>
             </div>
         </template>
-        <template class="htmlTemplate" id="htmlTemplate_loginAndCoreateAccountForm">
+        <template class="htmlTemplate" id="loginAndCoreateAccountForm">
             <div class="htmlTemplateContent">
+                <style scoped>
+                    .btn{
+                        margin-right: 10px;
+                        float: left;
+                    }
+
+                    #mainMassage_createAccount, .btn#submitBtn, .btn#returnBtn{
+                        display:none;
+                    }
+
+                    .alert{
+                        display:none;
+                    }
+                </style>
                 <br>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">ユーザー名</label>
+                    <label for="userNameInput">ユーザー名</label>
                     <input type="email" class="form-control loginAndCoreateAccount" aria-describedby="emailHelp" placeholder="ここにユーザ名を入力..." id="userNameInput">
                     <div class="alert alert-danger loginAndCoreateAccount" role="alert" id="alertForUserNameInput"></div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">パスワード</label>
-                    <input type="password" class="form-control loginAndCoreateAccount" placeholder="ここにパスワードを入力..." id="passWordInput">
-                    <div class="alert alert-danger loginAndCoreateAccount" role="alert" id="alertForPassWordInput"></div>
+                    <label for="passWordInput">パスワード</label>
+                    <input type="password" class="form-control" placeholder="ここにパスワードを入力..." id="passWordInput">
+                    <div class="alert alert-danger" role="alert" id="alertForPassWordInput"></div>
                 </div>
-                <button class="btn btn-success loginAndCoreateAccount" id="createAccountBtn">新規アカウントを作成</button>
-                <button class="btn btn-primary loginAndCoreateAccount" id="enterBtn">ログイン</button>
-                <button class="btn btn-success loginAndCoreateAccount" id="returnBtn">戻る</button>
-                <button class="btn btn-primary loginAndCoreateAccount" id="submitBtn">作成</button>
+                <button class="btn btn-success" id="createAccountBtn">新規アカウントを作成</button>
+                <button class="btn btn-primary" id="enterBtn">ログイン</button>
+                <button class="btn btn-success" id="returnBtn">戻る</button>
+                <button class="btn btn-primary" id="submitBtn">作成</button>
             </div>
         </template>
-        <template class="htmlTemplate" id="htmlTemplate_mdlSquareCard">
+        <template class="htmlTemplate" id="mdlSquareCard">
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <style scoped>
+                    .mdl-card__supporting-text{
+                        color: #fff;
+                    }
+                    .demo-card-square.mdl-card {
+                        width: 320px;
+                        height: 320px;
+                        background:#242424;
+                        color: #fff;
+                        float: left;
+                        margin-right: 30px;
+                        margin-top: 10px;
+                    }
+                    .demo-card-square > .mdl-card__title {
+                        color: #fff;
+                    }
+
+                    .mdl-button{
+                        color: #7c56e5 !important;
+                        width: inherit;
+                    }                
+                </style>
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">Test</h2>
                 </div>
@@ -59,15 +115,27 @@
                     TestTestTestTestTestTestTestTestTestTestTestTestTest.
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <div class="mdl-button mdl-js-button mdl-button--accent inheritWidth lightBlueText">勉強する</div>
+                    <div class="mdl-button mdl-js-button">勉強する</div>
                 </div>
             </div>
         </template>
-        <template class="htmlTemplate" id="htmlTemplate_mdlNavigationLink">
+        <template class="htmlTemplate" id="mdlNavigationLink">
             <div class="mdl-navigation__link"></div>
         </template>
-        <template class="htmlTemplate" id="htmlTemplate_bootStrapTable">
+        <template class="htmlTemplate" id="bootStrapTable">
             <table class="table table-hover">
+                <style scoped>
+                    tbody tr{
+                        cursor: pointer !important;
+                    }
+                    tbody tr:hover{
+                        background-color: rgba(0, 0, 0, 0.5) !important;
+                        transition: background-color 0.15s !important;
+                    }
+                    tbody tr:active{
+                        background-color: rgba(60, 60, 60, 0.5) !important;
+                    }
+                </style>
                 <thead>
                 </thead>
                 <tbody>
@@ -77,8 +145,31 @@
         <!-- template class="htmlTemplate" id="alert"><div class="alert alert-danger" role="alert"></div></template-->
     </head>
     <body>
+        <style>
+            body {
+                background-color: black;
+            }
+            /* mdl theme .css */
+
+            .demo-layout-transparent {
+              background: url('../images/background-photo.png') center / cover;
+            }
+
+            .demo-layout-transparent .mdl-layout__header,
+            .demo-layout-transparent .mdl-layout__drawer-button {
+              /* This background is dark, so we set text to white. Use 87% black instead if
+                 your background is light. */
+              color: white;
+            }
+        </style>
         <div class="demo-layout-transparent mdl-layout mdl-js-layout">
             <header class="mdl-layout__header mdl-layout__header--transparent">
+                <style scoped>
+                    #progressSpinner{
+                        margin-left: 30px;
+                        display: none;
+                    }
+                </style>       
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
                     <span class="mdl-layout-title"><b>---------web&nbsp;app</b></span>
@@ -95,45 +186,56 @@
                         -->
                     </nav>
                 </div>
-            </header>
-            
+            </header>            
             <div class="mdl-layout__drawer">
-                
+                <style scoped>
+                    .mdl-layout__drawer-button{
+                        display:none;
+                    }
+                </style>                
                 <span class="mdl-layout-title" id="appDrawerTitle"></span>
                 <nav class="mdl-navigation" id="appDrawer">
                     <!--div class="mdl-navigation__link" >Link</div>
                     <div class="mdl-navigation__link" >Link</div>
                     <div class="mdl-navigation__link" >Link</div-->
-                </nav>
-                
+                </nav>   
             </div>
-            
             <main class="mdl-layout__content" id="appBody">
-                <!--div class="htmlTemplate mainContainerMiddle" id="mainContainer">
-                    <h1 class="htmlTemplate" id="mainMassage">章を選択</h1>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>章の名前</th>
-                                <th>ステータス</th>
-                                <th>周回回数</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Part1</td>
-                                <td>未学習</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Part2</td>
-                                <td>学習中</td>
-                                <td>0回クリア</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div-->
+                <div class="htmlTemplate mainContainerMiddle" id="mainContainer">
+                    <h1 class="htmlTemplate" id="mainMassage">be動詞 (1/10)</h1>
+                    <div class="problemContainer">
+                        <h2>このカバンは誰のですか?</h2>
+                        <form>
+                            <input class="form-control form-control-lg form-control-success" type="text" placeholder="ここに英文を入力...">
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    残り<span class="timeLimit"></span>秒
+                                </div>
+                            </div>
+                            <button class="btn btn-success loginAndCoreateAccount" id="createAccountBtn">音声で入力</button>
+                            <button class="btn btn-primary loginAndCoreateAccount" id="enterBtn">答え合わせ</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="htmlTemplate mainContainerMiddle" id="mainContainer">
+                    <h1 class="htmlTemplate" id="mainMassage">be動詞 (1/10)</h1>
+                    <div class="problemContainer">
+                        <h2>このカバンは誰のですか?</h2>
+                        <form>
+                            <input class="form-control form-control-lg form-control-success" type="text" id="test" disabled placeholder="ここに英文を入力...">
+                            <div class="alert alert-success" role="alert">
+                                <strong>Well done!</strong> You successfully read this important alert message.
+                            </div>
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                            </div>
+                            <button class="btn btn-success loginAndCoreateAccount" id="createAccountBtn">音声を再生</button>
+                            <button class="btn btn-primary loginAndCoreateAccount" id="enterBtn">次の問題</button>
+                        </form>
+                    </div>
+                </div>
             </main>
         </div>
+    <script type="text/javascript"src="js/libraries/scoped.js"></script>
     </body>
 </html>

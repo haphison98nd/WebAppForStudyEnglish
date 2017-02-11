@@ -14,6 +14,10 @@ const Wafse_client = {
         MdlSquareCard:null,
         BootStrapTable:null
     },
+    Router:null,
+    Util:{
+        Timer:null
+    },
     appDataTemplate:{
         View:{
             LoginAndCoreateAccount:{
@@ -26,6 +30,5 @@ const Wafse_client = {
             TextPageNameList:null
         }
     },
-    Router:null,
     main:null
 };

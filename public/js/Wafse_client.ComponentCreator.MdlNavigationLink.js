@@ -2,7 +2,7 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
     
     'use strict';
     
-    const htmlTemplate_mdlNavigationLink = $($('.htmlTemplate#htmlTemplate_mdlNavigationLink').clone().html()),
+    const htmlTemplate_mdlNavigationLink = $($('.htmlTemplate#mdlNavigationLink').clone().html()),
           mdlNavigationLink = htmlTemplate_mdlNavigationLink
     ;
     

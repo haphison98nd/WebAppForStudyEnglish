@@ -2,7 +2,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
     
     'use strict';
     
-    const htmlTemplate_mdlSquareCard = $($('.htmlTemplate#htmlTemplate_mdlSquareCard').clone().html()),
+    const htmlTemplate_mdlSquareCard = $($('.htmlTemplate#mdlSquareCard').clone().html()),
           mdlSquareCard = htmlTemplate_mdlSquareCard,
           mdlCardTitle = htmlTemplate_mdlSquareCard.find('.mdl-card__title-text'),
           mdlCardImgeArea = htmlTemplate_mdlSquareCard.find('.mdl-card__title.mdl-card--expand'),

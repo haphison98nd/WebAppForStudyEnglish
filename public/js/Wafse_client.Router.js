@@ -114,7 +114,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
                 
         ajaxSuccessAction = function (textListJson) {
-            let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '学べるテキスト');
+            let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', 'テキストを選択');
 
             
             for (let titleText in textListJson){

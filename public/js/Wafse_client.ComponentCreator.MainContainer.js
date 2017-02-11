@@ -2,7 +2,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     
     'use strict';
     
-    const htmlTemplate_mainContainer = $($('.htmlTemplate#htmlTemplate_mainContainer').clone().html()),
+    const htmlTemplate_mainContainer = $($('.htmlTemplate#mainContainer').clone().html()),
           mainContainer = htmlTemplate_mainContainer,
           mainMassage = htmlTemplate_mainContainer.find('#mainMassage')
     ;

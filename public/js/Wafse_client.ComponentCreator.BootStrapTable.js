@@ -2,7 +2,7 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
     
     'use strict';
     
-    const htmlTemplate_bootStrapTable = $($('.htmlTemplate#htmlTemplate_bootStrapTable').clone().html()),
+    const htmlTemplate_bootStrapTable = $($('.htmlTemplate#bootStrapTable').clone().html()),
           bootStrapTable = htmlTemplate_bootStrapTable,
           thead = htmlTemplate_bootStrapTable.find('thead'),
           tbody = htmlTemplate_bootStrapTable.find('tbody')

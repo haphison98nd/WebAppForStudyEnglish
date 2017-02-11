@@ -11,9 +11,32 @@ Wafse_client.main = function(){
 
     console.log(Wafse_client);
     router.start();
+    
 
+    // debug code of Wafse_client.Util.Timer
     /*
-    // debug
+    const remainCallback = function (remainSec) {
+        console.log('remainSec ' + remainSec);
+    };  
+    const progressCallback = function (progressSec) {
+        console.log('progressSec ' + progressSec);
+    };
+    const finishCallback = function () {
+        console.log('Finish');
+    };
+    const timer = Wafse_client.Util.Timer();
+    timer.start(5, remainCallback, progressCallback, finishCallback);
+    setTimeout(timer.stop, 4000);
+    */
+
+    
+    // debug code of Wafse_client.ComponentCreator.MainContainer
+    // let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, null, 'mainContainerMiddle', 'be動詞', null);
+    // appBody.appendRender(mainContainer.jQeryObj);
+
+    
+    // debug code of Wafse_client.ComponentCreator.BootStrapTable
+    /*
     let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, null, 'mainContainerMiddle', 'test', null);
     let table = Wafse_client.ComponentCreator.BootStrapTable();
     table.appendThead(['test', 'aaa', 'bbb']).appendTbody(['test', 'aaa', 'bbb']);
@@ -22,10 +45,13 @@ Wafse_client.main = function(){
     appBody.appendRender(mainContainer.jQeryObj);
     */
     
-    // debug
+    
+    // debug code of Wafse_client.appDataManager
     // appDataManager.print().setItem('View.LoginAndCoreateAccount.userName', '{ueda}').print().save();
     
-    /*
+    
+    // Test code of Web Synthes API
+    /* 
     const synthes = new SpeechSynthesisUtterance();
     synthes.text = 'Is this a pen?';
     synthes.lang = 'en-US';
