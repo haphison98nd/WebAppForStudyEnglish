@@ -50,10 +50,10 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
     ######################################################
 
-    def saveDbAsJson (self):
+    def saveDbAsJson (self, filePathForSavingDb):
         # How to export Japanese file by using json.dump: http://d.hatena.ne.jp/tatz_tsuchiya/20120227/1330325015
         # How to encode text?: http://blog.livedoor.jp/yawamen/archives/51566670.html
-        f = codecs.open(self.__pathForSave + self.__dbName + ".json", 'w', "utf-8")
+        f = codecs.open(filePathForSavingDb + ".json", 'w', "utf-8")
         json.dump(self.__db, f, indent=4, sort_keys=True, ensure_ascii=False)
         f.close()
         return self
@@ -79,10 +79,8 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
     ######################################################
 
-    def __init__(self, dbName, targetUrl, pageIdxStart, pageIdxEnd, pathForSave = "./"):
-        self.__dbName = dbName
+    def __init__(self, targetUrl, pageIdxStart, pageIdxEnd):
         self.__db = {}
         self.__targetUrl = targetUrl
         self.__pageIdxStart = pageIdxStart
         self.__pageIdxEnd   = pageIdxEnd
-        self.__pathForSave  = pathForSave
