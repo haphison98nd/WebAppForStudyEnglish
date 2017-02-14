@@ -1,4 +1,4 @@
-Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigation, _appDataManager, _router, _mainContainerSize, _mainMassageText, _callback){
+Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _mainMassageText, _callback){
     
     'use strict';
     
@@ -8,7 +8,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     ;
     
     let self, appendRender, activateMainContainerSize, activateMainMessage, activateAll, setMainMassage, remove,
-        appDrawer, appNavigation, appDataManager, router, mainContainerSize, mainMassageText, callback
+        mainContainerSize, mainMassageText, callback
     ;
     
     //////////////////////////////////////////////
@@ -25,7 +25,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
     
     setMainMassage = function (text) {
-        mainMassage.text(String(text));
+        mainMassage.html(String(text));
         return self;
     };
     
@@ -68,10 +68,6 @@ Wafse_client.ComponentCreator.MainContainer = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
 
     (function constructor (){
-        appDrawer = _appDrawer;
-        appNavigation = _appNavigation;
-        appDataManager = _appDataManager;
-        router = _router;
         mainContainerSize = _mainContainerSize;
         mainMassageText = _mainMassageText;
         callback = _callback;

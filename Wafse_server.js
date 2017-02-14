@@ -20,7 +20,7 @@ const Wafse_server = function(){
               PORT       = process.env.PORT || 3000,
               rootDir    = 'public',
               textList = extendedFs.readFileSync('./TextDB/TextList.json', 'utf-8'),
-              syunkanEisakubunDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/SyunkanEisakubun/Db.json')
+              syunkanEisakubunDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/SyunkanEisakubun/SyunkanEisakubunDb.json')
         ;
         
         let dataForHttpRes = null;
@@ -111,8 +111,6 @@ const Wafse_server = function(){
         
         app.post('/textPageNameList', function(req, res){
             let dataForTextPageNameList = req.body;
-            
-            // console.log(syunkanEisakubunDb.getPageContents('原型不定詞・使役'));
             if (String(dataForTextPageNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
                 res.send(syunkanEisakubunDb.getTextPageNameList(String(dataForTextPageNameList.textPartName)));
             }

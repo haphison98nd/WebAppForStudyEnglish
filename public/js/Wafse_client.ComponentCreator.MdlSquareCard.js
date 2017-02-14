@@ -1,4 +1,4 @@
-Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigation, _appDataManager, _router, _option){
+Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router, _option){
     
     'use strict';
     
@@ -12,7 +12,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
     
     let self, appendRender, activateAll, 
         setMdlCardBackGroundImage, setMdlCardTitleText, setMdlCardSupportingText, setButtonMode, remove,
-        appDrawer, appNavigation, appDataManager, router, option
+        appDataManager, router, option
     ;
     
     //////////////////////////////////////////////
@@ -85,8 +85,6 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDrawer, _appNavigatio
     //////////////////////////////////////////////
 
     (function constructor (){
-        appDrawer = _appDrawer;
-        appNavigation = _appNavigation;
         appDataManager = _appDataManager;
         router = _router;
         option = _option;

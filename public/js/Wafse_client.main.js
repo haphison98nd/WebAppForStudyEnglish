@@ -18,14 +18,20 @@ Wafse_client.main = function(){
     const timer = Wafse_client.Util.Timer(),
           timeLimit = appDataManager.getItem('Config.questionForm.timeLimit')
     ;
-    let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, null, 'mainContainerMiddle', 'be動詞', null),
-        questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, mainContainer, null)
-    ;
-    mainContainer.appendRender(questionForm.jQeryObj);
-    appBody.appendRender(mainContainer.jQeryObj);
+    let questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, null);
+    appBody.appendRender(questionForm.jQeryObj);
     
     timer.start(timeLimit, function(progressTime, remainTime){
         questionForm.setProgressBarValue(((timeLimit - progressTime)/timeLimit)*100, parseInt(remainTime, 10) + 1);
+    });
+    
+    $.ajax({
+        type: 'POST',
+        url : '/pageContents',
+        data: {'titleText':'どんどん話すための瞬間英作文トレーニング', 'textPageName':'人称代名詞の独立所有格'},
+        success: function (pageContents) {
+            console.log(pageContents);
+        }
     });
     */
     

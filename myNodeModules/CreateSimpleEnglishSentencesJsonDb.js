@@ -131,6 +131,6 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
 
 (function main(){
     'use strict';
-    let app = CreateSimpleEnglishSentencesJsonDb('../TextDB/SimpleEnglishSentencesJsonDb_JPN.json', '../TextDB/SimpleEnglishSentencesJsonDb_ENG.json');
-    app.createSimpleEnglishSentencesJsonDb().saveSimpleEnglishSentencesJsonDbAsJson('../TextDB/SimpleEnglishSentencesJsonDb');
+    let app = CreateSimpleEnglishSentencesJsonDb('../TextDB/SyunkanEisakubun/SimpleEnglishSentencesJsonDb_JPN.json', '../TextDB/SyunkanEisakubun/SimpleEnglishSentencesJsonDb_ENG.json');
+    app.createSimpleEnglishSentencesJsonDb().saveSimpleEnglishSentencesJsonDbAsJson('../TextDB/SyunkanEisakubun/SyunkanEisakubunDb');
 })();

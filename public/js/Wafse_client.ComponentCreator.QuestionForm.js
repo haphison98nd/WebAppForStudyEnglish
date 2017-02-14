@@ -1,15 +1,14 @@
-Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, _mainContainer, _callback){
+Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, _callback){
     
     'use strict';
     
-    const htmlTemplate_questionForm = $($('.htmlTemplate#questionForm').clone().html()),
-          questionForm = htmlTemplate_questionForm,
-          progressBar = htmlTemplate_questionForm.find('#progressBar'),
-          timeLimitInst = htmlTemplate_questionForm.find('#timeLimit')
-    ;
-    
-    let self, appendRender, setProgressBarValue, activateAll, remove,
-        appDataManager, router, mainContainer, callback
+    let htmlTemplate_questionForm = $($('.htmlTemplate#questionForm').clone().html()),
+        questionForm = htmlTemplate_questionForm,
+        progressBar = htmlTemplate_questionForm.find('#progressBar'),
+        timeLimitInst = htmlTemplate_questionForm.find('#timeLimit'),
+        mainContainer = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle', 'test', null),    
+        self, appendRender, setProgressBarValue, conbineComponents, activateAll, remove,
+        appDataManager, router, callback
     ;
     
     //////////////////////////////////////////////
@@ -22,11 +21,20 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         ;
         timeLimitInst.text(String(remainTime));
     };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    conbineComponents = function () {
+        mainContainer.appendRender(htmlTemplate_questionForm);
+        htmlTemplate_questionForm = mainContainer.jQeryObj;
+    };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     activateAll = function(){
+        conbineComponents();
     };
     
     //////////////////////////////////////////////

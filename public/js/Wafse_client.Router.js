@@ -2,33 +2,24 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, question, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
+    let self, questionForm, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
         appBody, appNavigation, appDrawer, appDataManager
     ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    question = function (_postQuery) {
-        let ajaxSuccessAction, 
-            postQuery = _postQuery
-        ;
+    questionForm = function (_postQuery) {
+        let postQuery = _postQuery;
         
-        history.pushState('#question', 'question', '#question');
+        history.pushState('#questionForm', 'questionForm', '#questionForm');
         appNavigation.showProgressSpinner();
-
-        ajaxSuccessAction = function (pageContents) {
-            appDataManager.setItem('View.ProblemForm.now.pageContents', pageContents);
-            console.log(appDataManager.getItem('View.ProblemForm.now.pageContents'));
-        };
-        
+    
         if (postQuery){
             appDataManager.setItem('PostQuery.Question', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
-            if (postQuery === null) {
-                self['#textSelectMenu']();
-            }
+            if (postQuery === null) self['#textSelectMenu']();
         }
         
         $.ajax({
@@ -36,8 +27,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             url : '/pageContents',
             data: postQuery,
             success: function (pageContents) {
-                ajaxSuccessAction(pageContents);
                 appNavigation.hiddenProgressSpinner();
+                appDataManager.setItem('View.QuestionForm.now.pageContents', pageContents);
+                console.log(appDataManager.getItem('View.QuestionForm.now.pageContents'));
             }
         });
     };
@@ -46,38 +38,15 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     textPageNameList = function (_postQuery) {
-        
-        let ajaxSuccessAction, 
-            postQuery = _postQuery
-        ;
-        
+        let postQuery = _postQuery;
+        appNavigation.showProgressSpinner();        
         history.pushState('#textPageNameList', 'textPageNameList', '#textPageNameList');
-        appNavigation.showProgressSpinner();
-
-        ajaxSuccessAction = function (textPageNameList) {
-            
-            let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '節を選択', null),
-                bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();
-            
-            bootStrapTable.appendThead(['節の名前', 'ステータス', 'クリア回数', '最短クリア時間']);
-            
-            for (let textPageName of textPageNameList){
-                bootStrapTable.appendTbody([textPageName, '近日実装', '近日実装', '近日実装'], function(){
-                    question({'titleText':postQuery.titleText, 'textPageName':textPageName});
-                });
-            }
-            
-            mainContainer.appendRender(bootStrapTable.jQeryObj);
-            appBody.clearPage().appendRender(mainContainer.jQeryObj);
-        };
         
         if (postQuery){
             appDataManager.setItem('PostQuery.TextPageNameList', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
-            if (postQuery === null) {
-                self['#textSelectMenu']();
-            }
+            if (postQuery === null) self['#textSelectMenu']();
         }
         
         $.ajax({
@@ -85,8 +54,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             url : '/textPageNameList',
             data: postQuery,
             success: function (textPageNameList) {
-                ajaxSuccessAction(textPageNameList);
                 appNavigation.hiddenProgressSpinner();
+                const textPageNameListJqueryObj = Wafse_client.ComponentCreator.TextPageNameList(appDataManager, self, textPageNameList, postQuery);
+                appBody.clearPage().appendRender(textPageNameListJqueryObj.jQeryObj); 
             }
         });  
     };
@@ -94,39 +64,19 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textPartNameList = function (_postQuery) {
-        
-        let ajaxSuccessAction, 
-            postQuery = _postQuery
-        ;
-        
-        history.pushState('#textPartNameList', 'textPartNameList', '#textPartNameList');
+    textPartNameList = function (_postQuery) { 
+        let postQuery = _postQuery;
         appNavigation.showProgressSpinner();
-        
-        ajaxSuccessAction = function (textPartNameList) {
-            
-            let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', '章を選択', null),
-                bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();
-            
-            bootStrapTable.appendThead(['章の名前', 'ステータス', '周回回数']);
-            
-            for (let textPartName of textPartNameList){
-                bootStrapTable.appendTbody([textPartName, '近日実装', '近日実装'], function(){
-                    textPageNameList({'titleText':postQuery.titleText, 'textPartName':textPartName});
-                });
-            }
-            
-            mainContainer.appendRender(bootStrapTable.jQeryObj);
-            appBody.clearPage().appendRender(mainContainer.jQeryObj);
-        };
-          
+        history.pushState('#textPartNameList', 'textPartNameList', '#textPartNameList');
+
+        // If user accesses #textPartNameList from browser back button,
+        // postQuery will be null.
+        // In that situation, load postQuery from localStrage.
         if (postQuery){
             appDataManager.setItem('PostQuery.TextPartNameList', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPartNameList');
-            if (postQuery === null) {
-                self['#textSelectMenu']();
-            }
+            if (postQuery === null) self['#textSelectMenu']();
         }
         
         $.ajax({
@@ -134,8 +84,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             url : '/textPartNameList',
             data: postQuery,
             success: function (textPartNameList) {
-                ajaxSuccessAction(textPartNameList);
                 appNavigation.hiddenProgressSpinner();
+                const textPartNameListJqueryObj = Wafse_client.ComponentCreator.TextPartNameList(appDataManager, self, textPartNameList, postQuery);
+                appBody.clearPage().appendRender(textPartNameListJqueryObj.jQeryObj); 
             }
         });        
     };
@@ -143,37 +94,17 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textSelectMenu = function () {
-        
-        let ajaxSuccessAction, mdlCardButtonClickAction;
-
-        history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');
+    textSelectMenu = function () {        
+        appNavigation.showProgressSpinner();
+        history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');       
                 
-        ajaxSuccessAction = function (textListJson) {
-            let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerMiddle', 'テキストを選択');
-
-            
-            for (let titleText in textListJson){
-                const isButtonClickable = titleText === 'To Be Announced' ? false : true;
-                let mdlSquareCardOption = {
-                        titleText:titleText,
-                        supportingText:textListJson[titleText]['snippet'],
-                        backGroundImageUrl:textListJson[titleText]['backGroundImageUrl'],
-                        buttonClickAction:function(ss){ textPartNameList({'titleText':titleText}); },
-                        isButtonClickable:isButtonClickable
-                    },
-                    mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDrawer, appNavigation, appDataManager, self, mdlSquareCardOption);
-                mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
-            }
-
-            appBody.clearPage().appendRender(mainContainerMiddle.jQeryObj); 
-        };
-
         $.ajax({
           url: '/textList',
           cache: false,
           success: function(textList){
-              ajaxSuccessAction(textList);
+              appNavigation.hiddenProgressSpinner();
+              const textSelectMenuJqueryObj = Wafse_client.ComponentCreator.TextSelectMenu(appDataManager, self, textList)
+              appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQeryObj); 
           }
         });
     };
@@ -182,13 +113,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     loginAndCoreateAccount = function () {
-        let mainContainerSmall = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, self, 'mainContainerSmall', 'ようこそ'),
-            loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self, mainContainerSmall)
-        ;        
-
+        const loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self);
         history.pushState('#login-and-create-account', 'login-and-create-account', '#login-and-create-account');
-        mainContainerSmall.appendRender(loginAndCoreateAccountForm.jQeryObj);
-        appBody.clearPage().appendRender(mainContainerSmall.jQeryObj);
+        appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQeryObj);
     };
     
     //////////////////////////////////////////////
@@ -216,12 +143,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         appNavigation = _appNavigation;
         appDrawer = _appDrawer;
 
-        window.onbeforeunload = function () {
-            appDataManager.save();
-        };
+        window.onbeforeunload = function () { appDataManager.save(); };
         
         $(window).on('popstate', function(event){
-            console.log('event.originalEvent.state: ' + event.originalEvent.state);
             try {
                 self[event.originalEvent.state]();
             } catch (e) {
@@ -236,7 +160,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     self = {
              start:start, '#textSelectMenu':textSelectMenu, 
              '#login-and-create-account':loginAndCoreateAccount, '#textPartNameList':textPartNameList,
-             '#textPageNameList':textPageNameList, '#question':question
+             '#textPageNameList':textPageNameList, '#questionForm':questionForm
     };
     return self;
 };

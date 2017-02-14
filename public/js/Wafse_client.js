@@ -8,11 +8,14 @@ const Wafse_client = {
         AppDrawer:null
     },
     ComponentCreator:{
-        LoginAndCoreateAccountForm:null,
         MainContainer:null,
         MdlNavigationLink:null,
         MdlSquareCard:null,
         BootStrapTable:null,
+        LoginAndCoreateAccountForm:null,
+        TextSelectMenu:null,
+        TextPartNameList:null,
+        TextPageNameList:null,
         QuestionForm:null
     },
     Router:null,
@@ -24,9 +27,9 @@ const Wafse_client = {
         View:{
             LoginAndCoreateAccount:{
                 userName:'fun',
-                userPassword:'fun'            
+                userPassword:'fun'
             },
-            ProblemForm:{
+            QuestionForm:{
                 now:{
                     pageContents:null,
                     index:null

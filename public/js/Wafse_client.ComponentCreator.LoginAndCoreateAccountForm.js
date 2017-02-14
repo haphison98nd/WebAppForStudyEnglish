@@ -1,28 +1,28 @@
-Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigation, _appDataManager, _router, _mainContainerSmall){
+Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigation, _appDataManager, _router){
     
     'use strict';
     
-    const htmlTemplate_loginAndCoreateAccountForm = $($('.htmlTemplate#loginAndCoreateAccountForm').clone().html()),
-          mainMassage_login = htmlTemplate_loginAndCoreateAccountForm.find('#mainMassage_login'),
-          mainMassage_createAccount = htmlTemplate_loginAndCoreateAccountForm.find('#mainMassage_createAccount'),
-          userNameInput = htmlTemplate_loginAndCoreateAccountForm.find('#userNameInput'),
-          passWordInput = htmlTemplate_loginAndCoreateAccountForm.find('#passWordInput'),
-          enterBtn = htmlTemplate_loginAndCoreateAccountForm.find('#enterBtn'),
-          createAccountBtn = htmlTemplate_loginAndCoreateAccountForm.find('#createAccountBtn'),
-          submitBtn = htmlTemplate_loginAndCoreateAccountForm.find('#submitBtn'),
-          returnBtn = htmlTemplate_loginAndCoreateAccountForm.find('#returnBtn'),
-          alertForUserNameInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForUserNameInput'),
-          alertForPassWordInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForPassWordInput')
-    ;
-    
-    let self, activateAll, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
+    let htmlTemplate_loginAndCoreateAccountForm = $($('.htmlTemplate#loginAndCoreateAccountForm').clone().html()),
+        mainMassage_login = htmlTemplate_loginAndCoreateAccountForm.find('#mainMassage_login'),
+        mainMassage_createAccount = htmlTemplate_loginAndCoreateAccountForm.find('#mainMassage_createAccount'),
+        userNameInput = htmlTemplate_loginAndCoreateAccountForm.find('#userNameInput'),
+        passWordInput = htmlTemplate_loginAndCoreateAccountForm.find('#passWordInput'),
+        enterBtn = htmlTemplate_loginAndCoreateAccountForm.find('#enterBtn'),
+        createAccountBtn = htmlTemplate_loginAndCoreateAccountForm.find('#createAccountBtn'),
+        submitBtn = htmlTemplate_loginAndCoreateAccountForm.find('#submitBtn'),
+        returnBtn = htmlTemplate_loginAndCoreateAccountForm.find('#returnBtn'),
+        alertForUserNameInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForUserNameInput'),
+        alertForPassWordInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForPassWordInput'),
+        mainContainerSmall = Wafse_client.ComponentCreator.MainContainer('mainContainerSmall', 'ようこそ'),
+        self, activateAll, conbineComponents, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
         validUserNameInputAndPassWordInput, remove,
-        appNavigation, appDataManager, router, mainContainerSmall
+        appNavigation, appDataManager, router
     ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // private
     validUserNameInputAndPassWordInput = function(){
         if(String(userNameInput.val()) === '' && String(passWordInput.val()) === '') {
             showAlertMessage('ユーザ名を入力してください', 'パスワードを入力してください');
@@ -38,9 +38,38 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
         return true;
     };
     
+    
+    // private
+    showAlertMessage = function(alertMessageForUserNameInput, alertMessageForPassWordInput){   
+        hiddenAlertMessage();
+        if(alertMessageForUserNameInput){
+            alertForUserNameInput
+                .css({'display':'block'})
+                .html('<b>' + String(alertMessageForUserNameInput) + '</b>')
+            ;            
+        }
+        
+        if(alertMessageForPassWordInput){
+            alertForPassWordInput
+                .css({'display':'block'})
+                .html('<b>' + String(alertMessageForPassWordInput) + '</b>')
+            ;            
+        }
+    };
+
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // private
+    hiddenAlertMessage = function(){
+        alertForUserNameInput.css({'display':'none'});
+        alertForPassWordInput.css({'display':'none'});
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    // private
     activateTextInput = function(){
         if (appDataManager.getItem('View.LoginAndCoreateAccount.userName')){
             userNameInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userName')));
@@ -53,6 +82,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // private
     activateButtons = function(){
         enterBtn.click(function(){
             if(validUserNameInputAndPassWordInput()){
@@ -114,39 +144,20 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
+
+    // private
+    conbineComponents = function () {
+        mainContainerSmall.appendRender(htmlTemplate_loginAndCoreateAccountForm);
+    };
     
-    showAlertMessage = function(alertMessageForUserNameInput, alertMessageForPassWordInput){   
-        hiddenAlertMessage();
-        if(alertMessageForUserNameInput){
-            alertForUserNameInput
-                .css({'display':'block'})
-                .html('<b>' + String(alertMessageForUserNameInput) + '</b>')
-            ;            
-        }
-        
-        if(alertMessageForPassWordInput){
-            alertForPassWordInput
-                .css({'display':'block'})
-                .html('<b>' + String(alertMessageForPassWordInput) + '</b>')
-            ;            
-        }
-    };
-
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-        
-    hiddenAlertMessage = function(){
-        alertForUserNameInput.css({'display':'none'});
-        alertForPassWordInput.css({'display':'none'});
-    };
-
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // private
     activateAll = function(){
-        mainContainerSmall.setMainMassage('ようこそ');
         activateTextInput();
         activateButtons();
+        conbineComponents();
         // Memoriy Leak Test
         // setTimeout(function(){ enterBtn.click(); }, 2000);
     };
@@ -154,6 +165,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     remove = function () {
         mainContainerSmall.remove();
         return self;
@@ -166,13 +178,12 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
         appNavigation = _appNavigation;
         appDataManager = _appDataManager;
         router = _router;
-        mainContainerSmall = _mainContainerSmall;
         activateAll();
     })();
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:htmlTemplate_loginAndCoreateAccountForm, remove:remove};
+    self = {jQeryObj:mainContainerSmall.jQeryObj, remove:remove};
     return self;
 };
