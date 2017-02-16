@@ -10,6 +10,7 @@
             <div id="mainContainer">
                 <style scoped>  
                     #mainContainer{
+                        max-height: 700px;
                         margin: 0 auto;
                         margin-bottom: 10px;
                         padding: 30px;
@@ -17,7 +18,7 @@
                         border-radius: 5px;
                         background-color: rgba(0, 0, 40, 0.7);
                         color: white;
-                        overflow: auto;
+                        overflow: scroll;
                     }
 
                     .mdl-chip {
@@ -211,7 +212,7 @@
             }
 
             /* how to imprement fadeIn/Out by using only css: https://q-az.net/fadein-open-only-css/ */
-            body, #appBody > * {
+            body{
                 animation: fadeIn 0.5s ease-in 0s 1 normal;
                 -webkit-animation: fadeIn 0.5s ease-in 0s 1 normal;
             }
@@ -237,6 +238,22 @@
             }
         </style>
         <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+            <style scoped>
+                #appBody > * {
+                    animation: zoomInAndFadeIn 0.4s ease-in 0s 1 normal;
+                     -webkit-animation: zoomInAndFadeIn 0.4s ease-in 0s 1 normal;
+                }
+
+                @keyframes zoomInAndFadeIn {
+                    0% { opacity: 0; transform: scale(0.98);}
+                    100% {opacity: 1; transform: scale(1.0);}
+                }
+
+                @-webkit-keyframes zoomInAndFadeIn {
+                    0% { opacity: 0; transform: scale(0.98);}
+                    100% {opacity: 1; transform: scale(1.0);}
+                }
+            </style>
             <header class="mdl-layout__header mdl-layout__header--transparent">
                 <style scoped>
                     #progressSpinner{
