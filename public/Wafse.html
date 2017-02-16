@@ -205,10 +205,27 @@
     </head>
     <body>
         <style>
+            
             body {
                 background-color: black;
             }
 
+            /* how to imprement fadeIn/Out by using only css: https://q-az.net/fadein-open-only-css/ */
+            body, #appBody > * {
+                animation: fadeIn 0.5s ease-in 0s 1 normal;
+                -webkit-animation: fadeIn 0.5s ease-in 0s 1 normal;
+            }
+
+            @keyframes fadeIn {
+                0% {opacity: 0}
+                100% {opacity: 1}
+            }
+
+            @-webkit-keyframes fadeIn {
+                0% {opacity: 0}
+                100% {opacity: 1}
+            }
+            
             .demo-layout-transparent {
               background: url('../images/background-photo.png') center / cover;
             }
@@ -220,23 +237,6 @@
             }
         </style>
         <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-            <style scoped>
-                /* how to imprement fadeIn/Out by using only css: https://q-az.net/fadein-open-only-css/ */
-                #appBody > *{
-                    animation: fadeIn 0.5s ease-in 0s 1 normal;
-                    -webkit-animation: fadeIn 0.5s ease-in 0s 1 normal;
-                }
-
-                @keyframes fadeIn {
-                    0% {opacity: 0}
-                    100% {opacity: 1}
-                }
-
-                @-webkit-keyframes fadeIn {
-                    0% {opacity: 0}
-                    100% {opacity: 1}
-                }
-            </style>
             <header class="mdl-layout__header mdl-layout__header--transparent">
                 <style scoped>
                     #progressSpinner{
