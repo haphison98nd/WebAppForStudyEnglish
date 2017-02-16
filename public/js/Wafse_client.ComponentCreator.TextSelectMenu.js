@@ -2,7 +2,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
     
     'use strict';
     
-    let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle', 'テキストを選択'),
+    let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
         self, conbineComponents, activateAll, remove,
         appDataManager, router, textList, callback
     ;
@@ -34,6 +34,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
 
     // private
     activateAll = function(){
+        mainContainerMiddle.setNavigator([['#textSelectMenu', 'テキストを選択']]);
         conbineComponents();
     };
     

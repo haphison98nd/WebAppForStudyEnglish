@@ -7,7 +7,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
           mainMassage = htmlTemplate_mainContainer.find('#mainMassage')
     ;
     
-    let self, appendRender, activateMainContainerSize, activateMainMessage, activateAll, setMainMassage, remove,
+    let self, appendRender, activateMainContainerSize, activateMainMessage, activateAll, setNavigator, remove,
         mainContainerSize, mainMassageText, callback
     ;
     
@@ -24,8 +24,18 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    setMainMassage = function (text) {
-        mainMassage.html(String(text));
+    setNavigator = function (navigatorContents) {
+        if (typeof navigatorContents === 'object'){
+            let navigatorHtml = '';
+            for (let navigatorContent of navigatorContents) {
+                navigatorHtml += '<a class="mdl-chip" href="' + navigatorContent[0] + '"><span class="mdl-chip__text">' + navigatorContent[1] + '</span></a> >';
+            }
+            // remove extra '>' from navigatorHtml.
+            navigatorHtml = navigatorHtml.substr(0, navigatorHtml.length-1);
+            mainMassage.html(navigatorHtml);
+        } else if (typeof navigatorContents === 'string') {
+            mainMassage.text(String(navigatorContents));
+        }
         return self;
     };
     
@@ -51,7 +61,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     activateAll = function(){
         activateMainContainerSize();
         activateMainMessage();
-        setMainMassage(mainMassageText);
+        setNavigator(mainMassageText);
         // Memoriy Leak Test
         // setTimeout(function(){ mainMassage.click(); }, 1000);
     };
@@ -77,6 +87,6 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:htmlTemplate_mainContainer, appendRender:appendRender, setMainMassage:setMainMassage, remove:remove};
+    self = {jQeryObj:htmlTemplate_mainContainer, appendRender:appendRender, setNavigator:setNavigator, remove:remove};
     return self;
 };

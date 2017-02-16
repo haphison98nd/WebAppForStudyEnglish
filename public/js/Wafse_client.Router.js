@@ -171,7 +171,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         
         $(window).on('popstate', function(e){
             try {
-                e.preventDefault();
+                console.log(location.hash);
                 self[parseUrlPath(location.hash)]();
                 // console.log('location.pathname: ' + location.pathname);
             } catch (e) {

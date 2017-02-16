@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <template class="htmlTemplate" id="mainContainer">
             <div id="mainContainer">
-                <style scoped>
+                <style scoped>  
                     #mainContainer{
                         margin: 0 auto;
                         margin-bottom: 10px;
@@ -20,6 +20,31 @@
                         overflow: auto;
                     }
 
+                    .mdl-chip {
+                        position: relative;
+                        color: white;
+                        background-color: rgba(255, 255, 255, 0);
+                        border-radius: 3px;
+                        margin-left: 5px;
+                        top: -8px;
+                        cursor:pointer;
+                    }
+
+                    .mdl-chip:active{
+                        color: white;
+                        background-color: rgba(255, 255, 255, 0.3) !important;
+                    }
+                    
+                    .mdl-chip:hover{
+                        color: white;
+                        background-color: rgba(255, 255, 255, 0.1);
+                        transition: background-color 0.15s;
+                    }
+
+                    .mdl-chip__text {
+                        font-size: 18px;
+                    }
+                                        
                     .mainContainerMiddle#mainContainer{
                         width: 1100px;
                     }
@@ -27,8 +52,9 @@
                     .mainContainerSmall#mainContainer{
                         width: 500px;
                     }
+                    
                 </style>
-                <h1 id="mainMassage">mainMassage</h1>
+                <h3 id="mainMassage">dummyText</h3>
             </div>
         </template>
         <template class="htmlTemplate" id="loginAndCoreateAccountForm">

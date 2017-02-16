@@ -2,7 +2,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
     
     'use strict';
     
-    let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle', '章を選択'),
+    let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
         self, conbineComponents, activateAll, remove,
         appDataManager, router, textPartNameList, postQuery, callback
     ;
@@ -28,6 +28,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
 
     // private
     activateAll = function(){
+        mainContainerMiddle.setNavigator([['#textSelectMenu', postQuery.titleText], ['#textPartNameList', '章を選択']]);
         conbineComponents();
     };
     
