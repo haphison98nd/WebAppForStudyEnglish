@@ -12,8 +12,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     
     questionForm = function (_postQuery) {
         let postQuery = _postQuery;
-        
-        history.pushState(null, null, '#questionForm');
+
         appNavigation.showProgressSpinner();
     
         if (postQuery) {
@@ -41,8 +40,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     textPageNameList = function (_postQuery) {
         let postQuery = _postQuery;
-        appNavigation.showProgressSpinner();        
-        history.pushState(null, null, '#textPageNameList');
+        appNavigation.showProgressSpinner();
         if (postQuery) {
             appDataManager.setItem('PostQuery.TextPageNameList', postQuery);
         } else {
@@ -68,7 +66,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     textPartNameList = function (_postQuery) { 
         let postQuery = _postQuery;
         appNavigation.showProgressSpinner();
-        history.pushState(null, null, '#textPartNameList');
         // If user accesses /textPartNameList from browser back button,
         // postQuery will be null.
         // In that situation, load postQuery from localStrage.
@@ -96,7 +93,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     textSelectMenu = function () {        
         appNavigation.showProgressSpinner();
-        history.pushState(null, null, '#textSelectMenu');              
         $.ajax({
             type: 'GET',
             url: '/textList',
@@ -113,8 +109,8 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     loginAndCoreateAccount = function () {
+        history.replaceState(null, null, '#login-and-create-account');
         const loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self);
-        history.pushState(null, null, '#login-and-create-account');
         appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQeryObj);
     };
     

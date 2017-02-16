@@ -16,6 +16,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
         bootStrapTable.appendThead(['章の名前', 'ステータス', '周回回数']);
         for (let textPartName of textPartNameList){
             bootStrapTable.appendTbody([textPartName, '近日実装', '近日実装'], function(){
+                history.pushState(null, null, '#textPageNameList');
                 router['#textPageNameList']({'titleText':postQuery.titleText, 'textPartName':textPartName});
             });
         }

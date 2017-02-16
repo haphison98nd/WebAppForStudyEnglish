@@ -17,7 +17,10 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
                     titleText:titleText,
                     supportingText:textList[titleText]['snippet'],
                     backGroundImageUrl:textList[titleText]['backGroundImageUrl'],
-                    buttonClickAction:function(s){ router['#textPartNameList']({'titleText':titleText}); },
+                    buttonClickAction:function(s){ 
+                        history.pushState(null, null, '#textPartNameList');              
+                        router['#textPartNameList']({'titleText':titleText}); 
+                    },
                     isButtonClickable:titleText === 'To Be Announced' ? false : true
                 },
                 mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDataManager, router, mdlSquareCardOption);
