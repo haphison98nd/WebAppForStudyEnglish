@@ -7,11 +7,11 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
           mdlCardTitle = htmlTemplate_mdlSquareCard.find('.mdl-card__title-text'),
           mdlCardImgeArea = htmlTemplate_mdlSquareCard.find('.mdl-card__title.mdl-card--expand'),
           mdlCardSupporting = htmlTemplate_mdlSquareCard.find('.mdl-card__supporting-text'),
-          mdlButton = htmlTemplate_mdlSquareCard.find('.mdl-button')
+          button = htmlTemplate_mdlSquareCard.find('.btn')
     ;
     
     let self, appendRender, activateAll, 
-        setMdlCardBackGroundImage, setMdlCardTitleText, setMdlCardSupportingText, setButtonMode, remove,
+        setMdlCardBackGroundImage, setMdlCardTitleText, setMdlCardSupportingText, setButtonMode, setButtonText, remove,
         appDataManager, router, option
     ;
     
@@ -53,11 +53,19 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
 
     setButtonMode = function (isButtonClickable) {
-        if (isButtonClickable === false) mdlButton.remove();
-        // if (isButtonClickable === false) mdlButton.prop('disabled', false);
+        if (isButtonClickable === false) button.remove();
+        // if (isButtonClickable === false) button.prop('disabled', false);
         return self;
     };
 
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    setButtonText = function(buttonText) {
+        button.text(String(buttonText));
+        return self;
+    };
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -66,11 +74,12 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
         setMdlCardSupportingText(option.supportingText);
         setMdlCardBackGroundImage(option.backGroundImageUrl);
         setButtonMode(option.isButtonClickable);
-        mdlButton.click(function(){
+        setButtonText(option.buttonText);
+        button.click(function(){
             if(option.buttonClickAction) option.buttonClickAction(self);
         });
         // Memoriy Leak Test
-        // setTimeout(function(){ mdlButton.click(); }, 2000);
+        // setTimeout(function(){ button.click(); }, 2000);
     };
     
     //////////////////////////////////////////////
@@ -97,7 +106,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     self = {    
              jQeryObj:htmlTemplate_mdlSquareCard, appendRender:appendRender, remove:remove,
              setMdlCardTitleText:setMdlCardTitleText, setMdlCardSupportingText:setMdlCardSupportingText, 
-             setMdlCardBackGroundImage:setMdlCardBackGroundImage
+             setButtonText:setButtonText, setMdlCardBackGroundImage:setMdlCardBackGroundImage
     };
     return self;
 };
