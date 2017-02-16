@@ -23,41 +23,42 @@ const Wafse_server = function(){
               syunkanEisakubunDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/SyunkanEisakubun/SyunkanEisakubunDb.json')
         ;
         
-        let dataForHttpRes = null;
-                
         app.use(bodyParser.urlencoded({extended: true}));
         
         app.get('/', function(req, res){
-            // how to write http header on Express: http://techhey.hatenablog.com/entry/2014/04/11/221129
-            res.writeHead(200, {'Content-Type':'text/html'});
-            dataForHttpRes = extendedFs.readFileSync(rootDir + '/Wafse.html', 'utf-8');
-            res.end(dataForHttpRes);
+            extendedFs.readFile(rootDir + '/Wafse.html', 'utf-8', function (err, file){
+                // how to write http header on Express: http://techhey.hatenablog.com/entry/2014/04/11/221129
+                res.writeHead(200, {'Content-Type':'text/html'});
+                res.end(file);
+            });
         });
         
         app.get('/css/:cssFileName', function(req, res){
-            res.writeHead(200, {'Content-Type':'text/css'});
-            dataForHttpRes = extendedFs.readFileSync(rootDir + '/css/' +  req.params.cssFileName, 'utf-8');
-            res.end(dataForHttpRes);
+            extendedFs.readFile(rootDir + '/css/' +  req.params.cssFileName, 'utf-8', function (err, file){
+                res.writeHead(200, {'Content-Type':'text/css'});
+                res.end(file);
+            });            
+        });
+
+        app.get('/js/:jsFileName/:libraryJsFileName?', function(req, res){           
+            if(req.params.jsFileName === 'libraries'){
+                extendedFs.readFile(rootDir + '/js/libraries/' + req.params.libraryJsFileName, 'utf-8', function (err, file){
+                    res.writeHead(200, {'Content-Type':'text/javascript'});
+                    res.end(file);
+                });
+            }else{            
+                extendedFs.readFile(rootDir + '/js/' + req.params.jsFileName, 'utf-8', function (err, file){
+                    res.writeHead(200, {'Content-Type':'text/javascript'});
+                    res.end(file);
+                });    
+            }
         });
 
         app.get('/images/:imageFileName', function(req, res){
-            res.writeHead(200, {'Content-Type':'image/jpeg'});
-            dataForHttpRes = extendedFs.readFileSync(rootDir + '/images/' +  req.params.imageFileName);
-            res.end(dataForHttpRes, 'binary');
-        });
-
-        app.get('/js/:jsFileName/:libraryJsFileName?', function(req, res){
-                        
-            if(req.params.jsFileName === 'libraries'){
-                res.writeHead(200, {'Content-Type':'text/javascript'});
-                dataForHttpRes = extendedFs.readFileSync(rootDir + '/js/libraries/' + req.params.libraryJsFileName, 'utf-8');
-                res.end(dataForHttpRes);                
-            }else{            
-                res.writeHead(200, {'Content-Type':'text/javascript'});
-                dataForHttpRes = extendedFs.readFileSync(rootDir + '/js/' + req.params.jsFileName, 'utf-8');
-                res.end(dataForHttpRes);
-            }
-            
+            extendedFs.readFile(rootDir + '/images/' + req.params.imageFileName, function (err, file){
+                res.writeHead(200, {'Content-Type':'image/jpeg'});
+                res.end(file, 'binary');
+            });       
         });
 
         /*
