@@ -111,7 +111,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
         });
         
         createAccountBtn.click(function(){
-            mainContainerSmall.setMainMassage('新規アカウントを作成');
+            mainContainerSmall.setNavigator('新規アカウントを作成');
             mainMassage_login.css({'display':'none'});
             enterBtn.css({'display':'none'});
             createAccountBtn.css({'display':'none'});
