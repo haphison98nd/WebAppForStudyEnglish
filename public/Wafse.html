@@ -208,20 +208,35 @@
             body {
                 background-color: black;
             }
-            /* mdl theme .css */
 
             .demo-layout-transparent {
               background: url('../images/background-photo.png') center / cover;
             }
 
-            .demo-layout-transparent .mdl-layout__header,
-            .demo-layout-transparent .mdl-layout__drawer-button {
+            .demo-layout-transparent .mdl-layout__header, .demo-layout-transparent .mdl-layout__drawer-button {
               /* This background is dark, so we set text to white. Use 87% black instead if
                  your background is light. */
               color: white;
             }
         </style>
         <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+            <style scoped>
+                /* how to imprement fadeIn/Out by using only css: https://q-az.net/fadein-open-only-css/ */
+                #appBody > *{
+                    animation: fadeIn 0.5s ease-in 0s 1 normal;
+                    -webkit-animation: fadeIn 0.5s ease-in 0s 1 normal;
+                }
+
+                @keyframes fadeIn {
+                    0% {opacity: 0}
+                    100% {opacity: 1}
+                }
+
+                @-webkit-keyframes fadeIn {
+                    0% {opacity: 0}
+                    100% {opacity: 1}
+                }
+            </style>
             <header class="mdl-layout__header mdl-layout__header--transparent">
                 <style scoped>
                     #progressSpinner{
@@ -259,10 +274,9 @@
                     <div class="mdl-navigation__link" >Link</div-->
                 </nav>   
             </div>
-            <main class="mdl-layout__content" id="appBody">
-            </main>
+            <main class="mdl-layout__content" id="appBody"></main>
         </div>
-        
+
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script type="text/javascript"src="js/libraries/scoped.js"></script>
         <script type="text/javascript" src="js/libraries/tether.min.js"></script>
