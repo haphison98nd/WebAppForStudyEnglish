@@ -171,8 +171,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         
         $(window).on('popstate', function(e){
             try {
-                console.log(location.hash);
-                self[parseUrlPath(location.hash)]();
+                if(location.hash !== '#login-and-create-account') self[parseUrlPath(location.hash)]();
                 // console.log('location.pathname: ' + location.pathname);
             } catch (e) {
                 console.log(e);
@@ -204,9 +203,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     
     self = {
-             start:start, '#root':root, '#textSelectMenu':textSelectMenu, 
-             '#login-and-create-account':loginAndCoreateAccount, '#textPartNameList':textPartNameList,
-             '#textPageNameList':textPageNameList, '#questionForm':questionForm
+             start:start, '#root':root, '#text-select-menu':textSelectMenu, 
+             '#login-and-create-account':loginAndCoreateAccount, '#text-part-name-list':textPartNameList,
+             '#text-page-name-list':textPageNameList, '#question-form':questionForm
     };
     return self;
 };

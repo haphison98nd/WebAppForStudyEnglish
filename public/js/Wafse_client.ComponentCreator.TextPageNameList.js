@@ -16,8 +16,8 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
         bootStrapTable.appendThead(['節の名前', 'ステータス', 'クリア回数', '最短クリア時間']);
         for (let textPageName of textPageNameList){
             bootStrapTable.appendTbody([textPageName, '近日実装', '近日実装', '近日実装'], function(){
-                history.pushState(null, null, '#questionForm');
-                router['#questionForm']({'titleText':postQuery.titleText, 'textPageName':textPageName});
+                history.pushState(null, null, '#question-form');
+                router['#question-form']({'titleText':postQuery.titleText, 'textPageName':textPageName});
             });
         }
         mainContainerMiddle.appendRender(bootStrapTable.jQeryObj);
@@ -28,7 +28,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
 
     // private
     activateAll = function(){
-        mainContainerMiddle.setNavigator([['#textSelectMenu', postQuery.titleText], ['#textPartNameList', postQuery.textPartName], ['#textPageNameList', '節を選択']]);
+        mainContainerMiddle.setNavigator([['#text-select-menu', postQuery.titleText], ['#text-part-name-list', postQuery.textPartName], ['#text-page-name-list', '節を選択']]);
         conbineComponents();
     };
     

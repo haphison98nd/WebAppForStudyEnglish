@@ -19,8 +19,8 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
                     backGroundImageUrl:textList[titleText]['backGroundImageUrl'],
                     buttonText:'勉強する',
                     buttonClickAction:function(s){ 
-                        history.pushState(null, null, '#textPartNameList');              
-                        router['#textPartNameList']({'titleText':titleText}); 
+                        history.pushState(null, null, '#text-part-name-list');              
+                        router['#text-part-name-list']({'titleText':titleText}); 
                     },
                     isButtonClickable:titleText === 'To Be Announced' ? false : true
                 },
@@ -34,7 +34,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
 
     // private
     activateAll = function(){
-        mainContainerMiddle.setNavigator([['#textSelectMenu', 'テキストを選択']]);
+        mainContainerMiddle.setNavigator([['#text-select-menu', 'テキストを選択']]);
         conbineComponents();
     };
     
