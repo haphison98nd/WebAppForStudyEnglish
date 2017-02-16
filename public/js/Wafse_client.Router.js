@@ -13,14 +13,14 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     questionForm = function (_postQuery) {
         let postQuery = _postQuery;
         
-        history.pushState(null, null, '/questionForm');
+        history.pushState(null, null, '#questionForm');
         appNavigation.showProgressSpinner();
     
         if (postQuery) {
             appDataManager.setItem('PostQuery.Question', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
-            if (postQuery === null) self['/textSelectMenu']();
+            if (postQuery === null) textSelectMenu();
         }
         
         $.ajax({
@@ -42,12 +42,12 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     textPageNameList = function (_postQuery) {
         let postQuery = _postQuery;
         appNavigation.showProgressSpinner();        
-        history.pushState(null, null, '/textPageNameList');
+        history.pushState(null, null, '#textPageNameList');
         if (postQuery) {
             appDataManager.setItem('PostQuery.TextPageNameList', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
-            if (postQuery === null) self['/textSelectMenu']();
+            if (postQuery === null) textSelectMenu();
         }
         $.ajax({
             type: 'GET',
@@ -68,7 +68,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     textPartNameList = function (_postQuery) { 
         let postQuery = _postQuery;
         appNavigation.showProgressSpinner();
-        history.pushState(null, null, '/textPartNameList');
+        history.pushState(null, null, '#textPartNameList');
         // If user accesses /textPartNameList from browser back button,
         // postQuery will be null.
         // In that situation, load postQuery from localStrage.
@@ -76,7 +76,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             appDataManager.setItem('PostQuery.TextPartNameList', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPartNameList');
-            if (postQuery === null) self['/textSelectMenu']();
+            if (postQuery === null) textSelectMenu();
         }        
         $.ajax({
             type: 'GET',
@@ -96,7 +96,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     textSelectMenu = function () {        
         appNavigation.showProgressSpinner();
-        history.pushState(null, null, '/textSelectMenu');              
+        history.pushState(null, null, '#textSelectMenu');              
         $.ajax({
             type: 'GET',
             url: '/textList',
@@ -114,7 +114,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     loginAndCoreateAccount = function () {
         const loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self);
-        history.pushState(null, null, '/login-and-create-account');
+        history.pushState(null, null, '#login-and-create-account');
         appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQeryObj);
     };
     
@@ -176,18 +176,18 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         $(window).on('popstate', function(e){
             try {
                 e.preventDefault();
-                self[parseUrlPath(location.pathname)]();
-                // console.log('location.hash: ' + location.hash);
+                self[parseUrlPath(location.hash)]();
+                // console.log('location.pathname: ' + location.pathname);
             } catch (e) {
                 console.log(e);
             }
         });
         
-        if(location.pathname === '/' ){
+        if(location.hash === '' ){
             root();
         } else {
             try {
-                self[parseUrlPath(location.pathname)]();
+                self[parseUrlPath(location.hash)]();
             } catch (e) {
                 console.log(e);
             }
@@ -208,9 +208,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     
     self = {
-             start:start, '/root':root, '/textSelectMenu':textSelectMenu, 
-             '/login-and-create-account':loginAndCoreateAccount, '/textPartNameList':textPartNameList,
-             '/textPageNameList':textPageNameList, '/questionForm':questionForm
+             start:start, '#root':root, '#textSelectMenu':textSelectMenu, 
+             '#login-and-create-account':loginAndCoreateAccount, '#textPartNameList':textPartNameList,
+             '#textPageNameList':textPageNameList, '#questionForm':questionForm
     };
     return self;
 };

@@ -97,7 +97,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                         if (authorizationResult.status === 'success'){ 
                             appDataManager.setItem('View.LoginAndCoreateAccount.userName', String(userNameInput.val()));
                             appDataManager.setItem('View.LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
-                            router['/textSelectMenu']();
+                            router['#textSelectMenu']();
                             console.log(authorizationResult.message);
                         } else if(authorizationResult.status  === 'userNameError'){ 
                             showAlertMessage(authorizationResult.message, '');
@@ -116,7 +116,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
             createAccountBtn.css({'display':'none'});
             returnBtn.css({'display':'inline'});
             returnBtn.click(function(){
-                router['/login-and-create-account']();
+                router['#login-and-create-account']();
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
@@ -132,7 +132,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                             if (createAccountResult.status === 'success'){ 
                                 appDataManager.setItem('View.LoginAndCoreateAccount.userName', String(userNameInput.val()));
                                 appDataManager.setItem('View.LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
-                                router['/textSelectMenu']();
+                                router['#textSelectMenu']();
                                 console.log(createAccountResult.message);
                             } else if(createAccountResult.status  === 'error'){ 
                                 showAlertMessage(createAccountResult.message, '');

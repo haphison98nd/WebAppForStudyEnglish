@@ -4,7 +4,6 @@ const Wafse_server = function(){
     'use strict';
 
     const app = require('express')(),
-          bodyParser = require('body-parser'),
           httpServer = require('http').createServer(app)
     ;
     
@@ -15,7 +14,8 @@ const Wafse_server = function(){
 
     initHttpServer = function(){
         
-        const extendedFs = require('./myNodeModules/ExtendedFs.js'),
+        const bodyParser = require('body-parser'),
+              extendedFs = require('./myNodeModules/ExtendedFs.js'),
               userDb     = require('./myNodeModules/UserDataBaseProcessor.js'),
               PORT       = process.env.PORT || 3000,
               rootDir    = 'public',
@@ -23,22 +23,34 @@ const Wafse_server = function(){
               syunkanEisakubunDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/SyunkanEisakubun/SyunkanEisakubunDb.json')
         ;
         
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         app.use(bodyParser.urlencoded({extended: true}));
         
-        app.get('/', function(req, res){
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
+        app.get('/', function(req, res){ 
             extendedFs.readFile(rootDir + '/Wafse.html', 'utf-8', function (err, file){
                 // how to write http header on Express: http://techhey.hatenablog.com/entry/2014/04/11/221129
                 res.writeHead(200, {'Content-Type':'text/html'});
                 res.end(file);
             });
         });
-        
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         app.get('/css/:cssFileName', function(req, res){
             extendedFs.readFile(rootDir + '/css/' +  req.params.cssFileName, 'utf-8', function (err, file){
                 res.writeHead(200, {'Content-Type':'text/css'});
                 res.end(file);
             });            
         });
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
 
         app.get('/js/:jsFileName/:libraryJsFileName?', function(req, res){           
             if(req.params.jsFileName === 'libraries'){
@@ -54,12 +66,18 @@ const Wafse_server = function(){
             }
         });
 
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         app.get('/images/:imageFileName', function(req, res){
             extendedFs.readFile(rootDir + '/images/' + req.params.imageFileName, function (err, file){
                 res.writeHead(200, {'Content-Type':'image/jpeg'});
                 res.end(file, 'binary');
             });       
         });
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
 
         /*
         app.get('/htmlTemplates/:htmlTemplateName', function(req, res){
@@ -69,9 +87,11 @@ const Wafse_server = function(){
         });
         */
         
-        // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         app.get('/authorize', function(req, res){
-            let dataForAuthorization = req.query;
+            let dataForAuthorization = req.query; // how to get request palam on Express: http://d.hatena.ne.jp/replication/20110307/1299451484
             const authorizationResult = userDb.authorize(dataForAuthorization);
             res.status(200).contentType('application/json');
             if (authorizationResult === 'authorized'){
@@ -83,6 +103,9 @@ const Wafse_server = function(){
             }
         });
         
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         app.get('/createAccount', function(req, res){
             let dataForCreateAccount = req.query;
             const createAccountResult = userDb.addUserData(dataForCreateAccount);
@@ -93,10 +116,16 @@ const Wafse_server = function(){
                 res.json({status : 'error', message: '既に登録されているユーザです'});
             }
         });
+        
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
 
         app.get('/textList', function(req, res){
             res.contentType('application/json').status(200).json(textList);
         });
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
 
         app.get('/textPartNameList', function(req, res){
             let dataForTextPartNameList = req.query;
@@ -105,14 +134,20 @@ const Wafse_server = function(){
                 res.contentType('application/json').json(syunkanEisakubunDb.getTextPartNameList());
             }
         });
-        
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         app.get('/textPageNameList', function(req, res){
             let dataForTextPageNameList = req.query;
             if (String(dataForTextPageNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
                 res.contentType('application/json').json(syunkanEisakubunDb.getTextPageNameList(String(dataForTextPageNameList.textPartName)));
             }
         });
-        
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         app.get('/pageContents', function(req, res){
             let dataForPageContentst = req.query;
             // console.log(syunkanEisakubunDb.getPageContents('原型不定詞・使役'));
@@ -121,7 +156,11 @@ const Wafse_server = function(){
             }
         });
         
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         /*
+        // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
         app.post('/textList', function(req, res){
             console.log(req.body);
             res.contentType('application/json').status(200).json(textList);
