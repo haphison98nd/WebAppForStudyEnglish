@@ -14,7 +14,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    setProgressBarValue= function (value, remainTime) {
+    setProgressBarValue = function (value, remainTime) {
         progressBar
             .css({'width':String(value) + '%'})
             .attr('aria-valuenow', String(value))

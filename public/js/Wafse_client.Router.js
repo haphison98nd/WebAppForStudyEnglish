@@ -2,30 +2,32 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, questionForm, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
+    let self, isUrlIncldesQuery, parseUrlPath, parseUrlQuery, 
+        questionForm, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, root, start,
         appBody, appNavigation, appDrawer, appDataManager
     ;
-
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     questionForm = function (_postQuery) {
         let postQuery = _postQuery;
         
-        history.pushState('#questionForm', 'questionForm', '#questionForm');
+        history.pushState(null, null, '/questionForm');
         appNavigation.showProgressSpinner();
     
-        if (postQuery){
+        if (postQuery) {
             appDataManager.setItem('PostQuery.Question', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
-            if (postQuery === null) self['#textSelectMenu']();
+            if (postQuery === null) self['/textSelectMenu']();
         }
         
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url : '/pageContents',
             data: postQuery,
+            cache: false,
             success: function (pageContents) {
                 appNavigation.hiddenProgressSpinner();
                 appDataManager.setItem('View.QuestionForm.now.pageContents', pageContents);
@@ -40,19 +42,18 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     textPageNameList = function (_postQuery) {
         let postQuery = _postQuery;
         appNavigation.showProgressSpinner();        
-        history.pushState('#textPageNameList', 'textPageNameList', '#textPageNameList');
-        
-        if (postQuery){
+        history.pushState(null, null, '/textPageNameList');
+        if (postQuery) {
             appDataManager.setItem('PostQuery.TextPageNameList', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
-            if (postQuery === null) self['#textSelectMenu']();
+            if (postQuery === null) self['/textSelectMenu']();
         }
-        
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url : '/textPageNameList',
             data: postQuery,
+            cache: false,
             success: function (textPageNameList) {
                 appNavigation.hiddenProgressSpinner();
                 const textPageNameListJqueryObj = Wafse_client.ComponentCreator.TextPageNameList(appDataManager, self, textPageNameList, postQuery);
@@ -67,26 +68,25 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     textPartNameList = function (_postQuery) { 
         let postQuery = _postQuery;
         appNavigation.showProgressSpinner();
-        history.pushState('#textPartNameList', 'textPartNameList', '#textPartNameList');
-
-        // If user accesses #textPartNameList from browser back button,
+        history.pushState(null, null, '/textPartNameList');
+        // If user accesses /textPartNameList from browser back button,
         // postQuery will be null.
         // In that situation, load postQuery from localStrage.
         if (postQuery){
             appDataManager.setItem('PostQuery.TextPartNameList', postQuery);
         } else {
             postQuery = appDataManager.getItem('PostQuery.TextPartNameList');
-            if (postQuery === null) self['#textSelectMenu']();
-        }
-        
+            if (postQuery === null) self['/textSelectMenu']();
+        }        
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url : '/textPartNameList',
             data: postQuery,
+            cache: false,
             success: function (textPartNameList) {
                 appNavigation.hiddenProgressSpinner();
                 const textPartNameListJqueryObj = Wafse_client.ComponentCreator.TextPartNameList(appDataManager, self, textPartNameList, postQuery);
-                appBody.clearPage().appendRender(textPartNameListJqueryObj.jQeryObj); 
+                appBody.clearPage().appendRender(textPartNameListJqueryObj.jQeryObj);
             }
         });        
     };
@@ -96,16 +96,16 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     textSelectMenu = function () {        
         appNavigation.showProgressSpinner();
-        history.pushState('#textSelectMenu', 'textSelectMenu', '#textSelectMenu');       
-                
+        history.pushState(null, null, '/textSelectMenu');              
         $.ajax({
-          url: '/textList',
-          cache: false,
-          success: function(textList){
-              appNavigation.hiddenProgressSpinner();
-              const textSelectMenuJqueryObj = Wafse_client.ComponentCreator.TextSelectMenu(appDataManager, self, textList)
-              appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQeryObj); 
-          }
+            type: 'GET',
+            url: '/textList',
+            cache: false,
+            success: function(textList){
+                appNavigation.hiddenProgressSpinner();
+                const textSelectMenuJqueryObj = Wafse_client.ComponentCreator.TextSelectMenu(appDataManager, self, textList);
+                appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQeryObj); 
+            }
         });
     };
     
@@ -114,20 +114,80 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     loginAndCoreateAccount = function () {
         const loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self);
-        history.pushState('#login-and-create-account', 'login-and-create-account', '#login-and-create-account');
+        history.pushState(null, null, '/login-and-create-account');
         appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQeryObj);
     };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    root = function () {
+        loginAndCoreateAccount();
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    // private.
+    // @param { String } url: url include query. ex: '/path-name1/path-name2?q1=aaa&q2=bbb'
+    // @ return { boolean }
+    isUrlIncldesQuery = function (url) {        
+        return url.indexOf('?') !== -1 ? true : false; 
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // private
+    // @param { String } url: url include query. ex: '/path-name1/path-name2?q1=aaa&q2=bbb'
+    // @ return { String }: url path.
+    parseUrlPath = function(url){
+        return isUrlIncldesQuery(url) ? url.split('?')[0] : url;
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // private.
+    // @param { String } url: url include query. ex: '/path-name1/path-name2?q1=aaa&q2=bbb'
+    // @ return { Object / Boolean }: return object (ex: {q1: 'aaa', q2: 'bbb'}) if url include query.
+    parseUrlQuery = function (url) { 
+        if (isUrlIncldesQuery(url)) {
+            let queryList = url.split('?')[1].split('&'),
+                queryObj = {}
+            ;
+            for (let query of queryList) {
+                let parsedQuery = query.split('=');
+                queryObj[String(parsedQuery[0])] = parsedQuery[1];
+            }
+            return queryObj;
+        } else {
+            return false;
+        }
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
     start = function () {
-        // console.log('location.hash: ' + location.hash);
-        if(location.hash === '' || location.hash === null || location.hash === undefined){ 
-            self['#login-and-create-account']();
+        
+        window.onbeforeunload = function () { appDataManager.save(); };
+        
+        $(window).on('popstate', function(e){
+            try {
+                e.preventDefault();
+                self[parseUrlPath(location.pathname)]();
+                // console.log('location.hash: ' + location.hash);
+            } catch (e) {
+                console.log(e);
+            }
+        });
+        
+        if(location.pathname === '/' ){
+            root();
         } else {
             try {
-                self[location.hash]();
+                self[parseUrlPath(location.pathname)]();
             } catch (e) {
                 console.log(e);
             }
@@ -142,25 +202,15 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         appBody = _appBody;
         appNavigation = _appNavigation;
         appDrawer = _appDrawer;
-
-        window.onbeforeunload = function () { appDataManager.save(); };
-        
-        $(window).on('popstate', function(event){
-            try {
-                self[event.originalEvent.state]();
-            } catch (e) {
-                console.log(e);
-            }
-        });
     })();
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     self = {
-             start:start, '#textSelectMenu':textSelectMenu, 
-             '#login-and-create-account':loginAndCoreateAccount, '#textPartNameList':textPartNameList,
-             '#textPageNameList':textPageNameList, '#questionForm':questionForm
+             start:start, '/root':root, '/textSelectMenu':textSelectMenu, 
+             '/login-and-create-account':loginAndCoreateAccount, '/textPartNameList':textPartNameList,
+             '/textPageNameList':textPageNameList, '/questionForm':questionForm
     };
     return self;
 };

@@ -2,7 +2,7 @@ Wafse_client.main = function(){
 
     'use strict';
     
-    const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['View', 'LoginAndCoreateAccount']).load(true),
+    const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['View', 'LoginAndCoreateAccount', 'PostQuery', 'Config']).load(true),
           appBody = Wafse_client.Activator.AppBody(appDataManager),
           appNavigation = Wafse_client.Activator.AppNavigation(appDataManager),
           appDrawer = Wafse_client.Activator.AppDrawer(appNavigation, appDataManager),
@@ -16,14 +16,14 @@ Wafse_client.main = function(){
     // debug code of Wafse_client.ComponentCreator.MainContainer
     /*
     const timer = Wafse_client.Util.Timer(),
-          timeLimit = appDataManager.getItem('Config.questionForm.timeLimit')
+          timeLimit = appDataManager.getItem('Config.QuestionForm.timeLimit')
     ;
     let questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, null);
     appBody.appendRender(questionForm.jQeryObj);
     
     timer.start(timeLimit, function(progressTime, remainTime){
-        questionForm.setProgressBarValue(((timeLimit - progressTime)/timeLimit)*100, parseInt(remainTime, 10) + 1);
-    });
+        questionForm.setProgressBarValue(((timeLimit - progressTime) / timeLimit) * 100, parseInt(remainTime, 10) + 1);
+    }, function(){ console.log('timer finished.');});
     
     $.ajax({
         type: 'POST',

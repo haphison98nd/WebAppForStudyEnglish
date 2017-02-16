@@ -19,7 +19,7 @@ const Wafse_server = function(){
               userDb     = require('./myNodeModules/UserDataBaseProcessor.js'),
               PORT       = process.env.PORT || 3000,
               rootDir    = 'public',
-              textList = extendedFs.readFileSync('./TextDB/TextList.json', 'utf-8'),
+              textList = JSON.parse(extendedFs.readFileSync('./TextDB/TextList.json', 'utf-8')),
               syunkanEisakubunDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/SyunkanEisakubun/SyunkanEisakubunDb.json')
         ;
         
@@ -28,6 +28,7 @@ const Wafse_server = function(){
         app.use(bodyParser.urlencoded({extended: true}));
         
         app.get('/', function(req, res){
+            // how to write http header on Express: http://techhey.hatenablog.com/entry/2014/04/11/221129
             res.writeHead(200, {'Content-Type':'text/html'});
             dataForHttpRes = extendedFs.readFileSync(rootDir + '/Wafse.html', 'utf-8');
             res.end(dataForHttpRes);
@@ -59,11 +60,6 @@ const Wafse_server = function(){
             
         });
 
-        app.get('/textList', function(req, res){
-            res.writeHead(200, {'Content-Type':'application/json'});
-            res.end(textList);
-        });
-        
         /*
         app.get('/htmlTemplates/:htmlTemplateName', function(req, res){
             dataForHttpRes = extendedFs.readFileSync(rootDir + '/htmlTemplates/' + req.params.htmlTemplateName, 'utf-8');
@@ -73,56 +69,63 @@ const Wafse_server = function(){
         */
         
         // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
-        app.post('/authorize', function(req, res){
-            let dataForAuthorization = req.body;
+        app.get('/authorize', function(req, res){
+            let dataForAuthorization = req.query;
             const authorizationResult = userDb.authorize(dataForAuthorization);
-
-            res.contentType('application/json');
-
-            if (authorizationResult === 'authorized'){ 
-                res.send({status : 'success', message: 'ようこそ，' + String(dataForAuthorization.userName) + ' さん!'});
+            res.status(200).contentType('application/json');
+            if (authorizationResult === 'authorized'){
+                res.json({status : 'success', message: 'ようこそ，' + String(dataForAuthorization.userName) + ' さん!'});
             } else if(authorizationResult === 'userNotExist'){ 
-                res.send({status : 'userNameError', message: '登録されていないユーザ名です'});
+                res.json({status : 'userNameError', message: '登録されていないユーザ名です'});
             } else if (authorizationResult === 'incorrectUserPassword'){ 
-                res.send({status : 'passwordError', message: '不正なパスワードです'});
+                res.json({status : 'passwordError', message: '不正なパスワードです'});
             }
         });
         
-        app.post('/createAccount', function(req, res){
-            let dataForCreateAccount = req.body;
+        app.get('/createAccount', function(req, res){
+            let dataForCreateAccount = req.query;
             const createAccountResult = userDb.addUserData(dataForCreateAccount);
-
-            res.contentType('application/json');
-
+            res.status(200).contentType('application/json');
             if (createAccountResult){ 
-                res.send({status : 'success', message: 'ようこそ，' + String(dataForCreateAccount.userName) + ' さん!'});
+                res.json({status : 'success', message: 'ようこそ，' + String(dataForCreateAccount.userName) + ' さん!'});
             } else { 
-                res.send({status : 'error', message: '既に登録されているユーザです'});
+                res.json({status : 'error', message: '既に登録されているユーザです'});
             }
         });
-        
-        app.post('/textPartNameList', function(req, res){
-            let dataForTextPartNameList = req.body;
+
+        app.get('/textList', function(req, res){
+            res.contentType('application/json').status(200).json(textList);
+        });
+
+        app.get('/textPartNameList', function(req, res){
+            let dataForTextPartNameList = req.query;
             
             if (String(dataForTextPartNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.send(syunkanEisakubunDb.getTextPartNameList());
+                res.contentType('application/json').json(syunkanEisakubunDb.getTextPartNameList());
             }
         });
         
-        app.post('/textPageNameList', function(req, res){
-            let dataForTextPageNameList = req.body;
+        app.get('/textPageNameList', function(req, res){
+            let dataForTextPageNameList = req.query;
             if (String(dataForTextPageNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.send(syunkanEisakubunDb.getTextPageNameList(String(dataForTextPageNameList.textPartName)));
+                res.contentType('application/json').json(syunkanEisakubunDb.getTextPageNameList(String(dataForTextPageNameList.textPartName)));
             }
         });
         
-        app.post('/pageContents', function(req, res){
-            let dataForPageContentst = req.body;
+        app.get('/pageContents', function(req, res){
+            let dataForPageContentst = req.query;
             // console.log(syunkanEisakubunDb.getPageContents('原型不定詞・使役'));
             if (String(dataForPageContentst.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.send(syunkanEisakubunDb.getPageContents(String(dataForPageContentst.textPageName)));
+                res.contentType('application/json').json(syunkanEisakubunDb.getPageContents(String(dataForPageContentst.textPageName)));
             }
         });
+        
+        /*
+        app.post('/textList', function(req, res){
+            console.log(req.body);
+            res.contentType('application/json').status(200).json(textList);
+        });
+        */      
         
         httpServer.listen(PORT);
     };
