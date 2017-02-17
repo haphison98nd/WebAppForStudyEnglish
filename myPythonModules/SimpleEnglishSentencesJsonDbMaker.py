@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 
 class SimpleEnglishSentencesJsonDbMaker:
 
-    def __createTextHtmlSoup (self, url):
+    def createTextHtmlSoup (self, url):
         # if get html from web
         response = urllib.urlopen(url)
         html = response.read()
@@ -26,14 +26,14 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
     ######################################################
 
-    def __getTextTitle (self, soup):
+    def getTextTitle (self, soup):
         title = soup.find("h1").string
         return title
 
     ######################################################
     ######################################################
 
-    def __getTextSentences (self, soup):
+    def getTextSentences (self, soup):
         sentences = soup.find_all("li")
         sentences = [sentence.string for sentence in sentences]
         return sentences
@@ -41,7 +41,7 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
     ######################################################
 
-    def __addText(self, pageIdx, title, sentences):
+    def addText(self, pageIdx, title, sentences):
         self.__db["page-" + str(pageIdx)] = {
             "title":title,
             "text":sentences
@@ -69,10 +69,10 @@ class SimpleEnglishSentencesJsonDbMaker:
 
     def startScraping (self):
         for pageIdx in range(self.__pageIdxStart, self.__pageIdxEnd + 1):
-            soup = self.__createTextHtmlSoup(self.__targetUrl + str(pageIdx))
-            title = self.__getTextTitle(soup)
-            sentences = self.__getTextSentences(soup)
-            self.__addText(pageIdx, title, sentences)
+            soup = self.createTextHtmlSoup(self.__targetUrl + str(pageIdx))
+            title = self.getTextTitle(soup)
+            sentences = self.getTextSentences(soup)
+            self.addText(pageIdx, title, sentences)
             print "Processing: URL: " + self.__targetUrl + str(pageIdx)
         return self
 
