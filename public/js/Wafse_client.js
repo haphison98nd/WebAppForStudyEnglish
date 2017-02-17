@@ -19,9 +19,11 @@ const Wafse_client = {
         QuestionForm:null
     },
     Router:null,
-    WebSpeechRecognizer:null,
     Util:{
-        Timer:null
+        UserAgentDetector:null,
+        Timer:null,
+        WebSpeechRecognizer:null,
+        WebSpeechSynthes:null
     },
     appDataTemplate:{
         View:{

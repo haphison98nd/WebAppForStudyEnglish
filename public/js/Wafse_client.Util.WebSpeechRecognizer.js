@@ -1,14 +1,15 @@
-Wafse_client.WebSpeechRecognizer = function () {
+Wafse_client.Util.WebSpeechRecognizer = (function () {
     
     'use strict';
     
-    let self, recognition, activateAll, startRec, stopRec,
+    let self, recognition, startRec, stopRec,
         callback
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     startRec = function(_callback){
         callback = _callback;
         recognition.start();
@@ -18,6 +19,7 @@ Wafse_client.WebSpeechRecognizer = function () {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     stopRec = function(){
         recognition.stop();  
         return self;
@@ -26,8 +28,9 @@ Wafse_client.WebSpeechRecognizer = function () {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    activateAll = function () {
-        // recognition.lang = 'ja';
+    (function constructor () {
+        window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+        recognition = new webkitSpeechRecognition();
         recognition.lang = 'en';
         recognition.continuous = true;
         recognition.addEventListener('result', function(e){        
@@ -38,17 +41,11 @@ Wafse_client.WebSpeechRecognizer = function () {
                     resultText = result.item(0).transcript;
                 }
             }
-            if(callback) callback(resultText);
+            if(callback) {
+                callback(resultText);
+                callback = null;
+            }
         });
-    };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    (function constructor () {
-        window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-        recognition = new webkitSpeechRecognition();
-        activateAll();
     })();
 
     //////////////////////////////////////////////
@@ -56,4 +53,4 @@ Wafse_client.WebSpeechRecognizer = function () {
 
     self = { startRec:startRec, stopRec:stopRec };
     return self;
-};
+})();

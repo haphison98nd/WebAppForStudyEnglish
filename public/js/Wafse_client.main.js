@@ -8,17 +8,21 @@ Wafse_client.main = function(){
           appDrawer = Wafse_client.Activator.AppDrawer(appNavigation, appDataManager),
           router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager)
     ;
-
+    
     // /*
     console.log(Wafse_client);
-    appNavigation.showProgressSpinner();
-
-    setTimeout(function(){
-        appNavigation.hiddenProgressSpinner();
-        router.start();
-    }, 2000);
+    if (Wafse_client.Util.UserAgentDetector() === 'chrome'){
+        appNavigation.showProgressSpinner();
+        setTimeout(function(){
+            appNavigation.hiddenProgressSpinner();
+            router.start();
+        }, 2000);
+    } else {
+        toastr.error('このアプリケーションは Google Chrome 専用です．', 'エラー');
+    }
     // */
     
+    // debug code of Wafse_client.ComponentCreator.QuestionForm
     /*
     const timer = Wafse_client.Util.Timer(),
           timeLimit = appDataManager.getItem('Config.QuestionForm.timeLimit')
@@ -50,38 +54,27 @@ Wafse_client.main = function(){
     mainContainer.appendRender(table.jQeryObj);
     appBody.appendRender(mainContainer.jQeryObj);
     */
-    
+
     
     // debug code of Wafse_client.WebSpeechRecognizer
     /*
-    const speechRecognizer = Wafse_client.WebSpeechRecognizer();
+    Wafse_client.Util.WebSpeechRecognizer.startRec(function(result){
+        console.log(result);
+        console.log(result.toLowerCase().split(' ').join(''));
+        Wafse_client.Util.WebSpeechRecognizer.stopRec();
+    });
+    */
+    
+    
+    // debug code of Web Speech Synthes API
+    /*
     setTimeout(function(){
-        speechRecognizer.startRec(function(result){
-            console.log(result);
-            console.log(result.toLowerCase().split(' ').join(''));
-            speechRecognizer.stopRec();
-        });
-    }, 3000);
+        Wafse_client.Util.WebSpeechSynthes.speechTextInEnglish('Did you make her clean your room?');
+        // Wafse_client.Util.WebSpeechSynthes.speechTextInJapanese('あなたは彼女に部屋の掃除をさせましたか?');
+    }, 500);
     */
     
-    
-    // Test code of Web Speech Synthesis API
-    /* 
-    let isFirstVoiceschanged = true;
-    window.speechSynthesis.onvoiceschanged = function() {
-        if(isFirstVoiceschanged){
-            const synthes = new SpeechSynthesisUtterance();
-            console.log(speechSynthesis.getVoices());
-            synthes.text = 'Did you make her clean your room?';
-            synthes.lang = 'en-US';
-            synthes.voice = speechSynthesis.getVoices()[48];
-            speechSynthesis.speak(synthes);
-            isFirstVoiceschanged = false;
-        }
-    };
-    */
 
-    
     // debug code of Wafse_client.appDataManager
     // appDataManager.print().setItem('View.LoginAndCoreateAccount.userName', '{ueda}').print().save();
 };
