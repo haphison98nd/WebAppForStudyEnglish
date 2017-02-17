@@ -170,9 +170,10 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         window.onbeforeunload = function () { appDataManager.save(); };
         
         $(window).on('popstate', function(e){
+            // we should try-catch here, because user may acsess 403 page.
+            // ex: self[parseUrlPath('#unknown-hash')]();
             try {
                 if(location.hash !== '#login-and-create-account') self[parseUrlPath(location.hash)]();
-                // console.log('location.pathname: ' + location.pathname);
             } catch (e) {
                 console.log(e);
             }
@@ -181,9 +182,12 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         if(location.hash === '' ){
             root();
         } else {
+            // we should try-catch here, because user may acsess 403 page.
+            // ex: self[parseUrlPath('#unknown-hash')]();
             try {
                 self[parseUrlPath(location.hash)]();
             } catch (e) {
+                root();
                 console.log(e);
             }
         }

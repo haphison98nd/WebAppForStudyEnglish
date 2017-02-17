@@ -10,7 +10,13 @@ Wafse_client.main = function(){
     ;
 
     console.log(Wafse_client);
-    router.start();
+    appNavigation.showProgressSpinner();
+
+    setTimeout(function(){
+        appNavigation.hiddenProgressSpinner();
+        router.start();
+    }, 2000);
+
 
     
     // debug code of Wafse_client.ComponentCreator.MainContainer
