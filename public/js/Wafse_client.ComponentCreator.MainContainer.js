@@ -1,4 +1,4 @@
-Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _mainMassageText, _callback){
+Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _mainMassageText){
     
     'use strict';
     
@@ -7,13 +7,14 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
           mainMassage = htmlTemplate_mainContainer.find('#mainMassage')
     ;
     
-    let self, appendRender, activateMainContainerSize, activateMainMessage, activateAll, setNavigator, remove,
-        mainContainerSize, mainMassageText, callback
+    let self, appendRender, activateMainContainerSize, setNavigator, remove,
+        mainContainerSize, mainMassageText
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     appendRender = function(jQueryObj, __callback){
         mainContainer.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
@@ -24,6 +25,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     setNavigator = function (navigatorContents) {
         if (typeof navigatorContents === 'object'){
             let navigatorHtml = '';
@@ -41,34 +43,16 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-
-    activateMainMessage = function () {
-        mainMassage.click(function(){
-            if(callback) callback(self);
-        });        
-    };
     
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    
-    activateMainContainerSize = function () {
-        mainContainer.addClass(String(mainContainerSize));
+    // private
+    activateMainContainerSize = function (text) {
+        mainContainer.addClass(String(text));
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    activateAll = function(){
-        activateMainContainerSize();
-        activateMainMessage();
-        setNavigator(mainMassageText);
-        // Memoriy Leak Test
-        // setTimeout(function(){ mainMassage.click(); }, 1000);
-    };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
+    // public
     remove = function () {
         mainContainer.remove();
         return self;
@@ -80,8 +64,9 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     (function constructor (){
         mainContainerSize = _mainContainerSize;
         mainMassageText = _mainMassageText;
-        callback = _callback;
-        activateAll();
+        
+        activateMainContainerSize(mainContainerSize);
+        setNavigator(mainMassageText);
     })();
 
     //////////////////////////////////////////////

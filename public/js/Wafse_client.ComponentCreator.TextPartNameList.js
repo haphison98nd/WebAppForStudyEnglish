@@ -3,7 +3,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
     'use strict';
     
     let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
-        self, conbineComponents, activateAll, remove,
+        self, conbineComponents, remove,
         appDataManager, router, textPartNameList, postQuery, callback
     ;
     
@@ -22,16 +22,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
         }
         mainContainerMiddle.appendRender(bootStrapTable.jQeryObj);
     };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    // private
-    activateAll = function(){
-        mainContainerMiddle.setNavigator([['#text-select-menu', postQuery.titleText], ['#text-part-name-list', '章を選択']]);
-        conbineComponents();
-    };
-    
+        
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -50,7 +41,9 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
         textPartNameList = _textPartNameList;
         postQuery = _postQuery;
         callback = _callback;
-        activateAll();
+        
+        mainContainerMiddle.setNavigator([['#text-select-menu', postQuery.titleText], ['#text-part-name-list', '章を選択']]);
+        conbineComponents();
     })();
 
     //////////////////////////////////////////////

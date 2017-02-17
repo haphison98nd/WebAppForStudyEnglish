@@ -1,4 +1,4 @@
-Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, _callback){
+Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, _sentenceENG, _sentenceJPN, _callback){
     
     'use strict';
     
@@ -6,9 +6,9 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         questionForm = htmlTemplate_questionForm,
         progressBar = htmlTemplate_questionForm.find('#progressBar'),
         timeLimitInst = htmlTemplate_questionForm.find('#timeLimit'),
-        mainContainer = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle', 'test', null),    
-        self, appendRender, setProgressBarValue, conbineComponents, activateAll, remove,
-        appDataManager, router, callback
+        englishSentenceInst = htmlTemplate_questionForm.find('#englishSentenceInst'),
+        self, setProgressBarValue, setEnglishSentenceInst, remove,
+        appDataManager, router, sentenceENG, sentenceJPN, callback
     ;
     
     //////////////////////////////////////////////
@@ -24,19 +24,12 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-
-    conbineComponents = function () {
-        mainContainer.appendRender(htmlTemplate_questionForm);
-        htmlTemplate_questionForm = mainContainer.jQeryObj;
-    };
     
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    activateAll = function(){
-        conbineComponents();
+    // private
+    setEnglishSentenceInst = function (text) {
+        englishSentenceInst.text(String(text));
     };
-    
+
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -51,8 +44,11 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     (function constructor (){
         appDataManager = _appDataManager;
         router = _router;
+        sentenceENG = _sentenceENG;
+        sentenceJPN = _sentenceJPN;
         callback = _callback;
-        activateAll();
+        
+        setEnglishSentenceInst(sentenceENG);
     })();
 
     //////////////////////////////////////////////

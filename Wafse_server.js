@@ -121,7 +121,7 @@ const Wafse_server = function(){
         //////////////////////////////////////////////
 
         app.get('/textList', function(req, res){
-            res.contentType('application/json').status(200).json(textList);
+            res.status(200).contentType('application/json').json(textList);
         });
 
         //////////////////////////////////////////////
@@ -131,7 +131,7 @@ const Wafse_server = function(){
             let dataForTextPartNameList = req.query;
             
             if (String(dataForTextPartNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.contentType('application/json').json(syunkanEisakubunDb.getTextPartNameList());
+                res.status(200).contentType('application/json').json(syunkanEisakubunDb.getTextPartNameList());
             }
         });
 
@@ -141,7 +141,7 @@ const Wafse_server = function(){
         app.get('/textPageNameList', function(req, res){
             let dataForTextPageNameList = req.query;
             if (String(dataForTextPageNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.contentType('application/json').json(syunkanEisakubunDb.getTextPageNameList(String(dataForTextPageNameList.textPartName)));
+                res.status(200).contentType('application/json').json(syunkanEisakubunDb.getTextPageNameList(String(dataForTextPageNameList.textPartName)));
             }
         });
 
@@ -152,7 +152,7 @@ const Wafse_server = function(){
             let dataForPageContentst = req.query;
             // console.log(syunkanEisakubunDb.getPageContents('原型不定詞・使役'));
             if (String(dataForPageContentst.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.contentType('application/json').json(syunkanEisakubunDb.getPageContents(String(dataForPageContentst.textPageName)));
+                res.status(200).contentType('application/json').json(syunkanEisakubunDb.getPageContents(String(dataForPageContentst.textPageName)));
             }
         });
         
@@ -163,7 +163,7 @@ const Wafse_server = function(){
         // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
         app.post('/textList', function(req, res){
             console.log(req.body);
-            res.contentType('application/json').status(200).json(textList);
+            res.status(200).contentType('application/json').json(textList);
         });
         */      
         

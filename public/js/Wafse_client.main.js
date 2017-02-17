@@ -9,6 +9,7 @@ Wafse_client.main = function(){
           router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager)
     ;
 
+    // /*
     console.log(Wafse_client);
     appNavigation.showProgressSpinner();
 
@@ -16,27 +17,25 @@ Wafse_client.main = function(){
         appNavigation.hiddenProgressSpinner();
         router.start();
     }, 2000);
-
-
+    // */
     
-    // debug code of Wafse_client.ComponentCreator.MainContainer
     /*
     const timer = Wafse_client.Util.Timer(),
           timeLimit = appDataManager.getItem('Config.QuestionForm.timeLimit')
     ;
-    let questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, null);
-    appBody.appendRender(questionForm.jQeryObj);
-    
     timer.start(timeLimit, function(progressTime, remainTime){
         questionForm.setProgressBarValue(((timeLimit - progressTime) / timeLimit) * 100, parseInt(remainTime, 10) + 1);
     }, function(){ console.log('timer finished.');});
-    
+    */
+    /*
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url : '/pageContents',
         data: {'titleText':'どんどん話すための瞬間英作文トレーニング', 'textPageName':'人称代名詞の独立所有格'},
+        cache: false,
         success: function (pageContents) {
-            console.log(pageContents);
+            const questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, pageContents.ENG[0], pageContents.JPN[0]);
+            appBody.appendRender(questionForm.jQeryObj);
         }
     });
     */

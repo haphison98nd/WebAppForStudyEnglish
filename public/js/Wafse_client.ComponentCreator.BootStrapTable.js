@@ -15,6 +15,7 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     appendThead = function(theadLabelList, __callback){
         let tr = $('<tr></tr>');
         for (let theadLabel of theadLabelList) {
@@ -31,6 +32,7 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     appendTbody = function(tbodyLabelList, __callback){
         let tr = $('<tr></tr>');
         for (let tbodyLabel of tbodyLabelList) {
@@ -47,6 +49,7 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     remove = function () {
         bootStrapTable.remove();
         return self;

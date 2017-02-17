@@ -3,7 +3,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
     'use strict';
     
     let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
-        self, conbineComponents, activateAll, remove,
+        self, conbineComponents, remove,
         appDataManager, router, textPageNameList, postQuery, callback
     ;
     
@@ -26,15 +26,6 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    // private
-    activateAll = function(){
-        mainContainerMiddle.setNavigator([['#text-select-menu', postQuery.titleText], ['#text-part-name-list', postQuery.textPartName], ['#text-page-name-list', '節を選択']]);
-        conbineComponents();
-    };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
     // public
     remove = function () {
         mainContainerMiddle.remove();
@@ -50,7 +41,9 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
         textPageNameList = _textPageNameList;
         postQuery = _postQuery;
         callback = _callback;
-        activateAll();
+        
+        conbineComponents();
+        mainContainerMiddle.setNavigator([['#text-select-menu', postQuery.titleText], ['#text-part-name-list', postQuery.textPartName], ['#text-page-name-list', '節を選択']]);
     })();
 
     //////////////////////////////////////////////

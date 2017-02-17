@@ -10,14 +10,15 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
           button = htmlTemplate_mdlSquareCard.find('.btn')
     ;
     
-    let self, appendRender, activateAll, 
-        setMdlCardBackGroundImage, setMdlCardTitleText, setMdlCardSupportingText, setButtonMode, setButtonText, remove,
+    let self, appendRender, setMdlCardBackGroundImage, setMdlCardTitleText, 
+        setMdlCardSupportingText, setButtonMode, setButtonText, activateButton, remove,
         appDataManager, router, option
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     appendRender = function(jQueryObj, __callback){
         mainContainerMiddle.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
@@ -27,7 +28,8 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    
+
+    // private
     setMdlCardTitleText = function (text) {
         mdlCardTitle.text(String(text));
         return self;
@@ -36,6 +38,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // private
     setMdlCardSupportingText = function (text) {
         mdlCardSupporting.text(String(text));
         return self;
@@ -44,6 +47,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // private
     setMdlCardBackGroundImage = function (backGroundImageUrl) {
         mdlCardImgeArea.css({'background':"url('" + String(backGroundImageUrl) + "') no-repeat"});
         return self;
@@ -52,15 +56,16 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // private
     setButtonMode = function (isButtonClickable) {
         if (isButtonClickable === false) button.remove();
-        // if (isButtonClickable === false) button.prop('disabled', false);
         return self;
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // private
     setButtonText = function(buttonText) {
         button.text(String(buttonText));
         return self;
@@ -68,23 +73,17 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-
-    activateAll = function(){
-        setMdlCardTitleText(option.titleText);
-        setMdlCardSupportingText(option.supportingText);
-        setMdlCardBackGroundImage(option.backGroundImageUrl);
-        setButtonMode(option.isButtonClickable);
-        setButtonText(option.buttonText);
+    
+    activateButton = function(__callback){
         button.click(function(){
-            if(option.buttonClickAction) option.buttonClickAction(self);
+            __callback(self);
         });
-        // Memoriy Leak Test
-        // setTimeout(function(){ button.click(); }, 2000);
     };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     remove = function () {
         mdlSquareCard.remove();
         return self;
@@ -97,16 +96,18 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
         appDataManager = _appDataManager;
         router = _router;
         option = _option;
-        activateAll();
+
+        setMdlCardTitleText(option.titleText);
+        setMdlCardSupportingText(option.supportingText);
+        setMdlCardBackGroundImage(option.backGroundImageUrl);
+        setButtonMode(option.isButtonClickable);
+        setButtonText(option.buttonText);
+        if (option.buttonClickAction) activateButton(option.buttonClickAction);
     })();
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {    
-             jQeryObj:htmlTemplate_mdlSquareCard, appendRender:appendRender, remove:remove,
-             setMdlCardTitleText:setMdlCardTitleText, setMdlCardSupportingText:setMdlCardSupportingText, 
-             setButtonText:setButtonText, setMdlCardBackGroundImage:setMdlCardBackGroundImage
-    };
+    self = { jQeryObj:htmlTemplate_mdlSquareCard, appendRender:appendRender, remove:remove };
     return self;
 };

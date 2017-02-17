@@ -3,7 +3,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
     'use strict';
     
     let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
-        self, conbineComponents, activateAll, remove,
+        self, conbineComponents, remove,
         appDataManager, router, textList, callback
     ;
     
@@ -28,16 +28,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
             mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
         }
     };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    // private
-    activateAll = function(){
-        mainContainerMiddle.setNavigator([['#text-select-menu', 'テキストを選択']]);
-        conbineComponents();
-    };
-    
+        
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -55,7 +46,9 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
         router = _router;
         textList = _textList;
         callback = _callback;
-        activateAll();
+        
+        mainContainerMiddle.setNavigator([['#text-select-menu', 'テキストを選択']]);
+        conbineComponents();
     })();
 
     //////////////////////////////////////////////

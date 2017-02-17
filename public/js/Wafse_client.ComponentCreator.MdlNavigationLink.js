@@ -6,30 +6,28 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
           mdlNavigationLink = htmlTemplate_mdlNavigationLink
     ;
     
-    let self, setMdlNavigationLinkText, activateAll, remove,
+    let self, setMdlNavigationLinkText, activateMdlNavigationLink, remove,
         appDrawer, appDataManager, router, text, callback
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // private
     setMdlNavigationLinkText = function (str) {
         mdlNavigationLink.text(str);
-        return self;
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    activateAll = function(){
-        setMdlNavigationLinkText(text);
+    // private
+    activateMdlNavigationLink = function(__callback){
         mdlNavigationLink.click(function(){
-            if(callback) callback(self);
+            __callback(self);
             // debug
             // remove();
         });
-        // Memoriy Leak Test
-        // setTimeout(function(){ mdlNavigationLink.click(); }, 2000);
     };
     
     //////////////////////////////////////////////
@@ -49,7 +47,9 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
         router = _router;
         text = _text;
         callback = _callback;
-        activateAll();
+
+        if (callback) activateMdlNavigationLink(callback);
+        setMdlNavigationLinkText(text);
     })();
 
     //////////////////////////////////////////////

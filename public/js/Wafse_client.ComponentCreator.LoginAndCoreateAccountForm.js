@@ -14,7 +14,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
         alertForUserNameInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForUserNameInput'),
         alertForPassWordInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForPassWordInput'),
         mainContainerSmall = Wafse_client.ComponentCreator.MainContainer('mainContainerSmall', 'ようこそ'),
-        self, activateAll, conbineComponents, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
+        self, conbineComponents, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
         validUserNameInputAndPassWordInput, remove,
         appNavigation, appDataManager, router
     ;
@@ -71,10 +71,10 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     
     // private
     activateTextInput = function(){
-        if (appDataManager.getItem('View.LoginAndCoreateAccount.userName')){
+        if (appDataManager.getItem('View.LoginAndCoreateAccount.userName')) {
             userNameInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userName')));
         }
-        if (appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')){
+        if (appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')) {
             passWordInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')));
         }
     };
@@ -153,19 +153,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     conbineComponents = function () {
         mainContainerSmall.appendRender(htmlTemplate_loginAndCoreateAccountForm);
     };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    
-    // private
-    activateAll = function(){
-        activateTextInput();
-        activateButtons();
-        conbineComponents();
-        // Memoriy Leak Test
-        // setTimeout(function(){ enterBtn.click(); }, 2000);
-    };
-    
+        
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -182,7 +170,10 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
         appNavigation = _appNavigation;
         appDataManager = _appDataManager;
         router = _router;
-        activateAll();
+
+        activateTextInput();
+        activateButtons();
+        conbineComponents();
     })();
     
     //////////////////////////////////////////////
