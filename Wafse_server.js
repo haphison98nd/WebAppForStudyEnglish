@@ -90,8 +90,9 @@ const Wafse_server = function(){
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-        app.get('/authorize', function(req, res){
-            let dataForAuthorization = req.query; // how to get request palam on Express: http://d.hatena.ne.jp/replication/20110307/1299451484
+        // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
+        app.post('/authorize', function(req, res){
+            let dataForAuthorization = req.body; 
             const authorizationResult = userDb.authorize(dataForAuthorization);
             res.status(200).contentType('application/json');
             if (authorizationResult === 'authorized'){
@@ -106,8 +107,8 @@ const Wafse_server = function(){
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-        app.get('/createAccount', function(req, res){
-            let dataForCreateAccount = req.query;
+        app.post('/createAccount', function(req, res){
+            let dataForCreateAccount = req.body;
             const createAccountResult = userDb.addUserData(dataForCreateAccount);
             res.status(200).contentType('application/json');
             if (createAccountResult){ 
@@ -128,7 +129,7 @@ const Wafse_server = function(){
         //////////////////////////////////////////////
 
         app.get('/textPartNameList', function(req, res){
-            let dataForTextPartNameList = req.query;
+            let dataForTextPartNameList = req.query; // how to get request palam on Express: http://d.hatena.ne.jp/replication/20110307/1299451484
             
             if (String(dataForTextPartNameList.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
                 res.status(200).contentType('application/json').json(syunkanEisakubunDb.getTextPartNameList());
@@ -158,14 +159,6 @@ const Wafse_server = function(){
         
         //////////////////////////////////////////////
         //////////////////////////////////////////////
-
-        /*
-        // ExpressでPOSTを処理するメモ: http://qiita.com/K_ichi/items/c70bf4b08467717460d5
-        app.post('/textList', function(req, res){
-            console.log(req.body);
-            res.status(200).contentType('application/json').json(textList);
-        });
-        */      
         
         httpServer.listen(PORT);
     };
