@@ -8,8 +8,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
     
     let self, appDrawerButton, openDrawer, closeDrawer,
         showDrawerButton, hiddenDrawerButton, appendRender, clearPage,
-        waitTimeForMdlLayoutDrawerButton = 3000,
-        waitTimeForMdlLayoutDrawer = waitTimeForMdlLayoutDrawerButton,
+        waitTimeForMdlLayoutDrawer = 3000,
         isDrawerOpen = false,
         appNavigation, appDataManager
     ;
@@ -98,9 +97,9 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
 
     (function constructor () {
         setTimeout( function(){ 
-            appDrawerButton = $('.mdl-layout__drawer-button')
+            appDrawerButton = $('.mdl-layout__drawer-button');
             waitTimeForMdlLayoutDrawer = 0;
-        }, waitTimeForMdlLayoutDrawerButton);
+        }, waitTimeForMdlLayoutDrawer);
         appNavigation = _appNavigation;
         appDataManager = _appDataManager;
     })();
