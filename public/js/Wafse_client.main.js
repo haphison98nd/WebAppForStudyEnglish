@@ -18,6 +18,7 @@ Wafse_client.main = function(){
             router.start();
         }, 2000);
     } else {
+        toastr.options = {'positionClass':'toast-bottom-right'};
         toastr.error('このアプリケーションは Google Chrome 専用です．', 'エラー');
     }
     // */

@@ -96,9 +96,10 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                         if (authorizationResult.status === 'success'){ 
                             appDataManager.setItem('View.LoginAndCoreateAccount.userName', String(userNameInput.val()));
                             appDataManager.setItem('View.LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
+                            toastr.options = {'positionClass':'toast-bottom-right'};
+                            toastr.success(String(authorizationResult.message));
                             history.pushState(null, null, '#text-select-menu');              
                             router['#text-select-menu']();
-                            toastr.success(String(authorizationResult.message));
                         } else if(authorizationResult.status  === 'userNameError'){ 
                             showAlertMessage(authorizationResult.message, '');
                         } else if (authorizationResult.status  === 'passwordError'){ 
@@ -131,9 +132,10 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                             if (createAccountResult.status === 'success'){ 
                                 appDataManager.setItem('View.LoginAndCoreateAccount.userName', String(userNameInput.val()));
                                 appDataManager.setItem('View.LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
+                                toastr.options = {'positionClass':'toast-bottom-right'};
+                                toastr.success(String(createAccountResult.message));
                                 history.pushState(null, null, '#text-select-menu');
                                 router['#text-select-menu']();
-                                toastr.success(String(createAccountResult.message));
                             } else if(createAccountResult.status  === 'error'){ 
                                 showAlertMessage(createAccountResult.message, '');
                             }
