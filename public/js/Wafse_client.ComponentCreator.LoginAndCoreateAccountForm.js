@@ -88,10 +88,9 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
             if(validUserNameInputAndPassWordInput()){
                 appNavigation.showProgressSpinner();
                 $.ajax({
-                    type: 'GET',
+                    type: 'POST',
                     url : '/authorize',
                     data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
-                    cache: false,
                     success: function(authorizationResult){
                         appNavigation.hiddenProgressSpinner();
                         if (authorizationResult.status === 'success'){ 
@@ -124,10 +123,9 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                 if(validUserNameInputAndPassWordInput()){
                     appNavigation.showProgressSpinner();
                     $.ajax({
-                        type: 'GET',
+                        type: 'POST',
                         url : '/createAccount',
                         data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
-                        cache: false,
                         success: function(createAccountResult){
                             appNavigation.hiddenProgressSpinner();
                             if (createAccountResult.status === 'success'){ 

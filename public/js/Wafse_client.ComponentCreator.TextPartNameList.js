@@ -11,10 +11,10 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
     //////////////////////////////////////////////
         
     // private
-    conbineComponents = function () {
+    conbineComponents = function (__textPartNameList, __postQuery) {
         const bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();
         bootStrapTable.appendThead(['章の名前', 'ステータス', '周回回数']);
-        for (let textPartName of textPartNameList){
+        for (let textPartName of __textPartNameList){
             bootStrapTable.appendTbody([textPartName, '近日実装', '近日実装'], function(){
                 history.pushState(null, null, '#text-page-name-list');
                 router['#text-page-name-list']({'titleText':postQuery.titleText, 'textPartName':textPartName});
@@ -43,7 +43,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
         callback = _callback;
         
         mainContainerMiddle.setNavigator([['#text-select-menu', postQuery.titleText], ['#text-part-name-list', '章を選択']]);
-        conbineComponents();
+        conbineComponents(textPartNameList, postQuery);
     })();
 
     //////////////////////////////////////////////

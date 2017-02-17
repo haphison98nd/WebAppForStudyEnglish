@@ -11,12 +11,12 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
     //////////////////////////////////////////////
     
     // private
-    conbineComponents = function () {
-        for (let titleText in textList){
+    conbineComponents = function (__appDataManager, __router, __textList) {
+        for (let titleText in __textList){
             let mdlSquareCardOption = {
                     titleText:titleText,
-                    supportingText:textList[titleText]['snippet'],
-                    backGroundImageUrl:textList[titleText]['backGroundImageUrl'],
+                    supportingText:__textList[titleText]['snippet'],
+                    backGroundImageUrl:__textList[titleText]['backGroundImageUrl'],
                     buttonText:'勉強する',
                     buttonClickAction:function(s){ 
                         history.pushState(null, null, '#text-part-name-list');              
@@ -24,11 +24,11 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
                     },
                     isButtonClickable:titleText === 'To Be Announced' ? false : true
                 },
-                mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(appDataManager, router, mdlSquareCardOption);
+                mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(__appDataManager, __router, mdlSquareCardOption);
             mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
         }
     };
-        
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -48,7 +48,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
         callback = _callback;
         
         mainContainerMiddle.setNavigator([['#text-select-menu', 'テキストを選択']]);
-        conbineComponents();
+        conbineComponents(appDataManager, router, textList);
     })();
 
     //////////////////////////////////////////////
