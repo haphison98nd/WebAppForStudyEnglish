@@ -45,17 +45,8 @@ module.exports = function (_filePath) {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    getPageContents = function (requestedTextPageName) {
-        let pageContentObj = null;
-        for (let partName in simpleEnglishSentencesJsonDb){
-            for (let textPageName in simpleEnglishSentencesJsonDb[partName]){
-                if (String(requestedTextPageName) === textPageName) {
-                    pageContentObj = simpleEnglishSentencesJsonDb[partName][textPageName];
-                    break;
-                }
-            }
-        }
-        return pageContentObj;
+    getPageContents = function (partName, pageName) {
+        return simpleEnglishSentencesJsonDb[partName][pageName];
     };
 
     //////////////////////////////////////////////
