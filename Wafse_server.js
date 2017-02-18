@@ -15,6 +15,7 @@ const Wafse_server = function(){
     initHttpServer = function(){
         
         const bodyParser = require('body-parser'),
+              superagent = require('superagent'),
               extendedFs = require('./myNodeModules/ExtendedFs.js'),
               userDb     = require('./myNodeModules/UserDataBaseProcessor.js'),
               PORT       = process.env.PORT || 3000,
@@ -34,11 +35,10 @@ const Wafse_server = function(){
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-        app.get('/', function(req, res){ 
+        app.get('/', function(req, res){
             extendedFs.readFile(rootDir + '/Wafse.html', 'utf-8', function (err, file){
                 // how to write http header on Express: http://techhey.hatenablog.com/entry/2014/04/11/221129
-                res.writeHead(200, {'Content-Type':'text/html'});
-                res.end(file);
+                res.status(200).contentType('text/html').end(file);
             });
         });
 
@@ -47,23 +47,21 @@ const Wafse_server = function(){
 
         app.get('/css/:cssFileName', function(req, res){
             extendedFs.readFile(rootDir + '/css/' +  req.params.cssFileName, 'utf-8', function (err, file){
-                res.writeHead(200, {'Content-Type':'text/css'});
-                res.end(file);
+                res.status(200).contentType('text/css').end(file);
             });            
         });
 
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-        app.get('/js/:jsFileName/:libraryJsFileName?', function(req, res){           
+        app.get('/js/:jsFileName/:libraryJsFileName?', function(req, res){   
+            res.status(200).contentType('text/javascript');
             if(req.params.jsFileName === 'libraries'){
                 extendedFs.readFile(rootDir + '/js/libraries/' + req.params.libraryJsFileName, 'utf-8', function (err, file){
-                    res.writeHead(200, {'Content-Type':'text/javascript'});
                     res.end(file);
                 });
             }else{            
                 extendedFs.readFile(rootDir + '/js/' + req.params.jsFileName, 'utf-8', function (err, file){
-                    res.writeHead(200, {'Content-Type':'text/javascript'});
                     res.end(file);
                 });    
             }
@@ -74,8 +72,7 @@ const Wafse_server = function(){
 
         app.get('/images/:imageFileName', function(req, res){
             extendedFs.readFile(rootDir + '/images/' + req.params.imageFileName, function (err, file){
-                res.writeHead(200, {'Content-Type':'image/jpeg'});
-                res.end(file, 'binary');
+                res.status(200).contentType('image/jpeg').end(file, 'binary');
             });       
         });
 
@@ -84,9 +81,8 @@ const Wafse_server = function(){
 
         /*
         app.get('/htmlTemplates/:htmlTemplateName', function(req, res){
-            dataForHttpRes = extendedFs.readFileSync(rootDir + '/htmlTemplates/' + req.params.htmlTemplateName, 'utf-8');
-            res.writeHead(200, {'Content-Type':'text/html'});
-            res.end(dataForHttpRes);
+            const html = extendedFs.readFileSync(rootDir + '/htmlTemplates/' + req.params.htmlTemplateName, 'utf-8');
+            res.status(200).contentType('text/html').end(html);
         });
         */
         
@@ -177,6 +173,18 @@ const Wafse_server = function(){
             } else if (String(query.titleText) === 'NHKゴガクル日常会話レベル'){
                 res.json(gogakuruDailyLebelDb.getPageContents(query.textPartName, query.textPageName));
             }
+        });
+        
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
+        app.get('/ginger', function(req, res){
+            superagent
+                .get('http://www.getginger.jp/')
+                .end(function(err, superagentRes){
+                    res.status(200).contentType('text/html').end(superagentRes.text);
+                })
+            ;
         });
         
         //////////////////////////////////////////////
