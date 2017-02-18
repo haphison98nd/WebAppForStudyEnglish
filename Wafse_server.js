@@ -15,7 +15,7 @@ const Wafse_server = function(){
     initHttpServer = function(){
         
         const bodyParser = require('body-parser'),
-              superagent = require('superagent'),
+              // superagent = require('superagent'),
               extendedFs = require('./myNodeModules/ExtendedFs.js'),
               userDb     = require('./myNodeModules/UserDataBaseProcessor.js'),
               PORT       = process.env.PORT || 3000,
@@ -173,18 +173,6 @@ const Wafse_server = function(){
             } else if (String(query.titleText) === 'NHKゴガクル日常会話レベル'){
                 res.json(gogakuruDailyLebelDb.getPageContents(query.textPartName, query.textPageName));
             }
-        });
-        
-        //////////////////////////////////////////////
-        //////////////////////////////////////////////
-
-        app.get('/ginger', function(req, res){
-            superagent
-                .get('http://www.getginger.jp/')
-                .end(function(err, superagentRes){
-                    res.status(200).contentType('text/html').end(superagentRes.text);
-                })
-            ;
         });
         
         //////////////////////////////////////////////
