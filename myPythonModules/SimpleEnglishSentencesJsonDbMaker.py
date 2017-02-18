@@ -42,7 +42,7 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
 
     def addText(self, pageIdx, title, sentences):
-        self.__db["page-" + str(pageIdx)] = {
+        self.db["page-" + str(pageIdx)] = {
             "title":title,
             "text":sentences
         }
@@ -54,7 +54,7 @@ class SimpleEnglishSentencesJsonDbMaker:
         # How to export Japanese file by using json.dump: http://d.hatena.ne.jp/tatz_tsuchiya/20120227/1330325015
         # How to encode text?: http://blog.livedoor.jp/yawamen/archives/51566670.html
         f = codecs.open(filePathForSavingDb + ".json", 'w', "utf-8")
-        json.dump(self.__db, f, indent=4, sort_keys=True, ensure_ascii=False)
+        json.dump(self.db, f, indent=4, sort_keys=True, ensure_ascii=False)
         f.close()
         return self
 
@@ -62,25 +62,25 @@ class SimpleEnglishSentencesJsonDbMaker:
     ######################################################
 
     def getDbAsDict (self):
-        return self.__db
+        return self.db
 
     ######################################################
     ######################################################
 
     def startScraping (self):
-        for pageIdx in range(self.__pageIdxStart, self.__pageIdxEnd + 1):
-            soup = self.createTextHtmlSoup(self.__targetUrl + str(pageIdx))
+        for pageIdx in range(self.pageIdxStart, self.pageIdxEnd + 1):
+            soup = self.createTextHtmlSoup(self.targetUrl + str(pageIdx))
             title = self.getTextTitle(soup)
             sentences = self.getTextSentences(soup)
             self.addText(pageIdx, title, sentences)
-            print "Processing: URL: " + self.__targetUrl + str(pageIdx)
+            print "Processing: URL: " + self.targetUrl + str(pageIdx)
         return self
 
     ######################################################
     ######################################################
 
     def __init__(self, targetUrl, pageIdxStart, pageIdxEnd):
-        self.__db = {}
-        self.__targetUrl = targetUrl
-        self.__pageIdxStart = pageIdxStart
-        self.__pageIdxEnd   = pageIdxEnd
+        self.db = {}
+        self.targetUrl = targetUrl
+        self.pageIdxStart = pageIdxStart
+        self.pageIdxEnd   = pageIdxEnd
