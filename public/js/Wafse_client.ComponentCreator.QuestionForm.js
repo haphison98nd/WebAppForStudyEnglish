@@ -140,6 +140,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 checkAnswerBtn.css({'display':'none'});
                 playSoundBtn.css({'display':'inline'});
                 nextProblemBtn.css({'display':'inline'});
+                playSoundBtn.click();
             }
         });
         playSoundBtn.click(function(){
