@@ -21,7 +21,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
             if (postQuery === null) textSelectMenu();
         }
-        console.log(postQuery);
         $.ajax({
             type: 'GET',
             url : '/pageContents',

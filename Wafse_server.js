@@ -148,11 +148,11 @@ const Wafse_server = function(){
         app.get('/textPageNameList', function(req, res){
             let query = req.query;
             if (String(query.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.status(200).contentType('application/json').json(syunkanEisakubunDb.getTextPageNameList(String(query.textPartName)));
+                res.status(200).contentType('application/json').json(syunkanEisakubunDb.getTextPageNameList(query.textPartName));
             } else if (String(query.titleText) === 'NHKゴガクル中学生レベル'){
-                res.status(200).contentType('application/json').json(gogakuruJuniorHighSchoolLebelDb.getTextPageNameList(String(query.textPartName)));
+                res.status(200).contentType('application/json').json(gogakuruJuniorHighSchoolLebelDb.getTextPageNameList(query.textPartName));
             } else if (String(query.titleText) === 'NHKゴガクル高校生レベル'){
-                res.status(200).contentType('application/json').json(gogakuruHighSchoolLebelDb.getTextPageNameList(String(query.textPartName)));
+                res.status(200).contentType('application/json').json(gogakuruHighSchoolLebelDb.getTextPageNameList(query.textPartName));
             }  
         });
 
