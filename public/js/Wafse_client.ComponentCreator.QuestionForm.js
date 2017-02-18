@@ -95,7 +95,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
             ;            
         } else {
             // AtD: open source grammer checker.
-            AtD.checkTextAreaCrossAJAX('textInput', 'checkLink', 'Edit Text');
+            // AtD.checkTextAreaCrossAJAX('textInput', 'checkLink', 'Edit Text');
             incorrectAlert
                 .css({'display':'block'})
                 .html('<strong>不正解です</strong> （正答例: ' + String(correctAnswer) + ' ）')
