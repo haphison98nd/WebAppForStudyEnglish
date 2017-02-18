@@ -13,10 +13,13 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    speechTextInEnglish = function(text){
+    speechTextInEnglish = function(text, callback){
         setTimeout(function(){
             englishSynth.text = String(text);
             window.speechSynthesis.speak(englishSynth);
+            englishSynth.onend = function (event) {
+                if(callback) callback(event);
+            };
         }, waitTimeForSpeechSynthesisOnvoiceschanged);
         return self;
     };
@@ -24,10 +27,13 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    speechTextInJapanese = function(text){
+    speechTextInJapanese = function(text, callback){
         setTimeout(function(){
             japaneseSynth.text = String(text);
             window.speechSynthesis.speak(japaneseSynth);
+            japaneseSynth.onend = function (event) {
+                if(callback) callback(event);
+            };
         }, waitTimeForSpeechSynthesisOnvoiceschanged);
         return self;
     };

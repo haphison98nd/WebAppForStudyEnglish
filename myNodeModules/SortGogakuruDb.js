@@ -67,6 +67,6 @@ const SortGogakuruDb = function(_filePathOfGogakuruDb){
 
 (function main(){
     'use strict';
-    let app = SortGogakuruDb('../TextDB/Gogakuru/HighSchoolLebelDb.json');
-    app.saveJsonDbAsJson('../TextDB/Gogakuru/HighSchoolLebelDb');
+    let app = SortGogakuruDb('../TextDB/Gogakuru/DailyLebelDb.json');
+    app.saveJsonDbAsJson('../TextDB/Gogakuru/DailyLebelDb');
 })();

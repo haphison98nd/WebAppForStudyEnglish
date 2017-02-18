@@ -251,9 +251,9 @@
                 "彼らはとてもおもしろいと思います。",
                 "あなたの記事に私たちのことを書いてもらえますか？",
                 "この店について知りたい？",
-                "何か忘れていませんか？ ---いいえ",
+                "何か忘れていませんか？ いいえ",
                 "ブロードウェイの13丁目までお願いできますか？",
-                "このパンは何でできていますか？ ---ホールウィートでできています。",
+                "このパンは何でできていますか？ ホールウィートでできています。",
                 "あなたの造ったものを持っている人を見みかけたんですが。",
                 "あなたのCDを手に入れることはできますか？",
                 "チェルシーマーケットに行きたいのですが。",
@@ -947,7 +947,7 @@
             ],
             "JPN": [
                 "クスクス笑うのをやめられないなら、今すぐ部屋を出て行きなさい。",
-                "私は大丈夫 -- 一人にしておいて。",
+                "私は大丈夫。 一人にしておいて。",
                 "財布を置いてきちゃった。",
                 "鍵をご近所に預けていくから、いいわね？",
                 "電話に出る間、エンジンはかけっぱなしにしておくから。",
@@ -12602,8 +12602,8 @@
                 "It is made from honey."
             ],
             "JPN": [
-                "カメラは持ってきている？ -- いいえ、わたしは持ってきていない。",
-                "準備運動は終わったかい？ -- はい、終わりました。",
+                "カメラは持ってきている？  いいえ、わたしは持ってきていない。",
+                "準備運動は終わったかい？  はい、終わりました。",
                 "わたしたち、十分に練習していないから。",
                 "宿題が終わったから。",
                 "わたしはおどろいたわ。",
@@ -16888,7 +16888,7 @@
                 "That's interesting how sushi reminded you of surfing 15 years ago.",
                 "Me and my hamburgers, you and your sea urchin... Tastes and smells really do bring back memories.",
                 "Those places tend to be tasty and cheap.",
-                "Oh, yeah, we call that \"omuraisu\" -- a Japanese-style rice omelet.",
+                "Oh, yeah, we call that \"omuraisu\"  a Japanese-style rice omelet.",
                 "I think I'll try this orangish stuff.",
                 "I think that makes sense.",
                 "All this talk about plastic food is starting to make me hungry for the real thing.",
@@ -18629,7 +18629,7 @@
                 "If he had come earlier, it would have been more fun.",
                 "If you had worked harder, you could have done it.",
                 "If you had faxed this map, I wouldn't have lost my way.",
-                "I would've kept that day open if you had told me.\t\t"
+                "I would've kept that day open if you had told me."
             ],
             "JPN": [
                 "僕の主張の正しさを証明したと思います。",
@@ -18909,7 +18909,7 @@
                 "I'm less motivated today than usual.",
                 "The sooner the better.",
                 "There's nothing better than a cold beer after exercise.",
-                "You can take as many as you want.\t",
+                "You can take as many as you want.",
                 "Their ideas are all pretty much the same.",
                 "Computers are getting cheaper and cheaper.",
                 "It took more time than I'd expected.",

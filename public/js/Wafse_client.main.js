@@ -9,8 +9,9 @@ Wafse_client.main = function(){
           router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager)
     ;
     
-    // /*
     console.log(Wafse_client);
+
+    ///*
     if (Wafse_client.Util.UserAgentDetector() === 'chrome'){
         appNavigation.showProgressSpinner();
         setTimeout(function(){
@@ -21,7 +22,7 @@ Wafse_client.main = function(){
         toastr.options = {'positionClass':'toast-bottom-right'};
         toastr.error('このアプリケーションは Google Chrome 専用です．', 'エラー');
     }
-    // */
+    //*/
     
     
     // debug code of Wafse_client.ComponentCreator.QuestionForm
@@ -37,7 +38,7 @@ Wafse_client.main = function(){
     $.ajax({
         type: 'GET',
         url : '/pageContents',
-        data: {'titleText':'どんどん話すための瞬間英作文トレーニング', 'textPageName':'人称代名詞の独立所有格'},
+        data: {'titleText':'どんどん話すための瞬間英作文トレーニング','textPartName':'Part2 中学2年レベル', 'textPageName':'過去形'},
         cache: false,
         success: function (pageContents) {
             const questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, pageContents.ENG[0], pageContents.JPN[0]);

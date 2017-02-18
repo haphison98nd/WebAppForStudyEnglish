@@ -14,6 +14,11 @@
             "snippet":"NHKゴガクルの高校生レベルの例文集です",
             "backGroundImageUrl":"/images/gogakuru-high-school-lebel.png"
     },
+    "NHKゴガクル日常会話レベル":{
+            "EnglishTextName":"GogakuruDailyLebel",
+            "snippet":"NHKゴガクルの日常会話レベルの例文集です",
+            "backGroundImageUrl":"/images/gogakuru-daily-lebel.png"
+    },
     "To Be Announced":{
         "snippet":"将来的にはユーザが瞬間英作文したい英文を追加できるようにします",
         "backGroundImageUrl":"/images/to-be-announced.png"

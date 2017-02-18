@@ -22,7 +22,8 @@ const Wafse_server = function(){
               textList = JSON.parse(extendedFs.readFileSync('./TextDB/TextList.json', 'utf-8')),
               syunkanEisakubunDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/SyunkanEisakubun/SyunkanEisakubunDb.json'),
               gogakuruJuniorHighSchoolLebelDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/Gogakuru/JuniorHighSchoolLebelDb.json'),
-              gogakuruHighSchoolLebelDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/Gogakuru/HighSchoolLebelDb.json')
+              gogakuruHighSchoolLebelDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/Gogakuru/HighSchoolLebelDb.json'),
+              gogakuruDailyLebelDb = require('./myNodeModules/SimpleEnglishSentencesJsonDbController.js')('./TextDB/Gogakuru/DailyLebelDb.json')
         ;
         
         //////////////////////////////////////////////
@@ -132,14 +133,16 @@ const Wafse_server = function(){
 
         app.get('/textPartNameList', function(req, res){
             let query = req.query; // how to get request palam on Express: http://d.hatena.ne.jp/replication/20110307/1299451484
+            res.status(200).contentType('application/json');
             if (String(query.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.status(200).contentType('application/json').json(syunkanEisakubunDb.getTextPartNameList());
+                res.json(syunkanEisakubunDb.getTextPartNameList());
             } else if (String(query.titleText) === 'NHKゴガクル中学生レベル'){
-                res.status(200).contentType('application/json').json(gogakuruJuniorHighSchoolLebelDb.getTextPartNameList());
+                res.json(gogakuruJuniorHighSchoolLebelDb.getTextPartNameList());
             } else if (String(query.titleText) === 'NHKゴガクル高校生レベル'){
-                res.status(200).contentType('application/json').json(gogakuruHighSchoolLebelDb.getTextPartNameList());
+                res.json(gogakuruHighSchoolLebelDb.getTextPartNameList());
+            } else if (String(query.titleText) === 'NHKゴガクル日常会話レベル'){
+                res.json(gogakuruDailyLebelDb.getTextPartNameList());
             }
-            
         });
 
         //////////////////////////////////////////////
@@ -147,12 +150,15 @@ const Wafse_server = function(){
 
         app.get('/textPageNameList', function(req, res){
             let query = req.query;
+            res.status(200).contentType('application/json');
             if (String(query.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.status(200).contentType('application/json').json(syunkanEisakubunDb.getTextPageNameList(query.textPartName));
+                res.json(syunkanEisakubunDb.getTextPageNameList(query.textPartName));
             } else if (String(query.titleText) === 'NHKゴガクル中学生レベル'){
-                res.status(200).contentType('application/json').json(gogakuruJuniorHighSchoolLebelDb.getTextPageNameList(query.textPartName));
+                res.json(gogakuruJuniorHighSchoolLebelDb.getTextPageNameList(query.textPartName));
             } else if (String(query.titleText) === 'NHKゴガクル高校生レベル'){
-                res.status(200).contentType('application/json').json(gogakuruHighSchoolLebelDb.getTextPageNameList(query.textPartName));
+                res.json(gogakuruHighSchoolLebelDb.getTextPageNameList(query.textPartName));
+            } else if (String(query.titleText) === 'NHKゴガクル日常会話レベル'){
+                res.json(gogakuruDailyLebelDb.getTextPageNameList(query.textPartName));
             }  
         });
 
@@ -161,12 +167,15 @@ const Wafse_server = function(){
 
         app.get('/pageContents', function(req, res){
             let query = req.query;
+            res.status(200).contentType('application/json');
             if (String(query.titleText) === 'どんどん話すための瞬間英作文トレーニング'){
-                res.status(200).contentType('application/json').json(syunkanEisakubunDb.getPageContents(query.textPartName, query.textPageName));
+                res.json(syunkanEisakubunDb.getPageContents(query.textPartName, query.textPageName));
             } else if (String(query.titleText) === 'NHKゴガクル中学生レベル'){
-                res.status(200).contentType('application/json').json(gogakuruJuniorHighSchoolLebelDb.getPageContents(query.textPartName, query.textPageName));
+                res.json(gogakuruJuniorHighSchoolLebelDb.getPageContents(query.textPartName, query.textPageName));
             } else if (String(query.titleText) === 'NHKゴガクル高校生レベル'){
-                res.status(200).contentType('application/json').json(gogakuruHighSchoolLebelDb.getPageContents(query.textPartName, query.textPageName));
+                res.json(gogakuruHighSchoolLebelDb.getPageContents(query.textPartName, query.textPageName));
+            } else if (String(query.titleText) === 'NHKゴガクル日常会話レベル'){
+                res.json(gogakuruDailyLebelDb.getPageContents(query.textPartName, query.textPageName));
             }
         });
         
