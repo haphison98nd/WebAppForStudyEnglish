@@ -17,7 +17,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
         for (let textPageName of __textPageNameList){
             bootStrapTable.appendTbody([textPageName, '近日実装', '近日実装', '近日実装'], function(){
                 history.pushState(null, null, '#question-form');
-                router['#question-form']({'titleText':__postQuery.titleText, 'textPageName':textPageName});
+                router['#question-form']({'titleText':__postQuery.titleText, 'textPartName':__postQuery.textPartName, 'textPageName':textPageName});
             });
         }
         mainContainerMiddle.appendRender(bootStrapTable.jQeryObj);

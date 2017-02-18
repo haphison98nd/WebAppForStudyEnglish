@@ -74,6 +74,7 @@ class SimpleEnglishSentencesJsonDbMaker:
             sentences = self.getTextSentences(soup)
             self.addText(pageIdx, title, sentences)
             print "Processing: URL: " + self.targetUrl + str(pageIdx)
+            self.saveDbAsJson("./temp")
         return self
 
     ######################################################

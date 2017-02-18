@@ -1,0 +1,38 @@
+{
+    "基礎英語３": {
+        "Page 1": {
+            "ENG": [
+                "<span class=\"font-en\" lang=\"en\">It's not as good as Hide's school, but I can play rugby there.</span>", 
+                "<span class=\"font-en\" lang=\"en\">I bet he won't do as well as you, but hopefully he'll get in.</span>", 
+                "<span class=\"font-en\" lang=\"en\">Sorry?</span>", 
+                "<span class=\"font-en\" lang=\"en\">Say that again?</span>", 
+                "<span class=\"font-en\" lang=\"en\">This score is much higher than the last one, almost reaching the passing score for Kisoei High!</span>", 
+                "<span class=\"font-en\" lang=\"en\">Doug, I am studying even harder now!</span>", 
+                "<span class=\"font-en\" lang=\"en\">No, you felt better because applying hair wax made you feel more confident.</span>"
+            ], 
+            "JPN": [
+                "ヒデの学校ほどはよくないけど、そこでラグビーができるんだ。", 
+                "アスカさんほどうまくいかないのは確かですが、ユキチ君、受かるといいですね。", 
+                "何？", 
+                "もう1回言って？", 
+                "点数が前回よりすごく上がっていて、キソエイ高校の合格点に届きそうなくらいなんだ！", 
+                "ダグ、ぼくは今、さらにがんばって勉強しているんだよ！", 
+                "いえ、整髪料を使うことで、自分により自信を持ったからもっと気持ちよく感じたのです。"
+            ]
+        }
+    }, 
+    "英会話タイムトライアル": {
+        "Page 1": {
+            "ENG": [
+                "<span class=\"font-en\" lang=\"en\">You look blue... What's the matter?!</span>", 
+                "<span class=\"font-en\" lang=\"en\">I feel great!</span>", 
+                "<span class=\"font-en\" lang=\"en\">Hang in there.</span>"
+            ], 
+            "JPN": [
+                "顔色がさえないようですが……。どうかしましたか？！", 
+                "最高の気分です！", 
+                "もう少し我慢して。"
+            ]
+        }
+    }
+}
