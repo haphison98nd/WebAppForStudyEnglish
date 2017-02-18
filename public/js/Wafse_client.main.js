@@ -11,7 +11,7 @@ Wafse_client.main = function(){
     
     console.log(Wafse_client);
 
-    // /*
+    ///*
     if (Wafse_client.Util.UserAgentDetector() === 'chrome'){
         appNavigation.showProgressSpinner();
         setTimeout(function(){
@@ -22,29 +22,7 @@ Wafse_client.main = function(){
         toastr.options = {'positionClass':'toast-bottom-right'};
         toastr.error('このアプリケーションは Google Chrome 専用です．', 'エラー');
     }
-    // */
-    
-    // debug code of Wafse_client.ComponentCreator.QuestionForm
-    /*
-    const timer = Wafse_client.Util.Timer(),
-          timeLimit = appDataManager.getItem('Config.QuestionForm.timeLimit')
-    ;
-    timer.start(timeLimit, function(progressTime, remainTime){
-        questionForm.setProgressBarValue(((timeLimit - progressTime) / timeLimit) * 100, parseInt(remainTime, 10) + 1);
-    }, function(){ console.log('timer finished.');});
-    */
-    /*
-    $.ajax({
-        type: 'GET',
-        url : '/pageContents',
-        data: {'titleText':'どんどん話すための瞬間英作文トレーニング','textPartName':'Part2 中学2年レベル', 'textPageName':'過去形'},
-        cache: false,
-        success: function (pageContents) {
-            const questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, pageContents.ENG[0], pageContents.JPN[0]);
-            appBody.appendRender(questionForm.jQeryObj);
-        }
-    });
-    */
+    //*/
     
     
     // debug code of Wafse_client.ComponentCreator.BootStrapTable

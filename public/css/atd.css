@@ -1,0 +1,122 @@
+/* AtD error styles */
+
+.hiddenSpellError
+{
+   border-bottom: 2px solid red;
+   cursor: default;
+}
+
+.hiddenGrammarError
+{
+   border-bottom: 2px solid green;
+   cursor: default;
+}
+
+.hiddenSuggestion
+{
+   border-bottom: 2px solid blue;
+   cursor: default;
+}
+
+/* 
+.AtD_proofread_button 
+{
+   width: 14px;
+   height: 14px;
+   background-image: url('../images/writing.gif');
+   display: block;
+}
+
+.AtD_edit_button 
+{
+   width: 14px;
+   height: 14px;
+   background-image: url('../images/editing.gif');
+   display: block;
+}
+*/
+/* Menu styles derived from:
+ * jquery.spellchecker.js - a simple jQuery Spell Checker
+ * Copyright (c) 2008 Richard Willis
+ * MIT license  : http://www.opensource.org/licenses/mit-license.php
+ * Project      : http://jquery-spellchecker.googlecode.com
+ */
+
+#suggestmenu 
+{
+   background: rgba(0, 0, 0, 0.0);
+   position: absolute;
+   display: none;
+   z-index: 9999;
+   overflow: none;
+   margin-top: 1px;
+   text-align: left;
+   font-size: 12px;
+   border: 0px;
+   font-family: Tahoma, Verdana, Arial, Helvetica;
+}
+
+#suggestmenu strong 
+{
+   background: rgba(0, 0, 0, 0.8);
+   font-weight: bold;
+   padding:3px 6px 3px 6px;    
+   display:block;               
+   border:0px solid #ccc;
+   color: white;
+}
+
+#suggestmenu em 
+{
+   text-align:center;    
+   padding:3px 6px 3px 6px;    
+   display:block;    
+   border-top:0px solid #ccc;
+   border-left:0px solid #ccc;
+}
+
+#suggestmenu a, #suggestmenu a:visited 
+{
+   background: rgba(18, 0, 90, 0.85);
+   border-left:0px solid #bbb;
+   border-right:0px solid #bbb;
+   padding:3px 6px 3px 6px;
+   display:block;
+   margin:0px;
+   text-decoration:none;
+   color:white;
+   outline:none;
+}
+
+#suggestmenu a.first, #suggestmenu a.first:visited 
+{
+   border-top:0px solid #ccc
+}
+
+.spell_sep_bottom 
+{
+   border-bottom: 0px solid #ccc;
+}
+
+.spell_sep_top 
+{
+   border-top: 0px solid #ccc;
+}
+
+#suggestmenu a:hover 
+{
+   color:#000;
+   background-color: rgba(200, 200, 200, 0.85);
+   transition: background-color 0.25s;
+}
+
+#suggestmenu .foot 
+{
+   border-top:0px solid #ddd;
+   background:#fff
+}
+
+#suggestmenu .foot a, #suggestmenu .foot a:visited 
+{
+   outline:none
+}

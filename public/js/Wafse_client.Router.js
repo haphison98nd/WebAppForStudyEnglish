@@ -29,7 +29,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             success: function (pageContents) {
                 appNavigation.hiddenProgressSpinner();
                 appDataManager.setItem('View.QuestionForm.now.pageContents', pageContents);
-                console.log(appDataManager.getItem('View.QuestionForm.now.pageContents'));
+                const questionWindow = Wafse_client.ComponentCreator.QuestionWindow(appDataManager, self, pageContents, postQuery);
+                questionWindow.updateQuestionForm();
+                appBody.clearPage().appendRender(questionWindow.jQeryObj);
             }
         });
     };

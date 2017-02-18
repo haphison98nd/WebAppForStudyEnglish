@@ -1,10 +1,12 @@
-Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, _sentenceENG, _sentenceJPN, _callback){
+Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, _questionWindow, _sentenceENG, _sentenceJPN, _callback){
     
     'use strict';
     
+    const timer = Wafse_client.Util.Timer();
+    
     let htmlTemplate_questionForm = $($('.htmlTemplate#questionForm').clone().html()),
         questionForm = htmlTemplate_questionForm,
-        textImput = htmlTemplate_questionForm.find('#textImput'),
+        textInput = htmlTemplate_questionForm.find('#textInput'),
         progressBar = htmlTemplate_questionForm.find('#progressBar'),
         timeLimitInst = htmlTemplate_questionForm.find('#timeLimit'),
         japaneseSentenceInst = htmlTemplate_questionForm.find('#japaneseSentenceInst'),
@@ -15,13 +17,13 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         checkAnswerBtn = htmlTemplate_questionForm.find('#checkAnswerBtn'),
         nextProblemBtn = htmlTemplate_questionForm.find('#nextProblemBtn'),
         self, setProgressBarValue, setJapaneseSentenceInst, activateButtons, transformStringForAnswer, 
-        checkAnswer, showAlertMessage, activateTextInput, remove,
-        appDataManager, router, sentenceENG, sentenceJPN, callback
+        checkAnswer, showAlertMessage, activateTextInput, setNextProblemBtnText, remove,
+        appDataManager, router, questionWindow, sentenceENG, sentenceJPN, callback
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-
+    // private
     setProgressBarValue = function (value, remainTime) {
         progressBar
             .css({'width':String(value) + '%'})
@@ -30,6 +32,13 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         timeLimitInst.text(String(remainTime));
     };
 
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    setNextProblemBtnText = function (str) {
+        nextProblemBtn.text(String(str));  
+    };
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
@@ -41,7 +50,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    // private
+    // public
     remove = function () {
         questionForm.remove();
         return self;
@@ -82,13 +91,15 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         if(isCorrect){
             correctAlert
                 .css({'display':'block'})
-                .html('<strong>正解！</strong>')
+                .html('<strong>正解です</strong>')
             ;            
         } else {
+            // AtD: open source grammer checker.
+            AtD.checkTextAreaCrossAJAX('textInput', 'checkLink', 'Edit Text');
             incorrectAlert
                 .css({'display':'block'})
-                .html('<strong>不正解！</strong> （正答例: ' + String(correctAnswer) + ' ）')
-            ;            
+                .html('<strong>不正解です</strong> （正答例: ' + String(correctAnswer) + ' ）')
+            ;
         }
     };
     
@@ -100,7 +111,8 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         let defaultTextOfVoiceInputBtn = voiceInputBtn.text(),
             defaultTextOfPlaySoundBtn = playSoundBtn.text(),
             isVoiceRecognizing = false,
-            isEnglishSynthSpeaking = false
+            isEnglishSynthSpeaking = false,
+            isAlreadyCheckAnswer = false
         ;
         voiceInputBtn.click(function(){
             if(!isVoiceRecognizing){
@@ -109,7 +121,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 Wafse_client.Util.WebSpeechRecognizer.startRec(function(result){
                     isVoiceRecognizing = false;
                     Wafse_client.Util.WebSpeechRecognizer.stopRec();
-                    textImput.val(String(result));
+                    textInput.val(String(result));
                     voiceInputBtn.text(defaultTextOfVoiceInputBtn);
                 });
             } else {
@@ -120,8 +132,15 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         });
         checkAnswerBtn.click(function(){
             if (isVoiceRecognizing) voiceInputBtn.click(); // if voice input is working, stop it by clicking voiceInputBtn.
-            textImput.prop('disabled', true);
-            showAlertMessage(checkAnswer(String(textImput.val()), __sentenceENG), __sentenceENG);
+            if(!isAlreadyCheckAnswer) {
+                isAlreadyCheckAnswer = true;
+                timer.stop();
+                showAlertMessage(checkAnswer(String(textInput.val()), __sentenceENG), __sentenceENG);
+                voiceInputBtn.css({'display':'none'});
+                checkAnswerBtn.css({'display':'none'});
+                playSoundBtn.css({'display':'inline'});
+                nextProblemBtn.css({'display':'inline'});
+            }
         });
         playSoundBtn.click(function(){
             if (!isEnglishSynthSpeaking){
@@ -133,6 +152,10 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 });
             }
         });
+        nextProblemBtn.click(function(){
+            remove();
+            questionWindow.updateQuestionForm();
+        });
     };
 
     //////////////////////////////////////////////
@@ -140,10 +163,10 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
 
     // private
     activateTextInput = function () {
-        setTimeout(function () { textImput.focus(); }, 0); // If we don't use setTimeout here, somehow focus() doesn't work.
-        textImput.keypress(function(e){
+        setTimeout(function () { textInput.focus(); }, 0); // If we don't use setTimeout here, somehow focus() doesn't work.
+        textInput.keypress(function(e){
             // Key code 13 is Enter key.
-            if (e.which == 13 && String(textImput.val()) !== '') {
+            if (e.which == 13 && String(textInput.val()) !== '') {
                 e.preventDefault();
                 checkAnswerBtn.click();
             }
@@ -156,21 +179,26 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     (function constructor (){
         appDataManager = _appDataManager;
         router = _router;
+        questionWindow = _questionWindow;
         sentenceENG = _sentenceENG;
         sentenceJPN = _sentenceJPN;
-        console.log('sentenceENG: ' + sentenceENG);
-        console.log('sentenceJPN: ' + sentenceJPN);
         callback = _callback;
         
         activateButtons(sentenceENG);
         activateTextInput();
         setJapaneseSentenceInst(sentenceJPN);
         Wafse_client.Util.WebSpeechSynthes.speechTextInJapanese(sentenceJPN);
+
+        const timeLimit = appDataManager.getItem('Config.QuestionForm.timeLimit');
+        timer.start(timeLimit, function(progressTime, remainTime){
+            setProgressBarValue(((timeLimit - progressTime) / timeLimit) * 100, parseInt(remainTime, 10) + 1);
+        }, function(){ checkAnswerBtn.click(); });
+        
     })();
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:htmlTemplate_questionForm, setProgressBarValue:setProgressBarValue, remove:remove};
+    self = {jQeryObj:htmlTemplate_questionForm, setNextProblemBtnText:setNextProblemBtnText, remove:remove};
     return self;
 };

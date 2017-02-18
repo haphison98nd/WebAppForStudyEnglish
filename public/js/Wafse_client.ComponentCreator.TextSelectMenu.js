@@ -18,7 +18,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
                     supportingText:__textList[titleText]['snippet'],
                     backGroundImageUrl:__textList[titleText]['backGroundImageUrl'],
                     buttonText:'勉強する',
-                    buttonClickAction:function(s){ 
+                    buttonClickAction:function(){ 
                         history.pushState(null, null, '#text-part-name-list');              
                         router['#text-part-name-list']({'titleText':titleText}); 
                     },

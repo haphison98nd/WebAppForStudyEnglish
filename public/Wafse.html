@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/atd.css" />
         <template class="htmlTemplate" id="mainContainer">
             <div id="mainContainer">
                 <style scoped>  
@@ -177,13 +178,13 @@
                     label {
                         margin-top: 5px;
                     }
-                    .alert{
+                    .alert, #playSoundBtn, #nextProblemBtn{
                         display: none;
                     }
                 </style>
                 <div id="questionForm">
                     <h4 id="japaneseSentenceInst">dummy text dummy text dummy text.</h4>
-                    <input class="form-control form-control-lg form-control-success" type="text" id="textImput" placeholder="ここに英文を入力..." >
+                    <input class="form-control form-control-lg form-control-success input" type="text" id="textInput" placeholder="ここに英文を入力..." />
                     <div class="progress">
                         <div class="progress-bar bg-danger" role="progressbar" id="progressBar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                             &nbsp;&nbsp;残り<span id="timeLimit"></span>秒
@@ -205,7 +206,6 @@
     </head>
     <body>
         <style>
-            
             body {
                 background-color: black;
             }
@@ -294,6 +294,8 @@
         <script defer type="text/javascript" src="js/libraries/bootstrap.min.js"></script>
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"></script>
+        <script defer src="js/libraries/csshttprequest.js"></script>
+        <script defer src="js/libraries/jquery.atd.textarea.js"></script>
         <!-- script defer src="/socket.io/socket.io.js"></script -->
         <script defer type="text/javascript" src="js/Wafse_client.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.JsonLocalStrageManager.js"></script>
@@ -309,6 +311,7 @@
         <script defer type="text/javascript" src="js/Wafse_client.ComponentCreator.TextPartNameList.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.ComponentCreator.TextPageNameList.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.ComponentCreator.QuestionForm.js"></script>
+        <script defer type="text/javascript" src="js/Wafse_client.ComponentCreator.QuestionWindow.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.Router.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.Util.UserAgentDetector.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.Util.Timer.js"></script>

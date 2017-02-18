@@ -75,9 +75,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
     
     activateButton = function(__callback){
-        button.click(function(){
-            __callback(self);
-        });
+        button.click(__callback);
     };
     
     //////////////////////////////////////////////
