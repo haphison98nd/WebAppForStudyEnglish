@@ -8,11 +8,14 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         progressBar = htmlTemplate_questionForm.find('#progressBar'),
         timeLimitInst = htmlTemplate_questionForm.find('#timeLimit'),
         japaneseSentenceInst = htmlTemplate_questionForm.find('#japaneseSentenceInst'),
+        correctAlert = htmlTemplate_questionForm.find('#correctAlert'),
+        incorrectAlert = htmlTemplate_questionForm.find('#incorrectAlert'),
         voiceInputBtn = htmlTemplate_questionForm.find('#voiceInputBtn'),
         playSoundBtn = htmlTemplate_questionForm.find('#playSoundBtn'),
-        checkAnswerButton = htmlTemplate_questionForm.find('#checkAnswerButton'),
+        checkAnswerBtn = htmlTemplate_questionForm.find('#checkAnswerBtn'),
         nextProblemBtn = htmlTemplate_questionForm.find('#nextProblemBtn'),
-        self, setProgressBarValue, setJapaneseSentenceInst, activateButtons, transformStringForAnswer, remove,
+        self, setProgressBarValue, setJapaneseSentenceInst, activateButtons, transformStringForAnswer, 
+        checkAnswer, showAlertMessage, activateTextInput, remove,
         appDataManager, router, sentenceENG, sentenceJPN, callback
     ;
     
@@ -62,19 +65,43 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
 
     // private
-    activateButtons = function () {
-        let defaultTextOfVoiceInputBtn = voiceInputBtn.text(),
-            isEnglishSynthSpeaking = false,
-            isVoiceRecognizing = false
+    checkAnswer = function (userInput, __sentenceENG) {
+        let transFormedUserInput = transformStringForAnswer(userInput),
+            transFormedCorrectAnswer =  transformStringForAnswer(__sentenceENG)
         ;
-        playSoundBtn.click(function(){
-            if (!isEnglishSynthSpeaking){
-                isEnglishSynthSpeaking = true;
-                Wafse_client.Util.WebSpeechSynthes.speechTextInEnglish(sentenceENG, function(){
-                    isEnglishSynthSpeaking = false;
-                });
-            }
-        });
+        // console.log('transFormedUserInput: ' + transFormedUserInput);
+        // console.log('transFormedCorrectAnswer: ' + transFormedCorrectAnswer);
+        return transFormedUserInput === transFormedCorrectAnswer ? true : false;
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // private
+    showAlertMessage = function(isCorrect, correctAnswer){
+        if(isCorrect){
+            correctAlert
+                .css({'display':'block'})
+                .html('<strong>正解！</strong>')
+            ;            
+        } else {
+            incorrectAlert
+                .css({'display':'block'})
+                .html('<strong>不正解！</strong> （正答例: ' + String(correctAnswer) + ' ）')
+            ;            
+        }
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // private
+    activateButtons = function (__sentenceENG) {
+        let defaultTextOfVoiceInputBtn = voiceInputBtn.text(),
+            defaultTextOfPlaySoundBtn = playSoundBtn.text(),
+            isVoiceRecognizing = false,
+            isEnglishSynthSpeaking = false
+        ;
         voiceInputBtn.click(function(){
             if(!isVoiceRecognizing){
                 isVoiceRecognizing = true;
@@ -91,12 +118,35 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 voiceInputBtn.text(defaultTextOfVoiceInputBtn);
             }
         });
-        checkAnswerButton.click(function(){
-            let transFormedUserAnswer = transformStringForAnswer(textImput.val()),
-                transFormedAnswer =  transformStringForAnswer(sentenceENG)
-            ;
-            console.log('transFormedUserAnswer: ' + transFormedUserAnswer);
-            console.log('transFormedAnswer: ' + transFormedAnswer);
+        checkAnswerBtn.click(function(){
+            if (isVoiceRecognizing) voiceInputBtn.click(); // if voice input is working, stop it by clicking voiceInputBtn.
+            textImput.prop('disabled', true);
+            showAlertMessage(checkAnswer(String(textImput.val()), __sentenceENG), __sentenceENG);
+        });
+        playSoundBtn.click(function(){
+            if (!isEnglishSynthSpeaking){
+                playSoundBtn.text('英文音声を再生中...');
+                isEnglishSynthSpeaking = true;
+                Wafse_client.Util.WebSpeechSynthes.speechTextInEnglish(__sentenceENG, function(){
+                    isEnglishSynthSpeaking = false;
+                    playSoundBtn.text(defaultTextOfPlaySoundBtn);
+                });
+            }
+        });
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // private
+    activateTextInput = function () {
+        setTimeout(function () { textImput.focus(); }, 0); // If we don't use setTimeout here, somehow focus() doesn't work.
+        textImput.keypress(function(e){
+            // Key code 13 is Enter key.
+            if (e.which == 13 && String(textImput.val()) !== '') {
+                e.preventDefault();
+                checkAnswerBtn.click();
+            }
         });
     };
 
@@ -112,7 +162,8 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         console.log('sentenceJPN: ' + sentenceJPN);
         callback = _callback;
         
-        activateButtons();
+        activateButtons(sentenceENG);
+        activateTextInput();
         setJapaneseSentenceInst(sentenceJPN);
         Wafse_client.Util.WebSpeechSynthes.speechTextInJapanese(sentenceJPN);
     })();

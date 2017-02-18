@@ -11,7 +11,7 @@ Wafse_client.main = function(){
     
     console.log(Wafse_client);
 
-    ///*
+    /*
     if (Wafse_client.Util.UserAgentDetector() === 'chrome'){
         appNavigation.showProgressSpinner();
         setTimeout(function(){
@@ -22,8 +22,18 @@ Wafse_client.main = function(){
         toastr.options = {'positionClass':'toast-bottom-right'};
         toastr.error('このアプリケーションは Google Chrome 専用です．', 'エラー');
     }
-    //*/
+    */
     
+    
+    $.ajax({
+        type: 'GET',
+        url : '/ginger',
+        cache: false,
+        success: function (res) {
+            // console.log(res);
+            const html = $(res);
+        }
+    });
     
     // debug code of Wafse_client.ComponentCreator.QuestionForm
     /*

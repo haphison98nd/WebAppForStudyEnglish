@@ -13,6 +13,7 @@
     "colors": "*",
     "express": "*",
     "http": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "superagent": "^3.4.4"
   }
 }

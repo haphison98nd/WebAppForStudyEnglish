@@ -183,24 +183,22 @@
                 </style>
                 <div id="questionForm">
                     <h4 id="japaneseSentenceInst">dummy text dummy text dummy text.</h4>
-                    <form>
-                        <input class="form-control form-control-lg form-control-success" type="text" id="textImput" placeholder="ここに英文を入力...">
-                        <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" id="progressBar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                &nbsp;&nbsp;残り<span id="timeLimit"></span>秒
-                            </div>
+                    <input class="form-control form-control-lg form-control-success" type="text" id="textImput" placeholder="ここに英文を入力..." >
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" role="progressbar" id="progressBar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                            &nbsp;&nbsp;残り<span id="timeLimit"></span>秒
                         </div>
-                        <div class="alert alert-success" role="alert">
-                            <strong>Well done!</strong> You successfully read this important alert message.
-                        </div>
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                        </div>
-                        <button class="btn btn-success loginAndCoreateAccount" id="voiceInputBtn">音声で入力</button>                        
-                        <button class="btn btn-primary loginAndCoreateAccount" id="checkAnswerButton">答えあわせ</button>
-                        <button class="btn btn-success loginAndCoreateAccount" id="playSoundBtn">英文音声を再生</button>
-                        <button class="btn btn-primary loginAndCoreateAccount" id="nextProblemBtn">次の問題</button>
-                    </form>
+                    </div>
+                    <div class="alert alert-success" role="alert" id="correctAlert">
+                        <strong>Well done!</strong> You successfully read this important alert message.
+                    </div>
+                    <div class="alert alert-danger" role="alert" id="incorrectAlert">
+                        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                    </div>
+                    <button class="btn btn-success loginAndCoreateAccount" id="voiceInputBtn">音声で入力</button>                        
+                    <button class="btn btn-primary loginAndCoreateAccount" id="checkAnswerBtn">答えあわせ</button>
+                    <button class="btn btn-success loginAndCoreateAccount" id="playSoundBtn">英文音声を再生</button>
+                    <button class="btn btn-primary loginAndCoreateAccount" id="nextProblemBtn">次の問題</button>
                 </div>
             </div>
         </template>
