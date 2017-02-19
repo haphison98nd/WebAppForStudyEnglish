@@ -19,6 +19,16 @@
             "snippet":"NHKゴガクルの日常会話レベルの例文集です",
             "backGroundImageUrl":"/images/gogakuru-daily-lebel.png"
     },
+    "NHKゴガクル文法特集":{
+            "EnglishTextName":"GogakuruGrammarFeatureDb",
+            "snippet":"NHKゴガクルの文法特集です",
+            "backGroundImageUrl":"/images/gogakuru-grammar-feature.png"
+    },
+    "NHKゴガクルボキャブラリー特集":{
+            "EnglishTextName":"GogakuruVocabularyFeature",
+            "snippet":"NHKゴガクルのボキャブラリー特集です",
+            "backGroundImageUrl":"/images/gogakuru-vocabulary-feature.png"
+    },
     "To Be Announced":{
         "snippet":"将来的にはユーザが瞬間英作文したい英文を追加できるようにします",
         "backGroundImageUrl":"/images/to-be-announced.png"
