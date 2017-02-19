@@ -12,15 +12,15 @@ Wafse_client.main = function(){
     console.log(Wafse_client);
 
     ///*
-    if (Wafse_client.Util.UserAgentDetector() === 'chrome'){
-        appNavigation.showProgressSpinner();
-        setTimeout(function(){
-            appNavigation.hiddenProgressSpinner();
-            router.start();
-        }, 2000);
-    } else {
+    appNavigation.showProgressSpinner();
+    setTimeout(function(){
+        appNavigation.hiddenProgressSpinner();
+        router.start();
+    }, 2000);
+    
+    if (Wafse_client.Util.UserAgentDetector() !== 'chrome') {
         toastr.options = {'positionClass':'toast-bottom-right'};
-        toastr.error('このアプリケーションは Google Chrome 専用です．', 'エラー');
+        toastr.error('このアプリケーションは Google Chrome 専用です．他のブラウザでは音声認識/再生が正しく動作しない可能性があります．', '警告', {timeOut: 20000});
     }
     //*/
     
