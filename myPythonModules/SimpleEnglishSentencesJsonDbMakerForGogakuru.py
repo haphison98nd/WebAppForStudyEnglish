@@ -50,6 +50,7 @@ class SimpleEnglishSentencesJsonDbMakerForGogakuru(SimpleEnglishSentencesJsonDbM
             self.db[partName]= {}
             self.db[partName]["Page " + str(self.__pageNumberMemory[partName])] = defaultDictForAssigningSentences
         else:
+            # Gogakuru's JPN sentence and ENG sentence are same length so we just check only JPN sentence length
             if len(self.db[partName]["Page " + str(self.__pageNumberMemory[partName])]["JPN"]) == self.__sentencePerPage:
                 self.__pageNumberMemory[partName] += 1
                 self.db[partName]["Page " + str(self.__pageNumberMemory[partName])] = defaultDictForAssigningSentences
