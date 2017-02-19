@@ -9,6 +9,8 @@ Wafse_client.main = function(){
           router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager)
     ;
     
+    let userAgent = Wafse_client.Util.UserAgentDetector();
+    
     console.log(Wafse_client);
 
     ///*
@@ -17,10 +19,11 @@ Wafse_client.main = function(){
         appNavigation.hiddenProgressSpinner();
         router.start();
     }, 2000);
-    
-    if (Wafse_client.Util.UserAgentDetector() !== 'chrome') {
+
+    appDataManager.setItem('Config.userAgent', userAgent);
+    if (userAgent !== 'chrome') {
         toastr.options = {'positionClass':'toast-bottom-right'};
-        toastr.error('このアプリケーションは Google Chrome 専用です．他のブラウザでは音声認識/再生が正しく動作しない可能性があります．', '警告', {timeOut: 20000});
+        toastr.error('このアプリケーションは PC版 Google Chrome 専用です．他のブラウザでは音声認識/再生を利用できません．', '警告', {timeOut: 20000});
     }
     //*/
     

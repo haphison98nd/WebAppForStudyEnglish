@@ -47,7 +47,8 @@ const Wafse_client = {
         Config:{
             QuestionForm:{
                 timeLimit:20
-            }
+            },
+            userAgent:null
         }
     },
     main:null

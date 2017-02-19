@@ -114,6 +114,9 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
             isEnglishSynthSpeaking = false,
             isAlreadyCheckAnswer = false
         ;
+        // browser except Chrome don't have webSpeechRecognition and have unstable webSpeeshSynthes.
+        if (appDataManager.getItem('Config.userAgent') !== 'chrome') voiceInputBtn.css({'display':'none'});
+        
         voiceInputBtn.click(function(){
             if(!isVoiceRecognizing){
                 isVoiceRecognizing = true;
@@ -138,9 +141,11 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 showAlertMessage(checkAnswer(String(textInput.val()), __sentenceENG), __sentenceENG);
                 voiceInputBtn.css({'display':'none'});
                 checkAnswerBtn.css({'display':'none'});
-                playSoundBtn.css({'display':'inline'});
                 nextProblemBtn.css({'display':'inline'});
-                playSoundBtn.click();
+                if (appDataManager.getItem('Config.userAgent') === 'chrome') {
+                    playSoundBtn.css({'display':'inline'});
+                    playSoundBtn.click();
+                }
             }
         });
         playSoundBtn.click(function(){
@@ -188,8 +193,9 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         activateButtons(sentenceENG);
         activateTextInput();
         setJapaneseSentenceInst(sentenceJPN);
-        Wafse_client.Util.WebSpeechSynthes.speechTextInJapanese(sentenceJPN);
-
+        if (appDataManager.getItem('Config.userAgent') === 'chrome'){
+            Wafse_client.Util.WebSpeechSynthes.speechTextInJapanese(sentenceJPN);
+        }
         const timeLimit = appDataManager.getItem('Config.QuestionForm.timeLimit');
         timer.start(timeLimit, function(progressTime, remainTime){
             setProgressBarValue(((timeLimit - progressTime) / timeLimit) * 100, parseInt(remainTime, 10) + 1);
