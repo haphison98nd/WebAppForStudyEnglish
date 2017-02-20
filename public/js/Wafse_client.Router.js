@@ -43,30 +43,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    
-    // public
-    readMe = function () {
-        authorize(function(result) {
-            if (result) {
-                $.ajax({
-                    type: 'GET',
-                    url : '/markDown',
-                    data: {markDownFileName:'README.md'},
-                    cache: false,
-                    success: function(readMeMarkDown){
-                        const markDownWindow = Wafse_client.ComponentCreator.MarkDownWindow('README.md', readMeMarkDown);
-                        appBody.clearPage().appendRender(markDownWindow.jQeryObj);
-                        history.pushState(null, null, '#read-me');
-                    }
-                });
-            } else {
-                loginAndCoreateAccount();
-            }
-        });
-    };
-
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
 
     // this metho called from LoginAndCreateAccount
     // public
@@ -95,10 +71,35 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    questionForm = function (_postQuery) {
+    // public
+    readMe = function () {
+        authorize(function(result) {
+            appNavigation.showProgressSpinner();
+            if (result) {
+                $.ajax({
+                    type: 'GET',
+                    url : '/markDown',
+                    data: {markDownFileName:'README.md'},
+                    cache: false,
+                    success: function(readMeMarkDown){
+                        appNavigation.hiddenProgressSpinner();
+                        const markDownWindow = Wafse_client.ComponentCreator.MarkDownWindow('README.md', readMeMarkDown);
+                        appBody.clearPage().appendRender(markDownWindow.jQeryObj);
+                        history.pushState(null, null, '#read-me');
+                    }
+                });
+            } else {
+                loginAndCoreateAccount();
+            }
+        });
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    questionForm = function (postQuery) {
         authorize(function(result) {
             if (result) {
-                let postQuery = _postQuery;
                 appNavigation.showProgressSpinner();
                 if (postQuery) {
                     appDataManager.setItem('PostQuery.Question', postQuery);
@@ -128,10 +129,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textPageNameList = function (_postQuery) {
+    textPageNameList = function (postQuery) {
         authorize(function(result) {
             if (result) {
-                let postQuery = _postQuery;
                 appNavigation.showProgressSpinner();
                 if (postQuery) {
                     appDataManager.setItem('PostQuery.TextPageNameList', postQuery);
@@ -159,10 +159,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textPartNameList = function (_postQuery) {     
+    textPartNameList = function (postQuery) {     
         authorize(function(result) {
             if (result) {
-                let postQuery = _postQuery;
                 appNavigation.showProgressSpinner();
                 // If user accesses /textPartNameList from browser back button,
                 // postQuery will be null.
