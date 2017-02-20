@@ -23,11 +23,13 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 callback(false);
                 return 0;
             }
+            appNavigation.showProgressSpinner();
             $.ajax({
                 type: 'POST',
                 url : '/authorize',
                 data: {'userName':String(userName), 'userPassWord':String(userPassWord)},
                 success: function(authorizationResult){
+                    appNavigation.hiddenProgressSpinner();
                     if (authorizationResult.status === 'success') {
                         authorized();
                         callback(true);
