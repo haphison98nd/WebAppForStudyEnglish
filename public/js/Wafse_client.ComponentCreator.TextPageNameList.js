@@ -43,7 +43,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
         callback = _callback;
         
         conbineComponents(textPageNameList, postQuery);
-        mainContainerMiddle.setNavigator([['#text-select-menu', postQuery.titleText], ['#text-part-name-list', postQuery.textPartName], ['#text-page-name-list', '節を選択']]);
+        mainContainerMiddle.setNavigator([['#text-select-menu', 'ホーム'], ['#text-part-name-list', postQuery.titleText], ['#text-page-name-list', postQuery.textPartName]]);
     })();
 
     //////////////////////////////////////////////

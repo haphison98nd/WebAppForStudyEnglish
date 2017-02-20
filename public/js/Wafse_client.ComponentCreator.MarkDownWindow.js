@@ -36,7 +36,7 @@ Wafse_client.ComponentCreator.MarkDownWindow = function(_markDownFileName,  _rea
         readMeMarkDown = _readMeMarkDown;
         mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerSmallMiddle', String(markDownFileName));
         conbineComponents(readMeMarkDown);
-        mainContainerMiddle.setNavigator([['#text-select-menu', 'テキストを選択'], ['#read-me' , markDownFileName]]);
+        mainContainerMiddle.setNavigator([['#text-select-menu', 'ホーム'], ['#read-me' , markDownFileName]]);
     })();
 
     //////////////////////////////////////////////

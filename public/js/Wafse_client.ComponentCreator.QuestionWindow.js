@@ -29,8 +29,9 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
             ;
             mainContainerMiddle.appendRender(questionForm.jQeryObj);
             mainContainerMiddle.setNavigator([
-                ['#text-select-menu', postQuery.titleText],
-                ['#text-part-name-list', postQuery.textPartName], 
+                ['#text-select-menu', 'ホーム'],
+                ['#text-part-name-list', postQuery.titleText], 
+                ['#text-page-name-list', postQuery.textPartName],
                 ['#text-page-name-list', postQuery.textPageName + ' (' + String(qCount + 1) + '/' + String(pageContents.JPN.length) + ')']]
             );
             qCount++;

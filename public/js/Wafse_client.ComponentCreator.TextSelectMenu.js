@@ -47,7 +47,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
         textList = _textList;
         callback = _callback;
         
-        mainContainerMiddle.setNavigator([['#text-select-menu', 'テキストを選択']]);
+        mainContainerMiddle.setNavigator([['#text-select-menu', 'ホーム']]);
         conbineComponents(appDataManager, router, textList);
     })();
 
