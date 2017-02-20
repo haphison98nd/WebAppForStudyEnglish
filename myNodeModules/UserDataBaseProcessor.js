@@ -8,56 +8,55 @@
 */
 // todo: UserDataBase.json を mongoDB に移植．
 //       その際は UserDataBase.json を構成する initDataBase や 
-//       それを json として保存する saveDataBaseAsJson 以外は不要になるかもしれない．
+//       それを json として保存する saveDataBase 以外は不要になるかもしれない．
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 module.exports = (function(){ // node module として利用する際はこちらを有効化
+    
     'use strict';
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    var constructor, initDataBase, loadDataBase, saveDataBaseAsJson, isUserExist, 
+
+    const redis       = require('redis'),
+          // heroku で redis を利用する場合は環境変数を利用.
+          // 参考: https://devcenter.heroku.com/articles/heroku-redis#connecting-in-node-js
+          redisClient = process.env.REDIS_URL ? redis.createClient(process.env.REDIS_URL) : redis.createClient(),
+          userDataBaseHashName = 'UserDataBase'
+    ;
+    
+    let constructor, initDataBase, loadDataBase, saveDataBase, isUserExist, 
         addUserData, removeUserData, authorize,
         extendedFs   = require('./ExtendedFs.js'), 
         colors       = require('colors'),
         userDataBase = {}
     ;
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     initDataBase = function(){ 
         userDataBase = {'dummyUserName':'dummyUserPassword'}; // テンプレート用のダミーデータ．
-        saveDataBaseAsJson(); 
+        saveDataBase(); 
     };
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    saveDataBaseAsJson = function(callback){
-        extendedFs.writeFile('./UserDataBase.json', JSON.stringify(userDataBase, null, 4), function(err){     // server 実行時のファイルパス
-        // extendedFs.writeFile('../UserDataBase.json', strinfiedUserDataBase, function(err){ // moduleTest 時のファイルパス
-           if(err){
-               console.log(err);
-           }else{
-               if(callback) callback();
-               console.log('UserDataBaseProcessor.js: UserDataBase updated.' .green);
-           }
-        });
+    saveDataBase = function(callback){
+        redisClient.set(userDataBaseHashName, JSON.stringify(userDataBase, null, 4));
+        console.log('UserDataBaseProcessor.js: UserDataBase updated.' .green);
     };
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     // json 形式の userDataBase を読み込みパースする．
     loadDataBase = function(callback){
-        try{
-            userDataBase = extendedFs.readFileSync('./UserDataBase.json', 'utf-8');     // server 実行時のファイルパス
-            // userDataBase = extendedFs.readFileSync('../UserDataBase.json', 'utf-8'); // moduleTest 時のファイルパス
-            userDataBase = JSON.parse(userDataBase);
+        redisClient.get(userDataBaseHashName, function (err, obj) {
+            console.log(obj);
+            if (obj === undefined || obj === null || obj === 'undefined') {
+                initDataBase();
+                console.log('UserDataBaseProcessor.js: initDataBase を実行し UserDataBase を構成し直しました'.green);
+            } else {
+                userDataBase = JSON.parse(obj);
+                console.log('UserDataBaseProcessor.js: UserDataBase loaded.'.green);
+            }
+            console.log(userDataBase);
             if(callback) callback();
-            console.log('UserDataBaseProcessor.js: UserDataBase loaded.'.green);
-            // console.log(userDataBase);
-        }catch(e){
-            console.log(e);
-            initDataBase();
-            console.log('UserDataBaseProcessor.js: Error occured in loadDataBase.'.red);
-            console.log('UserDataBaseProcessor.js: UserDataBase が構成されていない可能性があります.'.red);
-            console.log('UserDataBaseProcessor.js: initDataBase を実行し UserDataBase を構成し直しました'.green);
-        }
+        });
     };
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -77,9 +76,9 @@ module.exports = (function(){ // node module として利用する際はこち�
         }else{
             // 新たな userData を database に追加．
             userDataBase[userData.userName] = userData.userPassWord;
-            // 最新の userDataBase はメモリ内で構成されているため，最新の database を saveDataBaseAsJson で
+            // 最新の userDataBase はメモリ内で構成されているため，最新の database を saveDataBase で
             // 保存してから loadDataBase する必要はない．
-            saveDataBaseAsJson(); 
+            saveDataBase(); 
             
             console.log('UserDataBaseProcessor.js: added userData to UserDataBase.'.green);
             console.log(userDataBase);
@@ -96,9 +95,9 @@ module.exports = (function(){ // node module として利用する際はこち�
             var putsStr = null;
             
             delete userDataBase[userName];
-            // 最新の userDataBase はメモリ内で構成されているため，最新の database を saveDataBaseAsJson で
+            // 最新の userDataBase はメモリ内で構成されているため，最新の database を saveDataBase で
             // 保存してから loadDataBase する必要はない．
-            saveDataBaseAsJson(); 
+            saveDataBase(); 
             
             putsStr = 'UserDataBaseProcessor.js: ' + userName + ' is removed.';
             console.log(putsStr.green);
@@ -141,7 +140,6 @@ module.exports = (function(){ // node module として利用する際はこち�
     (constructor = function(){
         // 初期化時に UserDataBase.json をメモリに読込．
         loadDataBase();
-        console.log(userDataBase);
     })();
     //////////////////////////////////////////////
     //////////////////////////////////////////////

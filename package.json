@@ -13,6 +13,7 @@
     "colors": "*",
     "express": "*",
     "http": "*",
+    "redis": "^2.6.5",
     "socket.io": "*",
     "superagent": "^3.4.4"
   }
