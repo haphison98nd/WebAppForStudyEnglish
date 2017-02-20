@@ -87,10 +87,10 @@
                     <input type="password" class="form-control" placeholder="ここにパスワードを入力..." id="passWordInput">
                     <div class="alert alert-danger" role="alert" id="alertForPassWordInput"></div>
                 </div>
-                <button class="btn btn-success" id="createAccountBtn">新規アカウントを作成</button>
-                <button class="btn btn-primary" id="enterBtn">ログイン</button>
-                <button class="btn btn-success" id="returnBtn">戻る</button>
-                <button class="btn btn-primary" id="submitBtn">作成</button>
+                <button class="btn btn-outline-success" id="createAccountBtn">新規アカウントを作成</button>
+                <button class="btn btn-outline-primary" id="enterBtn">ログイン</button>
+                <button class="btn btn-outline-success" id="returnBtn">戻る</button>
+                <button class="btn btn-outline-primary" id="submitBtn">作成</button>
             </div>
         </template>
         <template class="htmlTemplate" id="mdlSquareCard">
@@ -165,10 +165,12 @@
                     .progress {
                         margin-bottom: 20px;
                         margin-top: 20px;
+                        background-color: #2e2e2e;
+
                     }
                     .progress-bar{
                         text-align: left;
-                        color: rgb(236, 238, 239) !important;
+                        color: #2e2e2e;
                     }
                     #timeLimit{
                         margin-left: 2px;
@@ -189,6 +191,11 @@
                         -webkit-user-select: none;
                         -ms-user-select: none;
                     }
+                    
+                    #textInput {
+                        background-color: #2e2e2e;
+                        color: white;
+                    }
                 </style>
                 <div id="questionForm">
                     <h4 id="japaneseSentenceInst">dummy text dummy text dummy text.</h4>
@@ -204,10 +211,10 @@
                     <div class="alert alert-danger" role="alert" id="incorrectAlert">
                         <strong>Oh snap!</strong> Change a few things up and try submitting again.
                     </div>
-                    <button class="btn btn-success loginAndCoreateAccount" id="voiceInputBtn">音声で入力</button>                        
-                    <button class="btn btn-primary loginAndCoreateAccount" id="checkAnswerBtn">答えあわせ</button>
-                    <button class="btn btn-success loginAndCoreateAccount" id="playSoundBtn">英文音声を再生</button>
-                    <button class="btn btn-primary loginAndCoreateAccount" id="nextProblemBtn">次の問題</button>
+                    <button class="btn btn-outline-success loginAndCoreateAccount" id="voiceInputBtn">音声で入力</button>                        
+                    <button class="btn btn-outline-primary loginAndCoreateAccount" id="checkAnswerBtn">答えあわせ</button>
+                    <button class="btn btn-outline-success loginAndCoreateAccount" id="playSoundBtn">英文音声を再生</button>
+                    <button class="btn btn-outline-primary loginAndCoreateAccount" id="nextProblemBtn">次の問題</button>
                 </div>
             </div>
         </template>
