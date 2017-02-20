@@ -17,7 +17,8 @@ const Wafse_client = {
         TextPartNameList:null,
         TextPageNameList:null,
         QuestionForm:null,
-        QuestionWindow:null
+        QuestionWindow:null,
+        MarkDownWindow:null
     },
     Router:null,
     Util:{

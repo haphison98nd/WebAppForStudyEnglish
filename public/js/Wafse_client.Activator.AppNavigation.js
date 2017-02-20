@@ -7,7 +7,7 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
     ;
     
     let self, appendRender, afterRender, clearPage, showProgressSpinner, hiddenProgressSpinner,
-        addLogOutButton, deleteLogOutButton,
+        addButton, deleteButtons,
         appDataManager
     ;
 
@@ -15,11 +15,19 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
     //////////////////////////////////////////////
     
     // public
-    addLogOutButton = function (callback) {
-        deleteLogOutButton();
-        const logOutButton = $($('.htmlTemplate#logOutButton').clone().html());
-        if (callback) logOutButton.click(callback);
-        appNavigation.append(logOutButton);
+    addButton = function (type, text, callback) {
+        const buttons = $($('.htmlTemplate#navButtons').clone().html());
+        let button;
+        
+        if( type === 'danger') {
+            button = buttons.find('.btn-outline-danger');
+            console.log(buttons);
+        } else if(type === 'primary'){
+            button = buttons.find('.btn-outline-primary');
+        }
+        if (callback) button.click(callback);
+        button.text(text);
+        appNavigation.prepend(button);
         return self;
     };
     
@@ -27,11 +35,11 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
     //////////////////////////////////////////////
     
     // public
-    deleteLogOutButton = function () {
+    deleteButtons = function () {
         appNavigation.empty();
         return self;
     };
-    
+
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -62,7 +70,7 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
 
     self = { 
         showProgressSpinner:showProgressSpinner, hiddenProgressSpinner:hiddenProgressSpinner,
-        addLogOutButton:addLogOutButton, deleteLogOutButton:deleteLogOutButton
+        addButton:addButton, deleteButtons:deleteButtons
     };
     return self;
 };

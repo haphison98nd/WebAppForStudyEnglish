@@ -2,7 +2,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, isUrlIncldesQuery, parseUrlPath, parseUrlQuery, authorize, logout, authorized,
+    let self, isUrlIncldesQuery, parseUrlPath, parseUrlQuery, authorize, logout, authorized, readMe, 
         questionForm, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
         isAuthorized = false,
         appBody, appNavigation, appDrawer, appDataManager
@@ -43,12 +43,41 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
+    
+    // public
+    readMe = function () {
+        authorize(function(result) {
+            if (result) {
+                $.ajax({
+                    type: 'GET',
+                    url : '/markDown',
+                    data: {markDownFileName:'README.md'},
+                    cache: false,
+                    success: function(readMeMarkDown){
+                        const markDownWindow = Wafse_client.ComponentCreator.MarkDownWindow('README.md', readMeMarkDown);
+                        appBody.clearPage().appendRender(markDownWindow.jQeryObj);
+                        history.pushState(null, null, '#read-me');
+                    }
+                });
+            } else {
+                loginAndCoreateAccount();
+            }
+        });
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
 
     // this metho called from LoginAndCreateAccount
     // public
     authorized = function () {
-        appNavigation.addLogOutButton(function(){ logout(); });
         isAuthorized = true;
+        appNavigation.deleteButtons();
+        appNavigation.addButton('danger', 'ログアウト' ,function(){ logout(); });
+        appNavigation.addButton('primary', 'README.md' ,function(){ 
+            readMe(); 
+            history.pushState(null, null, '#read-me');
+        });
     };
     
     //////////////////////////////////////////////
@@ -57,6 +86,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     // public
     logout = function () {
         isAuthorized = false;
+        appDrawer.hiddenDrawerButton().clearPage();
         appDataManager.setItem('Config.LoginAndCoreateAccount.userName', '');
         appDataManager.setItem('Config.LoginAndCoreateAccount.userPassWord', '');
         loginAndCoreateAccount();
@@ -188,7 +218,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     loginAndCoreateAccount = function () {
         history.replaceState(null, null, '#login-and-create-account');
-        appNavigation.deleteLogOutButton();
+        appNavigation.deleteButtons();
         const loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self);
         appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQeryObj);
     };
@@ -238,9 +268,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     start = function () {
-        
         window.onbeforeunload = function () { appDataManager.save(); };
-        
         $(window).on('popstate', function(e){
             // we should try-catch here, because user may acsess 403 page.
             // ex: self[parseUrlPath('#unknown-hash')]();
@@ -282,7 +310,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         start:start, logout:logout, authorized:authorized,
         '#text-select-menu':textSelectMenu, 
         '#login-and-create-account':loginAndCoreateAccount, '#text-part-name-list':textPartNameList,
-        '#text-page-name-list':textPageNameList, '#question-form':questionForm
+        '#text-page-name-list':textPageNameList, '#question-form':questionForm, '#read-me':readMe
     };
     return self;
 };

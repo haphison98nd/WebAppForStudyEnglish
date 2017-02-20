@@ -56,6 +56,10 @@
                         width: 500px;
                     }
                     
+                    .mainContainerSmallMiddle#mainContainer{
+                        width: 650px;
+                    }
+                    
                 </style>
                 <h3 id="mainMassage">dummyText</h3>
             </div>
@@ -218,9 +222,25 @@
                 </div>
             </div>
         </template>
-        <template class="htmlTemplate" id="logOutButton">
+        <template class="htmlTemplate" id="navButtons">
             <div>
-                <button type="button" class="btn btn-outline-danger">ログアウト</button>
+                <button type="button" class="btn btn-outline-primary">Primary</button>
+                <button type="button" class="btn btn-outline-danger">Danger</button>
+            </div>
+        </template>
+        <template class="htmlTemplate" id="markDownWindow">
+            <div>
+                <div id="markDownContainer">
+                    <style scoped>
+                        #markDownContainer a {
+                            color: #bf6262;
+                        }
+                        #markDownContainer a:hover{
+                            color: rgb(255, 152, 152) !important;
+                            transition: color 0.3s !important;
+                        }
+                    </style>
+                </div>
             </div>
         </template>
     </head>
@@ -279,6 +299,10 @@
                         margin-left: 30px;
                         display: none;
                     }
+                    
+                    .btn {
+                        margin-right: 5px;
+                    }
                 </style>       
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
@@ -314,6 +338,7 @@
         <script defer type="text/javascript" src="js/libraries/bootstrap.min.js"></script>
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"></script>
+        <script defer src="js/libraries/marked.min.js"></script>
         <script defer src="js/libraries/csshttprequest.js"></script>
         <script defer src="js/libraries/jquery.atd.textarea.js"></script>
         <!-- script defer src="/socket.io/socket.io.js"></script -->

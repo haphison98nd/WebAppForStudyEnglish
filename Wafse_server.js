@@ -86,6 +86,26 @@ const Wafse_server = function(){
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
+        app.get('/markDownFileNameList', function(req, res){            
+            extendedFs.getFileNameListAsync(rootDir + '/markDowns', 'md', function(fileNameList, err){
+                res.status(200).contentType('application/json').json(fileNameList);
+            });
+        });
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
+        app.get('/markDown', function(req, res){    
+            const markDownFileName = req.query.markDownFileName;
+            console.log(markDownFileName);
+            extendedFs.readFile(rootDir + '/markDowns/' + String(markDownFileName), 'utf-8',function (err, file){
+                res.status(200).contentType('text/plain').end(file);
+            });       
+        });
+        
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+
         /*
         app.get('/htmlTemplates/:htmlTemplateName', function(req, res){
             const html = extendedFs.readFileSync(rootDir + '/htmlTemplates/' + req.params.htmlTemplateName, 'utf-8');
