@@ -3,7 +3,7 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
     'use strict';
     
     let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
-        questionCount = 0,
+        qCount = 0,
         self, conbineComponents, remove, updateQuestionForm,
         appDataManager, router, pageContents, postQuery, callback
     ;
@@ -23,16 +23,17 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
     // public
     updateQuestionForm = function (){
         // array pageContents.JPN and pageContents.ENG are same length so we just check pageContents.JPN length.
-        if (questionCount < pageContents.JPN.length){
-            const questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, self, pageContents.JPN[questionCount], pageContents.ENG[questionCount]);
-            if (questionCount === (pageContents.JPN.length - 1)) questionForm.setNextProblemBtnText('終了');
+        if (qCount < pageContents.JPN.length){
+            const isFinalQ = qCount === (pageContents.JPN.length - 1) ? true : false,
+                  questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, self, pageContents.JPN[qCount], pageContents.ENG[qCount], isFinalQ)
+            ;
             mainContainerMiddle.appendRender(questionForm.jQeryObj);
             mainContainerMiddle.setNavigator([
                 ['#text-select-menu', postQuery.titleText],
                 ['#text-part-name-list', postQuery.textPartName], 
-                ['#text-page-name-list', postQuery.textPageName + ' (' + String(questionCount + 1) + '/' + String(pageContents.JPN.length) + ')']]
+                ['#text-page-name-list', postQuery.textPageName + ' (' + String(qCount + 1) + '/' + String(pageContents.JPN.length) + ')']]
             );
-            questionCount++;
+            qCount++;
         } else {
             router['#text-page-name-list']();
         }
