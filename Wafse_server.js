@@ -97,7 +97,6 @@ const Wafse_server = function(){
 
         app.get('/markDown', function(req, res){    
             const markDownFileName = req.query.markDownFileName;
-            console.log(markDownFileName);
             extendedFs.readFile(rootDir + '/markDowns/' + String(markDownFileName), 'utf-8',function (err, file){
                 res.status(200).contentType('text/plain').end(file);
             });       

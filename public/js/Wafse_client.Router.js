@@ -52,7 +52,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         appNavigation.addButton('danger', 'ログアウト' ,function(){ logout(); });
         appNavigation.addButton('primary', 'README.md' ,function(){ 
             readMe(); 
-            history.pushState(null, null, '#read-me');
         });
     };
     
