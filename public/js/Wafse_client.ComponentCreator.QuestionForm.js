@@ -62,7 +62,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     // private
     transformStringForAnswer = function (str) {
         // about RegExp: http://qiita.com/hrdaya/items/291276a5a20971592216
-        return str.toLowerCase().replace(/[\-_,.? ]/g, '');
+        return str.toLowerCase().replace(/[\-_,.'"!? ]/g, '');
     };
 
     //////////////////////////////////////////////
