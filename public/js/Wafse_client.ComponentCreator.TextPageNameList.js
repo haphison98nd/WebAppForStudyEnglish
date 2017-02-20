@@ -15,7 +15,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
         const bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();    
         bootStrapTable.appendThead(['節の名前', 'ステータス', 'クリア回数', '最短クリア時間']);
         for (let textPageName of __textPageNameList){
-            bootStrapTable.appendTbody([textPageName, '近日実装', '近日実装', '近日実装'], function(){
+            bootStrapTable.appendTbody([textPageName, '---', '---', '---'], function(){
                 history.pushState(null, null, '#question-form');
                 router['#question-form']({'titleText':__postQuery.titleText, 'textPartName':__postQuery.textPartName, 'textPageName':textPageName});
             });
