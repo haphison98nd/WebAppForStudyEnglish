@@ -27,7 +27,7 @@
                         position: relative;
                         color: white;
                         background-color: rgba(255, 255, 255, 0);
-                        border-radius: 3px;
+                        border-radius: 2px;
                         margin-left: 5px;
                         top: -6px;
                         cursor:pointer;
@@ -40,8 +40,8 @@
                     
                     .mdl-chip:hover{
                         color: white;
-                        background-color: rgba(255, 255, 255, 0.1);
-                        transition: background-color 0.15s;
+                        background-color: rgba(255, 255, 255, 0.15);
+                        transition: background-color 0.3s;
                     }
 
                     .mdl-chip__text {
@@ -102,7 +102,7 @@
                     .demo-card-square.mdl-card {
                         width: 320px;
                         height: 320px;
-                        background:#242424;
+                        background:rgba(0, 0, 0, 0.75);
                         color: #fff;
                         float: left;
                         margin: 21px;
@@ -111,8 +111,9 @@
                         color: #fff;
                     }
 
-                    .btn.btn-success{
+                    .btn.mdl-button--primary{
                         width: inherit;
+                        color: white;
                     }                
                 </style>
                 <div class="mdl-card__title mdl-card--expand">
@@ -122,7 +123,7 @@
                     dummyText
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <button type="button" class="btn btn-success">dummyText</button>
+                    <button class="btn mdl-button mdl-js-button mdl-button--primary">Button</button>
                 </div>
             </div>
         </template>
@@ -136,8 +137,8 @@
                         cursor: pointer !important;
                     }
                     tbody tr:hover{
-                        background-color: rgba(70, 70, 70, 0.5) !important;
-                        transition: background-color 0.15s !important;
+                        background-color: rgba(70, 70, 70, 0.7) !important;
+                        transition: background-color 0.3s !important;
                     }
                     tbody tr:active{
                         background-color: rgba(120, 120, 120, 0.5) !important;
@@ -235,12 +236,7 @@
               /* This background is dark, so we set text to white. Use 87% black instead if
                  your background is light. */
               color: white;
-            }
-            
-            .btn-success {
-                background-color: #165000;
-                border: solid 1px #165000;
-            }
+            }            
         </style>
         <div class="demo-layout-transparent mdl-layout mdl-js-layout">
             <style scoped>
