@@ -1,4 +1,4 @@
-Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, _questionWindow, _sentenceENG, _sentenceJPN, _callback){
+Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, _questionWindow, _sentenceJPN, _sentenceENG, _callback){
     
     'use strict';
     
@@ -18,7 +18,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         nextProblemBtn = htmlTemplate_questionForm.find('#nextProblemBtn'),
         self, setProgressBarValue, setJapaneseSentenceInst, activateButtons, transformStringForAnswer, 
         checkAnswer, showAlertMessage, activateTextInput, setNextProblemBtnText, remove,
-        appDataManager, router, questionWindow, sentenceENG, sentenceJPN, callback
+        appDataManager, router, questionWindow, sentenceJPN, sentenceENG, callback
     ;
     
     //////////////////////////////////////////////
@@ -186,8 +186,8 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         appDataManager = _appDataManager;
         router = _router;
         questionWindow = _questionWindow;
-        sentenceENG = _sentenceENG;
         sentenceJPN = _sentenceJPN;
+        sentenceENG = _sentenceENG;
         callback = _callback;
         
         activateButtons(sentenceENG);

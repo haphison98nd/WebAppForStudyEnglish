@@ -20,15 +20,17 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    updateQuestionForm = function (){        
-        if (questionCount < 10){
-            const questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, self, pageContents.ENG[questionCount], pageContents.JPN[questionCount]);
-            if (questionCount === 9) questionForm.setNextProblemBtnText('終了');
+    // public
+    updateQuestionForm = function (){
+        // array pageContents.JPN and pageContents.ENG are same length so we just check pageContents.JPN length.
+        if (questionCount < pageContents.JPN.length){
+            const questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, self, pageContents.JPN[questionCount], pageContents.ENG[questionCount]);
+            if (questionCount === (pageContents.JPN.length - 1)) questionForm.setNextProblemBtnText('終了');
             mainContainerMiddle.appendRender(questionForm.jQeryObj);
             mainContainerMiddle.setNavigator([
                 ['#text-select-menu', postQuery.titleText],
                 ['#text-part-name-list', postQuery.textPartName], 
-                ['#text-page-name-list', postQuery.textPageName + ' (' + String(questionCount + 1) + '/10)']]
+                ['#text-page-name-list', postQuery.textPageName + ' (' + String(questionCount + 1) + '/' + String(pageContents.JPN.length) + ')']]
             );
             questionCount++;
         } else {
