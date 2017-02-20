@@ -1,33 +1,39 @@
 {
     "どんどん話すための瞬間英作文トレーニング":{
-        "EnglishTextName":"SyunkanEisakubun",
         "snippet":"中学レベルの文型で正確にスピーディーに英文を作る能力を身につけられます",
         "backGroundImageUrl":"/images/syunkan-eisakubun.png"
     },
     "NHKゴガクル中学生レベル":{
-            "EnglishTextName":"GogakuruJuniorHighSchoolLebel",
-            "snippet":"NHKゴガクルの中学生レベルの例文集です",
-            "backGroundImageUrl":"/images/gogakuru-junior-high-school-lebel.png"
+        "snippet":"NHKゴガクルの中学生レベルの例文集です",
+        "backGroundImageUrl":"/images/gogakuru-junior-high-school-lebel.png"
     },
     "NHKゴガクル高校生レベル":{
-            "EnglishTextName":"GogakuruHighSchoolLebel",
-            "snippet":"NHKゴガクルの高校生レベルの例文集です",
-            "backGroundImageUrl":"/images/gogakuru-high-school-lebel.png"
+        "snippet":"NHKゴガクルの高校生レベルの例文集です",
+        "backGroundImageUrl":"/images/gogakuru-high-school-lebel.png"
+    },
+    "NHKゴガクル初心者レベル":{
+        "snippet":"NHKゴガクルの初心者レベルの例文集です",
+        "backGroundImageUrl":"/images/gogakuru-beginner-lebel.png"
     },
     "NHKゴガクル日常会話レベル":{
-            "EnglishTextName":"GogakuruDailyLebel",
-            "snippet":"NHKゴガクルの日常会話レベルの例文集です",
-            "backGroundImageUrl":"/images/gogakuru-daily-lebel.png"
+        "snippet":"NHKゴガクルの日常会話レベルの例文集です",
+        "backGroundImageUrl":"/images/gogakuru-daily-lebel.png"
     },
     "NHKゴガクル文法特集":{
-            "EnglishTextName":"GogakuruGrammarFeatureDb",
-            "snippet":"NHKゴガクルの文法特集です",
-            "backGroundImageUrl":"/images/gogakuru-grammar-feature.png"
+        "snippet":"NHKゴガクルの文法特集です",
+        "backGroundImageUrl":"/images/gogakuru-grammar-feature.png"
     },
     "NHKゴガクルボキャブラリー特集":{
-            "EnglishTextName":"GogakuruVocabularyFeature",
-            "snippet":"NHKゴガクルのボキャブラリー特集です",
-            "backGroundImageUrl":"/images/gogakuru-vocabulary-feature.png"
+        "snippet":"NHKゴガクルのボキャブラリー特集です",
+        "backGroundImageUrl":"/images/gogakuru-vocabulary-feature.png"
+    },
+    "NHKゴガクルビジネスレベル":{
+        "snippet":"NHKゴガクルのビシネスレベルの例文集です",
+        "backGroundImageUrl":"/images/gogakuru-business-lebel.png"
+    },
+    "NHKゴガクル実践レベル":{
+        "snippet":"NHKゴガクルの実践レベルの例文集です",
+        "backGroundImageUrl":"/images/gogakuru-practical-lebel.png"
     },
     "To Be Announced":{
         "snippet":"将来的にはユーザが瞬間英作文したい英文を追加できるようにします",

@@ -12,5 +12,5 @@ if __name__ == '__main__':
     # dbMakerENG = SimpleEnglishSentencesJsonDbMaker("http://english-writing.mobi/workbook/answer.php?theme_no=", 1, 79)
     # dbMakerENG.startScraping().saveDbAsJson("../TextDB/SimpleEnglishSentencesJsonDb_ENG")
 
-    app = SimpleEnglishSentencesJsonDbMakerForGogakuru("https://gogakuru.com/english/phrase/genre/120_ボキャブラリー.html?perPage=10&pageID=", 1, 422)
-    app.startScraping().saveDbAsJson("./GokakuruGrammarFeatureDb")
+    app = SimpleEnglishSentencesJsonDbMakerForGogakuru("https://gogakuru.com/english/phrase/genre/10_英語の基礎.html?perPage=10&pageID=", 1, 555)
+    app.startScraping().saveDbAsJson("../TextDB/Gogakuru/FundamentalLevelDb")

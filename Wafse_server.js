@@ -25,9 +25,12 @@ const Wafse_server = function(){
                   ['どんどん話すための瞬間英作文トレーニング', './TextDB/SyunkanEisakubun/SyunkanEisakubunDb.json'],
                   ['NHKゴガクル中学生レベル', './TextDB/Gogakuru/JuniorHighSchoolLebelDb.json'],
                   ['NHKゴガクル高校生レベル', './TextDB/Gogakuru/HighSchoolLebelDb.json'],
+                  ['NHKゴガクル初心者レベル', './TextDB/Gogakuru/BeginnerLevelDb.json'],
                   ['NHKゴガクル日常会話レベル', './TextDB/Gogakuru/DailyLebelDb.json'],
                   ['NHKゴガクル文法特集', './TextDB/Gogakuru/GrammarFeatureDb.json'],
-                  ['NHKゴガクルボキャブラリー特集', './TextDB/Gogakuru/VocabularyFeatureDb.json']
+                  ['NHKゴガクルボキャブラリー特集', './TextDB/Gogakuru/VocabularyFeatureDb.json'],
+                  ['NHKゴガクルビジネスレベル', './TextDB/Gogakuru/BusinessLevelDb.json'],
+                  ['NHKゴガクル実践レベル', './TextDB/Gogakuru/PracticalLevelDb.json']
               ])
         ;
                 
