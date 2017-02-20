@@ -2,7 +2,7 @@ Wafse_client.main = function(){
 
     'use strict';
     
-    const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['View', 'LoginAndCoreateAccount', 'PostQuery', 'Config']).load(true),
+    const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['View', 'LoginAndCoreateAccount', 'PostQuery', 'Config']).load(false),
           appBody = Wafse_client.Activator.AppBody(appDataManager),
           appNavigation = Wafse_client.Activator.AppNavigation(appDataManager),
           appDrawer = Wafse_client.Activator.AppDrawer(appNavigation, appDataManager),
