@@ -13,7 +13,7 @@ Wafse_client.main = function(){
     
     console.log(Wafse_client);
 
-    ///*
+    // /*
     appNavigation.showProgressSpinner();
     setTimeout(function(){
         appNavigation.hiddenProgressSpinner();
@@ -25,8 +25,8 @@ Wafse_client.main = function(){
         toastr.options = {'positionClass':'toast-bottom-right'};
         toastr.error('このアプリケーションは PC版 Google Chrome 専用です．他のブラウザでは音声認識/再生を利用できません．', '警告', {timeOut: 20000});
     }
-    //*/
-    
+    // */
+        
     
     // debug code of Wafse_client.ComponentCreator.BootStrapTable
     /*

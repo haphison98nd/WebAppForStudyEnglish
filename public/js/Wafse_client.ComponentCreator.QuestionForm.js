@@ -61,13 +61,8 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     
     // private
     transformStringForAnswer = function (str) {
-        let transformedStr = String(str).toLowerCase().split(' ').join(''),
-            lastCase = transformedStr.substr(transformedStr.length-1, transformedStr.length)
-        ;
-        if (lastCase === '.' || lastCase === '?' || lastCase === '') {
-            transformedStr = transformedStr.substr(0, transformedStr.length-1);
-        }
-        return transformedStr;
+        // about RegExp: http://qiita.com/hrdaya/items/291276a5a20971592216
+        return str.toLowerCase().replace(/[\-_,.? ]/g, '');
     };
 
     //////////////////////////////////////////////
@@ -98,7 +93,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
             // AtD.checkTextAreaCrossAJAX('textInput', 'checkLink', 'Edit Text');
             incorrectAlert
                 .css({'display':'block'})
-                .html('<strong>不正解です</strong> （正答例: ' + String(correctAnswer) + ' ）')
+                .html('<strong>不正解です</strong> （正答例: <strong>' + String(correctAnswer) + '</strong> ）')
             ;
         }
     };
