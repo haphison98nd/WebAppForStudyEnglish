@@ -15,7 +15,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
         alertForPassWordInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForPassWordInput'),
         mainContainerSmall = Wafse_client.ComponentCreator.MainContainer('mainContainerSmall', 'ようこそ'),
         self, conbineComponents, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
-        validUserNameInputAndPassWordInput, remove,
+        isUserNameInputAndPassWordInputValid, remove,
         appNavigation, appDataManager, router
     ;
 
@@ -23,7 +23,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     //////////////////////////////////////////////
 
     // private
-    validUserNameInputAndPassWordInput = function(){
+    isUserNameInputAndPassWordInputValid = function(){
         if(String(userNameInput.val()) === '' && String(passWordInput.val()) === '') {
             showAlertMessage('ユーザ名を入力してください', 'パスワードを入力してください');
             return false;
@@ -48,7 +48,6 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                 .html('<b>' + String(alertMessageForUserNameInput) + '</b>')
             ;            
         }
-        
         if(alertMessageForPassWordInput){
             alertForPassWordInput
                 .css({'display':'block'})
@@ -71,11 +70,11 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     
     // private
     activateTextInput = function(){
-        if (appDataManager.getItem('View.LoginAndCoreateAccount.userName')) {
-            userNameInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userName')));
+        if (appDataManager.getItem('Config.LoginAndCoreateAccount.userName')) {
+            userNameInput.val(String(appDataManager.getItem('Config.LoginAndCoreateAccount.userName')));
         }
-        if (appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')) {
-            passWordInput.val(String(appDataManager.getItem('View.LoginAndCoreateAccount.userPassword')));
+        if (appDataManager.getItem('Config.LoginAndCoreateAccount.userPassWord')) {
+            passWordInput.val(String(appDataManager.getItem('Config.LoginAndCoreateAccount.userPassWord')));
         }
     };
 
@@ -85,24 +84,25 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     // private
     activateButtons = function(){
         enterBtn.click(function(){
-            if(validUserNameInputAndPassWordInput()){
+            if(isUserNameInputAndPassWordInputValid()){
                 appNavigation.showProgressSpinner();
                 $.ajax({
                     type: 'POST',
                     url : '/authorize',
-                    data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
+                    data: {'userName':String(userNameInput.val()), 'userPassWord':String(passWordInput.val())},
                     success: function(authorizationResult){
                         appNavigation.hiddenProgressSpinner();
-                        if (authorizationResult.status === 'success'){ 
-                            appDataManager.setItem('View.LoginAndCoreateAccount.userName', String(userNameInput.val()));
-                            appDataManager.setItem('View.LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
+                        if (authorizationResult.status === 'success'){
+                            appDataManager.setItem('Config.LoginAndCoreateAccount.userName', String(userNameInput.val()));
+                            appDataManager.setItem('Config.LoginAndCoreateAccount.userPassWord', String(passWordInput.val()));
                             toastr.options = {'positionClass':'toast-bottom-right'};
                             toastr.success(String(authorizationResult.message));
-                            history.pushState(null, null, '#text-select-menu');              
+                            history.pushState(null, null, '#text-select-menu');       
+                            router.authorized();
                             router['#text-select-menu']();
                         } else if(authorizationResult.status  === 'userNameError'){ 
                             showAlertMessage(authorizationResult.message, '');
-                        } else if (authorizationResult.status  === 'passwordError'){ 
+                        } else if (authorizationResult.status  === 'passWordError'){ 
                             showAlertMessage('', authorizationResult.message);
                         }
                     }
@@ -121,20 +121,21 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
             });
             submitBtn.css({'display':'inline'});
             submitBtn.click(function(){
-                if(validUserNameInputAndPassWordInput()){
+                if(isUserNameInputAndPassWordInputValid()){
                     appNavigation.showProgressSpinner();
                     $.ajax({
                         type: 'POST',
                         url : '/createAccount',
-                        data: {'userName':String(userNameInput.val()), 'userPassword':String(passWordInput.val())},
+                        data: {'userName':String(userNameInput.val()), 'userPassWord':String(passWordInput.val())},
                         success: function(createAccountResult){
                             appNavigation.hiddenProgressSpinner();
                             if (createAccountResult.status === 'success'){ 
-                                appDataManager.setItem('View.LoginAndCoreateAccount.userName', String(userNameInput.val()));
-                                appDataManager.setItem('View.LoginAndCoreateAccount.userPassword', String(passWordInput.val()));
+                                appDataManager.setItem('Config.LoginAndCoreateAccount.userName', String(userNameInput.val()));
+                                appDataManager.setItem('Config.LoginAndCoreateAccount.userPassWord', String(passWordInput.val()));
                                 toastr.options = {'positionClass':'toast-bottom-right'};
                                 toastr.success(String(createAccountResult.message));
                                 history.pushState(null, null, '#text-select-menu');
+                                router.authorized();
                                 router['#text-select-menu']();
                             } else if(createAccountResult.status  === 'error'){ 
                                 showAlertMessage(createAccountResult.message, '');

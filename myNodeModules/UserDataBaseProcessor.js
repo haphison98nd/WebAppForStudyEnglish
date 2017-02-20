@@ -67,7 +67,7 @@ module.exports = (function(){ // node module として利用する際はこち�
     };
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    // userData は {'userName':'userName', 'userPassword':'userPassword'} という形式を取る．
+    // userData は {'userName':'userName', 'userPassWord':'userPassWord'} という形式を取る．
     // userName が既に存在している場合は false を return. 
     addUserData = function(userData){
         if(isUserExist(userData.userName)){
@@ -76,7 +76,7 @@ module.exports = (function(){ // node module として利用する際はこち�
             return false;
         }else{
             // 新たな userData を database に追加．
-            userDataBase[userData.userName] = userData.userPassword;
+            userDataBase[userData.userName] = userData.userPassWord;
             // 最新の userDataBase はメモリ内で構成されているため，最新の database を saveDataBaseAsJson で
             // 保存してから loadDataBase する必要はない．
             saveDataBaseAsJson(); 
@@ -113,14 +113,14 @@ module.exports = (function(){ // node module として利用する際はこち�
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     // ユーザ認証メソッド．
-    // userData は {'userName':'userName', 'userPassword':'userPassword'} という形式を取る．
+    // userData は {'userName':'userName', 'userPassWord':'userPassWord'} という形式を取る．
     // userName が既に存在している場合は false を return. 
     authorize = function(userData){
         
         var authorizeStatusText = '';
         
         if(isUserExist(userData.userName)){
-            if(userData.userPassword == userDataBase[userData.userName]){
+            if(userData.userPassWord == userDataBase[userData.userName]){
                 authorizeStatusText = 'UserDataBaseProcessor.js: ' + userData.userName + ' is authorized.';
                 console.log(authorizeStatusText.green);                        
                 return 'authorized'; 
@@ -155,17 +155,17 @@ module.exports = (function(){ // node module として利用する際はこち�
     var udb = UserDataBaseProcessor();
     
     // ユーザデータ追加テスト
-    // console.log(udb.addUserData({'userName':'KensukeS', 'userPassword':'12345'}));
-    // console.log(udb.addUserData({'userName':'KentaroUeda', 'userPassword':'12345'}));
-    // console.log(udb.addUserData({'userName':'K.Ueda', 'userPassword':'12345'}));
+    // console.log(udb.addUserData({'userName':'KensukeS', 'userPassWord':'12345'}));
+    // console.log(udb.addUserData({'userName':'KentaroUeda', 'userPassWord':'12345'}));
+    // console.log(udb.addUserData({'userName':'K.Ueda', 'userPassWord':'12345'}));
     
     // ユーザデータ削除テスト
     // console.log(udb.removeUserData('KentaroUeda'));
     // console.log(udb.removeUserData('KensukeS'));
     
     // ユーザデータ認証テスト
-    console.log(udb.authorize({'userName':'KensukeS', 'userPassword':'12345'}));
-    // console.log(udb.authorize({'userName':'Ken', 'userPassword':'12345'}));
-    console.log(udb.authorize({'userName':'KensukeS', 'userPassword':'1'}));
+    console.log(udb.authorize({'userName':'KensukeS', 'userPassWord':'12345'}));
+    // console.log(udb.authorize({'userName':'Ken', 'userPassWord':'12345'}));
+    console.log(udb.authorize({'userName':'KensukeS', 'userPassWord':'1'}));
 })();
 */

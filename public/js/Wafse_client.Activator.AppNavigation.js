@@ -7,9 +7,35 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
     ;
     
     let self, appendRender, afterRender, clearPage, showProgressSpinner, hiddenProgressSpinner,
+        addLogOutButton, deleteLogOutButton,
         appDataManager
     ;
 
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    // public
+    addLogOutButton = function (callback) {
+        deleteLogOutButton();
+        const logOutButton = $($('.htmlTemplate#logOutButton').clone().html());
+        if (callback) logOutButton.click(callback);
+        appNavigation.append(logOutButton);
+        return self;
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+    
+    // public
+    deleteLogOutButton = function () {
+        appNavigation.empty();
+        return self;
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // public
     showProgressSpinner = function () {
         progressSpinner.css({'display':'inline'});
         return self;
@@ -18,6 +44,7 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     hiddenProgressSpinner = function () {
         progressSpinner.css({'display':'none'});
         return self;
@@ -33,6 +60,9 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self = { showProgressSpinner:showProgressSpinner, hiddenProgressSpinner:hiddenProgressSpinner };
+    self = { 
+        showProgressSpinner:showProgressSpinner, hiddenProgressSpinner:hiddenProgressSpinner,
+        addLogOutButton:addLogOutButton, deleteLogOutButton:deleteLogOutButton
+    };
     return self;
 };

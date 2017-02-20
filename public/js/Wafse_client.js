@@ -28,10 +28,6 @@ const Wafse_client = {
     },
     appDataTemplate:{
         View:{
-            LoginAndCoreateAccount:{
-                userName:'fun',
-                userPassword:'fun'
-            },
             QuestionForm:{
                 now:{
                     pageContents:null,
@@ -45,6 +41,10 @@ const Wafse_client = {
             Question:null
         },
         Config:{
+            LoginAndCoreateAccount:{
+                userName:'Anonymous',
+                userPassWord:'Anonymous'
+            },
             QuestionForm:{
                 timeLimit:20
             },

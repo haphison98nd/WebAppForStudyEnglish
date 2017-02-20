@@ -106,7 +106,7 @@ const Wafse_server = function(){
             } else if(authorizationResult === 'userNotExist'){ 
                 res.json({status : 'userNameError', message: '登録されていないユーザ名です'});
             } else if (authorizationResult === 'incorrectUserPassword'){ 
-                res.json({status : 'passwordError', message: '不正なパスワードです'});
+                res.json({status : 'passWordError', message: '不正なパスワードです'});
             }
         });
         

@@ -2,36 +2,93 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, isUrlIncldesQuery, parseUrlPath, parseUrlQuery, 
-        questionForm, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, root, start,
+    let self, isUrlIncldesQuery, parseUrlPath, parseUrlQuery, authorize, logout, authorized,
+        questionForm, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
+        isAuthorized = false,
         appBody, appNavigation, appDrawer, appDataManager
     ;
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // private
+    authorize = function (callback) {
+        if(isAuthorized){
+            callback(true);
+        } else {
+            const userName = appDataManager.getItem('Config.LoginAndCoreateAccount.userName'),
+                  userPassWord = appDataManager.getItem('Config.LoginAndCoreateAccount.userPassWord')
+            ;        
+            if (!userName || !userPassWord) {
+                callback(false);
+                return 0;
+            }
+            $.ajax({
+                type: 'POST',
+                url : '/authorize',
+                data: {'userName':String(userName), 'userPassWord':String(userPassWord)},
+                success: function(authorizationResult){
+                    if (authorizationResult.status === 'success') {
+                        authorized();
+                        callback(true);
+                    } else {
+                        callback(false);
+                    }
+                }
+            });
+        }
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // this metho called from LoginAndCreateAccount
+    // public
+    authorized = function () {
+        appNavigation.addLogOutButton(function(){ logout(); });
+        isAuthorized = true;
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // public
+    logout = function () {
+        isAuthorized = false;
+        appDataManager.setItem('Config.LoginAndCoreateAccount.userName', '');
+        appDataManager.setItem('Config.LoginAndCoreateAccount.userPassWord', '');
+        loginAndCoreateAccount();
+    };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     questionForm = function (_postQuery) {
-        let postQuery = _postQuery;
-
-        appNavigation.showProgressSpinner();
-    
-        if (postQuery) {
-            appDataManager.setItem('PostQuery.Question', postQuery);
-        } else {
-            postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
-            if (postQuery === null) textSelectMenu();
-        }
-        $.ajax({
-            type: 'GET',
-            url : '/pageContents',
-            data: postQuery,
-            cache: false,
-            success: function (pageContents) {
-                appNavigation.hiddenProgressSpinner();
-                appDataManager.setItem('View.QuestionForm.now.pageContents', pageContents);
-                const questionWindow = Wafse_client.ComponentCreator.QuestionWindow(appDataManager, self, pageContents, postQuery);
-                questionWindow.updateQuestionForm();
-                appBody.clearPage().appendRender(questionWindow.jQeryObj);
+        authorize(function(result) {
+            if (result) {
+                let postQuery = _postQuery;
+                appNavigation.showProgressSpinner();
+                if (postQuery) {
+                    appDataManager.setItem('PostQuery.Question', postQuery);
+                } else {
+                    postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
+                    if (postQuery === null) textSelectMenu();
+                }
+                $.ajax({
+                    type: 'GET',
+                    url : '/pageContents',
+                    data: postQuery,
+                    cache: false,
+                    success: function (pageContents) {
+                        appNavigation.hiddenProgressSpinner();
+                        appDataManager.setItem('View.QuestionForm.now.pageContents', pageContents);
+                        const questionWindow = Wafse_client.ComponentCreator.QuestionWindow(appDataManager, self, pageContents, postQuery);
+                        questionWindow.updateQuestionForm();
+                        appBody.clearPage().appendRender(questionWindow.jQeryObj);
+                    }
+                });               
+            } else {
+                loginAndCoreateAccount();
             }
         });
     };
@@ -40,68 +97,86 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     textPageNameList = function (_postQuery) {
-        let postQuery = _postQuery;
-        appNavigation.showProgressSpinner();
-        if (postQuery) {
-            appDataManager.setItem('PostQuery.TextPageNameList', postQuery);
-        } else {
-            postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
-            if (postQuery === null) textSelectMenu();
-        }
-        $.ajax({
-            type: 'GET',
-            url : '/textPageNameList',
-            data: postQuery,
-            cache: false,
-            success: function (textPageNameList) {
-                appNavigation.hiddenProgressSpinner();
-                const textPageNameListJqueryObj = Wafse_client.ComponentCreator.TextPageNameList(appDataManager, self, textPageNameList, postQuery);
-                appBody.clearPage().appendRender(textPageNameListJqueryObj.jQeryObj); 
+        authorize(function(result) {
+            if (result) {
+                let postQuery = _postQuery;
+                appNavigation.showProgressSpinner();
+                if (postQuery) {
+                    appDataManager.setItem('PostQuery.TextPageNameList', postQuery);
+                } else {
+                    postQuery = appDataManager.getItem('PostQuery.TextPageNameList');
+                    if (postQuery === null) textSelectMenu();
+                }
+                $.ajax({
+                    type: 'GET',
+                    url : '/textPageNameList',
+                    data: postQuery,
+                    cache: false,
+                    success: function (textPageNameList) {
+                        appNavigation.hiddenProgressSpinner();
+                        const textPageNameListJqueryObj = Wafse_client.ComponentCreator.TextPageNameList(appDataManager, self, textPageNameList, postQuery);
+                        appBody.clearPage().appendRender(textPageNameListJqueryObj.jQeryObj); 
+                    }
+                });                
+            } else {
+                loginAndCoreateAccount();
             }
-        });  
+        });
     };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textPartNameList = function (_postQuery) { 
-        let postQuery = _postQuery;
-        appNavigation.showProgressSpinner();
-        // If user accesses /textPartNameList from browser back button,
-        // postQuery will be null.
-        // In that situation, load postQuery from localStrage.
-        if (postQuery){
-            appDataManager.setItem('PostQuery.TextPartNameList', postQuery);
-        } else {
-            postQuery = appDataManager.getItem('PostQuery.TextPartNameList');
-            if (postQuery === null) textSelectMenu();
-        }        
-        $.ajax({
-            type: 'GET',
-            url : '/textPartNameList',
-            data: postQuery,
-            cache: false,
-            success: function (textPartNameList) {
-                appNavigation.hiddenProgressSpinner();
-                const textPartNameListJqueryObj = Wafse_client.ComponentCreator.TextPartNameList(appDataManager, self, textPartNameList, postQuery);
-                appBody.clearPage().appendRender(textPartNameListJqueryObj.jQeryObj);
+    textPartNameList = function (_postQuery) {     
+        authorize(function(result) {
+            if (result) {
+                let postQuery = _postQuery;
+                appNavigation.showProgressSpinner();
+                // If user accesses /textPartNameList from browser back button,
+                // postQuery will be null.
+                // In that situation, load postQuery from localStrage.
+                if (postQuery){
+                    appDataManager.setItem('PostQuery.TextPartNameList', postQuery);
+                } else {
+                    postQuery = appDataManager.getItem('PostQuery.TextPartNameList');
+                    if (postQuery === null) textSelectMenu();
+                }        
+                $.ajax({
+                    type: 'GET',
+                    url : '/textPartNameList',
+                    data: postQuery,
+                    cache: false,
+                    success: function (textPartNameList) {
+                        appNavigation.hiddenProgressSpinner();
+                        const textPartNameListJqueryObj = Wafse_client.ComponentCreator.TextPartNameList(appDataManager, self, textPartNameList, postQuery);
+                        appBody.clearPage().appendRender(textPartNameListJqueryObj.jQeryObj);
+                    }
+                });            
+            } else {
+                loginAndCoreateAccount();
             }
-        });        
+        });
     };
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     textSelectMenu = function () {        
-        appNavigation.showProgressSpinner();
-        $.ajax({
-            type: 'GET',
-            url: '/textList',
-            cache: false,
-            success: function(textList){
-                appNavigation.hiddenProgressSpinner();
-                const textSelectMenuJqueryObj = Wafse_client.ComponentCreator.TextSelectMenu(appDataManager, self, textList);
-                appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQeryObj); 
+        authorize(function(result) {
+            if (result) {
+                appNavigation.showProgressSpinner();
+                $.ajax({
+                    type: 'GET',
+                    url: '/textList',
+                    cache: false,
+                    success: function(textList){
+                        appNavigation.hiddenProgressSpinner();
+                        const textSelectMenuJqueryObj = Wafse_client.ComponentCreator.TextSelectMenu(appDataManager, self, textList);
+                        appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQeryObj); 
+                    }
+                }); 
+            } else {
+                loginAndCoreateAccount();
             }
         });
     };
@@ -111,6 +186,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     loginAndCoreateAccount = function () {
         history.replaceState(null, null, '#login-and-create-account');
+        appNavigation.deleteLogOutButton();
         const loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self);
         appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQeryObj);
     };
@@ -118,13 +194,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    root = function () {
-        loginAndCoreateAccount();
-    };
-
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-    
     // private.
     // @param { String } url: url include query. ex: '/path-name1/path-name2?q1=aaa&q2=bbb'
     // @ return { boolean }
@@ -181,14 +250,14 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         });
         
         if(location.hash === '' ){
-            root();
+            loginAndCoreateAccount();
         } else {
             // we should try-catch here, because user may acsess 403 page.
             // ex: self[parseUrlPath('#unknown-hash')]();
             try {
                 self[parseUrlPath(location.hash)]();
             } catch (e) {
-                root();
+                loginAndCoreateAccount();
                 console.log(e);
             }
         }
@@ -208,9 +277,10 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
     
     self = {
-             start:start, '#root':root, '#text-select-menu':textSelectMenu, 
-             '#login-and-create-account':loginAndCoreateAccount, '#text-part-name-list':textPartNameList,
-             '#text-page-name-list':textPageNameList, '#question-form':questionForm
+        start:start, logout:logout, authorized:authorized,
+        '#text-select-menu':textSelectMenu, 
+        '#login-and-create-account':loginAndCoreateAccount, '#text-part-name-list':textPartNameList,
+        '#text-page-name-list':textPageNameList, '#question-form':questionForm
     };
     return self;
 };
