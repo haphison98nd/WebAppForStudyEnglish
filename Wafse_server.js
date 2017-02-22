@@ -19,18 +19,18 @@ const Wafse_server = function(){
               extendedFs = require('./myNodeModules/ExtendedFs.js'),
               userDb     = require('./myNodeModules/UserDataBaseProcessor.js'),
               PORT       = process.env.PORT || 3000,
-              rootDir    = 'public',
-              textList = JSON.parse(extendedFs.readFileSync('./TextDB/TextList.json', 'utf-8')),
+              rootDir    = './public',
+              textList = JSON.parse(extendedFs.readFileSync(rootDir + '/textDB/TextList.json', 'utf-8')),
               textDbController = require('./myNodeModules/TextDbController.js')([
-                  ['どんどん話すための瞬間英作文トレーニング', './TextDB/SyunkanEisakubun/SyunkanEisakubunDb.json'],
-                  ['NHKゴガクル中学生レベル', './TextDB/Gogakuru/JuniorHighSchoolLebelDb.json'],
-                  ['NHKゴガクル高校生レベル', './TextDB/Gogakuru/HighSchoolLebelDb.json'],
-                  ['NHKゴガクル初心者レベル', './TextDB/Gogakuru/BeginnerLevelDb.json'],
-                  ['NHKゴガクル日常会話レベル', './TextDB/Gogakuru/DailyLebelDb.json'],
-                  ['NHKゴガクル文法特集', './TextDB/Gogakuru/GrammarFeatureDb.json'],
-                  ['NHKゴガクルボキャブラリー特集', './TextDB/Gogakuru/VocabularyFeatureDb.json'],
-                  ['NHKゴガクルビジネスレベル', './TextDB/Gogakuru/BusinessLevelDb.json'],
-                  ['NHKゴガクル実践レベル', './TextDB/Gogakuru/PracticalLevelDb.json']
+                  ['どんどん話すための瞬間英作文トレーニング', rootDir + '/textDB/SyunkanEisakubun/SyunkanEisakubunDb.json'],
+                  ['NHKゴガクル中学生レベル', rootDir + '/textDB/Gogakuru/JuniorHighSchoolLebelDb.json'],
+                  ['NHKゴガクル高校生レベル', rootDir + '/textDB/Gogakuru/HighSchoolLebelDb.json'],
+                  ['NHKゴガクル初心者レベル', rootDir + '/textDB/Gogakuru/BeginnerLevelDb.json'],
+                  ['NHKゴガクル日常会話レベル', rootDir + '/textDB/Gogakuru/DailyLebelDb.json'],
+                  ['NHKゴガクル文法特集', rootDir + '/textDB/Gogakuru/GrammarFeatureDb.json'],
+                  ['NHKゴガクルボキャブラリー特集', rootDir + '/textDB/Gogakuru/VocabularyFeatureDb.json'],
+                  ['NHKゴガクルビジネスレベル', rootDir + '/textDB/Gogakuru/BusinessLevelDb.json'],
+                  ['NHKゴガクル実践レベル', rootDir + '/textDB/Gogakuru/PracticalLevelDb.json']
               ])
         ;
                 
@@ -77,8 +77,8 @@ const Wafse_server = function(){
         //////////////////////////////////////////////
         //////////////////////////////////////////////
 
-        app.get('/images/:imageFileName', function(req, res){
-            extendedFs.readFile(rootDir + '/images/' + req.params.imageFileName, function (err, file){
+        app.get('/images/:path/:imageFileName', function(req, res){
+            extendedFs.readFile(rootDir + '/images/' + req.params.path + '/' + req.params.imageFileName, function (err, file){
                 res.status(200).contentType('image/jpeg').end(file, 'binary');
             });       
         });
