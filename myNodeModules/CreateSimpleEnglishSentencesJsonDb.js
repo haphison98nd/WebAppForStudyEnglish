@@ -2,13 +2,7 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
     
     'use strict';
     
-    const extendedFs = require('./ExtendedFs.js'),
-          partListOfShunkanEisakubun = {
-              'Part1 中学1年レベル':{start:1, end:23},
-              'Part2 中学2年レベル':{start:24, end:57},
-              'Part3 中学3年レベル':{start:58, end:79}              
-          }
-    ;
+    const extendedFs = require('./ExtendedFs.js');
 
     let jsonDb_JPN    = null, 
         jsonDb_ENG    = null,
@@ -17,7 +11,7 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
             'Part2 中学2年レベル':{},
             'Part3 中学3年レベル':{}
         },
-        self, getPageNumber, getPageTitle, getPageTextOfJpnAngEng, 
+        self, getPageNumber, getScrapedPageName, getPageTextOfJpnAngEng, 
         createSimpleEnglishSentencesJsonDb, saveSimpleEnglishSentencesJsonDbAsJson, getSimpleEnglishSentencesJsonDbAsObj,
         filePathOfSimpleEnglishSentencesJsonDb_JPN, filePathOfSimpleEnglishSentencesJsonDb_ENG
     ;
@@ -35,8 +29,8 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
     //////////////////////////////////////////////
     
     // private
-    getPageTitle = function (pageNumber) {
-        let pageTitle = jsonDb_JPN['page-' + pageNumber]['title'];
+    getScrapedPageName = function (__jsonDb_JPN, pageNumber) {
+        let pageTitle = __jsonDb_JPN['page-' + pageNumber]['title'];
         pageTitle = pageTitle.split(' ');
         pageTitle.splice(pageTitle.length-1,1);
         pageTitle = pageTitle.join(' ');
@@ -47,10 +41,10 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
     //////////////////////////////////////////////
     
     // private
-    getPageTextOfJpnAngEng = function (pageName) {
+    getPageTextOfJpnAngEng = function (__jsonDb_JPN, __jsonDb_ENG, pageName) {
         return {
-                 'JPN':jsonDb_JPN[pageName]['text'],
-                 'ENG':jsonDb_ENG[pageName]['text']
+                 'JPN':__jsonDb_JPN[pageName]['text'],
+                 'ENG':__jsonDb_ENG[pageName]['text']
                 }
         ;
     };
@@ -60,14 +54,22 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
     
     // public
     createSimpleEnglishSentencesJsonDb = function () {
+        const partListOfShunkanEisakubun = {
+            'Part1 中学1年レベル':{start:1, end:23},
+            'Part2 中学2年レベル':{start:24, end:57},
+            'Part3 中学3年レベル':{start:58, end:79}              
+        };
         for (let pageName in jsonDb_JPN) {
-            let pageNumber = getPageNumber(pageName);
+            let pageNumber = getPageNumber(pageName),
+                scrapedPageName = getScrapedPageName(jsonDb_JPN, pageNumber),
+                pageTextOfJpnAngEng = getPageTextOfJpnAngEng(jsonDb_JPN, jsonDb_ENG, pageName)
+            ;
             if (pageNumber >= partListOfShunkanEisakubun['Part1 中学1年レベル'].start && pageNumber <= partListOfShunkanEisakubun['Part1 中学1年レベル'].end) {
-                simpleEnglishSentencesJsonDb['Part1 中学1年レベル'][getPageTitle(pageNumber)] = getPageTextOfJpnAngEng(pageName);
+                simpleEnglishSentencesJsonDb['Part1 中学1年レベル'][scrapedPageName] = pageTextOfJpnAngEng;
             } else if (pageNumber >= partListOfShunkanEisakubun['Part2 中学2年レベル'].start && pageNumber <= partListOfShunkanEisakubun['Part2 中学2年レベル'].end) {
-                simpleEnglishSentencesJsonDb['Part2 中学2年レベル'][getPageTitle(pageNumber)] = getPageTextOfJpnAngEng(pageName);
+                simpleEnglishSentencesJsonDb['Part2 中学2年レベル'][scrapedPageName] = pageTextOfJpnAngEng;
             } else {
-                simpleEnglishSentencesJsonDb['Part3 中学3年レベル'][getPageTitle(pageNumber)] = getPageTextOfJpnAngEng(pageName);
+                simpleEnglishSentencesJsonDb['Part3 中学3年レベル'][scrapedPageName] = pageTextOfJpnAngEng;
             }
         }
         return self;
@@ -107,8 +109,8 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
         jsonDb_JPN = JSON.parse(extendedFs.readFileSync(filePathOfSimpleEnglishSentencesJsonDb_JPN, 'utf-8'));
         jsonDb_ENG = JSON.parse(extendedFs.readFileSync(filePathOfSimpleEnglishSentencesJsonDb_ENG, 'utf-8'));
                 
-        // debug code of getPageTitle
-        // console.log(getPageTitle(11));
+        // debug code of getScrapedPageName
+        // console.log(getScrapedPageName(11));
         // debug code of getPageNumber
         // for ( let pageName in jsonDb_ENG ) console.log(getPageNumber(pageName));
 
