@@ -26,6 +26,7 @@
  - 回答を途中から再開する機能
  - 省略形 (isn't = is not) への対応
  - 機能改善要望の投稿フォーム
+
 ---
 
 ##### <a href="https://github.com/KentaroUeda/WebAppForStudyEnglish" target="\_blank">GitHub</a>
