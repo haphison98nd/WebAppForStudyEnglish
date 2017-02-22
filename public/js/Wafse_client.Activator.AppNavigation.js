@@ -18,10 +18,8 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
     addButton = function (type, text, callback) {
         const buttons = $($('.htmlTemplate#navButtons').clone().html());
         let button;
-        
         if( type === 'danger') {
             button = buttons.find('.btn-outline-danger');
-            console.log(buttons);
         } else if(type === 'primary'){
             button = buttons.find('.btn-outline-primary');
         }

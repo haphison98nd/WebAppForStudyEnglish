@@ -2,9 +2,8 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     
     'use strict';
     
-    const htmlTemplate_mainContainer = $($('.htmlTemplate#mainContainer').clone().html()),
-          mainContainer = htmlTemplate_mainContainer,
-          mainMassage = htmlTemplate_mainContainer.find('#mainMassage')
+    const mainContainer = $($('.htmlTemplate.mainContainer').clone().html()).find('#mainContainer'),
+          mainMassage = mainContainer.find('#mainMassage')
     ;
     
     let self, appendRender, activateMainContainerSize, setNavigator, remove,
@@ -27,14 +26,17 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     
     // public
     setNavigator = function (navigatorContents) {
+        mainMassage.empty();
         if (typeof navigatorContents === 'object'){
-            let navigatorHtml = '';
-            for (let navigatorContent of navigatorContents) {
-                navigatorHtml += '<a class="mdl-chip" href="' + navigatorContent[0] + '"><span class="mdl-chip__text">' + navigatorContent[1] + '</span></a> >';
+            for (let idx in navigatorContents) {
+                const mdlChip = $($('.htmlTemplate.navigationChip').clone().html()).find('.mdl-chip'),
+                      mdlChipInnerTextArea = mdlChip.find('.mdl-chip__text')
+                ;
+                mdlChip.attr('href', navigatorContents[idx][0]);
+                mdlChipInnerTextArea.text(navigatorContents[idx][1]);
+                mainMassage.append(mdlChip);
+                if (idx < navigatorContents.length-1) mainMassage.append('>');
             }
-            // remove extra '>' from navigatorHtml.
-            navigatorHtml = navigatorHtml.substr(0, navigatorHtml.length-1);
-            mainMassage.html(navigatorHtml);
         } else if (typeof navigatorContents === 'string') {
             mainMassage.text(String(navigatorContents));
         }
@@ -72,6 +74,6 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:htmlTemplate_mainContainer, appendRender:appendRender, setNavigator:setNavigator, remove:remove};
+    self = {jQeryObj:mainContainer, appendRender:appendRender, setNavigator:setNavigator, remove:remove};
     return self;
 };

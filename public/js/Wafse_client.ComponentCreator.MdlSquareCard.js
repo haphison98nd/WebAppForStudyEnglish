@@ -2,12 +2,11 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     
     'use strict';
     
-    const htmlTemplate_mdlSquareCard = $($('.htmlTemplate#mdlSquareCard').clone().html()),
-          mdlSquareCard = htmlTemplate_mdlSquareCard,
-          mdlCardTitle = htmlTemplate_mdlSquareCard.find('.mdl-card__title-text'),
-          mdlCardImgeArea = htmlTemplate_mdlSquareCard.find('.mdl-card__title.mdl-card--expand'),
-          mdlCardSupporting = htmlTemplate_mdlSquareCard.find('.mdl-card__supporting-text'),
-          button = htmlTemplate_mdlSquareCard.find('.btn')
+    const mdlSquareCard = $($('.htmlTemplate.mdlSquareCard').clone().html()).find('#mdlSquareCard'),
+          mdlCardTitle = mdlSquareCard.find('.mdl-card__title-text'),
+          mdlCardImgeArea = mdlSquareCard.find('.mdl-card__title.mdl-card--expand'),
+          mdlCardSupporting = mdlSquareCard.find('.mdl-card__supporting-text'),
+          button = mdlSquareCard.find('.btn')
     ;
     
     let self, appendRender, setMdlCardBackGroundImage, setMdlCardTitleText, 
@@ -106,6 +105,6 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = { jQeryObj:htmlTemplate_mdlSquareCard, appendRender:appendRender, remove:remove };
+    self = { jQeryObj:mdlSquareCard, appendRender:appendRender, remove:remove };
     return self;
 };

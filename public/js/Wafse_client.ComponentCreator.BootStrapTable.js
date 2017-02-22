@@ -2,10 +2,9 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
     
     'use strict';
     
-    const htmlTemplate_bootStrapTable = $($('.htmlTemplate#bootStrapTable').clone().html()),
-          bootStrapTable = htmlTemplate_bootStrapTable,
-          thead = htmlTemplate_bootStrapTable.find('thead'),
-          tbody = htmlTemplate_bootStrapTable.find('tbody')
+    const bootStrapTable = $($('.htmlTemplate.bootStrapTable').clone().html()).find('#bootStrapTable'),
+          thead = bootStrapTable.find('thead'),
+          tbody = bootStrapTable.find('tbody')
     ;
     
     let self, appendThead, appendTbody, remove,
@@ -65,6 +64,6 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:htmlTemplate_bootStrapTable, appendThead:appendThead, appendTbody:appendTbody, remove:remove};
+    self = {jQeryObj:bootStrapTable, appendThead:appendThead, appendTbody:appendTbody, remove:remove};
     return self;
 };

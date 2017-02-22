@@ -2,17 +2,17 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     
     'use strict';
     
-    let htmlTemplate_loginAndCoreateAccountForm = $($('.htmlTemplate#loginAndCoreateAccountForm').clone().html()),
-        mainMassage_login = htmlTemplate_loginAndCoreateAccountForm.find('#mainMassage_login'),
-        mainMassage_createAccount = htmlTemplate_loginAndCoreateAccountForm.find('#mainMassage_createAccount'),
-        userNameInput = htmlTemplate_loginAndCoreateAccountForm.find('#userNameInput'),
-        passWordInput = htmlTemplate_loginAndCoreateAccountForm.find('#passWordInput'),
-        enterBtn = htmlTemplate_loginAndCoreateAccountForm.find('#enterBtn'),
-        createAccountBtn = htmlTemplate_loginAndCoreateAccountForm.find('#createAccountBtn'),
-        submitBtn = htmlTemplate_loginAndCoreateAccountForm.find('#submitBtn'),
-        returnBtn = htmlTemplate_loginAndCoreateAccountForm.find('#returnBtn'),
-        alertForUserNameInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForUserNameInput'),
-        alertForPassWordInput = htmlTemplate_loginAndCoreateAccountForm.find('.alert#alertForPassWordInput'),
+    let loginAndCoreateAccountForm = $($('.htmlTemplate.loginAndCoreateAccountForm').clone().html()).find('#loginAndCoreateAccountForm'),
+        mainMassage_login = loginAndCoreateAccountForm.find('#mainMassage_login'),
+        mainMassage_createAccount = loginAndCoreateAccountForm.find('#mainMassage_createAccount'),
+        userNameInput = loginAndCoreateAccountForm.find('#userNameInput'),
+        passWordInput = loginAndCoreateAccountForm.find('#passWordInput'),
+        enterBtn = loginAndCoreateAccountForm.find('#enterBtn'),
+        createAccountBtn = loginAndCoreateAccountForm.find('#createAccountBtn'),
+        submitBtn = loginAndCoreateAccountForm.find('#submitBtn'),
+        returnBtn = loginAndCoreateAccountForm.find('#returnBtn'),
+        alertForUserNameInput = loginAndCoreateAccountForm.find('.alert#alertForUserNameInput'),
+        alertForPassWordInput = loginAndCoreateAccountForm.find('.alert#alertForPassWordInput'),
         mainContainerSmall = Wafse_client.ComponentCreator.MainContainer('mainContainerSmall', 'ようこそ'),
         self, conbineComponents, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
         isUserNameInputAndPassWordInputValid, remove,
@@ -152,7 +152,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
 
     // private
     conbineComponents = function () {
-        mainContainerSmall.appendRender(htmlTemplate_loginAndCoreateAccountForm);
+        mainContainerSmall.appendRender(loginAndCoreateAccountForm);
     };
         
     //////////////////////////////////////////////

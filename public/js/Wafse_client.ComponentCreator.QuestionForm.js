@@ -4,18 +4,17 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     
     const timer = Wafse_client.Util.Timer();
     
-    let htmlTemplate_questionForm = $($('.htmlTemplate#questionForm').clone().html()),
-        questionForm = htmlTemplate_questionForm,
-        textInput = htmlTemplate_questionForm.find('#textInput'),
-        progressBar = htmlTemplate_questionForm.find('#progressBar'),
-        timeLimitInst = htmlTemplate_questionForm.find('#timeLimit'),
-        japaneseSentenceInst = htmlTemplate_questionForm.find('#japaneseSentenceInst'),
-        correctAlert = htmlTemplate_questionForm.find('#correctAlert'),
-        incorrectAlert = htmlTemplate_questionForm.find('#incorrectAlert'),
-        voiceInputBtn = htmlTemplate_questionForm.find('#voiceInputBtn'),
-        playSoundBtn = htmlTemplate_questionForm.find('#playSoundBtn'),
-        checkAnswerBtn = htmlTemplate_questionForm.find('#checkAnswerBtn'),
-        nextProblemBtn = htmlTemplate_questionForm.find('#nextProblemBtn'),
+    let questionForm = $($('.htmlTemplate.questionForm').clone().html()).find('#questionForm'),
+        textInput = questionForm.find('#textInput'),
+        progressBar = questionForm.find('#progressBar'),
+        timeLimitInst = questionForm.find('#timeLimit'),
+        japaneseSentenceInst = questionForm.find('#japaneseSentenceInst'),
+        correctAlert = questionForm.find('#correctAlert'),
+        incorrectAlert = questionForm.find('#incorrectAlert'),
+        voiceInputBtn = questionForm.find('#voiceInputBtn'),
+        playSoundBtn = questionForm.find('#playSoundBtn'),
+        checkAnswerBtn = questionForm.find('#checkAnswerBtn'),
+        nextProblemBtn = questionForm.find('#nextProblemBtn'),
         self, setProgressBarValue, setJapaneseSentenceInst, activateButtons, transformStringForAnswer, 
         checkAnswer, showAlertMessage, activateTextInput, setNextProblemBtnText, remove,
         appDataManager, router, questionWindow, sentenceJPN, sentenceENG, isFinalQ, callback
@@ -222,6 +221,6 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:htmlTemplate_questionForm, setNextProblemBtnText:setNextProblemBtnText, remove:remove};
+    self = {jQeryObj:questionForm, setNextProblemBtnText:setNextProblemBtnText, remove:remove};
     return self;
 };

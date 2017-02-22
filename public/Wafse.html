@@ -9,199 +9,185 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="css/atd.css" />
         <link rel="shortcut icon" href="images/favicon/author.png" type="image/png" />
-        <template class="htmlTemplate" id="mainContainer">
-            <div id="mainContainer">
-                <style scoped>  
-                    #mainContainer{
-                        margin: 0 auto;
-                        margin-bottom: 10px;
-                        padding: 30px;
-                        padding-bottom: 60px;
-                        border-radius: 5px;
-                        background-color: rgba(0, 0, 40, 0.7);
-                        color: white;
-                        overflow:auto;
-                    }
-
-                    .mdl-chip {
-                        position: relative;
-                        color: white;
-                        background-color: rgba(255, 255, 255, 0);
-                        border-radius: 2px;
-                        margin-left: 5px;
-                        top: -6px;
-                        cursor:pointer;
-                    }
-
-                    .mdl-chip:active{
-                        color: white;
-                        background-color: rgba(255, 255, 255, 0.3) !important;
-                    }
-                    
-                    .mdl-chip:hover{
-                        color: white;
-                        background-color: rgba(255, 255, 255, 0.15);
-                        transition: background-color 0.3s;
-                    }
-
-                    .mdl-chip__text {
-                        font-size: 18px;
-                    }
-                                        
-                    .mainContainerMiddle#mainContainer{
-                        width: 1150px;
-                    }
-
-                    .mainContainerSmall#mainContainer{
-                        width: 500px;
-                    }
-                    
-                    .mainContainerSmallMiddle#mainContainer{
-                        width: 650px;
-                    }
-                    
-                </style>
-                <h3 id="mainMassage">dummyText</h3>
-            </div>
-        </template>
-        <template class="htmlTemplate" id="loginAndCoreateAccountForm">
+        <template class="htmlTemplate mainContainer">
             <div>
-                <style scoped>
-                    .btn{
-                        margin-right: 10px;
-                        float: left;
-                    }
+                <div id="mainContainer">
+                    <style scoped>  
+                        #mainContainer{
+                            margin: 0 auto;
+                            margin-bottom: 10px;
+                            padding: 30px;
+                            padding-bottom: 60px;
+                            border-radius: 5px;
+                            background-color: rgba(0, 0, 40, 0.7);
+                            color: white;
+                            overflow:auto;
+                        }
 
-                    #mainMassage_createAccount, .btn#submitBtn, .btn#returnBtn{
-                        display:none;
-                    }
+                        .mainContainerMiddle#mainContainer{
+                            width: 1150px;
+                        }
 
-                    .alert{
-                        display:none;
-                    }
-                </style>
-                <br>
-                <div class="form-group">
-                    <label for="userNameInput">ユーザー名</label>
-                    <input type="email" class="form-control loginAndCoreateAccount" aria-describedby="emailHelp" placeholder="ここにユーザ名を入力..." id="userNameInput">
-                    <div class="alert alert-danger loginAndCoreateAccount" role="alert" id="alertForUserNameInput"></div>
-                </div>
-                <div class="form-group">
-                    <label for="passWordInput">パスワード</label>
-                    <input type="password" class="form-control" placeholder="ここにパスワードを入力..." id="passWordInput">
-                    <div class="alert alert-danger" role="alert" id="alertForPassWordInput"></div>
-                </div>
-                <button class="btn btn-outline-success" id="createAccountBtn">新規アカウントを作成</button>
-                <button class="btn btn-outline-primary" id="enterBtn">ログイン</button>
-                <button class="btn btn-outline-success" id="returnBtn">戻る</button>
-                <button class="btn btn-outline-primary" id="submitBtn">作成</button>
-            </div>
-        </template>
-        <template class="htmlTemplate" id="mdlSquareCard">
-            <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                <style scoped>
-                    .mdl-card__supporting-text{
-                        color: #fff;
-                    }
-                    .demo-card-square.mdl-card {
-                        width: 320px;
-                        height: 320px;
-                        background:rgba(0, 0, 0, 0.5);
-                        color: #fff;
-                        float: left;
-                        margin: 21px;
-                    }
-                    .demo-card-square > .mdl-card__title {
-                        color: #fff;
-                    }
+                        .mainContainerSmall#mainContainer{
+                            width: 500px;
+                        }
 
-                    .btn.mdl-button--primary{
-                        width: inherit;
-                        color: white;
-                    }                
-                </style>
-                <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">dummyText</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    dummyText
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <button class="btn mdl-button mdl-js-button mdl-button--primary">Button</button>
+                        .mainContainerSmallMiddle#mainContainer{
+                            width: 650px;
+                        }
+                    </style>
+                    <h3 id="mainMassage">dummyText</h3>
                 </div>
             </div>
         </template>
-        <template class="htmlTemplate" id="mdlNavigationLink">
-            <div class="mdl-navigation__link"></div>
-        </template>
-        <template class="htmlTemplate" id="bootStrapTable">
-            <table class="table table-hover">
-                <style scoped>
-                    tbody tr{
-                        cursor: pointer !important;
-                    }
-                    tbody tr:hover{
-                        background-color: rgba(70, 70, 70, 0.7) !important;
-                        transition: background-color 0.3s !important;
-                    }
-                    tbody tr:active{
-                        background-color: rgba(120, 120, 120, 0.5) !important;
-                    }
-                </style>
-                <thead>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </template>
-        <template class="htmlTemplate" id="questionForm">
+        <template class="htmlTemplate loginAndCoreateAccountForm">
             <div>
-                <style scoped>
-                    #questionForm{
-                        width: 1000px;
-                        background-color: rgba(0, 0, 0, 0.4);
-                        border-radius: 5px;
-                        margin-top: 100px;
-                        padding: 10px;
-                        color: white;
-                        margin: 0 auto;
-                    }
-                    .progress {
-                        margin-bottom: 20px;
-                        margin-top: 20px;
-                        background-color: #2e2e2e;
+                <div id="loginAndCoreateAccountForm">
+                    <style scoped>
+                        .btn{
+                            margin-right: 10px;
+                            float: left;
+                        }
 
-                    }
-                    .progress-bar{
-                        text-align: left;
-                        color: #2e2e2e;
-                    }
-                    #timeLimit{
-                        margin-left: 2px;
-                        margin-right: 2px;
-                    }
-                    .input-group.input-group-lg{
-                        margin-top: 20px;
-                    }
-                    label {
-                        margin-top: 5px;
-                    }
-                    .alert, #playSoundBtn, #nextProblemBtn{
-                        display: none;
-                    }
-                    #incorrectAlert {
-                        user-select: none;
-                        -moz-user-select: none;
-                        -webkit-user-select: none;
-                        -ms-user-select: none;
-                    }
-                    
-                    #textInput {
-                        background-color: #2e2e2e;
-                        color: white;
-                    }
-                </style>
+                        #mainMassage_createAccount, .btn#submitBtn, .btn#returnBtn{
+                            display:none;
+                        }
+
+                        .alert{
+                            display:none;
+                        }
+                    </style>
+                    <br>
+                    <div class="form-group">
+                        <label for="userNameInput">ユーザー名</label>
+                        <input type="email" class="form-control loginAndCoreateAccount" aria-describedby="emailHelp" placeholder="ここにユーザ名を入力..." id="userNameInput">
+                        <div class="alert alert-danger loginAndCoreateAccount" role="alert" id="alertForUserNameInput"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="passWordInput">パスワード</label>
+                        <input type="password" class="form-control" placeholder="ここにパスワードを入力..." id="passWordInput">
+                        <div class="alert alert-danger" role="alert" id="alertForPassWordInput"></div>
+                    </div>
+                    <button class="btn btn-outline-success" id="createAccountBtn">新規アカウントを作成</button>
+                    <button class="btn btn-outline-primary" id="enterBtn">ログイン</button>
+                    <button class="btn btn-outline-success" id="returnBtn">戻る</button>
+                    <button class="btn btn-outline-primary" id="submitBtn">作成</button>
+                </div>
+            </div>
+        </template>
+        <template class="htmlTemplate mdlSquareCard">
+            <div>
+                <div id="mdlSquareCard">
+                    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                        <style scoped>
+                            .mdl-card__supporting-text{
+                                color: #fff;
+                            }
+                            .demo-card-square.mdl-card {
+                                width: 320px;
+                                height: 320px;
+                                background:rgba(0, 0, 0, 0.5);
+                                color: #fff;
+                                float: left;
+                                margin: 21px;
+                            }
+                            .demo-card-square > .mdl-card__title {
+                                color: #fff;
+                            }
+
+                            .btn.mdl-button--primary{
+                                width: inherit;
+                                color: white;
+                            }                
+                        </style>
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text">dummyText</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            dummyText
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <button class="btn mdl-button mdl-js-button mdl-button--primary">Button</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template class="htmlTemplate mdlNavigationLink">
+            <div>
+                <div class="mdl-navigation__link"></div>
+            </div>
+        </template>
+        <template class="htmlTemplate bootStrapTable">
+            <div>
+                <table class="table table-hover" id="bootStrapTable">
+                    <style scoped>
+                        tbody tr{
+                            cursor: pointer !important;
+                        }
+                        tbody tr:hover{
+                            background-color: rgba(70, 70, 70, 0.7) !important;
+                            transition: background-color 0.3s !important;
+                        }
+                        tbody tr:active{
+                            background-color: rgba(120, 120, 120, 0.5) !important;
+                        }
+                    </style>
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+        <template class="htmlTemplate questionForm">
+            <div>
                 <div id="questionForm">
+                    <style scoped>
+                        #questionForm{
+                            width: 1000px;
+                            background-color: rgba(0, 0, 0, 0.4);
+                            border-radius: 5px;
+                            margin-top: 100px;
+                            padding: 10px;
+                            color: white;
+                            margin: 0 auto;
+                        }
+                        .progress {
+                            margin-bottom: 20px;
+                            margin-top: 20px;
+                            background-color: #2e2e2e;
+
+                        }
+                        .progress-bar{
+                            text-align: left;
+                            color: #2e2e2e;
+                        }
+                        #timeLimit{
+                            margin-left: 2px;
+                            margin-right: 2px;
+                        }
+                        .input-group.input-group-lg{
+                            margin-top: 20px;
+                        }
+                        label {
+                            margin-top: 5px;
+                        }
+                        .alert, #playSoundBtn, #nextProblemBtn{
+                            display: none;
+                        }
+                        #incorrectAlert {
+                            user-select: none;
+                            -moz-user-select: none;
+                            -webkit-user-select: none;
+                            -ms-user-select: none;
+                        }
+
+                        #textInput {
+                            background-color: #2e2e2e;
+                            color: white;
+                        }
+                    </style>
                     <h4 id="japaneseSentenceInst">dummy text dummy text dummy text.</h4>
                     <input class="form-control form-control-lg form-control-success input" type="text" id="textInput" placeholder="ここに英文を入力..." />
                     <div class="progress">
@@ -242,6 +228,39 @@
                     </style>
                 </div>
             </div>
+        </template>
+        <template class="htmlTemplate navigationChip">
+            <span>
+                <a class="mdl-chip" href="dummyLink">
+                    <style scoped>
+                        .mdl-chip {
+                            position: relative;
+                            color: white;
+                            background-color: rgba(255, 255, 255, 0);
+                            border-radius: 2px;
+                            margin-left: 5px;
+                            top: -6px;
+                            cursor:pointer;
+                        }
+
+                        .mdl-chip:active{
+                            color: white;
+                            background-color: rgba(255, 255, 255, 0.3) !important;
+                        }
+
+                        .mdl-chip:hover{
+                            color: white;
+                            background-color: rgba(255, 255, 255, 0.15);
+                            transition: background-color 0.3s;
+                        }
+
+                        .mdl-chip__text {
+                            font-size: 18px;
+                        }
+                    </style>
+                    <span class="mdl-chip__text"></span>
+                </a>
+            </span>
         </template>
     </head>
     <body>
