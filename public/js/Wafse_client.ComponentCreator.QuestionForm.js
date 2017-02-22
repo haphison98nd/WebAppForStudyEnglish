@@ -82,8 +82,8 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
 
     // private
-    showAlertMessage = function(isuserAnswerCorrect, isFinalQuestion, correctAnswer){
-        if(isuserAnswerCorrect){
+    showAlertMessage = function(isUserAnswerCorrect, isFinalQuestion, correctAnswer){
+        if(isUserAnswerCorrect){
             correctAlert
                 .css({'display':'block'})
                 .html('<strong>正解です</strong>')
@@ -111,7 +111,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
             isFirstCheckAnswer = true,
             isVoiceRecognizing = false,
             isEnglishSynthSpeaking = false,
-            isuserAnswerCorrect
+            isUserAnswerCorrect
         ;
         // browser except Chrome don't have webSpeechRecognition and have unstable webSpeeshSynthes.
         if (appDataManager.getItem('Config.userAgent') !== 'chrome') voiceInputBtn.css({'display':'none'});
@@ -137,8 +137,8 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 if (isVoiceRecognizing) voiceInputBtn.click(); // if voice input is working, stop it by clicking voiceInputBtn.
                 isFirstCheckAnswer = false;
                 timer.stop();
-                isuserAnswerCorrect = checkAnswer(String(textInput.val()), __sentenceENG);
-                showAlertMessage(isuserAnswerCorrect, __isFinalQ, __sentenceENG);
+                isUserAnswerCorrect = checkAnswer(String(textInput.val()), __sentenceENG);
+                showAlertMessage(isUserAnswerCorrect, __isFinalQ, __sentenceENG);
                 if (appDataManager.getItem('Config.userAgent') === 'chrome') {
                     playSoundBtn.css({'display':'inline'});
                     playSoundBtn.click();
@@ -163,7 +163,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         nextProblemBtn.click(function(){
             if (isVoiceRecognizing) voiceInputBtn.click(); // if voice input is working, stop it by clicking voiceInputBtn.
             // If user answer isn't correct, user cannot see next question until typing correct answer.
-            if (isuserAnswerCorrect) {
+            if (isUserAnswerCorrect) {
                 remove();
                 questionWindow.updateQuestionForm();              
             } else {
