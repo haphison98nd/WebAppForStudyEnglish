@@ -25,7 +25,8 @@ const Wafse_client = {
         UserAgentDetector:null,
         Timer:null,
         WebSpeechRecognizer:null,
-        WebSpeechSynthes:null
+        WebSpeechSynthes:null,
+        SentenceTransformer:null
     },
     appDataTemplate:{
         View:{

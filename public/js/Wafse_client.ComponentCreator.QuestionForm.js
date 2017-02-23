@@ -15,7 +15,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         playSoundBtn = questionForm.find('#playSoundBtn'),
         checkAnswerBtn = questionForm.find('#checkAnswerBtn'),
         nextProblemBtn = questionForm.find('#nextProblemBtn'),
-        self, setProgressBarValue, setJapaneseSentenceInst, activateButtons, transformStringForAnswer, 
+        self, setProgressBarValue, setJapaneseSentenceInst, activateButtons,
         checkAnswer, showAlertMessage, activateTextInput, setNextProblemBtnText, remove,
         appDataManager, router, questionWindow, sentenceJPN, sentenceENG, isFinalQ, callback
     ;
@@ -57,20 +57,11 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    
-    // private
-    transformStringForAnswer = function (str) {
-        // about RegExp: http://qiita.com/hrdaya/items/291276a5a20971592216
-        return str.toLowerCase().replace(/[\-_,.'"!? ]/g, '');
-    };
-
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
 
     // private
     checkAnswer = function (userInput, __sentenceENG) {
-        let transFormedUserInput = transformStringForAnswer(userInput),
-            transFormedCorrectAnswer =  transformStringForAnswer(__sentenceENG)
+        let transFormedUserInput = Wafse_client.Util.SentenceTransformer.transform(userInput),
+            transFormedCorrectAnswer =  Wafse_client.Util.SentenceTransformer.transform(__sentenceENG)
         ;
         // console.log('transFormedUserInput: ' + transFormedUserInput);
         // console.log('transFormedCorrectAnswer: ' + transFormedCorrectAnswer);

@@ -12,8 +12,8 @@ Wafse_client.main = function(){
     let userAgent = Wafse_client.Util.UserAgentDetector();
     
     console.log(Wafse_client);
-
-    // /*
+    
+    ///*
     appNavigation.showProgressSpinner();
     setTimeout(function(){
         appNavigation.hiddenProgressSpinner();
@@ -25,9 +25,11 @@ Wafse_client.main = function(){
         toastr.options = {'positionClass':'toast-bottom-right'};
         toastr.error('このアプリケーションは PC版 Google Chrome 専用です．他のブラウザでは音声認識/再生を利用できません．', '警告', {timeOut: 20000});
     }
-    // */
+    //*/
         
-    
+    // debug code Wafse_client.Util.SentenceTransformer
+    // console.log(Wafse_client.Util.SentenceTransformer.transform("i'm he's you're can't wasn't that’s that’d would’ve might’ve"));
+
     // debug code of Wafse_client.ComponentCreator.BootStrapTable
     /*
     let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, null, 'mainContainerMiddle', 'test', null);

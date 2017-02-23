@@ -40,32 +40,6 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
             });
         }
     };
-
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    // this metho called from LoginAndCreateAccount
-    // public
-    authorized = function () {
-        isAuthorized = true;
-        appNavigation.deleteButtons();
-        appNavigation.addButton('danger', 'ログアウト' ,function(){ logout(); });
-        appNavigation.addButton('primary', 'README.md' ,function(){ 
-            readMe(); 
-        });
-    };
-    
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
-
-    // public
-    logout = function () {
-        isAuthorized = false;
-        appDrawer.hiddenDrawerButton().clearPage();
-        appDataManager.setItem('Config.LoginAndCoreateAccount.userName', '');
-        appDataManager.setItem('Config.LoginAndCoreateAccount.userPassWord', '');
-        loginAndCoreateAccount();
-    };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -209,6 +183,32 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 loginAndCoreateAccount();
             }
         });
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // this metho called from LoginAndCreateAccount
+    // public
+    authorized = function () {
+        isAuthorized = true;
+        appNavigation.deleteButtons();
+        appNavigation.addButton('danger', 'ログアウト' ,function(){ logout(); });
+        appNavigation.addButton('primary', 'README.md' ,function(){ 
+            readMe(); 
+        });
+    };
+    
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // public
+    logout = function () {
+        isAuthorized = false;
+        appDrawer.hiddenDrawerButton().clearPage();
+        appDataManager.setItem('Config.LoginAndCoreateAccount.userName', '');
+        appDataManager.setItem('Config.LoginAndCoreateAccount.userPassWord', '');
+        loginAndCoreateAccount();
     };
     
     //////////////////////////////////////////////
