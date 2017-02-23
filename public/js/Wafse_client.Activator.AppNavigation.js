@@ -20,6 +20,8 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
         let button;
         if( type === 'danger') {
             button = buttons.find('.btn-outline-danger');
+        } else if(type === 'success'){
+            button = buttons.find('.btn-outline-success');
         } else if(type === 'primary'){
             button = buttons.find('.btn-outline-primary');
         }

@@ -194,7 +194,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         isAuthorized = true;
         appNavigation.deleteButtons();
         appNavigation.addButton('danger', 'ログアウト' ,function(){ logout(); });
-        appNavigation.addButton('primary', 'README.md' ,function(){ 
+        appNavigation.addButton('success', 'README.md' ,function(){ 
             readMe(); 
         });
     };
