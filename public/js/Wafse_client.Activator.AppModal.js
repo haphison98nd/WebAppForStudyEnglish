@@ -17,6 +17,7 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     showModal = function () {
         appModal.modal('toggle');
         return self;
@@ -25,6 +26,7 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     setModalTitle = function (str) {
         modalTitle.text(str);
         return self;
@@ -33,6 +35,7 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     appendRender = function(jQueryObj, __callback){
         modalBody.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
@@ -43,8 +46,10 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     clearPage = function(){
         modalBody.empty();
+        setModalTitle('');
         return self;
     };
 
