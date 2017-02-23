@@ -90,7 +90,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                         appDataManager.setItem('View.QuestionForm.now.pageContents', pageContents);
                         const questionWindow = Wafse_client.ComponentCreator.QuestionWindow(appDataManager, self, pageContents, postQuery);
                         questionWindow.updateQuestionForm();
-                        appBody.clearPage().appendRender(questionWindow.jQeryObj);
+                        appBody.clearPage().appendRender(questionWindow.jQeryObj).scrollTo(0);;
                     }
                 });               
             } else {
@@ -120,7 +120,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     success: function (textPageNameList) {
                         appNavigation.hiddenProgressSpinner();
                         const textPageNameListJqueryObj = Wafse_client.ComponentCreator.TextPageNameList(appDataManager, self, textPageNameList, postQuery);
-                        appBody.clearPage().appendRender(textPageNameListJqueryObj.jQeryObj); 
+                        appBody.clearPage().appendRender(textPageNameListJqueryObj.jQeryObj).scrollTo(0); 
                     }
                 });                
             } else {
@@ -153,7 +153,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     success: function (textPartNameList) {
                         appNavigation.hiddenProgressSpinner();
                         const textPartNameListJqueryObj = Wafse_client.ComponentCreator.TextPartNameList(appDataManager, self, textPartNameList, postQuery);
-                        appBody.clearPage().appendRender(textPartNameListJqueryObj.jQeryObj);
+                        appBody.clearPage().appendRender(textPartNameListJqueryObj.jQeryObj).scrollTo(0);
                     }
                 });            
             } else {
@@ -176,7 +176,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     success: function(textList){
                         appNavigation.hiddenProgressSpinner();
                         const textSelectMenuJqueryObj = Wafse_client.ComponentCreator.TextSelectMenu(appDataManager, self, textList);
-                        appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQeryObj); 
+                        appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQeryObj).scrollTo(0);
                     }
                 }); 
             } else {

@@ -4,7 +4,7 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
 
     const appBody = $('#appBody');
     
-    let self, appendRender, afterRender, clearPage,
+    let self, appendRender, afterRender, clearPage, scrollTo,
         appDataManager
     ;
 
@@ -39,6 +39,15 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    scrollTo = function (scrollTop, spped) {
+        spped = spped ? spped : 0;
+        appBody.animate({scrollTop:scrollTop}, spped, 'swing');
+        return self;
+    };
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
     (function constructor () {
         appDataManager = _appDataManager;        
     })();
@@ -46,6 +55,6 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self = { appendRender:appendRender, afterRender:afterRender, clearPage:clearPage };
+    self = { appendRender:appendRender, afterRender:afterRender, clearPage:clearPage, scrollTo:scrollTo };
     return self;
 };
