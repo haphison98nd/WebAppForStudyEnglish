@@ -5,7 +5,8 @@ const Wafse_client = {
     Activator:{
         AppBody:null,
         AppNavigation:null,
-        AppDrawer:null
+        AppDrawer:null,
+        AppModal:null
     },
     ComponentCreator:{
         MainContainer:null,

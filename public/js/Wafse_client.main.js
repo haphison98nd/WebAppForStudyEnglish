@@ -6,7 +6,8 @@ Wafse_client.main = function(){
           appBody = Wafse_client.Activator.AppBody(appDataManager),
           appNavigation = Wafse_client.Activator.AppNavigation(appDataManager),
           appDrawer = Wafse_client.Activator.AppDrawer(appNavigation, appDataManager),
-          router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager)
+          appModal = Wafse_client.Activator.AppModal(appDataManager),
+          router = Wafse_client.Router(appBody, appNavigation, appDrawer, appDataManager, appModal)
     ;
     
     let userAgent = Wafse_client.Util.UserAgentDetector();

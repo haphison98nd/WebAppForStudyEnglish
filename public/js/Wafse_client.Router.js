@@ -1,11 +1,11 @@
-Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataManager) {
+Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataManager, _appModal) {
 
     'use strict';
     
     let self, isUrlIncldesQuery, parseUrlPath, parseUrlQuery, authorize, logout, authorized, readMe, 
         questionForm, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
         isAuthorized = false,
-        appBody, appNavigation, appDrawer, appDataManager
+        appBody, appNavigation, appDrawer, appDataManager, appModal
     ;
 
     //////////////////////////////////////////////
@@ -56,9 +56,13 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     cache: false,
                     success: function(readMeMarkDown){
                         appNavigation.hiddenProgressSpinner();
+                        appModal.setModalTitle('README.md').appendRender(marked(readMeMarkDown)).showModal();
+                        // if use markDownWindow to show README.md
+                        /*
                         const markDownWindow = Wafse_client.ComponentCreator.MarkDownWindow('README.md', readMeMarkDown);
                         appBody.clearPage().appendRender(markDownWindow.jQeryObj);
                         history.pushState(null, null, '#read-me');
+                        */
                     }
                 });
             } else {
@@ -299,6 +303,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         appBody = _appBody;
         appNavigation = _appNavigation;
         appDrawer = _appDrawer;
+        appModal = _appModal;
     })();
 
     //////////////////////////////////////////////

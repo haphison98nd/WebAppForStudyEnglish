@@ -351,7 +351,41 @@
             </div>
             <main class="mdl-layout__content" id="appBody"></main>
         </div>
-        
+        <!-- bootstrap modal -->
+        <div class="modal fade" id="appModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <style scoped>
+                    .modal-content{
+                        background-color: rgba(50, 50, 50, 1.0);
+                        color: white;
+                    }
+                    #closeIcon{
+                        color: white;
+                    }
+                    .modal-content a {
+                        color: #66bf62;
+                    }
+                    .modal-content a:hover{
+                        color: rgb(176, 255, 152) !important;
+                        transition: color 0.3s !important;
+                    }
+                </style>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" id="closeIcon">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" data-dismiss="modal" id="closeModalButton">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
         <script defer type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script defer type="text/javascript"src="js/libraries/scoped.js"></script>
         <script defer type="text/javascript" src="js/libraries/tether.min.js"></script>
@@ -367,6 +401,7 @@
         <script defer type="text/javascript" src="js/Wafse_client.Activator.AppBody.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.Activator.AppNavigation.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.Activator.AppDrawer.js"></script>
+        <script defer type="text/javascript" src="js/Wafse_client.Activator.AppModal.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.ComponentCreator.MainContainer.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.ComponentCreator.MdlNavigationLink.js"></script>
         <script defer type="text/javascript" src="js/Wafse_client.ComponentCreator.MdlSquareCard.js"></script>
