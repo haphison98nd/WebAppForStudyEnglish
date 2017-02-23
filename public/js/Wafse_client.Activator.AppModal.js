@@ -6,6 +6,7 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
           modalTitle = $('#modalLongTitle'),
           modalBody = $('#modalBody'),
           closeModalButton = $('#closeModalButton'),
+          modalCover = $('.modal.fade'),
           closeIcon = $('#closeIcon')
     ;
     
@@ -54,6 +55,7 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
     activateButtons = function () {
         closeModalButton.click(clearPage);
         closeIcon.click(clearPage);
+        modalCover.click(clearPage);
     };
 
     //////////////////////////////////////////////
