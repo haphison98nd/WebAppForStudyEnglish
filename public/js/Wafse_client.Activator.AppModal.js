@@ -4,13 +4,10 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
 
     const appModal = $('#appModal'),
           modalTitle = $('#modalLongTitle'),
-          modalBody = $('#modalBody'),
-          closeModalButton = $('#closeModalButton'),
-          modalCover = $('.modal.fade'),
-          closeIcon = $('#closeIcon')
+          modalBody = $('#modalBody')
     ;
     
-    let self, showModal, setModalTitle, appendRender, clearPage, activateButtons, 
+    let self, activateModal, showModal, setModalTitle, appendRender, clearPage, activateButtons, 
         appDataManager
     ;
 
@@ -46,7 +43,7 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    // public
+    // private
     clearPage = function(){
         modalBody.empty();
         setModalTitle('');
@@ -55,12 +52,12 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-
+    
     // private
-    activateButtons = function () {
-        closeModalButton.click(clearPage);
-        closeIcon.click(clearPage);
-        modalCover.click(clearPage);
+    activateModal = function () {
+        appModal.on('hidden.bs.modal', function (e) {
+            clearPage();
+        });
     };
 
     //////////////////////////////////////////////
@@ -68,12 +65,12 @@ Wafse_client.Activator.AppModal = function(_appDataManager){
 
     (function constructor () {
         appDataManager = _appDataManager; 
-        activateButtons();
+        activateModal();
     })();
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self = { showModal:showModal, setModalTitle:setModalTitle, appendRender:appendRender, clearPage:clearPage };
+    self = { showModal:showModal, setModalTitle:setModalTitle, appendRender:appendRender};
     return self;
 };

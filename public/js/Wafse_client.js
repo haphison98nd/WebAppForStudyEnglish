@@ -29,15 +29,8 @@ const Wafse_client = {
         WebSpeechSynthes:null,
         SentenceTransformer:null
     },
+    main:null,
     appDataTemplate:{
-        View:{
-            QuestionForm:{
-                now:{
-                    pageContents:null,
-                    index:null
-                }
-            }
-        },
         PostQuery:{
             TextPartNameList:null,
             TextPageNameList:null,
@@ -49,10 +42,13 @@ const Wafse_client = {
                 userPassWord:'Anonymous'
             },
             QuestionForm:{
-                timeLimit:20
+                timeLimit:20,
+                now:{
+                    pageContents:null,
+                    index:null
+                }
             },
             userAgent:null
         }
-    },
-    main:null
+    }
 };

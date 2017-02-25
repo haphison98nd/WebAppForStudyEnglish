@@ -6,10 +6,11 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
         object4LocalStrage, object4LocalStrageName, protectedKeys
     ;
     
-    // TODO: imprement addKey, deleteKey method.
+    // TODO: imprement deleteKey method.
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     load = function(isRefresh){
         if(isRefresh || localStorage.getItem(object4LocalStrageName) === null || localStorage.getItem(object4LocalStrageName) === undefined){
             if(isRefresh){
@@ -28,6 +29,7 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     save = function(){
         localStorage.setItem(object4LocalStrageName, JSON.stringify(object4LocalStrage, null, 4));
         console.info(object4LocalStrageName + ' saved.');
@@ -37,6 +39,7 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // private
     keyParser = function(stringKeys){
         return String(stringKeys).split('.');
     };
@@ -44,6 +47,7 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // private
     isKeyProtected = function(stringKeys){
         return protectedKeys.indexOf(stringKeys) === -1 ? false : true;
     };
@@ -51,16 +55,20 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // private
     searchObjectKey = function(keys){
         let searchObjectKeyLoop,
             searchObjectKeyLoopCount = 0,
             innerObjKey = null,
-            innerObjValue = null
-        ;
-        
+            innerObjValue = null,
+            isKeyExistLogUntillLastKey = false,
+            isKeyExistLogs = [],
+            isKeyExistCount = 0
+        ;        
         (function searchObjectKeyLoop (obj, _keys, loopIdx) {
             try {
                 const _isKeyExist = obj.hasOwnProperty(_keys[loopIdx]);
+                isKeyExistLogs.push(_isKeyExist);
                 if(_isKeyExist){
                     innerObjKey = obj;
                     innerObjValue = obj[_keys[loopIdx]];
@@ -73,10 +81,15 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
                 return 0;
             }
         })(object4LocalStrage, keys, searchObjectKeyLoopCount);
-                
-        return { isKeyExist:searchObjectKeyLoopCount === keys.length ? true : false,
-                 targetKey:innerObjKey,
-                 targetValue:innerObjValue
+        for (let isKeyExistLog of isKeyExistLogs) {
+            if (isKeyExistLog) isKeyExistCount++;
+        }
+        if (isKeyExistCount === keys.length-1 || isKeyExistCount === keys.length) isKeyExistLogUntillLastKey = true;
+        return { isKeyExistLogUntillLastKey:isKeyExistLogUntillLastKey, // this is used when add new key to strage using setItem
+                 isKeyExistCount:isKeyExistCount, // this is used for 
+                 isKeyExist:searchObjectKeyLoopCount === keys.length ? true : false,
+                 targetKey:innerObjKey, // keys which has same hierarchy as keys[keys.length-1]
+                 targetValue:innerObjValue // value which is child element of keys[keys.length-1]
                }
         ;
     };
@@ -84,6 +97,7 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     // this method protect object4LocalStrage from extendation of object4LocalStrage.
     // if we set data to no exit key in object4LocalStrage, 
     // this method thorow Error.
@@ -101,13 +115,27 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
             result.targetKey[keys[keys.length - 1]] = value;
             return self;
         } else {
-            throw new Error ('Key ' + stringKeys + ' does not exist in ' + object4LocalStrageName +'. Check first argment of JsonLocalStrageManager.');
+            if (result.isKeyExistLogUntillLastKey) {
+                result.targetValue[keys[keys.length - 1]] = value;
+                return self;
+            } else {
+                let notExistKeys = '';
+                for (let idx = 0; idx <= result.isKeyExistCount; idx++) {
+                    if (idx !== result.isKeyExistCount){
+                        notExistKeys += keys[idx] + '.';
+                    } else {
+                        notExistKeys += keys[idx];
+                    }
+                }
+                throw new Error ('Key ' + notExistKeys + ' does not exist in ' + object4LocalStrageName +'. Check first argment of JsonLocalStrageManager.');
+            }
         }
     };
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
+    // public
     getItem = function(stringKeys){
         const keys = keyParser(stringKeys);
         let result = searchObjectKey(keys);
@@ -122,14 +150,8 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-
-    addKey = function () {
-
-    };
-
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
     
+    // public
     deleteKey = function () {
         
     };
@@ -137,6 +159,7 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
+    // public
     print = function(){
         console.log(object4LocalStrage);
         return self;
@@ -154,6 +177,6 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self = {load:load, save:save, setItem:setItem, getItem:getItem, print:print};
+    self = { load:load, save:save, setItem:setItem, getItem:getItem, deleteKey:deleteKey, print:print };
     return self;
 };

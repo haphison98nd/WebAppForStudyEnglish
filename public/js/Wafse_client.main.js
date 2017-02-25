@@ -2,7 +2,8 @@ Wafse_client.main = function(){
 
     'use strict';
     
-    const appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, ['View', 'LoginAndCoreateAccount', 'PostQuery', 'Config']).load(true),
+    const appDataManagerProtectedKeys = ['Config', 'PostQuery', 'Config.LoginAndCoreateAccount', 'Config.QuestionForm'],
+          appDataManager = Wafse_client.JsonLocalStrageManager('appData', Wafse_client.appDataTemplate, appDataManagerProtectedKeys).load(true),
           appBody = Wafse_client.Activator.AppBody(appDataManager),
           appNavigation = Wafse_client.Activator.AppNavigation(appDataManager),
           appDrawer = Wafse_client.Activator.AppDrawer(appNavigation, appDataManager),
@@ -62,7 +63,12 @@ Wafse_client.main = function(){
     
 
     // debug code of Wafse_client.appDataManager
-    // appDataManager.print().setItem('View.LoginAndCoreateAccount.userName', '{ueda}').print().save();
+    /*
+    appDataManager.print()
+    setTimeout(function () {
+         appDataManager.setItem('Config.LoginAndCoreateAccount.test.gsr', {testKey:10}).print()
+    }, 3000);
+    */
 };
 
 //////////////////////////////////////////////

@@ -24,7 +24,8 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
                     },
                     isButtonClickable:titleText === 'To Be Announced' ? false : true
                 },
-                mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(__appDataManager, __router, mdlSquareCardOption);
+                mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(__appDataManager, __router, mdlSquareCardOption)
+            ;
             mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
         }
     };
