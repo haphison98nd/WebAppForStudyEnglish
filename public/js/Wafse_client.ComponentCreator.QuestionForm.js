@@ -60,8 +60,8 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
 
     // private
     checkAnswer = function (userInput, __sentenceENG) {
-        let transFormedUserInput = Wafse_client.Util.SentenceTransformer.transform(userInput),
-            transFormedCorrectAnswer =  Wafse_client.Util.SentenceTransformer.transform(__sentenceENG)
+        let transFormedUserInput = Wafse_client.Util.SentenceTransformer.transform(String(userInput)),
+            transFormedCorrectAnswer =  Wafse_client.Util.SentenceTransformer.transform(String(__sentenceENG))
         ;
         // console.log('transFormedUserInput: ' + transFormedUserInput);
         // console.log('transFormedCorrectAnswer: ' + transFormedCorrectAnswer);
@@ -101,7 +101,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
             isFirstCheckAnswer = true,
             isVoiceRecognizing = false,
             isEnglishSynthSpeaking = false,
-            isUserAnswerCorrect
+            isUserAnswerCorrect = false
         ;
         // browser except Chrome don't have webSpeechRecognition and have unstable webSpeeshSynthes.
         if (appDataManager.getItem('Config.userAgent') !== 'chrome') voiceInputBtn.css({'display':'none'});
@@ -212,6 +212,6 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:questionForm, setNextProblemBtnText:setNextProblemBtnText, remove:remove};
+    self = {jQueryObj:questionForm, setNextProblemBtnText:setNextProblemBtnText, remove:remove};
     return self;
 };

@@ -53,6 +53,6 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:mdlNavigationLink, remove:remove};
+    self = {jQueryObj:mdlNavigationLink, remove:remove};
     return self;
 };

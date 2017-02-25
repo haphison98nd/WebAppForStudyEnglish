@@ -64,6 +64,6 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:bootStrapTable, appendThead:appendThead, appendTbody:appendTbody, remove:remove};
+    self = {jQueryObj:bootStrapTable, appendThead:appendThead, appendTbody:appendTbody, remove:remove};
     return self;
 };

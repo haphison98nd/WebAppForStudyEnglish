@@ -60,7 +60,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                         // if use markDownWindow to show README.md
                         /*
                         const markDownWindow = Wafse_client.ComponentCreator.MarkDownWindow('README.md', readMeMarkDown);
-                        appBody.clearPage().appendRender(markDownWindow.jQeryObj);
+                        appBody.clearPage().appendRender(markDownWindow.jQueryObj);
                         history.pushState(null, null, '#read-me');
                         */
                     }
@@ -91,10 +91,10 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     cache: false,
                     success: function (pageContents) {
                         appNavigation.hiddenProgressSpinner();
-                        appDataManager.setItem('View.QuestionForm.now.pageContents', pageContents);
+                        appDataManager.setItem('Config.QuestionForm.now.pageContents', pageContents);
                         const questionWindow = Wafse_client.ComponentCreator.QuestionWindow(appDataManager, self, pageContents, postQuery);
                         questionWindow.updateQuestionForm();
-                        appBody.clearPage().appendRender(questionWindow.jQeryObj).scrollTo(0);;
+                        appBody.clearPage().appendRender(questionWindow.jQueryObj).scrollTo(0);;
                     }
                 });               
             } else {
@@ -124,7 +124,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     success: function (textPageNameList) {
                         appNavigation.hiddenProgressSpinner();
                         const textPageNameListJqueryObj = Wafse_client.ComponentCreator.TextPageNameList(appDataManager, self, textPageNameList, postQuery);
-                        appBody.clearPage().appendRender(textPageNameListJqueryObj.jQeryObj).scrollTo(0); 
+                        appBody.clearPage().appendRender(textPageNameListJqueryObj.jQueryObj).scrollTo(0); 
                     }
                 });                
             } else {
@@ -157,7 +157,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     success: function (textPartNameList) {
                         appNavigation.hiddenProgressSpinner();
                         const textPartNameListJqueryObj = Wafse_client.ComponentCreator.TextPartNameList(appDataManager, self, textPartNameList, postQuery);
-                        appBody.clearPage().appendRender(textPartNameListJqueryObj.jQeryObj).scrollTo(0);
+                        appBody.clearPage().appendRender(textPartNameListJqueryObj.jQueryObj).scrollTo(0);
                     }
                 });            
             } else {
@@ -180,7 +180,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     success: function(textList){
                         appNavigation.hiddenProgressSpinner();
                         const textSelectMenuJqueryObj = Wafse_client.ComponentCreator.TextSelectMenu(appDataManager, self, textList);
-                        appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQeryObj).scrollTo(0);
+                        appBody.clearPage().appendRender(textSelectMenuJqueryObj.jQueryObj).scrollTo(0);
                     }
                 }); 
             } else {
@@ -222,7 +222,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         history.replaceState(null, null, '#login-and-create-account');
         appNavigation.deleteButtons();
         const loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self);
-        appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQeryObj);
+        appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQueryObj);
     };
     
     //////////////////////////////////////////////

@@ -20,7 +20,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
                 router['#question-form']({'titleText':__postQuery.titleText, 'textPartName':__postQuery.textPartName, 'textPageName':textPageName});
             });
         }
-        mainContainerMiddle.appendRender(bootStrapTable.jQeryObj);
+        mainContainerMiddle.appendRender(bootStrapTable.jQueryObj);
     };
     
     //////////////////////////////////////////////
@@ -49,6 +49,6 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:mainContainerMiddle.jQeryObj, remove:remove};
+    self = {jQueryObj:mainContainerMiddle.jQueryObj, remove:remove};
     return self;
 };

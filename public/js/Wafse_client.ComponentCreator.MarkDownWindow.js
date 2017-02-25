@@ -36,12 +36,12 @@ Wafse_client.ComponentCreator.MarkDownWindow = function(_markDownFileName,  _rea
         readMeMarkDown = _readMeMarkDown;
         mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerSmallMiddle', String(markDownFileName));
         conbineComponents(readMeMarkDown);
-        mainContainerMiddle.setNavigator([['#text-select-menu', 'ホーム'], ['#read-me' , markDownFileName]]);
+        mainContainerMiddle.setNavigator([['#text-select-menu', 'ホーム'], ['#read-me', markDownFileName]]);
     })();
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:mainContainerMiddle.jQeryObj, remove:remove};
+    self = {jQueryObj:mainContainerMiddle.jQueryObj, remove:remove};
     return self;
 };

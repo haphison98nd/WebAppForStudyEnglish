@@ -27,7 +27,7 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
             const isFinalQ = qCount === (pageContents.JPN.length - 1) ? true : false,
                   questionForm = Wafse_client.ComponentCreator.QuestionForm(appDataManager, router, self, pageContents.JPN[qCount], pageContents.ENG[qCount], isFinalQ)
             ;
-            mainContainerMiddle.appendRender(questionForm.jQeryObj);
+            mainContainerMiddle.appendRender(questionForm.jQueryObj);
             mainContainerMiddle.setNavigator([
                 ['#text-select-menu', 'ホーム'],
                 ['#text-part-name-list', postQuery.titleText], 
@@ -54,6 +54,6 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:mainContainerMiddle.jQeryObj, remove:remove, updateQuestionForm:updateQuestionForm};
+    self = {jQueryObj:mainContainerMiddle.jQueryObj, remove:remove, updateQuestionForm:updateQuestionForm};
     return self;
 };

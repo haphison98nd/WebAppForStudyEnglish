@@ -20,7 +20,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
                 router['#text-page-name-list']({'titleText':postQuery.titleText, 'textPartName':textPartName});
             });
         }
-        mainContainerMiddle.appendRender(bootStrapTable.jQeryObj);
+        mainContainerMiddle.appendRender(bootStrapTable.jQueryObj);
     };
         
     //////////////////////////////////////////////
@@ -49,6 +49,6 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:mainContainerMiddle.jQeryObj, remove:remove};
+    self = {jQueryObj:mainContainerMiddle.jQueryObj, remove:remove};
     return self;
 };

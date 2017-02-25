@@ -180,6 +180,6 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:mainContainerSmall.jQeryObj, remove:remove};
+    self = {jQueryObj:mainContainerSmall.jQueryObj, remove:remove};
     return self;
 };

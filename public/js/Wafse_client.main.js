@@ -37,9 +37,9 @@ Wafse_client.main = function(){
     let mainContainer = Wafse_client.ComponentCreator.MainContainer(appDrawer, appNavigation, appDataManager, null, 'mainContainerMiddle', 'test', null);
     let table = Wafse_client.ComponentCreator.BootStrapTable();
     table.appendThead(['test', 'aaa', 'bbb']).appendTbody(['test', 'aaa', 'bbb']);
-    console.log(table.jQeryObj.html());
-    mainContainer.appendRender(table.jQeryObj);
-    appBody.appendRender(mainContainer.jQeryObj);
+    console.log(table.jQueryObj.html());
+    mainContainer.appendRender(table.jQueryObj);
+    appBody.appendRender(mainContainer.jQueryObj);
     */
 
     

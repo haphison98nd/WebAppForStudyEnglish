@@ -74,6 +74,6 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:mainContainer, appendRender:appendRender, setNavigator:setNavigator, remove:remove};
+    self = {jQueryObj:mainContainer, appendRender:appendRender, setNavigator:setNavigator, remove:remove};
     return self;
 };

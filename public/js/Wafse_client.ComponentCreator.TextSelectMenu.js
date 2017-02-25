@@ -26,7 +26,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
                 },
                 mdlSquareCard = Wafse_client.ComponentCreator.MdlSquareCard(__appDataManager, __router, mdlSquareCardOption)
             ;
-            mainContainerMiddle.appendRender(mdlSquareCard.jQeryObj);
+            mainContainerMiddle.appendRender(mdlSquareCard.jQueryObj);
         }
     };
     
@@ -55,6 +55,6 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQeryObj:mainContainerMiddle.jQeryObj, remove:remove};
+    self = {jQueryObj:mainContainerMiddle.jQueryObj, remove:remove};
     return self;
 };

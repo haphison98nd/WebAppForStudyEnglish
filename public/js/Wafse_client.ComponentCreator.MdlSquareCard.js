@@ -105,6 +105,6 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = { jQeryObj:mdlSquareCard, appendRender:appendRender, remove:remove };
+    self = { jQueryObj:mdlSquareCard, appendRender:appendRender, remove:remove };
     return self;
 };
