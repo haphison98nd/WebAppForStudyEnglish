@@ -3,8 +3,7 @@ Wafse_client.ComponentCreator.MarkDownWindow = function(_markDownFileName,  _rea
     'use strict';
     
     let mainContainerMiddle,
-        htmlTemplate_markDownWindow = $($('.htmlTemplate#markDownWindow').clone().html()),
-        markDownContainer = htmlTemplate_markDownWindow.find('#markDownContainer'),
+        markDownWindow = $($('.htmlTemplate.markDownWindow').clone().html()).find('#markDownWindow'),
         self, remove, conbineComponents, 
         markDownFileName, readMeMarkDown, callback
     ;
@@ -14,8 +13,8 @@ Wafse_client.ComponentCreator.MarkDownWindow = function(_markDownFileName,  _rea
 
     // private
     conbineComponents = function (__readMeMarkDown) {
-        markDownContainer.append(marked(__readMeMarkDown));
-        mainContainerMiddle.appendRender(markDownContainer);
+        markDownWindow.append(marked(__readMeMarkDown));
+        mainContainerMiddle.appendRender(markDownWindow);
     };
 
     //////////////////////////////////////////////

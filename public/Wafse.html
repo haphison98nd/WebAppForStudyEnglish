@@ -25,20 +25,68 @@
                         }
 
                         .mainContainerMiddle#mainContainer{
-                            width: 1150px;
+                            max-width: 1150px;
                         }
 
                         .mainContainerSmall#mainContainer{
-                            width: 500px;
+                            max-width: 500px;
                         }
 
                         .mainContainerSmallMiddle#mainContainer{
-                            width: 650px;
+                            max-width: 650px;
                         }
+                        
+                        #mainMassage {
+                            font-size: 20px;
+                        }
+                        
+                        @media (min-width:800px) {
+                            #mainMassage {
+                                font-size: 24px;
+                            }
+                        }   
                     </style>
                     <h3 id="mainMassage">dummyText</h3>
                 </div>
             </div>
+        </template>
+        <template class="htmlTemplate navigationChip">
+            <span>
+                <a class="mdl-chip" href="dummyLink">
+                    <style scoped>
+                        .mdl-chip {
+                            position: relative;
+                            color: white;
+                            background-color: rgba(255, 255, 255, 0);
+                            border-radius: 2px;
+                            margin-left: 5px;
+                            top: -6px;
+                            cursor:pointer;
+                        }
+
+                        .mdl-chip:active{
+                            color: white;
+                            background-color: rgba(255, 255, 255, 0.3) !important;
+                        }
+
+                        .mdl-chip:hover{
+                            color: white;
+                            background-color: rgba(255, 255, 255, 0.15);
+                            transition: background-color 0.3s;
+                        }
+
+                        .mdl-chip__text {
+                            font-size: 12px;
+                        }
+                        @media (min-width:800px) {
+                            .mdl-chip__text {
+                                font-size: 18px;
+                            }
+                        }
+                    </style>
+                    <span class="mdl-chip__text"></span>
+                </a>
+            </span>
         </template>
         <template class="htmlTemplate loginAndCoreateAccountForm">
             <div>
@@ -77,28 +125,29 @@
         </template>
         <template class="htmlTemplate mdlSquareCard">
             <div>
-                <div id="mdlSquareCard">
-                    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <span id="mdlSquareCard">
+                    <span class="demo-card-square mdl-card mdl-shadow--2dp">
                         <style scoped>
                             .mdl-card__supporting-text{
                                 color: #fff;
                             }
-                            .demo-card-square.mdl-card {
+                            .demo-card-square.mdl-card.mdl-shadow--2dp {
                                 width: 320px;
                                 height: 320px;
                                 background:rgba(0, 0, 0, 0.4);
                                 color: #fff;
-                                float: left;
                                 margin: 21px;
+                                float: left;
                             }
+
                             .demo-card-square > .mdl-card__title {
                                 color: #fff;
                             }
 
                             .btn.btn-outline-primary{
                                 width: inherit;
-                                color: white;
-                            }                
+                            }  
+                            
                         </style>
                         <div class="mdl-card__title mdl-card--expand">
                             <h2 class="mdl-card__title-text">dummyText</h2>
@@ -109,8 +158,8 @@
                         <div class="mdl-card__actions mdl-card--border">
                             <button type="button" class="btn btn-outline-primary">Success</button>
                         </div>
-                    </div>
-                </div>
+                    </span>
+                </span>
             </div>
         </template>
         <template class="htmlTemplate mdlNavigationLink">
@@ -145,7 +194,7 @@
                 <div id="questionForm">
                     <style scoped>
                         #questionForm{
-                            width: 1000px;
+                            max-width: 1000px;
                             background-color: rgba(0, 0, 0, 0.4);
                             border-radius: 5px;
                             margin-top: 100px;
@@ -208,60 +257,27 @@
                 </div>
             </div>
         </template>
-        <template class="htmlTemplate" id="navButtons">
+        <template class="htmlTemplate navButtons">
             <div>
                 <button type="button" class="btn btn-outline-primary">Primary</button>
                 <button type="button" class="btn btn-outline-success">Success</button>
                 <button type="button" class="btn btn-outline-danger">Danger</button>
             </div>
         </template>
-        <template class="htmlTemplate" id="markDownWindow">
+        <template class="htmlTemplate markDownWindow">
             <div>
-                <div id="markDownContainer">
+                <div id="markDownWindow">
                     <style scoped>
-                        #markDownContainer a {
+                        #markDownWindow a {
                             color: #bf6262;
                         }
-                        #markDownContainer a:hover{
+                        #markDownWindow a:hover{
                             color: rgb(255, 152, 152) !important;
                             transition: color 0.3s !important;
                         }
                     </style>
                 </div>
             </div>
-        </template>
-        <template class="htmlTemplate navigationChip">
-            <span>
-                <a class="mdl-chip" href="dummyLink">
-                    <style scoped>
-                        .mdl-chip {
-                            position: relative;
-                            color: white;
-                            background-color: rgba(255, 255, 255, 0);
-                            border-radius: 2px;
-                            margin-left: 5px;
-                            top: -6px;
-                            cursor:pointer;
-                        }
-
-                        .mdl-chip:active{
-                            color: white;
-                            background-color: rgba(255, 255, 255, 0.3) !important;
-                        }
-
-                        .mdl-chip:hover{
-                            color: white;
-                            background-color: rgba(255, 255, 255, 0.15);
-                            transition: background-color 0.3s;
-                        }
-
-                        .mdl-chip__text {
-                            font-size: 18px;
-                        }
-                    </style>
-                    <span class="mdl-chip__text"></span>
-                </a>
-            </span>
         </template>
     </head>
     <body>
@@ -296,7 +312,7 @@
               color: white;
             }            
         </style>
-        <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <div class="demo-layout-transparent mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <style scoped>
                 #appBody > * {
                     animation: zoomInAndFadeIn 0.4s ease-in 0s 1 normal;
@@ -323,6 +339,16 @@
                     .btn {
                         margin-right: 5px;
                     }
+                    
+                   .mdl-layout-title {
+                        font-size: 0px;
+                    }
+
+                    @media (min-width:800px) {
+                        .mdl-layout-title {
+                            font-size: 20px;
+                        }
+                    }   
                 </style>       
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
@@ -356,7 +382,7 @@
             <div class="modal-dialog" role="document">
                 <style scoped>
                     .modal-content{
-                        background-color: rgba(50, 50, 50, 1.0);
+                        background-color: rgba(0, 0, 40, 1.0);
                         color: white;
                     }
                     #closeIcon{
@@ -385,7 +411,7 @@
                 </div>
             </div>
         </div>
-    
+        
         <script defer type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script defer type="text/javascript"src="js/libraries/scoped.js"></script>
         <script defer type="text/javascript" src="js/libraries/tether.min.js"></script>
