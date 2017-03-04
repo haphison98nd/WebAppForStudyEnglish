@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="viewport" content="width=400,initial-scale=1">
         <title>瞬間英作文&nbsp;Web&nbsp;App</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
@@ -311,7 +311,11 @@
               /* This background is dark, so we set text to white. Use 87% black instead if
                  your background is light. */
               color: white;
-            }            
+            }
+            
+            .mdl-layout__drawer-button{
+                display:none;
+            }
         </style>
         <div class="demo-layout-transparent mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <style scoped>
@@ -354,7 +358,7 @@
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
                     <span class="mdl-layout-title"><b>瞬間英作文&nbsp;Web&nbsp;App</b></span>
-                    <div class="mdl-spinner mdl-js-spinner is-active " id="progressSpinner"></div>
+                    <div class="mdl-spinner mdl-js-spinner is-active" id="progressSpinner"></div>
                     <!-- Add spacer, to align navigation to the right -->
                     <div class="mdl-layout-spacer"></div>
                     <!-- Navigation -->
@@ -364,11 +368,6 @@
                 </div>
             </header>            
             <div class="mdl-layout__drawer">
-                <style scoped>
-                    .mdl-layout__drawer-button{
-                        display:none;
-                    }
-                </style>                
                 <span class="mdl-layout-title" id="appDrawerTitle"></span>
                 <nav class="mdl-navigation" id="appDrawer">
                     <!--div class="mdl-navigation__link" >Link</div>
