@@ -3,7 +3,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
     'use strict';
     
     let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
-        self, conbineComponents, remove,
+        self,
         appDataManager, router, textPartNameList, postQuery, callback
     ;
     
@@ -11,7 +11,7 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
     //////////////////////////////////////////////
         
     // private
-    conbineComponents = function (__textPartNameList, __postQuery) {
+    function conbineComponents (__textPartNameList, __postQuery) {
         const bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();
         bootStrapTable.appendThead(['章の名前', 'ステータス', '周回回数']);
         for (let textPartName of __textPartNameList){
@@ -21,21 +21,21 @@ Wafse_client.ComponentCreator.TextPartNameList = function(_appDataManager, _rout
             });
         }
         mainContainerMiddle.appendRender(bootStrapTable.jQueryObj);
-    };
+    }
         
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         mainContainerMiddle.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         appDataManager = _appDataManager;
         router = _router;
         textPartNameList = _textPartNameList;

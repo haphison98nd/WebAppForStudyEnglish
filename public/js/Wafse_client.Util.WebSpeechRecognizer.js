@@ -2,7 +2,7 @@ Wafse_client.Util.WebSpeechRecognizer = (function () {
     
     'use strict';
     
-    let self, recognition, startRec, stopRec,
+    let self, recognition, 
         callback
     ;
     
@@ -10,20 +10,20 @@ Wafse_client.Util.WebSpeechRecognizer = (function () {
     //////////////////////////////////////////////
 
     // public
-    startRec = function(_callback){
+    function startRec (_callback) {
         callback = _callback;
         recognition.start();
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    stopRec = function(){
+    function stopRec () {
         recognition.stop();  
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////

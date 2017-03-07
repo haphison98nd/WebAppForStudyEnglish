@@ -6,8 +6,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
           appDrawerTitle = $('#appDrawerTitle')
     ;
     
-    let self, appDrawerButton, openDrawer, closeDrawer,
-        showDrawerButton, hiddenDrawerButton, appendRender, clearPage,
+    let self, appDrawerButton,
         waitTimeForMdlLayoutDrawer = 3000,
         isDrawerOpen = false,
         appNavigation, appDataManager
@@ -16,7 +15,7 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    openDrawer = function (){
+    function openDrawer () {
         appNavigation.showProgressSpinner();
         setTimeout(function(){
             appNavigation.hiddenProgressSpinner();
@@ -31,12 +30,12 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
             $('.mdl-layout__obfuscator').removeClass('is-visible');
         }, waitTimeForMdlLayoutDrawer);
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    closeDrawer = function (){
+    function closeDrawer () {
         appNavigation.showProgressSpinner();
         setTimeout(function(){
             appNavigation.hiddenProgressSpinner();
@@ -48,49 +47,49 @@ Wafse_client.Activator.AppDrawer = function(_appNavigation, _appDataManager){
             $('.mdl-layout__obfuscator').removeClass('is-visible');
         }, waitTimeForMdlLayoutDrawer);
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    showDrawerButton = function (){
+    function showDrawerButton () {
         appNavigation.showProgressSpinner();
         setTimeout(function(){
             appNavigation.hiddenProgressSpinner();
             appDrawerButton.css({'display':'inline'});
         }, waitTimeForMdlLayoutDrawer);
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    hiddenDrawerButton = function (){
+    function hiddenDrawerButton () {
         appNavigation.showProgressSpinner();
         setTimeout(function(){
             appNavigation.hiddenProgressSpinner();
             appDrawerButton.css({'display':'none'});
         }, waitTimeForMdlLayoutDrawer);
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    appendRender = function(jQueryObj, __callback){
+    function appendRender (jQueryObj, __callback) {
         appDrawer.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
         });        
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    clearPage = function () {
+    function clearPage () {
         appDrawer.empty();
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////

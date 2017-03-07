@@ -2,7 +2,7 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     
     'use strict'; 
     
-    let self, load, save, setItem, getItem, keyParser, addKey, deleteKey, print, searchObjectKey, isKeyProtected,
+    let self,
         object4LocalStrage, object4LocalStrageName, protectedKeys
     ;
     
@@ -11,7 +11,7 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     //////////////////////////////////////////////
     
     // public
-    load = function(isRefresh){
+    function load (isRefresh) {
         if(isRefresh || localStorage.getItem(object4LocalStrageName) === null || localStorage.getItem(object4LocalStrageName) === undefined){
             if(isRefresh){
                 console.info('Refreshed ' + object4LocalStrageName +' is loaded.');
@@ -24,39 +24,39 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
             object4LocalStrage = JSON.parse(localStorage.getItem(object4LocalStrageName));
         }
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    save = function(){
+    function save () {
         localStorage.setItem(object4LocalStrageName, JSON.stringify(object4LocalStrage, null, 4));
         console.info(object4LocalStrageName + ' saved.');
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    keyParser = function(stringKeys){
+    function keyParser (stringKeys) {
         return String(stringKeys).split('.');
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    isKeyProtected = function(stringKeys){
+    function isKeyProtected (stringKeys) {
         return protectedKeys.indexOf(stringKeys) === -1 ? false : true;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    searchObjectKey = function(keys){
+    function searchObjectKey (keys) {
         let searchObjectKeyLoop,
             searchObjectKeyLoopCount = 0,
             innerObjKey = null,
@@ -92,7 +92,7 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
                  targetValue:innerObjValue // value which is child element of keys[keys.length-1]
                }
         ;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -100,13 +100,11 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     // public
     // this method protect object4LocalStrage from extendation of object4LocalStrage.
     // if we set data to no exit key in object4LocalStrage, 
-    // this method thorow Error.
-    // if we set value to object4LocalStrage's new key, we should add key to app data template.
-    // see line 6.
-    // Also we can't set data to protected key. 
+    // this method thorows Error.
+    // Also we can't set data to protected key.
     // @param key {stringKeys}. Key of object4LocalStrage object. e.g... 'LoginAndCoreateAccount.userName'
     // @param value {any}. Data for setting object4LocalStrage.
-    setItem = function(stringKeys, value){
+    function setItem (stringKeys, value) {
         const keys = keyParser(stringKeys);
         let result = searchObjectKey(keys);
         if(isKeyProtected(stringKeys)){
@@ -130,13 +128,13 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
                 throw new Error ('Key ' + notExistKeys + ' does not exist in ' + object4LocalStrageName +'. Check first argment of JsonLocalStrageManager.');
             }
         }
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    getItem = function(stringKeys){
+    function getItem (stringKeys) {
         const keys = keyParser(stringKeys);
         let result = searchObjectKey(keys);
 
@@ -146,24 +144,24 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
             console.warn('Key ' + stringKeys + ' does not exist in ' + object4LocalStrageName +'.');
             return undefined;
         }        
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    deleteKey = function () {
+    function deleteKey () {
         
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    print = function(){
+    function print () {
         console.log(object4LocalStrage);
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////

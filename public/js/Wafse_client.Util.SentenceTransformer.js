@@ -26,13 +26,13 @@ Wafse_client.Util.SentenceTransformer = (function () {
         }
     };
 
-    let self, transform;
+    let self;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    transform = function (str) {
+    function transform (str) {
         let transformedStr = str.toLowerCase().replace(/’/g, "'");
         for (let personOrVerb in headAndTails){
             for (let head of headAndTails[personOrVerb].heads) {
@@ -52,7 +52,7 @@ Wafse_client.Util.SentenceTransformer = (function () {
         }
         transformedStr = transformedStr.replace(/[\-_,."!? ]/g, ''); 
         return transformedStr;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -64,6 +64,6 @@ Wafse_client.Util.SentenceTransformer = (function () {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self = {transform:transform};
+    self = { transform:transform };
     return self;
 })();

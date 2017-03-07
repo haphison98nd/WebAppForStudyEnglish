@@ -9,8 +9,7 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
           button = mdlSquareCard.find('.btn')
     ;
     
-    let self, appendRender, setMdlCardBackGroundImage, setMdlCardTitleText, 
-        setMdlCardSupportingText, setButtonMode, setButtonText, activateButton, remove,
+    let self, 
         appDataManager, router, option
     ;
     
@@ -18,78 +17,78 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
     
     // public
-    appendRender = function(jQueryObj, __callback){
+    function appendRender (jQueryObj, __callback) {
         mainContainerMiddle.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
         });
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    setMdlCardTitleText = function (text) {
+    function setMdlCardTitleText (text) {
         mdlCardTitle.text(String(text));
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    setMdlCardSupportingText = function (text) {
+    function setMdlCardSupportingText (text) {
         mdlCardSupporting.text(String(text));
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    setMdlCardBackGroundImage = function (backGroundImageUrl) {
+    function setMdlCardBackGroundImage (backGroundImageUrl) {
         mdlCardImgeArea.css({'background':"url('" + String(backGroundImageUrl) + "') no-repeat"});
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    setButtonMode = function (isButtonClickable) {
+    function setButtonMode (isButtonClickable) {
         if (isButtonClickable === false) button.remove();
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    setButtonText = function(buttonText) {
+    function setButtonText (buttonText) {
         button.text(String(buttonText));
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    activateButton = function(__callback){
+    function activateButton (__callback) {
         button.click(__callback);
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         mdlSquareCard.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         appDataManager = _appDataManager;
         router = _router;
         option = _option;

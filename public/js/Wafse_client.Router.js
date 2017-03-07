@@ -2,8 +2,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
 
     'use strict';
     
-    let self, isUrlIncldesQuery, parseUrlPath, parseUrlQuery, authorize, logout, authorized, readMe, 
-        questionForm, textPartNameList, textSelectMenu, textPageNameList, loginAndCoreateAccount, start,
+    let self, 
         isAuthorized = false,
         appBody, appNavigation, appDrawer, appDataManager, appModal
     ;
@@ -12,7 +11,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     //////////////////////////////////////////////
 
     // private
-    authorize = function (callback) {
+    function authorize (callback) {
         if(isAuthorized){
             callback(true);
         } else {
@@ -39,14 +38,14 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 }
             });
         }
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    readMe = function () {
-        authorize(function(result) {
+    function readMe () {
+        authorize(function (result) {
             appNavigation.showProgressSpinner();
             if (result) {
                 $.ajax({
@@ -69,13 +68,13 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 loginAndCoreateAccount();
             }
         });
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    questionForm = function (postQuery) {
-        authorize(function(result) {
+    function questionForm (postQuery) {
+        authorize(function (result) {
             if (result) {
                 appNavigation.showProgressSpinner();
                 if (postQuery) {
@@ -101,13 +100,13 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 loginAndCoreateAccount();
             }
         });
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textPageNameList = function (postQuery) {
-        authorize(function(result) {
+    function textPageNameList (postQuery) {
+        authorize(function (result) {
             if (result) {
                 appNavigation.showProgressSpinner();
                 if (postQuery) {
@@ -131,13 +130,13 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 loginAndCoreateAccount();
             }
         });
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textPartNameList = function (postQuery) {     
-        authorize(function(result) {
+    function textPartNameList (postQuery) {     
+        authorize(function (result) {
             if (result) {
                 appNavigation.showProgressSpinner();
                 // If user accesses /textPartNameList from browser back button,
@@ -164,13 +163,13 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 loginAndCoreateAccount();
             }
         });
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    textSelectMenu = function () {        
-        authorize(function(result) {
+    function textSelectMenu () {        
+        authorize(function (result) {
             if (result) {
                 appNavigation.showProgressSpinner();
                 $.ajax({
@@ -187,43 +186,43 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 loginAndCoreateAccount();
             }
         });
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // this metho called from LoginAndCreateAccount
     // public
-    authorized = function () {
+    function authorized () {
         isAuthorized = true;
         appNavigation.deleteButtons();
         appNavigation.addButton('danger', 'ログアウト' ,function(){ logout(); });
         appNavigation.addButton('success', 'README.md' ,function(){ 
             readMe(); 
         });
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    logout = function () {
+    function logout () {
         isAuthorized = false;
         appDrawer.hiddenDrawerButton().clearPage();
         appDataManager.setItem('Config.LoginAndCoreateAccount.userName', '');
         appDataManager.setItem('Config.LoginAndCoreateAccount.userPassWord', '');
         loginAndCoreateAccount();
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    loginAndCoreateAccount = function () {
+    function loginAndCoreateAccount () {
         history.replaceState(null, null, '#login-and-create-account');
         appNavigation.deleteButtons();
         const loginAndCoreateAccountForm = Wafse_client.ComponentCreator.LoginAndCoreateAccountForm(appNavigation, appDataManager, self);
         appBody.clearPage().appendRender(loginAndCoreateAccountForm.jQueryObj);
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -231,9 +230,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     // private.
     // @param { String } url: url include query. ex: '/path-name1/path-name2?q1=aaa&q2=bbb'
     // @ return { boolean }
-    isUrlIncldesQuery = function (url) {        
+    function isUrlIncldesQuery (url) {        
         return url.indexOf('?') !== -1 ? true : false; 
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -241,9 +240,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     // private
     // @param { String } url: url include query. ex: '/path-name1/path-name2?q1=aaa&q2=bbb'
     // @ return { String }: url path.
-    parseUrlPath = function(url){
+    function parseUrlPath (url) {
         return isUrlIncldesQuery(url) ? url.split('?')[0] : url;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -251,7 +250,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
     // private.
     // @param { String } url: url include query. ex: '/path-name1/path-name2?q1=aaa&q2=bbb'
     // @ return { Object / Boolean }: return object (ex: {q1: 'aaa', q2: 'bbb'}) if url include query.
-    parseUrlQuery = function (url) { 
+    function parseUrlQuery (url) { 
         if (isUrlIncldesQuery(url)) {
             let queryList = url.split('?')[1].split('&'),
                 queryObj = {}
@@ -264,12 +263,12 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
         } else {
             return false;
         }
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    start = function () {
+    function start () {
         window.onbeforeunload = function () { appDataManager.save(); };
         $(window).on('popstate', function(e){
             // we should try-catch here, because user may acsess 403 page.
@@ -293,7 +292,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                 console.log(e);
             }
         }
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////

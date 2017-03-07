@@ -4,7 +4,7 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
     
     const mdlNavigationLink = $($('.htmlTemplate.mdlNavigationLink').clone().html()).find('.mdl-navigation__link');
     
-    let self, setMdlNavigationLinkText, activateMdlNavigationLink, remove,
+    let self,
         appDrawer, appDataManager, router, text, callback
     ;
     
@@ -12,34 +12,34 @@ Wafse_client.ComponentCreator.MdlNavigationLink = function(_appDrawer, _appDataM
     //////////////////////////////////////////////
 
     // private
-    setMdlNavigationLinkText = function (str) {
+    function setMdlNavigationLinkText (str) {
         mdlNavigationLink.text(str);
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    activateMdlNavigationLink = function(__callback){
+    function activateMdlNavigationLink (__callback) {
         mdlNavigationLink.click(function(){
             __callback(self);
             // debug
             // remove();
         });
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    remove = function () {
+    function remove () {
         mdlNavigationLink.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         appDrawer = _appDrawer;
         appDataManager = _appDataManager;
         router = _router;

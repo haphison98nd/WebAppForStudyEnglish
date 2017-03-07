@@ -15,64 +15,64 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         playSoundBtn = questionForm.find('#playSoundBtn'),
         checkAnswerBtn = questionForm.find('#checkAnswerBtn'),
         nextProblemBtn = questionForm.find('#nextProblemBtn'),
-        self, setProgressBarValue, setJapaneseSentenceInst, activateButtons,
-        checkAnswer, showAlertMessage, activateTextInput, setNextProblemBtnText, remove,
+        self, 
         appDataManager, router, questionWindow, sentenceJPN, sentenceENG, isFinalQ, callback
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     // private
-    setProgressBarValue = function (value, remainTime) {
+    function setProgressBarValue (value, remainTime) {
         progressBar
             .css({'width':String(value) + '%'})
             .attr('aria-valuenow', String(value))
         ;
         timeLimitInst.text(String(remainTime));
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    setNextProblemBtnText = function (str) {
+    // private 
+    function setNextProblemBtnText (str) {
         nextProblemBtn.text(String(str));  
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    setJapaneseSentenceInst = function (text) {
+    function setJapaneseSentenceInst (text) {
         japaneseSentenceInst.text(String(text));
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         questionForm.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    checkAnswer = function (userInput, __sentenceENG) {
+    function checkAnswer (userInput, __sentenceENG) {
         let transFormedUserInput = Wafse_client.Util.SentenceTransformer.transform(String(userInput)),
             transFormedCorrectAnswer =  Wafse_client.Util.SentenceTransformer.transform(String(__sentenceENG))
         ;
         // console.log('transFormedUserInput: ' + transFormedUserInput);
         // console.log('transFormedCorrectAnswer: ' + transFormedCorrectAnswer);
         return transFormedUserInput === transFormedCorrectAnswer ? true : false;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    showAlertMessage = function(isUserAnswerCorrect, isFinalQuestion, correctAnswer){
+    function showAlertMessage (isUserAnswerCorrect, isFinalQuestion, correctAnswer) {
         if(isUserAnswerCorrect){
             correctAlert
                 .css({'display':'block'})
@@ -89,13 +89,13 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                      )
             ;
         }
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    activateButtons = function (__sentenceENG, __isFinalQ) {
+    function activateButtons (__sentenceENG, __isFinalQ) {
         let defaultTextOfVoiceInputBtn = voiceInputBtn.text(),
             defaultTextOfPlaySoundBtn = playSoundBtn.text(),
             isFirstCheckAnswer = true,
@@ -166,13 +166,13 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 }
             }
         });
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    activateTextInput = function () {
+    function activateTextInput () {
         setTimeout(function () { textInput.focus(); }, 0); // If we don't use setTimeout here, somehow focus() doesn't work.
         textInput.keypress(function(e){
             // Key code 13 is Enter key.
@@ -181,12 +181,12 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 checkAnswerBtn.click();
             }
         });
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         appDataManager = _appDataManager;
         router = _router;
         questionWindow = _questionWindow;
@@ -212,6 +212,6 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQueryObj:questionForm, setNextProblemBtnText:setNextProblemBtnText, remove:remove};
+    self = {jQueryObj:questionForm, remove:remove};
     return self;
 };

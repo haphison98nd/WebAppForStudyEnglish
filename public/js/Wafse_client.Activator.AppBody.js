@@ -4,46 +4,46 @@ Wafse_client.Activator.AppBody = function(_appDataManager){
 
     const appBody = $('#appBody');
     
-    let self, appendRender, afterRender, clearPage, scrollTo,
+    let self,
         appDataManager
     ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    appendRender = function(jQueryObj, __callback){
+    function appendRender (jQueryObj, __callback) {
         appBody.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
         });    
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    afterRender = function(jQueryObj, callback){
+    function afterRender (jQueryObj, callback) {
         appBody.after(jQueryObj).ready(function(){ 
             if (callback) callback(self); 
         });  
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    clearPage = function(){
+    function clearPage () {
         appBody.empty();
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    scrollTo = function (scrollTop, spped) {
+    function scrollTo (scrollTop, spped) {
         spped = spped ? spped : 0;
         appBody.animate({scrollTop:scrollTop}, spped, 'swing');
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////

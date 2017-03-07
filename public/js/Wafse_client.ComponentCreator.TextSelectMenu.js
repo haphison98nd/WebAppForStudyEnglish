@@ -3,7 +3,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
     'use strict';
     
     let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
-        self, conbineComponents, remove,
+        self,
         appDataManager, router, textList, callback
     ;
     
@@ -11,7 +11,7 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
     //////////////////////////////////////////////
     
     // private
-    conbineComponents = function (__appDataManager, __router, __textList) {
+    function conbineComponents (__appDataManager, __router, __textList) {
         for (let titleText in __textList){
             let mdlSquareCardOption = {
                     titleText:titleText,
@@ -28,21 +28,21 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
             ;
             mainContainerMiddle.appendRender(mdlSquareCard.jQueryObj);
         }
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         mainContainerMiddle.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         appDataManager = _appDataManager;
         router = _router;
         textList = _textList;

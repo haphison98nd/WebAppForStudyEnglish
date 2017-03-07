@@ -4,7 +4,7 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
     
     let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
         qCount = 0,
-        self, conbineComponents, remove, updateQuestionForm,
+        self,
         appDataManager, router, pageContents, postQuery, callback
     ;
         
@@ -12,16 +12,16 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         mainContainerMiddle.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    updateQuestionForm = function (){
+    function updateQuestionForm () {
         // array pageContents.JPN and pageContents.ENG are same length so we just check pageContents.JPN length.
         if (qCount < pageContents.JPN.length){
             const isFinalQ = qCount === (pageContents.JPN.length - 1) ? true : false,
@@ -34,16 +34,17 @@ Wafse_client.ComponentCreator.QuestionWindow = function(_appDataManager, _router
                 ['#text-page-name-list', postQuery.textPartName],
                 ['#text-page-name-list', postQuery.textPageName + ' (' + String(qCount + 1) + '/' + String(pageContents.JPN.length) + ')']]
             );
+            console.log(questionForm);
             qCount++;
         } else {
             router['#text-page-name-list']();
         }
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         appDataManager = _appDataManager;
         router = _router;
         pageContents = _pageContents;

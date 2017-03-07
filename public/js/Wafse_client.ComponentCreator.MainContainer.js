@@ -6,7 +6,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
           mainMassage = mainContainer.find('#mainMassage')
     ;
     
-    let self, appendRender, activateMainContainerSize, setNavigator, remove,
+    let self,
         mainContainerSize, mainMassageText
     ;
     
@@ -14,18 +14,18 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     //////////////////////////////////////////////
     
     // public
-    appendRender = function(jQueryObj, __callback){
+    function appendRender (jQueryObj, __callback) {
         mainContainer.append(jQueryObj).ready(function(){ 
             if (__callback) __callback(self); 
         });
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    setNavigator = function (navigatorContents) {
+    function setNavigator (navigatorContents) {
         mainMassage.empty();
         if (typeof navigatorContents === 'object'){
             for (let idx in navigatorContents) {
@@ -41,29 +41,29 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
             mainMassage.text(String(navigatorContents));
         }
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    activateMainContainerSize = function (text) {
+    function activateMainContainerSize (text) {
         mainContainer.addClass(String(text));
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         mainContainer.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         mainContainerSize = _mainContainerSize;
         mainMassageText = _mainMassageText;
         

@@ -3,7 +3,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
     'use strict';
     
     let mainContainerMiddle = Wafse_client.ComponentCreator.MainContainer('mainContainerMiddle'),
-        self, conbineComponents, remove,
+        self,
         appDataManager, router, textPageNameList, postQuery, callback
     ;
     
@@ -11,7 +11,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
     //////////////////////////////////////////////
         
     // private
-    conbineComponents = function (__textPageNameList, __postQuery) {
+    function conbineComponents (__textPageNameList, __postQuery) {
         const bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();    
         bootStrapTable.appendThead(['節の名前', 'ステータス', 'クリア回数', '最短クリア時間']);
         for (let textPageName of __textPageNameList){
@@ -21,21 +21,21 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
             });
         }
         mainContainerMiddle.appendRender(bootStrapTable.jQueryObj);
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         mainContainerMiddle.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         appDataManager = _appDataManager;
         router = _router;
         textPageNameList = _textPageNameList;

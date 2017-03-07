@@ -1,4 +1,4 @@
-module.exports = function (_filePathesAndNames) {
+module.exports = function (_filePathesAndNamesList) {
 
     'use strict';
     
@@ -6,8 +6,7 @@ module.exports = function (_filePathesAndNames) {
     
     let self, 
         textDbs = {},
-        loadDataBases, extractDbNameFromFilePath, getTextPartNameList, getTextPageNameList, getPageContents,
-        filePathesAndNames, dbNamesJPN
+        filePathesAndNamesList
     ;
 
     //////////////////////////////////////////////
@@ -15,41 +14,41 @@ module.exports = function (_filePathesAndNames) {
 
     // private
     // change './TextDB/SyunkanEisakubun/SyunkanEisakubunDb.json' to 'SyunkanEisakubunDb'
-    extractDbNameFromFilePath = function (filePath){
+    function extractDbNameFromFilePath (filePath) {
         let dbName =  filePath.split('/');
         dbName = dbName[dbName.length-1].split('.')[0];
         return String(dbName);
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    // @param { array } __filePathesAndNames: foramt... [['fileName', 'pathForDb'], ['fileName', 'pathForDb']]
-    loadDataBases = function(__filePathesAndNames){
-        for (let idx in __filePathesAndNames) {
-            textDbs[String(__filePathesAndNames[idx][0])] = JSON.parse(extendedFs.readFileSync(__filePathesAndNames[idx][1], 'utf-8'));
+    // @param { array } __filePathesAndNamesList: foramt... [['fileName', 'pathForDb'], ['fileName', 'pathForDb']]
+    function loadDataBases (__filePathesAndNamesList) {
+        for (let idx in __filePathesAndNamesList) {
+            textDbs[String(__filePathesAndNamesList[idx][0])] = JSON.parse(extendedFs.readFileSync(__filePathesAndNamesList[idx][1], 'utf-8'));
         }
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    getTextPartNameList = function (dbName) {
+    function getTextPartNameList (dbName) {
         let textPartNameList = [];
         for (let textPartName in textDbs[String(dbName)]){
             textPartNameList.push(textPartName);
         }
         return textPartNameList;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    getTextPageNameList = function (dbName, partName) {
+    function getTextPageNameList (dbName, partName) {
         let textPageNameList = [],
             partContents = textDbs[String(dbName)][partName]
         ;
@@ -57,22 +56,22 @@ module.exports = function (_filePathesAndNames) {
             textPageNameList.push(textPageName);
         }
         return textPageNameList;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    getPageContents = function (dbName, partName, pageName) {
+    function getPageContents (dbName, partName, pageName) {
         return textDbs[String(dbName)][partName][pageName];
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
-        filePathesAndNames = _filePathesAndNames;
-        loadDataBases(filePathesAndNames);
+    (function constructor () {
+        filePathesAndNamesList = _filePathesAndNamesList;
+        loadDataBases(filePathesAndNamesList);
     })();
 
     //////////////////////////////////////////////

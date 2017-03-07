@@ -6,14 +6,14 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
           japaneseSynth = new SpeechSynthesisUtterance()
     ;
     
-    let self, speechTextInEnglish, speechTextInJapanese,
+    let self,
         waitTimeForSpeechSynthesisOnvoiceschanged = 3000
     ;
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    speechTextInEnglish = function(text, callback){
+    function speechTextInEnglish (text, callback) {
         setTimeout(function(){
             englishSynth.text = String(text);
             window.speechSynthesis.speak(englishSynth);
@@ -22,12 +22,12 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
             };
         }, waitTimeForSpeechSynthesisOnvoiceschanged);
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    speechTextInJapanese = function(text, callback){
+    function speechTextInJapanese (text, callback) {
         setTimeout(function(){
             japaneseSynth.text = String(text);
             window.speechSynthesis.speak(japaneseSynth);
@@ -36,7 +36,7 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
             };
         }, waitTimeForSpeechSynthesisOnvoiceschanged);
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////

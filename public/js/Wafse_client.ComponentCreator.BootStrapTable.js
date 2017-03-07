@@ -7,7 +7,7 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
           tbody = bootStrapTable.find('tbody')
     ;
     
-    let self, appendThead, appendTbody, remove,
+    let self,
         callback
     ;
     
@@ -15,7 +15,7 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
     //////////////////////////////////////////////
     
     // public
-    appendThead = function(theadLabelList, __callback){
+    function appendThead (theadLabelList, __callback) {
         let tr = $('<tr></tr>');
         for (let theadLabel of theadLabelList) {
             let th = $('<th>' + theadLabel + '</th>');
@@ -26,13 +26,13 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
         }
         thead.append(tr);
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    appendTbody = function(tbodyLabelList, __callback){
+    function appendTbody (tbodyLabelList, __callback) {
         let tr = $('<tr></tr>');
         for (let tbodyLabel of tbodyLabelList) {
             let th = $('<th>' + tbodyLabel + '</th>');
@@ -43,21 +43,21 @@ Wafse_client.ComponentCreator.BootStrapTable = function(){
         }
         tbody.append(tr);
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         bootStrapTable.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         
     })();
 

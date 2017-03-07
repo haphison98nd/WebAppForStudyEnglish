@@ -2,29 +2,29 @@ Wafse_client.Util.Timer = function () {
     
     'use strict';
     
-    let self, loop, milSecToSec, secToMilSec, start, stop;
+    let self, loop;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    milSecToSec = function (milSec) {
+    function milSecToSec (milSec) {
         return milSec / 100;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    secToMilSec = function (sec) {
+    function secToMilSec (sec) {
         return sec * 100;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    start = function (timeLimitSec, callback, finishCallback) {        
+    function start (timeLimitSec, callback, finishCallback) {        
         let count = 0;
         loop = setInterval(function(){
             let secCount = milSecToSec(count);
@@ -41,16 +41,16 @@ Wafse_client.Util.Timer = function () {
             count++;
         }, 10);
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    stop = function(){
+    function stop() {
         if (loop) clearInterval(loop);
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////

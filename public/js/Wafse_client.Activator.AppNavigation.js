@@ -6,8 +6,7 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
           progressSpinner = $('#progressSpinner')
     ;
     
-    let self, appendRender, afterRender, clearPage, showProgressSpinner, hiddenProgressSpinner,
-        addButton, deleteButtons,
+    let self, 
         appDataManager
     ;
 
@@ -15,7 +14,7 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
     //////////////////////////////////////////////
     
     // public
-    addButton = function (type, text, callback) {
+    function addButton (type, text, callback) {
         const buttons = $($('.htmlTemplate.navButtons').clone().html());
         let button;
         if( type === 'danger') {
@@ -29,34 +28,34 @@ Wafse_client.Activator.AppNavigation = function(_appDataManager){
         button.text(text);
         appNavigation.prepend(button);
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    deleteButtons = function () {
+    function deleteButtons () {
         appNavigation.empty();
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    showProgressSpinner = function () {
+    function showProgressSpinner () {
         progressSpinner.css({'display':'inline'});
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    hiddenProgressSpinner = function () {
+    function hiddenProgressSpinner () {
         progressSpinner.css({'display':'none'});
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////

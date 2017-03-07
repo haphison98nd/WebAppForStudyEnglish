@@ -14,8 +14,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
         alertForUserNameInput = loginAndCoreateAccountForm.find('.alert#alertForUserNameInput'),
         alertForPassWordInput = loginAndCoreateAccountForm.find('.alert#alertForPassWordInput'),
         mainContainerSmall = Wafse_client.ComponentCreator.MainContainer('mainContainerSmall', 'ようこそ'),
-        self, conbineComponents, activateTextInput, activateButtons, showAlertMessage, hiddenAlertMessage,
-        isUserNameInputAndPassWordInputValid, remove,
+        self,
         appNavigation, appDataManager, router
     ;
 
@@ -23,7 +22,7 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
     //////////////////////////////////////////////
 
     // private
-    isUserNameInputAndPassWordInputValid = function(){
+    function isUserNameInputAndPassWordInputValid () {
         if(String(userNameInput.val()) === '' && String(passWordInput.val()) === '') {
             showAlertMessage('ユーザ名を入力してください', 'パスワードを入力してください');
             return false;
@@ -36,11 +35,11 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
         }
         
         return true;
-    };
+    }
     
     
     // private
-    showAlertMessage = function(alertMessageForUserNameInput, alertMessageForPassWordInput){   
+    function showAlertMessage (alertMessageForUserNameInput, alertMessageForPassWordInput) {   
         hiddenAlertMessage();
         if(alertMessageForUserNameInput){
             alertForUserNameInput
@@ -54,35 +53,35 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                 .html('<b>' + String(alertMessageForPassWordInput) + '</b>')
             ;            
         }
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    hiddenAlertMessage = function(){
+    function hiddenAlertMessage () {
         alertForUserNameInput.css({'display':'none'});
         alertForPassWordInput.css({'display':'none'});
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    activateTextInput = function(){
+    function activateTextInput () {
         if (appDataManager.getItem('Config.LoginAndCoreateAccount.userName')) {
             userNameInput.val(String(appDataManager.getItem('Config.LoginAndCoreateAccount.userName')));
         }
         if (appDataManager.getItem('Config.LoginAndCoreateAccount.userPassWord')) {
             passWordInput.val(String(appDataManager.getItem('Config.LoginAndCoreateAccount.userPassWord')));
         }
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    activateButtons = function(){
+    function activateButtons () {
         enterBtn.click(function(){
             if(isUserNameInputAndPassWordInputValid()){
                 appNavigation.showProgressSpinner();
@@ -109,7 +108,6 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                 });
             }
         });
-        
         createAccountBtn.click(function(){
             mainContainerSmall.setNavigator('新規アカウントを作成');
             mainMassage_login.css({'display':'none'});
@@ -145,29 +143,29 @@ Wafse_client.ComponentCreator.LoginAndCoreateAccountForm = function(_appNavigati
                 }
             });
         });        
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    conbineComponents = function () {
+    function conbineComponents () {
         mainContainerSmall.appendRender(loginAndCoreateAccountForm);
-    };
+    }
         
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    remove = function () {
+    function remove () {
         mainContainerSmall.remove();
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    (function constructor (){
+    (function constructor () {
         appNavigation = _appNavigation;
         appDataManager = _appDataManager;
         router = _router;
