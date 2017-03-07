@@ -11,8 +11,7 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
             'Part2 中学2年レベル':{},
             'Part3 中学3年レベル':{}
         },
-        self, getPageNumber, getScrapedPageName, getPageTextOfJpnAngEng, 
-        createSimpleEnglishSentencesJsonDb, saveSimpleEnglishSentencesJsonDbAsJson, getSimpleEnglishSentencesJsonDbAsObj,
+        self,
         filePathOfSimpleEnglishSentencesJsonDb_JPN, filePathOfSimpleEnglishSentencesJsonDb_ENG
     ;
 
@@ -20,40 +19,40 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
     //////////////////////////////////////////////
     
     // private
-    getPageNumber = function (stringPageName) {  
+    function getPageNumber (stringPageName) {  
         let splitedStringPageName = stringPageName.split('-');
         return parseInt(splitedStringPageName[1], 10);
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    getScrapedPageName = function (__jsonDb_JPN, pageNumber) {
+    function getScrapedPageName (__jsonDb_JPN, pageNumber) {
         let pageTitle = __jsonDb_JPN['page-' + pageNumber]['title'];
         pageTitle = pageTitle.split(' ');
         pageTitle.splice(pageTitle.length-1,1);
         pageTitle = pageTitle.join(' ');
         return pageTitle;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // private
-    getPageTextOfJpnAngEng = function (__jsonDb_JPN, __jsonDb_ENG, pageName) {
+    function getPageTextOfJpnAngEng (__jsonDb_JPN, __jsonDb_ENG, pageName) {
         return {
                  'JPN':__jsonDb_JPN[pageName]['text'],
                  'ENG':__jsonDb_ENG[pageName]['text']
                 }
         ;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    createSimpleEnglishSentencesJsonDb = function () {
+    function createSimpleEnglishSentencesJsonDb () {
         const partListOfShunkanEisakubun = {
             'Part1 中学1年レベル':{start:1, end:23},
             'Part2 中学2年レベル':{start:24, end:57},
@@ -73,21 +72,21 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
             }
         }
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // public
-    getSimpleEnglishSentencesJsonDbAsObj = function () {
+    function getSimpleEnglishSentencesJsonDbAsObj () {
         return simpleEnglishSentencesJsonDb;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    saveSimpleEnglishSentencesJsonDbAsJson = function(fileName, callback){
+    function saveSimpleEnglishSentencesJsonDbAsJson (fileName, callback) {
         // How to write indented JSON using JavaScript?: http://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript  
         extendedFs.writeFile(fileName + '.json', JSON.stringify(simpleEnglishSentencesJsonDb, null, 4), function(err){
            if(err){
@@ -98,7 +97,7 @@ const CreateSimpleEnglishSentencesJsonDb = function(_filePathOfSimpleEnglishSent
            }
         });
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////

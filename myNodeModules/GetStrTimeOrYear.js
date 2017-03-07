@@ -1,12 +1,13 @@
 // 現在時刻を取得するモジュール．
 // 日付(例: 2016/1/1)または時刻(例: 09:03:08:0032) を返却．
 module.exports = (function(){ // 'date' または 'time'
+    
     'use strict';
-    ///////////////////////////////////////////////
-    ///////////////////////////////////////////////
-    var getDate, getTime;
 
-    getTime = function(){
+    ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
+
+    function getTime () {
         
         var date = new Date(),
             hour         = date.getHours(),
@@ -29,10 +30,12 @@ module.exports = (function(){ // 'date' または 'time'
 
         return String() + hour + ':' + minutes + ':' + seconds + ':' + milliseconds;
         
-    };
+    }
+
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
-    getDate = function(){
+    
+    function getDate () {
 
         var date = new Date(),
             month = date.getMonth()+1,
@@ -45,8 +48,11 @@ module.exports = (function(){ // 'date' または 'time'
         
         return String() + year + '/' + month + '/' + day;
         
-    };
+    }
+    
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
-    return {getDate:getDate, getTime:getTime};
+    
+    return { getDate:getDate, getTime:getTime };
+    
 })();

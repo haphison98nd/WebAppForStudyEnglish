@@ -6,39 +6,39 @@ const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(_filePath){
 
     let jsonDb    = null, 
         titleList = {},
-        self, createTitleList, getTitleListAsObj, getDb, saveTitleListAsJson,
+        self,
         filePath
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    createTitleList = function(){
+    function createTitleList () {
         for (let pageIdx = 1; pageIdx <= Object.keys(jsonDb).length; pageIdx++){
             // console.log(jsonDb['page-' + pageIdx]);
             titleList[jsonDb['page-' + pageIdx]['title']] = 'page-' + pageIdx;
         }
         return self;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    getDb = function(){
+    function getDb () {
         return jsonDb;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    getTitleListAsObj = function(){
+    function getTitleListAsObj () {
         return titleList;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    saveTitleListAsJson = function(fileName, callback){
+    function saveTitleListAsJson (fileName, callback) {
         // How to write indented JSON using JavaScript?: http://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript  
         extendedFs.writeFile(fileName + '.json', JSON.stringify(titleList, null, 4), function(err){
            if(err){
@@ -49,7 +49,7 @@ const CreateTitleListDbFromSimpleEnglishSentencesJsonDb = function(_filePath){
            }
         });
         return self;
-    };
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////

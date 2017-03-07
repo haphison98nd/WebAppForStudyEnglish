@@ -5,7 +5,7 @@ const SortGogakuruDb = function(_filePathOfGogakuruDb){
     const extendedFs = require('./ExtendedFs.js');
 
     let sortedDb = {}, 
-        self, startSorting, saveJsonDbAsJson, getJsonDbAsObj,
+        self,
         filePathOfGogakuruDb
     ;
 
@@ -13,15 +13,15 @@ const SortGogakuruDb = function(_filePathOfGogakuruDb){
     //////////////////////////////////////////////
 
     // public
-    getJsonDbAsObj = function () {
+    function getJsonDbAsObj () {
         return sortedDb;
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
     // public
-    saveJsonDbAsJson = function(fileName, callback){
+    function saveJsonDbAsJson (fileName, callback) {
         extendedFs.writeFile(fileName + '.json', JSON.stringify(sortedDb, null, 4), function(err){
            if(err){
                console.log('Faired: saving ' + fileName + '.json');
@@ -31,20 +31,29 @@ const SortGogakuruDb = function(_filePathOfGogakuruDb){
            }
         });
         return self;
-    };
+    }
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    // private
+    function addPartNameKeyIntoSortedDb (gogakuruDb) {
+        for (let partName in gogakuruDb) { sortedDb[partName] = {}; }
+        return self;
+    }
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
     // private
-    startSorting = function (gogakuruDb) {
-        for (let partName in gogakuruDb) { sortedDb[partName] = {}; }
+    function startSorting (gogakuruDb) {
+        addPartNameKeyIntoSortedDb(gogakuruDb);
         for (let partName in gogakuruDb) { 
             for (let pageIdx = 1; pageIdx <= Object.keys(gogakuruDb[partName]).length; pageIdx++){
                 sortedDb[partName]['Page ' + String(pageIdx)] = gogakuruDb[partName]['Page ' + String(pageIdx)];
             }
         }
-    };
+    }
 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
@@ -67,6 +76,6 @@ const SortGogakuruDb = function(_filePathOfGogakuruDb){
 
 (function main(){
     'use strict';
-    let app = SortGogakuruDb('../TextDB/Gogakuru/' + String(process.argv[2]) + '.json');
-    app.saveJsonDbAsJson('../TextDB/Gogakuru/' + String(process.argv[2]));
+    let app = SortGogakuruDb('../public/textDB/Gogakuru/' + String(process.argv[2]));
+    app.saveJsonDbAsJson('../public/textDB/Gogakuru/' + String(process.argv[2]));
 })();

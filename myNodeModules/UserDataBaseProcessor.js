@@ -22,29 +22,32 @@ module.exports = (function(){ // node module として利用する際はこち�
           userDataBaseHashName = 'UserDataBase'
     ;
     
-    let constructor, initDataBase, loadDataBase, saveDataBase, isUserExist, 
-        addUserData, removeUserData, authorize,
-        extendedFs   = require('./ExtendedFs.js'), 
+    let extendedFs   = require('./ExtendedFs.js'), 
         colors       = require('colors'),
         userDataBase = {}
     ;
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    initDataBase = function(){ 
+
+    function initDataBase () { 
         userDataBase = {'dummyUserName':'dummyUserPassword'}; // テンプレート用のダミーデータ．
         saveDataBase(); 
-    };
+    }
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    saveDataBase = function(callback){
+    
+    function saveDataBase (callback) {
         redisClient.set(userDataBaseHashName, JSON.stringify(userDataBase, null, 4));
         console.log('UserDataBaseProcessor.js: UserDataBase updated.' .green);
-    };
+    }
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
+    
     // json 形式の userDataBase を読み込みパースする．
-    loadDataBase = function(callback){
+    function loadDataBase (callback) {
         redisClient.get(userDataBaseHashName, function (err, obj) {
             console.log(obj);
             if (obj === undefined || obj === null || obj === 'undefined') {
@@ -57,18 +60,21 @@ module.exports = (function(){ // node module として利用する際はこち�
             console.log(userDataBase);
             if(callback) callback();
         });
-    };
+    }
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
+
     // userName が既に存在している場合は true, そうでない場合は false を return. 
-    isUserExist = function(userName){ 
+    function isUserExist (userName) { 
         return userDataBase.hasOwnProperty(userName) ? true : false;
-    };
+    }
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     // userData は {'userName':'userName', 'userPassWord':'userPassWord'} という形式を取る．
     // userName が既に存在している場合は false を return. 
-    addUserData = function(userData){
+    function addUserData (userData) {
         if(isUserExist(userData.userName)){
             var putsStr = 'UserDataBaseProcessor.js: ' + + userData.userName + ' is already exists.';
             console.log(putsStr.red);
@@ -84,12 +90,15 @@ module.exports = (function(){ // node module として利用する際はこち�
             console.log(userDataBase);
             return true;
         }
-    };
+    }
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
+
     // 削除したいユーザ名を string の userName で引数として与え削除．　
     // 削除対象のキーが存在しない場合は false を return.
-    removeUserData = function(userName){
+    
+    function removeUserData (userName) {
         if(isUserExist(userName) == true){
             
             var putsStr = null;
@@ -108,13 +117,16 @@ module.exports = (function(){ // node module として利用する際はこち�
             console.log(putsStr.red);
             return false;
         }
-    };
+    }
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
+    
     // ユーザ認証メソッド．
     // userData は {'userName':'userName', 'userPassWord':'userPassWord'} という形式を取る．
     // userName が既に存在している場合は false を return. 
-    authorize = function(userData){
+    
+    function authorize (userData) {
         
         var authorizeStatusText = '';
         
@@ -134,17 +146,20 @@ module.exports = (function(){ // node module として利用する際はこち�
             console.log(authorizeStatusText.red);
             return 'userNotExist'; 
         }
-    };
+    }
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    (constructor = function(){
+
+    (function constructor () {
         // 初期化時に UserDataBase.json をメモリに読込．
         loadDataBase();
     })();
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     // initDataBase は moduleTest での実行が主なため，private とした．
-    return {addUserData:addUserData, removeUserData:removeUserData, authorize:authorize};
+    return { addUserData:addUserData, removeUserData:removeUserData, authorize:authorize };
 })(); // node module として利用する際はこちらを有効化．
 //////////////////////////////////////////////
 //////////////////////////////////////////////
