@@ -212,6 +212,6 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQueryObj:questionForm, remove:remove};
+    self = { jQueryObj:questionForm, remove:remove };
     return self;
 };

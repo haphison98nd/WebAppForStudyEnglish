@@ -55,6 +55,6 @@ Wafse_client.ComponentCreator.TextSelectMenu = function(_appDataManager, _router
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQueryObj:mainContainerMiddle.jQueryObj, remove:remove};
+    self = { jQueryObj:mainContainerMiddle.jQueryObj, remove:remove };
     return self;
 };

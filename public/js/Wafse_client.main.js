@@ -20,7 +20,7 @@ Wafse_client.main = function(){
     setTimeout(function(){
         appNavigation.hiddenProgressSpinner();
         router.start();
-    }, 2000);
+    }, 1000);
 
     appDataManager.setItem('Config.userAgent', userAgent);
     if (userAgent !== 'chrome') {

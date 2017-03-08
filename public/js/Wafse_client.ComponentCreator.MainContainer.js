@@ -35,7 +35,7 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
                 mdlChip.attr('href', navigatorContents[idx][0]);
                 mdlChipInnerTextArea.text(navigatorContents[idx][1]);
                 mainMassage.append(mdlChip);
-                if (idx < navigatorContents.length-1) mainMassage.append('>');
+                if (idx < navigatorContents.length - 1) mainMassage.append('>');
             }
         } else if (typeof navigatorContents === 'string') {
             mainMassage.text(String(navigatorContents));
@@ -74,6 +74,6 @@ Wafse_client.ComponentCreator.MainContainer = function(_mainContainerSize, _main
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQueryObj:mainContainer, appendRender:appendRender, setNavigator:setNavigator, remove:remove};
+    self = { jQueryObj:mainContainer, appendRender:appendRender, setNavigator:setNavigator, remove:remove };
     return self;
 };

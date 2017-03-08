@@ -102,8 +102,8 @@ Wafse_client.JsonLocalStrageManager = function (_object4LocalStrageName, _object
     // if we set data to no exit key in object4LocalStrage, 
     // this method thorows Error.
     // Also we can't set data to protected key.
-    // @param key {stringKeys}. Key of object4LocalStrage object. e.g... 'LoginAndCoreateAccount.userName'
-    // @param value {any}. Data for setting object4LocalStrage.
+    // @param key {stringKeys}: Key of object4LocalStrage object. e.g... 'LoginAndCoreateAccount.userName'
+    // @param value {any}: Data for setting object4LocalStrage.
     function setItem (stringKeys, value) {
         const keys = keyParser(stringKeys);
         let result = searchObjectKey(keys);

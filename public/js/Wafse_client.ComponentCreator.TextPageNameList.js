@@ -49,6 +49,6 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = {jQueryObj:mainContainerMiddle.jQueryObj, remove:remove};
+    self = { jQueryObj:mainContainerMiddle.jQueryObj, remove:remove };
     return self;
 };
