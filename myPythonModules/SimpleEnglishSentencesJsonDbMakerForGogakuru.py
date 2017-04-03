@@ -58,7 +58,7 @@ class SimpleEnglishSentencesJsonDbMakerForGogakuru(SimpleEnglishSentencesJsonDbM
     ######################################################
     ######################################################
 
-    def addText(self, partNames, jpSentences, engSentences):
+    def addText (self, partNames, jpSentences, engSentences):
         for idx in range(len(partNames)):
             self.createDbKeys(partNames[idx])
             self.db[partNames[idx]]["Page " + str(self.__pageNumberMemory[partNames[idx]])]["JPN"].append(jpSentences[idx])

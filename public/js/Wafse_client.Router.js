@@ -93,9 +93,9 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                         appDataManager.setItem('Config.QuestionForm.now.pageContents', pageContents);
                         const questionWindow = Wafse_client.ComponentCreator.QuestionWindow(appDataManager, self, pageContents, postQuery);
                         questionWindow.updateQuestionForm();
-                        appBody.clearPage().appendRender(questionWindow.jQueryObj).scrollTo(0);;
+                        appBody.clearPage().appendRender(questionWindow.jQueryObj).scrollTo(0);
                     }
-                });               
+                });
             } else {
                 loginAndCoreateAccount();
             }
@@ -123,7 +123,7 @@ Wafse_client.Router = function (_appBody, _appNavigation, _appDrawer, _appDataMa
                     success: function (textPageNameList) {
                         appNavigation.hiddenProgressSpinner();
                         const textPageNameListJqueryObj = Wafse_client.ComponentCreator.TextPageNameList(appDataManager, self, textPageNameList, postQuery);
-                        appBody.clearPage().appendRender(textPageNameListJqueryObj.jQueryObj).scrollTo(0); 
+                        appBody.clearPage().appendRender(textPageNameListJqueryObj.jQueryObj).scrollTo(0);
                     }
                 });                
             } else {

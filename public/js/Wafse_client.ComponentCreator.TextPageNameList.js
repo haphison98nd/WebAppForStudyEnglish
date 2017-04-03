@@ -9,7 +9,7 @@ Wafse_client.ComponentCreator.TextPageNameList = function(_appDataManager, _rout
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-        
+    
     // private
     function conbineComponents (__textPageNameList, __postQuery) {
         const bootStrapTable = Wafse_client.ComponentCreator.BootStrapTable();    

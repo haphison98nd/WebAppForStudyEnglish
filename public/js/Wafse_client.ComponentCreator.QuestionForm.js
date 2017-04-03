@@ -81,7 +81,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         } else {
             const message = isFinalQuestion ? '終了するには' : '次の問題に進むには';
             // AtD: open source grammer checker.
-            // AtD.checkTextAreaCrossAJAX('textInput', 'checkLink', 'Edit Text');
+            AtD.checkTextAreaCrossAJAX('textInput', 'checkLink', 'Edit Text');
             incorrectAlert
                 .css({'display':'block'})
                 .html('<strong>不正解です．</strong>' + message + 
@@ -152,7 +152,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         });
         nextProblemBtn.click(function(){
             if (isVoiceRecognizing) voiceInputBtn.click(); // if voice input is working, stop it by clicking voiceInputBtn.
-            // If user answer isn't correct, user cannot see next question until typing correct answer.
+            // User cannot see next question until typing correct answer if user answer isn't correct.
             if (isUserAnswerCorrect) {
                 remove();
                 questionWindow.updateQuestionForm();              
