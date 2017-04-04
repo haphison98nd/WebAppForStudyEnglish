@@ -15,17 +15,6 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     
     //////////////////////////////////////////////
     //////////////////////////////////////////////
-    
-    // public
-    function appendRender (jQueryObj, __callback) {
-        mainContainerMiddle.append(jQueryObj).ready(function(){ 
-            if (__callback) __callback(self); 
-        });
-        return self;
-    }
-
-    //////////////////////////////////////////////
-    //////////////////////////////////////////////
 
     // private
     function setMdlCardTitleText (text) {
@@ -104,6 +93,6 @@ Wafse_client.ComponentCreator.MdlSquareCard = function(_appDataManager, _router,
     //////////////////////////////////////////////
     //////////////////////////////////////////////
     
-    self = { jQueryObj:mdlSquareCard, appendRender:appendRender, remove:remove };
+    self = { jQueryObj:mdlSquareCard, remove:remove };
     return self;
 };
