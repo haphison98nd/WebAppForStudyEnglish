@@ -24,7 +24,7 @@ module.exports = function (_filePathesAndNamesList) {
     //////////////////////////////////////////////
 
     // private
-    // @param { array } __filePathesAndNamesList: foramt... [['fileName', 'pathForDb'], ['fileName', 'pathForDb']]
+    // @param { array } __filePathesAndNamesList: foramt... [['fileName', 'pathToDb'], ['fileName', 'pathToDb']]
     function loadDataBases (__filePathesAndNamesList) {
         for (let idx in __filePathesAndNamesList) {
             textDbs[String(__filePathesAndNamesList[idx][0])] = JSON.parse(extendedFs.readFileSync(__filePathesAndNamesList[idx][1], 'utf-8'));
