@@ -65,7 +65,8 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
         ;
         // console.log('transFormedUserInput: ' + transFormedUserInput);
         // console.log('transFormedCorrectAnswer: ' + transFormedCorrectAnswer);
-        return transFormedUserInput === transFormedCorrectAnswer ? true : false;
+        // return transFormedUserInput === transFormedCorrectAnswer ? true : false;
+        return true;
     }
 
     //////////////////////////////////////////////
@@ -73,19 +74,23 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
 
     // private
     function showAlertMessage (isUserAnswerCorrect, isFinalQuestion, correctAnswer) {
+        const correctAnswerHtml = '<strong>' + String(correctAnswer) + '</strong>';
         if(isUserAnswerCorrect){
             correctAlert
                 .css({'display':'block'})
-                .html('<strong>正解です</strong>')
-            ;            
+                .html('<strong>正解です</strong><br>正答例: ' + 
+                      correctAnswerHtml
+                     )
+            ;
         } else {
             const message = isFinalQuestion ? '終了するには' : '次の問題に進むには';
             // AtD: open source grammer checker.
-            AtD.checkTextAreaCrossAJAX('textInput', 'checkLink', 'Edit Text');
+            // AtD.checkTextAreaCrossAJAX('textInput', 'checkLink', 'Edit Text');
             incorrectAlert
                 .css({'display':'block'})
                 .html('<strong>不正解です．</strong>' + message + 
-                      '正答を入力してください．<br>正答例: <strong>' + String(correctAnswer) + '</strong>'
+                      '正答を入力してください．<br>正答例: ' + 
+                      correctAnswerHtml
                      )
             ;
         }
