@@ -6,7 +6,7 @@ This database is going to used by SyunkanEisakubun (https://www.beret.co.jp/book
 Scraping target is: http://english-writing.mobi/workbook/question.php?theme_no= (1-79)
 """
 
-import sys, urllib, codecs, json
+import sys, urllib, codecs, json, os
 from bs4 import BeautifulSoup
 
 ######################################################
@@ -53,6 +53,8 @@ class SimpleEnglishSentencesJsonDbMaker:
     def saveDbAsJson (self, filePathForSavingDb):
         # How to export Japanese file by using json.dump: http://d.hatena.ne.jp/tatz_tsuchiya/20120227/1330325015
         # How to encode text?: http://blog.livedoor.jp/yawamen/archives/51566670.html
+        # if not os.path.exists(filePathForSavingDb): # ref : http://stackoverflow.com/questions/18758673/trying-to-use-open-filename-w-gives-ioerror-errno-2-no-such-file-or-dir
+        #     os.makedirs(filePathForSavingDb)
         f = codecs.open(filePathForSavingDb + ".json", 'w', "utf-8")
         json.dump(self.db, f, indent=4, sort_keys=True, ensure_ascii=False)
         f.close()

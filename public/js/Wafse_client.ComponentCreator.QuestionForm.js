@@ -59,14 +59,14 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
     //////////////////////////////////////////////
 
     // private
-    function checkAnswer (userInput, __sentenceENG) {
+    function isAnswerCorrect (userInput, __sentenceENG) {
         let transFormedUserInput = Wafse_client.Util.SentenceTransformer.transform(String(userInput)),
             transFormedCorrectAnswer =  Wafse_client.Util.SentenceTransformer.transform(String(__sentenceENG))
         ;
         // console.log('transFormedUserInput: ' + transFormedUserInput);
         // console.log('transFormedCorrectAnswer: ' + transFormedCorrectAnswer);
-        // return transFormedUserInput === transFormedCorrectAnswer ? true : false;
-        return true;
+        return transFormedUserInput === transFormedCorrectAnswer ? true : false;
+        // return true;
     }
 
     //////////////////////////////////////////////
@@ -132,7 +132,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 if (isVoiceRecognizing) voiceInputBtn.click(); // if voice input is working, stop it by clicking voiceInputBtn.
                 isFirstCheckAnswer = false;
                 timer.stop();
-                isUserAnswerCorrect = checkAnswer(String(textInput.val()), __sentenceENG);
+                isUserAnswerCorrect = isAnswerCorrect(String(textInput.val()), __sentenceENG);
                 showAlertMessage(isUserAnswerCorrect, __isFinalQ, __sentenceENG);
                 if (appDataManager.getItem('Config.userAgent') === 'chrome') {
                     playSoundBtn.css({'display':'inline'});
@@ -162,7 +162,7 @@ Wafse_client.ComponentCreator.QuestionForm = function(_appDataManager, _router, 
                 remove();
                 questionWindow.updateQuestionForm();              
             } else {
-                if (checkAnswer(String(textInput.val()), __sentenceENG)) {
+                if (isAnswerCorrect(String(textInput.val()), __sentenceENG)) {
                     remove();
                     questionWindow.updateQuestionForm();                
                 } else {

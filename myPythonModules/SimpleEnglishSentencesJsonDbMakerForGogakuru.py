@@ -54,6 +54,7 @@ class SimpleEnglishSentencesJsonDbMakerForGogakuru(SimpleEnglishSentencesJsonDbM
             if len(self.db[partName]["Page " + str(self.__pageNumberMemory[partName])]["JPN"]) == self.__sentencePerPage:
                 self.__pageNumberMemory[partName] += 1
                 self.db[partName]["Page " + str(self.__pageNumberMemory[partName])] = defaultDictForAssigningSentences
+        return self
 
     ######################################################
     ######################################################
@@ -63,6 +64,7 @@ class SimpleEnglishSentencesJsonDbMakerForGogakuru(SimpleEnglishSentencesJsonDbM
             self.createDbKeys(partNames[idx])
             self.db[partNames[idx]]["Page " + str(self.__pageNumberMemory[partNames[idx]])]["JPN"].append(jpSentences[idx])
             self.db[partNames[idx]]["Page " + str(self.__pageNumberMemory[partNames[idx]])]["ENG"].append(engSentences[idx])
+        return self
 
     ######################################################
     ######################################################

@@ -3,7 +3,8 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
     'use strict';
     
     const englishSynth = new SpeechSynthesisUtterance(), 
-          japaneseSynth = new SpeechSynthesisUtterance()
+          japaneseSynth = new SpeechSynthesisUtterance(),
+          chineseSynth = new SpeechSynthesisUtterance()
     ;
     
     let self,
@@ -38,6 +39,21 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
         return self;
     }
     
+
+    //////////////////////////////////////////////
+    //////////////////////////////////////////////
+
+    function speechTextInChinese (text, callback) {
+        setTimeout(function(){
+            chineseSynth.text = String(text);
+            window.speechSynthesis.speak(chineseSynth);
+            chineseSynth.onend = function (event) {
+                if(callback) callback(event);
+            };
+        }, waitTimeForSpeechSynthesisOnvoiceschanged);
+        return self;
+    }
+    
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
@@ -50,6 +66,8 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
                 englishSynth.voice = speechSynthesis.getVoices()[48];
                 japaneseSynth.lang = 'ja-JP';
                 japaneseSynth.voice = speechSynthesis.getVoices()[57];
+                chineseSynth.lang = 'zh-CN';
+                chineseSynth.voice = speechSynthesis.getVoices()[63];
                 isFirstVoiceschanged = false;
                 waitTimeForSpeechSynthesisOnvoiceschanged = 0;
             }
@@ -60,6 +78,6 @@ Wafse_client.Util.WebSpeechSynthes = (function () {
     //////////////////////////////////////////////
     //////////////////////////////////////////////
 
-    self = { speechTextInEnglish:speechTextInEnglish, speechTextInJapanese:speechTextInJapanese };
+    self = { speechTextInEnglish:speechTextInEnglish, speechTextInJapanese:speechTextInJapanese, speechTextInChinese:speechTextInChinese };
     return self;
 })();
